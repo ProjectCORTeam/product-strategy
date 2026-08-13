@@ -6,8 +6,7 @@
 
 ## Liderazgo
 
-- **C-level (confirmado con organigrama interno, actualizado feb-2025):** **Santiago Bibiloni** (CEO & Co-Founder), **José Gettas** (COO & Co-Founder), **Gabriel Marín** (CTO).
-  > ⚠️ _Contradicción resuelta con evidencia: este archivo decía antes "CEO, CTO y CFO". El organigrama real muestra **CEO, COO y CTO** — no aparece un CFO. Puede que la función financiera esté cubierta por otro rol/tercerizada, o que el organigrama esté desactualizado en ese punto. Confirmar si existe un CFO que no está en este organigrama._
+- **C-level (confirmado con organigrama interno, actualizado feb-2025):** **Santiago Bibiloni** (CEO & Co-Founder), **José Gettas** (COO & Co-Founder), **Gabriel Marín** (CTO). **Confirmado: no hay CFO** — la función financiera no tiene un rol C-level dedicado.
 - **Head de Producto:** el título real es **VP Product** — **Nicolás Ocampo**. Lidera el área de Producto y reporta a nivel C.
 
 ## Área de Producto
@@ -69,7 +68,7 @@ _(Confirmado con el owner: las definiciones reflejan bien el reparto real de COR
 - **Administration & People** — Talent Acquisition, People (RRHH) y Administración, reportan directo al COO.
 - **Cloud Solutions / DevOps** — infraestructura, dentro del reporte del CTO pero como área separada de los squads de producto.
 
-> ✅ _Esto resuelve la pregunta abierta sobre "Soporte, Finanzas, Operaciones, RRHH": existe **Soporte** (Client Support, separado de CS), existe **RRHH** (Administration & People). No aparece un área de **Finanzas** dedicada en el organigrama (coherente con la duda sobre el CFO de arriba) ni una de "Operaciones" con ese nombre — la más cercana es Administration & People._
+> ✅ _Esto resuelve la pregunta abierta sobre "Soporte, Finanzas, Operaciones, RRHH": existe **Soporte** (Client Support, separado de CS), existe **RRHH** (Administration & People). No aparece un área de **Finanzas** dedicada en el organigrama (coherente con que no hay CFO, confirmado arriba) ni una de "Operaciones" con ese nombre — la más cercana es Administration & People._
 
 **Bonus — Industry Leads reales (confirma `05-estrategia-okrs`, sección de GTM):** hoy están cubiertos **Agencies** (Birger Kamrath), **Law & Accounting** (Mariano Covatti) e **IT** (Francisco Vizcaino), más un **Industry Lead de Brands** (Sol Spicuglia) que no estaba explícito en `05`. No aparece todavía uno de **Media**.
 
@@ -80,4 +79,5 @@ _(Confirmado con el owner: las definiciones reflejan bien el reparto real de COR
 - [x] Lista de verticales/squads activos y cuántos hay. _(5: Coherencia de dinero y negocio, Coherencia de datos, AI, Fundamentals COR, GGN-GUT.)_
 - [x] Confirmar si "Coherencia de datos" / Data Analytics es un squad fijo o sigue siendo soporte transversal. _(Ambas cosas: es squad fijo con roadmap propio y además asiste transversalmente a otros squads cuando se lo requiere.)_
 - [x] Ajustar las responsabilidades del resto de los roles (Backend/Frontend, Analista funcional, QA, Product Designer, Data Analysis) a la realidad de COR. _(Confirmado: están bien como están.)_
-- [x] Áreas faltantes fuera de Producto. _(Resuelto con organigrama interno: Marketing, Sales & Revenue, Client Services, Client Support, Administration & People, Cloud Solutions/DevOps. Sin CFO ni área de Finanzas visible — a confirmar.)_
+- [x] Áreas faltantes fuera de Producto. _(Resuelto con organigrama interno: Marketing, Sales & Revenue, Client Services, Client Support, Administration & People, Cloud Solutions/DevOps.)_
+- [x] Confirmar si existe un CFO. _(No hay CFO — confirmado por el owner.)_

@@ -60,7 +60,7 @@ El core de **Agencias LatAm por sí solo no alcanza para crecer +50% YoY**, de a
 
 ## Desafíos / riesgos 2026–2027
 
-1. **Acelerar conversion rates de los verticales nuevos** — sin conversión, el pipeline de Law, IT, Brands y Media no se traduce en ARR. Focos: Pain Points, Discovery & Demo, **Product Adjustments**.
+1. **Acelerar conversion rates de los verticales nuevos** — sin conversión, el pipeline de Law, IT, Brands y Media no se traduce en ARR. Focos: Pain Points, Discovery & Demo.
 2. **Aumentar el pipeline de whales y asegurar conversión** — cuentas grandes con ticket alto: menos deals, más ARR por deal.
 3. **Blindaje 2027: reducción de churn** — el +$1.02M de installed base depende de sostener un NRR de 115%.
 
@@ -89,4 +89,3 @@ No es un framework formalizado tipo RICE con scoring numérico, sino un criterio
 - [ ] Cómo laddera Producto a las 3 prioridades (sobre todo "Deploy de AI en clientes"): ¿qué métrica de producto la mide?
 - [x] Marco de priorización de Producto. _(Alineación a las 3 prioridades del plan + valor vs. esfuerzo; no es un framework formal tipo RICE.)_
 - [x] Propagar la expansión de verticales/EMEA a `03-personas` y `04-mercado`. _(Hecho.)_
-- [ ] Qué significan "Product Adjustments" para los verticales nuevos (enlaza con `08-roadmap`).

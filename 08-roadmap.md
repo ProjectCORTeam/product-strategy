@@ -31,15 +31,11 @@ Las dos cosas chocan en un punto concreto: el plan depende de **NRR 115% y GRR 9
    - *Qué:* llevar los *agentic workflows* de roadmap a producto; Risk Management de **beta** a GA (y más allá del nivel proyecto); definir el **modelo de negocio de MAIA**.
    - *Por qué:* prioridad "Deploy de AI en clientes" + monetización pendiente.
 
-2. **Product Adjustments para verticales nuevos**
-   - *Qué:* adaptar el producto *agency-first* a IT Consulting, Law & Accounting, Brands y Media.
-   - *Por qué:* apertura de verticales y el desafío explícito de acelerar la conversión en cada uno.
-
-3. **Valor en la base instalada (Deploy de AI)**
+2. **Valor en la base instalada (Deploy de AI)**
    - *Qué:* features que suban adopción y valor entregado en clientes existentes.
    - *Por qué:* sostener/superar **NRR 115%** y blindar el churn 2027.
 
-4. **Fricción de onboarding y time tracking** _(reforzado con evidencia)_
+3. **Fricción de onboarding y time tracking** _(reforzado con evidencia)_
    - *Qué:* reducir el costo de cargar horas y **corregir la confiabilidad** (`07`, I-05: horas que no computan o se pierden). Atacar dos problemas distintos: el **Colaborador se desgasta con el uso** (−15.2 → −34.5) y el **PM arranca mal en onboarding** (−46.8).
    - *Por qué:* activación y retención; el dato de horas es la base de toda la rentabilidad — si no es confiable, el core de valor de COR queda comprometido.
    - *Métrica de éxito:* delta NPS onboarding→adopción del Colaborador; cobertura y precisión de horas.
@@ -73,6 +69,5 @@ Las dos cosas chocan en un punto concreto: el plan depende de **NRR 115% y GRR 9
 - [ ] Validar o reemplazar los temas candidatos.
 - [ ] **Definir el balance fundamentos vs. expansión** (ver tensión arriba) — decisión de capacidad con el Head de Producto.
 - [ ] Métrica de éxito por iniciativa.
-- [ ] "Product Adjustments" concretos por vertical.
 - [ ] Estado de MAIA en el roadmap (agentic workflows, Risk Management GA, monetización).
 - [ ] Principios de priorización del roadmap.
