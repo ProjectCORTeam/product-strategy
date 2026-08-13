@@ -1,12 +1,41 @@
 # 01 — Producto (COR)
 
-> **Última actualización:** 2026-08-12
+> **Última actualización:** 2026-08-13
 > **Owner:** Product Manager, área de Producto (reporta al Head de Producto)
 > **Contexto para IA:** Este archivo describe qué es COR, qué hace y para quién. Es el punto de partida para entender el producto antes de leer cualquier otro archivo.
 
 ## Visión de producto
 
-> _Al momento **no existe una visión de producto formalizada**. No inferir ni inventar una; si se necesita, se construye explícitamente._
+> **Que la rentabilidad sea una decisión diaria y no un hallazgo de fin de mes.**
+
+> ⚠️ **Estatus: propuesta, no oficial (ago-2026).** Redactada por el owner de este repo (PM de Producto). **Pendiente de validación con Nicolás Ocampo (VP Product).** Hasta que se valide, usar como hipótesis de dirección — no citarla como la visión oficial de COR. Antes de esto, COR no tenía visión de producto formalizada.
+
+### Qué dice, en concreto
+
+El enemigo es **la latencia**: hoy la rentabilidad se descubre tarde, cuando ya no se puede hacer nada con ella. La visión no promete más reportes, promete **acortar la distancia entre que algo se desvía y que alguien decide**. Dos palabras cargan el peso:
+
+- **decisión** — no "visibilidad" ni "dashboard": alguien tiene que poder actuar. Ver la rentabilidad sin poder cambiarla no cumple la visión.
+- **diaria** — la rentabilidad como ritmo operativo, no como cierre contable.
+
+Es coherente con la tesis ya escrita en el posicionamiento: _la mayoría del software registra lo que ya pasó; COR busca cambiar lo que pasa mientras el trabajo está en curso._
+
+### Cómo se usa para priorizar
+
+**Entra:** todo lo que acorta el ciclo señal → decisión. Esto incluye explícitamente los **fundamentos**: si la plataforma es lenta, si mobile no sirve o si las horas no son confiables (`07`, I-05), **no hay decisión diaria posible** — hay reconstrucción a fin de mes. Bajo esta visión, performance, mobile y confiabilidad del dato de horas no son higiene ni deuda: son **condición de posibilidad** de la visión. _(Insumo directo para la discusión fundamentos vs. expansión de `08-roadmap`.)_
+
+**No entra:** mejorar la gestión de tareas por sí sola, sin conectar con una decisión de rentabilidad. Coherente con el anti-scope de más abajo: es justo lo que refuerza la confusión con PM genérico.
+
+**Sobre MAIA:** la visión la convierte en **medio, no en fin**. Los insights proactivos y las alertas con plan de mitigación son la forma más directa de comprimir el ciclo señal → decisión; el marketplace de agentes solo cumple la visión en la medida en que termine en una decisión de rentabilidad.
+
+### Tensiones abiertas que la visión destapa
+
+1. **¿Quién decide?** La visión es muda respecto del rol. El que está todos los días en el proyecto es el **PM** — y el PM **no tiene de fábrica acceso a Presupuestos** (`03-personas`), o sea que no ve rentabilidad. El rol mejor posicionado para la decisión diaria es hoy el que no tiene los datos para tomarla, y además es el de peor NPS (−40.7). Bajo esta visión ese permiso deja de ser configuración y pasa a ser **decisión estratégica de producto**.
+2. **¿"Diaria" es el ritmo real?** Se mantiene "diaria" por ahora _(decisión del owner, ago-2026)_, asumiendo que es una vara aspiracional. Falta validar contra el ritmo operativo real de un PM de agencia — si en la práctica el ciclo es semanal, la palabra se sostiene como ambición pero no como descripción.
+3. **Alcance de "empresas que venden tiempo"** — la visión es agnóstica de vertical y geografía, a propósito: no choca con la expansión a nuevos verticales ni con EMEA (`05`).
+
+### Qué NO es esta frase
+
+No es el **posicionamiento** (eso vive más abajo: "el sistema operativo de rentabilidad para agencias modernas") ni la **ambición de mercado** (eso vive en `05-estrategia-okrs`: $10.2M ARR al cierre de 2027, liderazgo regional). Son tres artefactos distintos y conviene no fundirlos.
 
 ## Qué es COR
 
@@ -26,16 +55,29 @@ Los negocios que más se benefician son agencias de marketing y publicidad, cons
 
 ## Qué COR NO es (anti-scope)
 
-Delimitar el alcance evita respuestas confundidas:
+Delimitar el alcance evita respuestas confundidas. Hay que distinguir dos cosas: **la confusión real del mercado** (una sola, y es la que importa) y los **límites de alcance** del producto (varios, verdaderos pero que casi nunca generan confusión).
+
+### La confusión real: COR ≠ project management genérico
+
+> ✅ _Confirmado con el owner (ago-2026): de todas las categorías adyacentes, **la única con la que se confunde a COR de forma frecuente en ventas, demos y soporte es el project management genérico.**_
+
+- **No es un project management genérico** (tipo Asana, ClickUp, monday, Trello) — aunque incluye gestión de proyectos y tareas, el foco de COR es **la rentabilidad y el control operativo**, no la gestión de trabajo en general. _(`04-mercado` los lista como competidores indirectos, sobre todo en SMB.)_
+
+**Por qué esta distinción importa más que las otras:** es la confusión más cara. Si el prospecto entra pensando "PM tool", compara tableros y tareas contra herramientas gratuitas o mucho más baratas, y COR pierde en un terreno que no es el suyo. El *reframe* correcto es que la gestión de proyectos en COR es **el medio para capturar el dato** (Cliente → Proyecto → Tarea → Hora), y el producto es **la rentabilidad que sale de ese dato**. Un PM genérico no puede responder "¿este cliente me deja plata?".
+
+_Implicancia para producto: una iniciativa que se parece a "mejorar la gestión de tareas" sin conectar con rentabilidad refuerza la confusión en lugar de disolverla._
+
+### Límites de alcance (verdaderos, pero no fuente de confusión)
+
+> _Confirmado con el owner (ago-2026): estas categorías **no** aparecen como confusiones frecuentes en la práctica. Se mantienen como delimitación de alcance, no como objeciones a trabajar en el pitch._
 
 - **No es un ERP ni un software contable** en sí mismo — se integra con QuickBooks y Alegra para eso.
 - **No es un CRM** — se integra con HubSpot para la parte comercial.
 - **No es una herramienta de diseño/creatividad ni un DAM.**
-- **No es un project management genérico** (tipo Asana, ClickUp, monday, Trello) — aunque incluye gestión de proyectos y tareas, el foco de COR es la rentabilidad y el control operativo, no la gestión de trabajo en general. _(`04-mercado` los lista como competidores indirectos, sobre todo en SMB.)_
 - **No es solo un time tracker** (tipo Toggl, Harvest, TimeCamp) — el registro de horas es un insumo para el cálculo de rentabilidad, no el producto en sí.
 - **No es una herramienta de resource/capacity management standalone** (tipo Float, Runn) — la planificación de recursos vive integrada al ciclo Cliente → Proyecto → Tarea → Hora → Rentabilidad, no como módulo aislado.
 
-> ⚠️ _Propuesta armada por inferencia cruzando `04-mercado` (categorías de competidores adyacentes/indirectos), no confirmada aún con el equipo. Confirmar si estas son efectivamente las confusiones más frecuentes en ventas/soporte/demos, o si hay otras más relevantes en la práctica._
+_(Tampoco surgen como confusiones frecuentes facturación/billing, RRHH/presentismo ni BI/reporting a medida — chequeado con el owner, ago-2026.)_
 
 ## Funcionalidades núcleo
 
@@ -157,4 +199,13 @@ Resueltos: visión (no existe una formalizada), área/rol del owner, plataformas
 
 Quedan por confirmar:
 
-- [ ] **Anti-scope:** propuesta cargada (project management genérico, time tracker, resource management) — confirmar si son las confusiones reales en ventas/soporte/demos, según lo hablado con el equipo.
+- [x] **Anti-scope:** confirmado con el owner (ago-2026). La **única confusión frecuente real** es con **project management genérico** (Asana, ClickUp, monday, Trello). El resto (ERP/contable, CRM, diseño/DAM, time tracker, resource management) son límites de alcance verdaderos pero **no** confusiones habituales en ventas/demos/soporte. Tampoco aparecen facturación/billing, RRHH/presentismo ni BI a medida.
+
+- [ ] **Validar la visión de producto con Nicolás Ocampo (VP Product).** Cargada como propuesta el 2026-08-13: _"Que la rentabilidad sea una decisión diaria y no un hallazgo de fin de mes."_ Hasta que se valide, no citarla como visión oficial.
+
+## Derivadas abiertas (no bloquean este archivo)
+
+- El *reframe* "PM tool → rentabilidad" debería tener un lugar explícito en el pitch y en la demo. Confirmar con Marketing/Ventas si hoy está y cómo se dice → cruza con `04-mercado` (competidores indirectos) y con los **patrones de win/loss**, hoy pendientes en ese archivo.
+- **Acceso del PM a Presupuestos** (`03-personas`): bajo la visión propuesta, revisar si el permiso de fábrica es una decisión de producto y no de configuración.
+- **North Star de producto** (`06-kpi-tree`, pendiente): la visión sugiere medir **latencia entre desvío y decisión**. Derivarlo cuando se trabaje ese archivo.
+- **Fundamentos vs. expansión** (`08-roadmap`): la visión da un argumento explícito para tratar performance, mobile y confiabilidad de horas como condición de posibilidad, no como deuda.
