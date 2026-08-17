@@ -1,6 +1,6 @@
 # 03 — Personas (COR)
 
-> **Última actualización:** 2026-08-12
+> **Última actualización:** 2026-08-17
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Perfiles de usuario y segmentos de COR, para diseñar features y evaluar impacto. COR es B2B: el **cliente es la agencia**, y dentro conviven varios **roles-usuario**, cada uno con su capa de permisos. Distinguir **comprador** (quién decide/paga) de **usuarios** (quién opera el producto).
 
@@ -98,6 +98,22 @@ COR tiene 6 roles de usuario (base, fijos — no se crean roles nuevos), cada un
 | Cliente | −33.3 | 12 | n muy chico |
 | Project Manager | **−40.7** | 248 | *Heavy user* — el peor; malo desde onboarding |
 
+### Adopción de MAIA por rol (2026-08-17)
+
+Corrige una lectura previa: **los tres roles con MAIA habilitada adoptan a tasas equivalentes.** Normalizada por asientos, la penetración de jul-26 es **PM 11,5% · Director 10,8% · C-Level 13,3%**. La aparente dominancia del PM (56% de los usuarios) era un **efecto de tamaño de base** — hay 1.917 asientos de PM contra 458 de C-Level — y quedó dada de baja en `06-kpi-tree` (`[BAJA-01]`).
+
+Lo que sí distingue a los roles es la **intensidad**:
+
+| Rol | Int./usuario (acum.) | Lectura |
+|---|---:|---|
+| **C-level** | **8,2** | El más intensivo. 18% de los usuarios, 25% de las interacciones. Penetración estancada desde marzo |
+| Project Manager | 5,2 | Indistinguible del Director en comportamiento; la diferencia es volumen de asientos |
+| Director | 5,2 | Ídem |
+
+**Implicancia para personas:** el rol que más profundamente usa MAIA es el **C-level**, no el PM — lo opuesto a lo que sugiere el volumen bruto. Y su curva de penetración lleva cinco meses plana, lo que abre una pregunta abierta de discovery (`07`): ¿es saturación real del rol, o falta de valor específico para él?
+
+> ⚠️ _El rol **Colaborador** está excluido de esa medición: MAIA se le habilitó a un grupo muy reducido desde jun-2026 y **su propuesta de valor todavía no está definida**. No es un detalle menor — son **5.605 asientos**, más que todo el universo hoy elegible para MAIA (3.775)._
+
 **Patrón central:** cuanto **más intensivo** es el uso del producto, **peor** la satisfacción. Los roles operativos (PM + Colaborador) son el 79% del volumen de feedback y los más críticos; los roles de lectura/agregado están claramente mejor. El dolor vive en la operación diaria, no en el reporting.
 
 ## El "champion" de adopción
@@ -115,3 +131,5 @@ El **champion** es una persona **dentro de la organización cliente** (no de COR
 - [x] Quién es el "champion" de adopción. _(Persona interna del cliente, no un rol formal de COR; con contacto frecuente con el CSM.)_
 - [ ] Cómo arranca el rollout típico en una cuenta nueva, y qué rol suele ejercer de champion.
 - [ ] **Personas por vertical nuevo** (IT Consulting, Law & Accounting, Brands, Media): comprador, usuarios y jobs-to-be-done propios de cada industria.
+- [ ] **Propuesta de valor de MAIA para el rol Colaborador** — hoy sin definir, y es el rol con más asientos (5.605). Condiciona si MAIA se libera a toda la base (`05`).
+- [ ] **¿La meseta del C-level es saturación o falta de valor para el rol?** Ver `07-discovery` (tema abierto de MAIA) y `06-kpi-tree` (hipótesis etiquetada).

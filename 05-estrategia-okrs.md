@@ -1,6 +1,6 @@
 # 05 — Estrategia y OKRs (COR)
 
-> **Última actualización:** 2026-08-12
+> **Última actualización:** 2026-08-17
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Visión, pilares estratégicos, KPIs y OKRs, para priorizar y alinear iniciativas. Base principal: **Business Plan 2026–2027** (presentado internamente). Es un plan de negocio/GTM: fuerte en revenue y go-to-market, liviano en estrategia de producto. Los **OKRs de producto (objetivos + key results)** aún no están cargados — no inventarlos.
 
@@ -64,6 +64,59 @@ El core de **Agencias LatAm por sí solo no alcanza para crecer +50% YoY**, de a
 2. **Aumentar el pipeline de whales y asegurar conversión** — cuentas grandes con ticket alto: menos deals, más ARR por deal.
 3. **Blindaje 2027: reducción de churn** — el +$1.02M de installed base depende de sostener un NRR de 115%.
 
+## Cómo laddera Producto a "Deploy de AI en clientes"
+
+> _Cargado el 2026-08-17 a partir de *MAIA — Análisis de adopción y penetración v3.0*. La medición vive en `06-kpi-tree` (sección de AI, con etiquetado de evidencia); acá está lo que la estrategia puede apoyarse en decir._
+
+**Contexto de partida.** MAIA se desarrolló hasta hoy **sin estrategia de producto formalizada**: sin outcomes definidos, sin OKRs ni KRs. La lógica fue construir capacidades, medir actividad y responder a pedidos. Este bloque existe para que el paso siguiente —definir la estrategia de la vertical de AI— arranque con baseline.
+
+### La métrica que mide la prioridad
+
+**Penetración = usuarios únicos ÷ asientos elegibles** (PM + Director + C-Level de las cuentas con MAIA habilitada). Reemplaza el conteo de usuarios activos absolutos, que se movía con el denominador.
+
+| Referencia | Valor |
+|---|---|
+| Baseline jul-26, base completa | **11,6%** _(provisorio — ver salvedad de instrumentación en `06`)_ |
+| Baseline jul-26, panel cerrado de cuentas 2025 | **14,6%** |
+| **Techo observado hoy** (mejores cuentas) | **>23%** |
+| Piso observado (8 cuentas Enterprise "dormidas") | **3,3%** |
+
+### Cuatro anti-metas — errores de KR que la evidencia ya descarta
+
+Esto es lo más accionable del análisis para este archivo: **no** fijar KRs sobre estas bases.
+
+1. **No fijar una meta única de penetración para los tres roles.** El C-Level lleva cinco meses entre 9,5% y 13,3% mientras el PM pasó de 1,8% a 11,9% en cinco meses. Una meta común castiga a un rol posiblemente cerca de su techo y subestima a los otros dos. **Metas diferenciadas por rol.**
+2. **No usar volumen de interacciones como KR.** El 6% de los usuarios genera ~43% de las interacciones: mover ese número equivale a mover a dos docenas de personas. La métrica de salud es **la forma de la distribución**.
+3. **No usar calidad percibida (thumbs up/down) como KR.** La tasa de feedback explícito es del **1,5%**; el ratio 9:1 a favor mide quién se molesta en calificar, no si MAIA es buena. Requiere instrumentar otra cosa.
+4. **No confundir alcance con intensidad.** Son dos palancas separables que responden a tipos de release distintos (→ `08-roadmap`). Un solo número no las captura, así que un KR único los promedia y esconde el movimiento real.
+
+### Dos huecos que la estrategia tiene que cubrir
+
+**Ninguna métrica actual mide valor entregado, solo uso.** Nada de lo medido dice si una interacción cambió una decisión operativa, evitó un desvío o protegió un margen. El candidato más directo: el evento de **aprobación explícita de acciones** del pilar de Governance, que existe en el producto y no se está registrando.
+
+**La vertical de AI fuera de MAIA no tiene ninguna métrica.** Workflows y automatizaciones, marketplace de agentes custom y risk management entregan valor en **trabajo ejecutado**, no en consultas — y un chat se puede evaluar razonablemente por frecuencia de uso, un workflow automatizado no. Esta brecha es más grave para el resto de la vertical que para MAIA.
+
+### Modelo de negocio de MAIA — estado real
+
+MAIA es **gratuita para toda la base de beta testers** (128 companies al 13-ago-2026). El **único revenue** asociado proviene de un servicio de **consultoría de AI** ejecutado entre Producto y CSM, cobrado como extra por licencia sobre tres clientes que ya son de COR (Sancho BBDO, Publicis, Robin). **No hay todavía casos de upsell de licencias por uso de MAIA** fuera de ese marco.
+
+> **Tensión de pricing a resolver:** el servicio se cotiza **por licencia**, pero produce 1 a 3 usuarios muy profundos por cuenta en lugar de adopción amplia — las cuentas de Sancho tienen la intensidad más alta de toda la base (10 y 20 interacciones por usuario) con penetración de 1,5% y 3,8%. Si eso se sostiene, **el valor entregado y el precio cobrado se apoyan sobre bases distintas**. Marcado como hipótesis en `06`: n = 4 cuentas.
+>
+> **Hipótesis asociada, con muestra de tres:** los tres contratos se cerraron en momentos en que MAIA **pasó de responder a accionar** (Sancho justo después del MVP de la tool para crear tareas; Publicis y Robin con el bloque de tools de acción ya maduro). Si se sostiene, la variable que predice disposición a pagar no sería cuánto se usa MAIA sino **si ejecuta trabajo**. → `08-roadmap`.
+
+### Decisiones abiertas de la vertical de AI
+
+| Decisión | Evidencia disponible |
+|---|---|
+| ¿Cuál es la meta de penetración, y es la misma para los tres roles? | C-Level 5 meses entre 9,5% y 13,3%; PM de 1,8% a 11,9% en cinco meses; mejores cuentas >23% |
+| ¿Cómo se reparte capacidad entre construir **capacidades** y construir **superficie**? | Ver `08-roadmap`: abril (capacidades) movió intensidad y no alcance; mayo (superficie) duplicó alcance |
+| ¿Qué se hace con los **543 asientos dormidos**? | 8 cuentas, intensidad 1 a 2,2. Crowe Global, escala y antigüedad similares, llegó a 23,6% |
+| ¿Se **libera MAIA a toda la base**, y bajo qué criterio? | 12% de las cuentas habilitadas nunca registró un usuario. Liberar multiplica el denominador sin evidencia de que mueva el numerador |
+| ¿Cuál es la propuesta de valor para el rol **Colaborador**? | Hoy excluido por alcance marginal. Son 5.605 asientos — más que todo el universo elegible actual (3.775) |
+| ¿Cuál es el **modelo de negocio** de MAIA fuera de la consultoría? | El único revenue actual produce 1 a 3 usuarios profundos por cuenta. Hay cuentas gratuitas con penetración muy superior |
+| ¿Qué rol juega la **elección de modelo**? | El cambio a Sonnet 4.5 en marzo coincide con el segundo mayor salto de penetración de la serie (→ `01-producto`) |
+| ¿Cómo se mide el **resto de la vertical**? | Workflows, marketplace y risk management entregan valor en trabajo ejecutado. Ninguna métrica actual lo captura |
+
 ## OKRs del trimestre
 
 > ⚠️ **Pendiente — confirmado con el owner:** todavía no existen OKRs de Producto definidos por eje/squad (`02-equipos`: Coherencia de dinero y negocio, Coherencia de datos, AI, Fundamentals COR, GGN-GUT). Cuando se carguen, probablemente vengan estructurados **por eje** en lugar de (o además de) un set único de Producto. Cargar acá apenas estén definidos, con este formato:
@@ -86,6 +139,9 @@ No es un framework formalizado tipo RICE con scoring numérico, sino un criterio
 ## Pendientes — input interno
 
 - [ ] OKRs de producto del trimestre (objetivos + key results con valor actual y meta) — pendiente, probablemente vengan por eje/squad.
-- [ ] Cómo laddera Producto a las 3 prioridades (sobre todo "Deploy de AI en clientes"): ¿qué métrica de producto la mide?
+  - ⚠️ **Para el eje de AI ya hay baseline y cuatro anti-metas** (ver sección "Cómo laddera Producto a Deploy de AI en clientes"). **Bloqueo:** no fijar el KR de penetración hasta recalibrar el 11,6% con el corte por solo `AI_CHAT_SEND` (pendiente en `06-kpi-tree`).
+- [x] Cómo laddera Producto a "Deploy de AI en clientes": ¿qué métrica de producto la mide? _(Resuelto 2026-08-17: **penetración sobre asientos elegibles**, con metas diferenciadas por rol. Ver sección dedicada. Sigue abierto el laddering de las otras dos prioridades.)_
+- [ ] **Definir outcome y meta para la vertical de AI fuera de MAIA** (workflows, marketplace, risk management) — hoy no existe ninguna métrica que la capture.
+- [ ] **Definir el modelo de negocio de MAIA** más allá del servicio de consultoría, resolviendo la tensión de cotizar por licencia un valor que se concentra en 1 a 3 personas.
 - [x] Marco de priorización de Producto. _(Alineación a las 3 prioridades del plan + valor vs. esfuerzo; no es un framework formal tipo RICE.)_
 - [x] Propagar la expansión de verticales/EMEA a `03-personas` y `04-mercado`. _(Hecho.)_

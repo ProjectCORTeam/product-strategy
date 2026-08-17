@@ -17,6 +17,7 @@ Estos archivos alimentan el contexto de un **Proyecto de Claude ("COR – Produc
 2. Identificá qué archivos son relevantes para la pregunta puntual — no hace falta cargar los 9 de una.
 3. Respondé basándote solo en lo que está en los archivos. Si algo no está, decilo explícitamente — no inventar contexto de COR.
 4. Si hay información contradictoria entre archivos, señalarlo en vez de elegir en silencio.
+5. **La sección de AI de `06-kpi-tree` usa etiquetas de evidencia** (`[HECHO]` / `[HALLAZGO]` / `[HIPÓTESIS]` / `[BAJA]`). Respetá la etiqueta al citar un número, y no vuelvas a circular una afirmación dada de baja.
 
 ## Mapa de archivos
 
@@ -40,10 +41,10 @@ Estos archivos alimentan el contexto de un **Proyecto de Claude ("COR – Produc
 | `02-equipos.md` | Completo |
 | `03-personas.md` | Casi completo — pendiente personas por vertical nuevo y detalle de rollout/champion |
 | `04-mercado.md` | Competidores confirmados — pendiente vertical nuevo, precio y cruce con churn |
-| `05-estrategia-okrs.md` | Marco de priorización confirmado — pendientes OKRs de producto por eje |
-| `06-kpi-tree.md` | North Star de negocio, engagement y adopción de MAIA con baseline real — pendiente North Star de producto y calidad de servicio |
+| `05-estrategia-okrs.md` | Marco de priorización confirmado + laddering de "Deploy de AI" con baseline y anti-metas (ago-2026) — pendientes OKRs de producto por eje |
+| `06-kpi-tree.md` | North Star de negocio y engagement con baseline real; **sección de AI reescrita (ago-2026)**: penetración sobre asientos elegibles + etiquetado de evidencia — pendiente North Star de producto y calidad de servicio |
 | `07-discovery.md` | Repositorio estructurado con research primario (Retently) — pendiente corte por segmento/vertical |
-| `08-roadmap.md` | Estructura y temas candidatos — el roadmap real todavía no está cargado |
+| `08-roadmap.md` | Estructura y temas candidatos (suma activación de la base de MAIA, ago-2026) — el roadmap real todavía no está cargado |
 
 ## Cómo se mantiene
 

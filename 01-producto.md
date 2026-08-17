@@ -1,6 +1,6 @@
 # 01 — Producto (COR)
 
-> **Última actualización:** 2026-08-13
+> **Última actualización:** 2026-08-17
 > **Owner:** Product Manager, área de Producto (reporta al Head de Producto)
 > **Contexto para IA:** Este archivo describe qué es COR, qué hace y para quién. Es el punto de partida para entender el producto antes de leer cualquier otro archivo.
 
@@ -148,7 +148,9 @@ Entidades núcleo de COR y cómo se relacionan (vocabulario a usar de forma cons
 
 **Posicionamiento:** MAIA es el **sistema operativo de AI de COR** — concentra toda la IA de la agencia en un solo lugar: agentes que ejecutan trabajo real, insights de proyecto en segundos, todo medido, gobernado y conectado a la rentabilidad. Se organiza en tres pilares.
 
-> _Capacidad confirmada (live hoy): MAIA accede a datos de tareas, proyectos y clientes._
+> _**Capacidad confirmada (live hoy)**, actualizada al 2026-08-17 con la cronología de releases del área de Producto: MAIA accede a datos de **tareas, proyectos y clientes**, al tab de **Performance** con filtro de fechas, y al contexto de **Retrabajos y Entregables**. Ejecuta **tools de acción** (crear tareas y retrabajos, asignar usuarios, editar proyectos, acciones sobre adjuntos y adjuntar archivos), tiene **búsqueda web**, **pensamiento adaptativo**, **Consultas Frecuentes** e **hipervínculos en tareas**. Es accesible desde el **listado de Proyectos** y **desde dentro de una tarea** ("MAIA en tareas", jun-26). Subagentes especializados live: **Especialista en Clientes** (mar-26) y **Especialista en Horas** (jul-26). **Risk Management + MAIA** desde may-26 (en beta, ver Pilar 2)._
+>
+> _Adopción medida: **11,6% de penetración** sobre asientos elegibles en jul-26, 128 companies habilitadas. Serie completa, definiciones y salvedades en `06-kpi-tree` (sección de AI)._
 
 ### Pilar 1 — Automatización
 
@@ -158,7 +160,9 @@ Automatiza tareas manuales y repetitivas. Hoy funciona **a pedido**: acciones co
 
 Incluye un **Marketplace de agentes** listos para usar (ej. Brief Specialist, Concept Generator, Blog Draft Builder, Project Specialist) y creación de agentes **sin código** por dos vías: un editor manual (nombre, instrucciones de hasta 5.000 caracteres, modelo, base de conocimiento y accesibilidad) o de forma conversacional, donde MAIA hace 4 preguntas y diseña el agente en menos de 2 minutos.
 
-**Multi-modelo y MCP:** es **LLM-agnóstico** — se elige el modelo de mejor rendimiento por tarea (Anthropic Claude, OpenAI GPT, Gemini, DeepSeek, Mistral) y COR mantiene el control sin importar cuál se use. Un conector MCP de Claude permite operar COR desde Claude (crear proyectos, asignar tareas, consultar datos operativos) sin salir de ahí. La conexión de herramientas externas vía MCP (Gmail, Drive, HubSpot) dentro de un flujo automático —ej. crear un proyecto en COR cuando se cierra una venta— depende de los *agentic workflows*, que aún no están disponibles (ver nota arriba).
+**Multi-modelo y MCP:** es **LLM-agnóstico** — se elige el modelo de mejor rendimiento por tarea (Anthropic Claude, OpenAI GPT, Gemini, DeepSeek, Mistral) y COR mantiene el control sin importar cuál se use.
+
+> 💡 **La elección de modelo es una palanca de producto, no una decisión de infraestructura.** El MVP de ago-25 corría sobre un modelo OpenAI mini de baja capacidad; el cambio a **Sonnet 4.5 en mar-26** (junto con mejoras de UX de base) coincide con el **segundo mayor salto de penetración** de toda la serie de adopción: 1,90x en el panel de cuentas comparables. Eso le da peso al trade-off entre calidad del modelo y costo por interacción como decisión de producto. _Detalle y salvedades en `06-kpi-tree` y `08-roadmap`._ Un conector MCP de Claude permite operar COR desde Claude (crear proyectos, asignar tareas, consultar datos operativos) sin salir de ahí. La conexión de herramientas externas vía MCP (Gmail, Drive, HubSpot) dentro de un flujo automático —ej. crear un proyecto en COR cuando se cierra una venta— depende de los *agentic workflows*, que aún no están disponibles (ver nota arriba).
 
 ### Pilar 2 — Rentabilidad en tiempo real
 
@@ -168,11 +172,15 @@ Insights proactivos: cuando MAIA detecta un desvío, no solo emite la alerta sin
 - **Directores de cuenta:** "Analyze with MAIA" — retrabajos, salud de clientes, rentabilidad real y performance del equipo.
 - **Colaboradores:** resumen de mensajes y carga de horas en segundos.
 
+> ⚠️ _Esta adaptación por rol es **descripción de producto, no lectura de datos de uso**. La afirmación de que "el PM es el rol que más usa MAIA" quedó **dada de baja** el 2026-08-17 (`06-kpi-tree`, `[BAJA-01]`): normalizada por asientos, la adopción de los tres roles es prácticamente igual (PM 11,5% / Director 10,8% / C-Level 13,3% en jul-26), y el C-Level es el más **intensivo** (8,2 int./usuario contra 5,2). No usar los datos de uso para argumentar que MAIA es una herramienta de PM._
+
 Para dirección expone rentabilidad real por proyecto y cliente, performance operativa del equipo, y análisis de qué agentes y modelos generan más valor y dónde está el ROI de la inversión en AI. **Risk Management** está disponible **en fase beta**: cubre 10 riesgos **a nivel proyecto** y solo se accede desde dentro de un proyecto (las áreas de riesgo abarcan Fechas, Horas, Rentabilidad, Recursos y Retrabajo).
 
 ### Pilar 3 — Governance
 
 *Human in the loop*: cada acción crítica —crear agente, crear tareas, asignar usuarios— requiere aprobación explícita antes de ejecutarse. Suma:
+
+> 📊 **Ese evento de aprobación es el mejor candidato disponible para medir valor entregado**, y hoy **no se está registrando como métrica**. Todo lo que se mide de MAIA es uso (cuánta gente, cuántas veces); la aprobación de una acción crítica es lo más cerca que tenemos de "MAIA ejecutó trabajo real". Pendiente de instrumentación en `06-kpi-tree`.
 
 - **Accesibilidad por agente** en tres niveles: toda la compañía, clientes específicos, o solo vos.
 - **Trazabilidad** completa con historial auditable.
@@ -192,6 +200,8 @@ B2B SaaS. Fundada en 2017 por **Santiago Bibiloni** (CEO), **José Gettas** (COO
 **Crecimiento:** 51% de crecimiento interanual en ingresos al cierre de 2025, según el blog oficial — coincide con el KPI núcleo **ARR Annual Growth: 51%** del Business Plan (`05-estrategia-okrs`).
 
 **Packaging:** COR se vende **por licencia**. **MAIA** todavía no tiene modelo de negocio definido — al estar en fase beta tester, a veces se cobra y a veces no.
+
+> _Precisión (2026-08-17): MAIA es **gratuita para toda la base de beta testers** (128 companies) con tres excepciones. El **único revenue** asociado viene de un servicio de **consultoría de AI** ejecutado entre Producto y CSM, cobrado como extra por licencia sobre clientes que ya son de COR — **Sancho BBDO** (cuentas Grupo Éxito y Sodimac), **Publicis** (Publicis Impetu Uruguay) y **Robin** (robin agency). **No hay todavía casos de upsell de licencias por uso de MAIA** fuera de ese marco. Ver `05-estrategia-okrs` para la tensión de pricing que esto abre._
 
 ## Pendientes — input interno
 

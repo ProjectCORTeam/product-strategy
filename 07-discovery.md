@@ -1,6 +1,6 @@
 # 07 — Discovery (COR)
 
-> **Última actualización:** 2026-08-10
+> **Última actualización:** 2026-08-17
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Insights curados de entrevistas, encuestas y datos, para buscar evidencia al tomar una decisión. Cada insight debe tener **evidencia y fuente**; distinguir hallazgos de *research primario* de supuestos o claims de marketing. No inventar insights: si un tema no tiene evidencia cargada, marcarlo como pregunta abierta.
 
@@ -40,6 +40,12 @@ Cada insight se carga con esta estructura:
 ### MAIA
 - ¿Qué esperan de MAIA vs. qué reciben? (alimentar con `maia-friction-analysis`).
 - ¿Qué agentes/acciones generan valor real y cuáles se abandonan?
+
+> _Dos preguntas nuevas (2026-08-17), derivadas del análisis de adopción. **Son los dos targets de research mejor definidos que tenemos hoy**, porque el dato cuantitativo llega hasta acá y no más: la evidencia está en `06-kpi-tree` (sección de AI) y lo que falta es el porqué. Alimentan directamente el tema 2 del roadmap (`08`)._
+
+- 🎯 **¿Por qué las cuentas grandes probaron MAIA y no volvieron?** Ocho cuentas Enterprise concentran 543 asientos con 18 usuarios activos y una intensidad de 1 a 2,2 interacciones mensuales — el patrón no es "uso bajo" sino **no-retorno tras el primer contacto**. ¿Qué pasó en ese primer uso? ¿Falta de onboarding, expectativa incumplida, ausencia de champion, permisos, desconocimiento de que existe? _(Cuentas: TBWA Multisponsor, Ganem Group, Encender, Garnier Agency, Fahrenheit DDB, MASS DIGITAL, Anagram LATAM, DeNicolas.)_
+- 🎯 **¿Qué pasó en Crowe Global?** Alta en jun-26, escala comparable (123 asientos) y **23,6% de penetración con 8,7 interacciones por usuario** — el resultado opuesto al del grupo anterior. Es el caso de éxito más limpio disponible y la base para un **playbook de activación**. ¿Hubo champion? ¿Rollout dirigido? ¿Acompañamiento de CSM? ¿Un caso de uso puntual que prendió?
+- ¿Qué explica que el **C-Level** tenga la intensidad más alta (8,2 int./usuario) y a la vez cinco meses de meseta en penetración? Es la pregunta que decide si su curva plana es saturación real o falta de valor específico para el rol — hoy es hipótesis en `06` y **de eso depende si se invierte en valor para C-Level**.
 
 ### Verticales nuevos (IT Consulting, Law & Accounting, Brands, Media)
 - ¿Qué tan bien encaja el producto agency-first en cada vertical? ¿Qué "Product Adjustments" pide cada uno?
@@ -148,3 +154,5 @@ Cada insight se carga con esta estructura:
 - [ ] Definir cadencia de discovery y quién cura este archivo. _(Existe una práctica de **discovery semanal** en toda COR para tener contacto con usuarios, pero ese research **no se está volcando** a este repositorio hoy — falta definir quién lo cura y cómo se alimenta.)_
 - [ ] Conectar el pipeline: `interview-snapshot` y `maia-friction-analysis` → insights acá. _(Decisión: por ahora no se prioriza armar esta conexión formal.)_
 - [ ] Priorizar qué tema abierto atacar primero.
+- [ ] **Research sobre las 8 cuentas dormidas y sobre Crowe Global** (ver 🎯 en Temas abiertos → MAIA). Bloquea el playbook de activación del tema 2 de `08-roadmap`. Procesar con `interview-snapshot`.
+- [ ] **Cerrar el loop cuantitativo:** el análisis de adopción de MAIA (ago-2026) dejó siete pedidos de datos abiertos en `06-kpi-tree`. Dos son bloqueantes de decisiones de roadmap.

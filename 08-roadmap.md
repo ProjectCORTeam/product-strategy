@@ -1,6 +1,6 @@
 # 08 — Roadmap (COR)
 
-> **Última actualización:** 2026-08-10
+> **Última actualización:** 2026-08-17
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Qué construye COR, por qué y cuándo, para evaluar prioridades y explicar la dirección. El **roadmap real** aún no está cargado; los temas de abajo están **derivados de la estrategia** (`05`) y marcados como candidatos a validar, no como el roadmap oficial. No inventar fechas ni compromisos.
 
@@ -18,6 +18,30 @@ Las dos cosas chocan en un punto concreto: el plan depende de **NRR 115% y GRR 9
 
 **Pregunta a resolver con el Head de Producto:** ¿cuánta capacidad va a *fundamentos* (performance, UX, mobile, confiabilidad de horas) vs. a *expansión* (verticales, AI)? Hoy el plan no lo explicita. _(Confirmado con el owner: esta conversación todavía no se dio — sigue pendiente.)_
 
+### Segundo eje de reparto, dentro de AI: capacidad vs. superficie
+
+> `[HIPÓTESIS FUERTE — no usar como hecho para repartir capacidad todavía]`
+> _Cargada el 2026-08-17 desde *MAIA — Análisis de adopción y penetración v3.0*. Es la conclusión más accionable del análisis y la que descansa sobre la evidencia más fina, así que entra como hipótesis con test asociado. Métrica y salvedades en `06-kpi-tree`._
+
+Cruzando la cronología de releases de MAIA contra las series de penetración e intensidad aparece un patrón que separa dos palancas hasta ahora confundidas en un solo número:
+
+| Tipo de release | ¿Mueve alcance? | ¿Mueve intensidad? | Evidencia observada |
+|---|---|---|---|
+| **Tools y capacidades nuevas** | No | **Sí** | Abril-26: penetración 1,02x (de 40 a 41 usuarios en el panel fijo), pero intensidad de 4,6 a 6,0 — el salto más grande de la serie — y **nace el bucket de 51-100 interacciones**, que había estado en cero cinco meses |
+| **Superficie y descubribilidad** | **Sí** | Poco | Mayo-26 (*kick actions* derivadas de las tools de abril, sin capacidad nueva): **2,05x**. Junio-26 (*MAIA en tareas*, superficie nueva): 1,33x |
+| **Calidad del modelo** | **Sí** | No | Marzo-26 (cambio a Sonnet 4.5 + mejoras de UX de base): **1,90x**, el segundo mayor salto de la serie |
+| **Nada** | **Retrocede** | — | Diciembre-25, sin iteraciones: **0,38x** — pero ver la salvedad de estacionalidad abajo |
+
+**El experimento natural de abril y mayo** es el caso más limpio: en abril se soltó un conjunto considerable de tools de acción y la penetración no se movió; en mayo, con **esas mismas tools ya en producción**, se duplicó. Lo único que cambió fue el agregado de *kick actions* — la superficie que hace que la capacidad se descubra sin que el usuario sepa pedirla.
+
+> **Por qué importa para el reparto:** construir capacidad **no expande la base de usuarios por sí solo**. La expande la superficie donde esa capacidad se vuelve visible. Y aplica igual a workflows, marketplace y risk management, no solo a MAIA.
+>
+> **Por qué todavía no es un hecho:** el mes crítico son ~40 usuarios en un panel de 34 cuentas; pasar de 40 a 41 puede ser una sola cuenta activando gente. Granularidad mensual, sin control ni aleatorización, y varios meses combinan más de un tipo de cambio. Es además el claim de **mayor carga** del análisis — se lo va a usar para repartir capacidad del squad, así que la barra es la más alta.
+> **Qué la refutaría:** un release de superficie que no mueva alcance, o uno de capacidad que sí lo mueva.
+> **Test disponible:** pedir las interacciones desagregadas por tool/agente (pendiente en `06`).
+
+**Salvedad sobre diciembre.** El "0,38x sin releases" tiene un confounder no tratado: **diciembre en LATAM es mes de vacaciones**, y el documento fuente no menciona estacionalidad. Test barato con datos que ya tenemos: mirar el DAU/MAU global de COR en dic-25 (`06-kpi-tree`) — si cayó toda la plataforma, el claim se cae solo. Hasta entonces, "la base decae sin releases" es `[HIPÓTESIS]`.
+
 ## Temas candidatos (derivados de la estrategia y de la evidencia — validar contra el roadmap real)
 
 > _Inferidos de `05-estrategia-okrs` y `07-discovery`. Son hipótesis de hacia dónde *debería* apuntar producto, NO el roadmap comprometido._
@@ -30,12 +54,22 @@ Las dos cosas chocan en un punto concreto: el plan depende de **NRR 115% y GRR 9
 1. **Madurez de MAIA**
    - *Qué:* llevar los *agentic workflows* de roadmap a producto; Risk Management de **beta** a GA (y más allá del nivel proyecto); definir el **modelo de negocio de MAIA**.
    - *Por qué:* prioridad "Deploy de AI en clientes" + monetización pendiente.
+   - *Evidencia nueva (2026-08-17):* el único revenue de MAIA hoy es el servicio de consultoría sobre tres clientes, y **no hay casos de upsell de licencias por uso**. Los tres contratos se cerraron en momentos en que MAIA **pasó de responder a accionar** — hipótesis con n=3, pero si se sostiene, lo que predice disposición a pagar no es cuánto se usa MAIA sino **si ejecuta trabajo**. Eso empuja los *agentic workflows* y las tools de acción por delante de las capacidades de consulta. Ver `05-estrategia-okrs`.
+   - *Métrica de éxito:* penetración por rol (`06`), y —cuando se instrumente— **eventos de aprobación de acciones** como proxy de trabajo ejecutado.
 
-2. **Valor en la base instalada (Deploy de AI)**
+2. **Activación de la base ya habilitada de MAIA** ⬅️ _nuevo (2026-08-17), la mejor relación valor/esfuerzo disponible_
+   - *Qué:* playbook de activación para las cuentas grandes habilitadas que no arrancaron. **Ocho cuentas Enterprise concentran 543 asientos elegibles —17% del universo— con 18 usuarios activos y una intensidad de 1 a 2,2**: no son usuarios que usan poco, son personas que probaron y no volvieron. Otras 15 companies (149 asientos) nunca registraron un solo usuario en diez meses.
+   - *Por qué:* llevar esos asientos al promedio de la base agregaría **~45 usuarios activos** y **no requiere construir nada nuevo**. Es también la explicación de por qué la cohorte marzo-abril rinde peor que la de 2025 (8,8% contra 14,6%): en esa tanda entraron los elefantes dormidos.
+   - *Insumo disponible:* **Crowe Global** se habilitó en jun-26 con escala comparable (123 asientos) y llegó a **23,6% de penetración con 8,7 interacciones por usuario**. Misma escala, alta más reciente, resultado opuesto. Entender qué pasó ahí es el insumo más valioso para el playbook → `07-discovery`.
+   - ⚠️ *Verificación previa obligatoria:* depurar el denominador con el **estado de actividad/churn por company** (pendiente en `06`). Si parte de esas ocho cuentas está dormida en COR en general, el asiento no existe y el problema no es de MAIA. **No dimensionar la iniciativa antes de ese chequeo** — es el más barato de la lista y cambia el tamaño del premio.
+   - *Métrica de éxito:* penetración de las cuentas del grupo (3,3% → meta), y cantidad de cuentas habilitadas con al menos un usuario recurrente.
+
+3. **Valor en la base instalada (Deploy de AI)**
    - *Qué:* features que suban adopción y valor entregado en clientes existentes.
    - *Por qué:* sostener/superar **NRR 115%** y blindar el churn 2027.
+   - *Evidencia nueva (2026-08-17):* **los tres roles adoptan MAIA a tasas equivalentes** (PM 11,5% / Director 10,8% / C-Level 13,3% en julio) — la lectura anterior de "MAIA es una herramienta de PM" era un efecto de tamaño de base y quedó dada de baja en `06`. No priorizar valor de AI asumiendo que el PM es el usuario dominante.
 
-3. **Fricción de onboarding y time tracking** _(reforzado con evidencia)_
+4. **Fricción de onboarding y time tracking** _(reforzado con evidencia)_
    - *Qué:* reducir el costo de cargar horas y **corregir la confiabilidad** (`07`, I-05: horas que no computan o se pierden). Atacar dos problemas distintos: el **Colaborador se desgasta con el uso** (−15.2 → −34.5) y el **PM arranca mal en onboarding** (−46.8).
    - *Por qué:* activación y retención; el dato de horas es la base de toda la rentabilidad — si no es confiable, el core de valor de COR queda comprometido.
    - *Métrica de éxito:* delta NPS onboarding→adopción del Colaborador; cobertura y precisión de horas.
@@ -68,6 +102,10 @@ Las dos cosas chocan en un punto concreto: el plan depende de **NRR 115% y GRR 9
 - [ ] Roadmap real (iniciativas y horizontes/fechas).
 - [ ] Validar o reemplazar los temas candidatos.
 - [ ] **Definir el balance fundamentos vs. expansión** (ver tensión arriba) — decisión de capacidad con el Head de Producto.
-- [ ] Métrica de éxito por iniciativa.
-- [ ] Estado de MAIA en el roadmap (agentic workflows, Risk Management GA, monetización).
+  - Sumar a esa conversación el **segundo eje de reparto dentro de AI**: capacidad vs. superficie (ver arriba). Cargado con evidencia el 2026-08-17, todavía como hipótesis.
+- [ ] Métrica de éxito por iniciativa. _(Parcial: los temas 1, 2 y 4 ya tienen métrica; el 0 y el 3 no.)_
+- [x] Estado de MAIA en el roadmap. _(Cargado 2026-08-17 con el análisis de adopción: baseline de penetración, evidencia de monetización y la iniciativa de activación de la base ya habilitada. Sigue pendiente el estado de los agentic workflows y de Risk Management GA como fechas de roadmap real.)_
 - [ ] Principios de priorización del roadmap.
+- [ ] 🔴 **Verificar churn/actividad por company antes de dimensionar el tema 2** (activación de cuentas dormidas) — bloqueante, pendiente en `06-kpi-tree`.
+- [ ] **Testear la hipótesis capacidad vs. superficie** con las interacciones desagregadas por tool/agente antes de usarla para repartir capacidad.
+- [ ] **Chequear la estacionalidad de diciembre** contra el DAU/MAU global (`06`) para confirmar o descartar "la base decae sin releases".
