@@ -1,6 +1,6 @@
 # 05 — Estrategia y OKRs (COR)
 
-> **Última actualización:** 2026-08-17
+> **Última actualización:** 2026-08-18
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Visión, pilares estratégicos, KPIs y OKRs, para priorizar y alinear iniciativas. Base principal: **Business Plan 2026–2027** (presentado internamente). Es un plan de negocio/GTM: fuerte en revenue y go-to-market, liviano en estrategia de producto. Los **OKRs de producto (objetivos + key results)** aún no están cargados — no inventarlos.
 
@@ -94,7 +94,12 @@ Esto es lo más accionable del análisis para este archivo: **no** fijar KRs sob
 
 **Ninguna métrica actual mide valor entregado, solo uso.** Nada de lo medido dice si una interacción cambió una decisión operativa, evitó un desvío o protegió un margen. El candidato más directo: el evento de **aprobación explícita de acciones** del pilar de Governance, que existe en el producto y no se está registrando.
 
-**La vertical de AI fuera de MAIA no tiene ninguna métrica.** Workflows y automatizaciones, marketplace de agentes custom y risk management entregan valor en **trabajo ejecutado**, no en consultas — y un chat se puede evaluar razonablemente por frecuencia de uso, un workflow automatizado no. Esta brecha es más grave para el resto de la vertical que para MAIA.
+**La vertical de AI fuera de MAIA está medida a medias.** _(Corregido el 2026-08-18: este bloque decía que "no tiene ninguna métrica".)_
+
+- **Marketplace (agentes custom) sí tiene baseline:** 57 companies habilitadas, **1,40% de penetración en jul-26 con intensidad 17,7** — poca gente muy metida, el perfil inverso al de MAIA. Pero **es consumo, no creación**: el funnel de creación de agentes está instrumentado y sin pullear, así que no se sabe si la penetración baja viene de que no se crean agentes o de que los creados no se usan.
+- **Workflows, automatizaciones y risk management no tienen ninguna métrica.** Entregan valor en **trabajo ejecutado**, no en consultas — un chat se evalúa razonablemente por frecuencia de uso, un workflow automatizado no.
+
+> ⚠️ **Marketplace no se puede sumar ni comparar de frente contra MAIA:** otra base habilitada (57 companies contra 128), otro universo de roles (incluye Colaborador) y una definición de interacción más estricta. Detalle en `06-kpi-tree`.
 
 ### Modelo de negocio de MAIA — estado real
 
@@ -116,6 +121,7 @@ MAIA es **gratuita para toda la base de beta testers** (128 companies al 13-ago-
 | ¿Cuál es el **modelo de negocio** de MAIA fuera de la consultoría? | El único revenue actual produce 1 a 3 usuarios profundos por cuenta. Hay cuentas gratuitas con penetración muy superior |
 | ¿Qué rol juega la **elección de modelo**? | El cambio a Sonnet 4.5 en marzo coincide con el segundo mayor salto de penetración de la serie (→ `01-producto`) |
 | ¿Cómo se mide el **resto de la vertical**? | Workflows, marketplace y risk management entregan valor en trabajo ejecutado. Ninguna métrica actual lo captura |
+| ¿Qué se hace con **Marketplace**? ¿Es una apuesta de producto o una feature de nicho? | 57 companies habilitadas, 1,40% de penetración en jul-26. **MullenLowe Delta es el 87% de las interacciones** y una sola persona ahí explica ~un tercio del volumen total. **36 de 57 companies nunca registraron un usuario** (49% de los asientos). El Director es el único rol con penetración de dos dígitos (29,1%, sobre 55 asientos — señal, no magnitud). Falta todo el dato de creación de agentes |
 
 ## OKRs del trimestre
 

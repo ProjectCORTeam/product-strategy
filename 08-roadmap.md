@@ -1,6 +1,6 @@
 # 08 — Roadmap (COR)
 
-> **Última actualización:** 2026-08-17
+> **Última actualización:** 2026-08-18
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Qué construye COR, por qué y cuándo, para evaluar prioridades y explicar la dirección. El **roadmap real** aún no está cargado; los temas de abajo están **derivados de la estrategia** (`05`) y marcados como candidatos a validar, no como el roadmap oficial. No inventar fechas ni compromisos.
 
@@ -54,6 +54,22 @@ Cruzando la cronología de releases de MAIA contra las series de penetración e 
 
 1. **Leer sobre el panel cerrado de 34 cuentas, no sobre el agregado.** Agosto suma 15 companies y 335 asientos elegibles; cada tanda de altas entra con penetración baja y arrastra el promedio. Sobre el agregado, el Orquestador compite contra el denominador y pierde por razones ajenas al release.
 2. **Estacionalidad.** Julio-agosto son vacaciones de invierno en varios mercados de LATAM. Mismo test barato que ya está abierto para diciembre-25: contrastar contra el DAU/MAU global de COR (`06`).
+
+#### Caso de contraste: Marketplace quedó del lado equivocado de la hipótesis
+
+> _Cargado el 2026-08-18 con el baseline de Marketplace (`06-kpi-tree`)._
+
+Marketplace es **capacidad sin superficie**, y es el caso más extremo disponible: el agente existe, pero **queda fuera de la orquestación** — MAIA no lo deriva, el usuario tiene que saber que existe y elegirlo a mano del selector. Es exactamente el modelo que MAIA abandonó el 22-jul.
+
+**Lo que muestra el dato:** **1,40% de penetración** en jul-26 sobre 57 companies habilitadas, **0,44% si se saca MullenLowe Delta**, y **36 de 57 companies sin un solo usuario en diez meses**. Al mismo tiempo, **intensidad 17,7 contra 6,2 de MAIA**: quien lo encuentra lo usa mucho más.
+
+> **Por qué importa para el reparto:** es el patrón que la hipótesis predice —capacidad alta, alcance mínimo, intensidad alta— en una feature entera y no en un mes suelto. Y a diferencia del experimento de abril-mayo, no depende de mover 40 usuarios a 41.
+>
+> **Por qué no cierra la hipótesis:** es correlación estructural, no un test. Marketplace también tiene menos base habilitada, permisos de creación más restrictivos (de fábrica solo Director y C-Level crean) y un caso de uso menos obvio que "preguntale algo de tu proyecto". No se puede aislar la falta de superficie de esas otras tres explicaciones.
+>
+> ⚠️ **Verificación previa:** falta el funnel de creación de agentes (🔴 en `06`). Si resulta que casi no se crean agentes, el problema es de creación y no de descubribilidad, y este caso **no aplica a la hipótesis**. No usarlo como evidencia antes de ese chequeo.
+
+**Tema candidato derivado —** no cargar como iniciativa todavía, depende de la verificación de arriba: **poner los agentes custom dentro de la orquestación**, para que MAIA derive a un agente de la empresa cuando la consulta es de su dominio, en lugar de exigir que el usuario lo busque en el selector. Sería el test más limpio posible de la hipótesis: misma capacidad, superficie nueva.
 
 **Salvedad sobre diciembre.** El "0,38x sin releases" tiene un confounder no tratado: **diciembre en LATAM es mes de vacaciones**, y el documento fuente no menciona estacionalidad. Test barato con datos que ya tenemos: mirar el DAU/MAU global de COR en dic-25 (`06-kpi-tree`) — si cayó toda la plataforma, el claim se cae solo. Hasta entonces, "la base decae sin releases" es `[HIPÓTESIS]`.
 

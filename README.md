@@ -3,7 +3,7 @@
 Repositorio de contexto de producto de **COR** ("Product Brain"): la base documental que usamos —personas y AI— para entender el producto, el mercado, la estrategia y la evidencia detrás de las decisiones.
 
 > **Owner:** Product Manager, área de Producto
-> **Última actualización:** 2026-08-12
+> **Última actualización:** 2026-08-18
 
 ## Qué es esto
 
@@ -37,12 +37,12 @@ Estos archivos alimentan el contexto de un **Proyecto de Claude ("COR – Produc
 
 | Archivo | Estado |
 |---|---|
-| `01-producto.md` | Casi completo — suma la **arquitectura de orquestación** de MAIA (punto de entrada único, deploy 22-jul-26) y la **salvedad de proactividad** (no disponible hoy), ago-2026 — pendiente confirmar anti-scope con el equipo |
+| `01-producto.md` | Casi completo — suma la **arquitectura de orquestación** de MAIA (punto de entrada único, deploy 22-jul-26) y la **salvedad de proactividad** (no disponible hoy), ago-2026. **Actualizado 2026-08-18:** Marketplace descrito como **feature separada de MAIA** y catálogo de modelos al día — pendiente confirmar anti-scope con el equipo |
 | `02-equipos.md` | Completo |
 | `03-personas.md` | Casi completo — pendiente personas por vertical nuevo y detalle de rollout/champion |
 | `04-mercado.md` | Competidores confirmados — pendiente vertical nuevo, precio y cruce con churn |
 | `05-estrategia-okrs.md` | Marco de priorización confirmado + laddering de "Deploy de AI" con baseline y anti-metas (ago-2026) — pendientes OKRs de producto por eje |
-| `06-kpi-tree.md` | North Star de negocio y engagement con baseline real; **sección de AI reescrita (ago-2026)**: penetración sobre asientos elegibles + etiquetado de evidencia — pendiente North Star de producto y calidad de servicio |
+| `06-kpi-tree.md` | North Star de negocio y engagement con baseline real; **sección de AI reescrita (ago-2026)**: penetración sobre asientos elegibles + etiquetado de evidencia. **Actualizado 2026-08-18:** cubre **dos features con denominadores separados** (MAIA y Marketplace/agentes custom) y se retiró la afirmación de que no existía métrica fuera de MAIA — pendiente North Star de producto y calidad de servicio |
 | `07-discovery.md` | Repositorio estructurado con research primario (Retently) — pendiente corte por segmento/vertical |
 | `08-roadmap.md` | Estructura y temas candidatos (suma activación de la base de MAIA, ago-2026) — el roadmap real todavía no está cargado |
 

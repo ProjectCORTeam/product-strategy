@@ -1,6 +1,6 @@
 # 06 — KPI Tree (COR)
 
-> **Última actualización:** 2026-08-17
+> **Última actualización:** 2026-08-18
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Árbol de métricas de COR, desde la North Star hasta las métricas operativas y de producto, para definir el éxito de una feature o analizar resultados. Las métricas de **negocio** vienen confirmadas del Business Plan 2026–2027 (`05`); las de **producto** están inferidas y marcadas como hipótesis hasta confirmarlas.
 >
@@ -91,9 +91,25 @@ North Star (arriba) → palancas de negocio → métricas operativas → métric
 - **Uso de features de valor:** rentabilidad en tiempo real, Planner/capacity, dashboards por rol, portal de cliente. _(hipótesis, sin baseline — pendiente)_
 - **Adopción por vertical** (a medida que se abren): activación y uso fuera del core de agencias. _(hipótesis, sin baseline)_
 
-## Métrica de producto para "Deploy de AI en clientes" (medida — baseline ago-2026, fuente: Amplitude)
+## Métricas de la vertical de AI — "Deploy de AI en clientes" (medida — baseline ago-2026, fuente: Amplitude)
 
 > **Reescrita el 2026-08-17** a partir de *MAIA — Análisis de adopción y penetración v3.0* (Producto, 2026-08-15). Reemplaza el baseline anterior, que estaba construido sobre conteos absolutos sin denominador. Dos afirmaciones de esa versión quedaron **dadas de baja** — ver el final de la sección.
+>
+> **Ampliada el 2026-08-18** con **Marketplace (agentes custom)**, que hasta ahora no estaba medido en este archivo.
+
+### La vertical de AI son al menos dos features, no una
+
+Todo lo que sigue se organiza en **dos bloques hermanos con denominadores distintos**. Confundirlos es el mismo error de denominador que produjo `[BAJA-01]`.
+
+| | **MAIA** | **Marketplace (agentes custom)** |
+|---|---|---|
+| Qué es | Capa de orquestación, punto de entrada único | Agentes que la empresa arma a medida, elegidos a mano del selector |
+| Feature Access | El único de MAIA | "Marketplace" + "Marketplace Maiaker" (dos, independientes) |
+| Base habilitada | **128 companies** (13-ago-26) | **57 companies** (18-ago-26) |
+| Universo de roles | PM + Director + C-Level (Colaborador excluido por scope) | Los cuatro: C-Level, Director, PM y Colaborador tienen Ver de fábrica |
+| `agent_type` | `orchestrator`, `clone` | `custom` |
+
+**Las dos penetraciones no son sumables ni directamente comparables.** No son la misma base ni el mismo universo de roles.
 
 ### Cómo etiquetamos la evidencia de esta sección
 
@@ -269,7 +285,9 @@ _Salvedad técnica: el filtro actual captura solo `agent_type` = clone u orchest
 
 **Todo lo que se mide acá es uso: cuánta gente, cuántas veces, con qué frecuencia. Ninguna métrica de esta sección dice si MAIA sirve.** No hay forma de saber, con los datos disponibles, si una interacción cambió una decisión operativa, evitó un desvío o protegió un margen. La tasa de feedback del 1,5% tampoco alcanza como proxy.
 
-La brecha es **más grave para el resto de la vertical de AI que para MAIA**. Un chat puede evaluarse razonablemente por frecuencia de uso; un workflow automatizado, un agente custom del marketplace o una alerta de risk management, no — su valor está en el trabajo que ejecutan, y ese trabajo hoy no se registra como evento. **Ninguna métrica actual captura la vertical de AI fuera de MAIA.**
+La brecha es **más grave para el resto de la vertical de AI que para MAIA**. Un chat puede evaluarse razonablemente por frecuencia de uso; un workflow automatizado o una alerta de risk management, no — su valor está en el trabajo que ejecutan, y ese trabajo hoy no se registra como evento.
+
+> ✏️ **Corregido el 2026-08-18.** Este bloque afirmaba que "ninguna métrica actual captura la vertical de AI fuera de MAIA". **Era falso para Marketplace**, que tiene serie de diez meses con denominador propio (ver la sección de arriba). Sigue siendo cierto para **workflows/automatizaciones, risk management y el valor entregado por los agentes custom** — de Marketplace hay consumo medido, no creación ni valor.
 
 **El candidato más directo para empezar a medir valor entregado:** el Pilar 3 de MAIA (Governance, `01-producto`) exige **aprobación explícita del usuario para cada acción crítica**. Ese evento existe en el producto y **no se está registrando como métrica**.
 
@@ -287,6 +305,111 @@ Reemplaza la lista anterior, que se apoyaba en conteos absolutos.
 | ~~Volumen de interacciones~~ | Descartada | Mide a ~26 personas |
 | ~~% de power users vs. uso único~~ | Reformulada | Absorbida por "forma de la distribución" |
 | ~~Calidad percibida (thumbs)~~ | Descartada | Tasa de feedback 1,5%. Ver `[BAJA-02]` |
+
+---
+
+## Marketplace (agentes custom) — baseline nuevo (2026-08-18)
+
+> _Primera medición de esta feature en el repo. Fuente: Amplitude, `AI_CHAT_SEND` con `agent_type = custom`, serie nov-25 → ago-26, más el listado de companies con Feature Access "Marketplace" y sus asientos por rol (export 18-ago-2026)._
+
+### Definiciones propias de esta feature
+
+- **Base habilitada:** **57 companies** al 18-ago-2026 (24 Enterprise · 18 Mid Market · 14 SMB · 1 Retail), con **4.146 asientos** en los cuatro roles con permiso: 1.139 Colaborador · 2.662 PM · 85 Director · 260 C-Level.
+- **Asiento elegible:** los cuatro roles, porque los cuatro tienen permiso de **Ver/usar** agentes de fábrica. Es un universo **distinto del de MAIA**, que excluye al Colaborador.
+- **Dos poblaciones, dos preguntas.** De fábrica solo **C-Level y Director pueden crear** agentes; PM y Colaborador solo pueden usarlos. Así que "penetración de creación" (denominador jul-26: **268 asientos**) y "penetración de consumo" (denominador jul-26: **2.578 asientos**) son métricas distintas. **Todo lo de abajo mide consumo** — de creación no hay dato.
+- **Criterio de corte:** asientos habilitados al inicio de cada mes, igual que en MAIA.
+
+> ⚠️ **Asimetría de definición con MAIA — leer antes de comparar.** MAIA se mide con cuatro eventos (`AI_CHAT_SEND`, `AI_CHAT_SELECT_FAQ`, `AI_CHAT_OPEN`, `AI_CHAT_SUGGESTED_ANSWER`); Marketplace, acá, con **`AI_CHAT_SEND` solamente**. Tres de los eventos de MAIA son call-to-action de baja intención (abrir el panel, tocar una FAQ, clickear una sugerencia) y varios no tienen equivalente en un agente custom, que se abre del selector y no tiene ese repertorio. **Marketplace está medido con la vara más estricta de las dos**, así que la brecha entre 1,40% y 11,6% está sobredimensionada. El orden de magnitud aguanta; la razón exacta no. **`AI_CHAT_SEND` es el único evento que significa lo mismo en las dos features: es el que hay que usar para comparar.** Coincide con el corte 🔴 ya pedido para recalibrar el 11,6% — y ese pedido ahora es más barato, porque es la misma consulta cambiando `agent_type`.
+
+### Penetración — serie mensual
+
+| Mes | Cuentas | Asientos elegibles | Usuarios | **Penetración** | Interacciones | Intensidad |
+|---|---:|---:|---:|---:|---:|---:|
+| Nov 25 | 15 | 1.338 | 19 | 1,42% | 74 | 3,9 |
+| Dic 25 | 17 | 1.456 | 6 | 0,41% | 61 | 10,2 |
+| Ene 26 | 17 | 1.456 | 3 | 0,21% | 15 | 5,0 |
+| Feb 26 | 18 | 1.456 | 5 | 0,34% | 17 | 3,4 |
+| Mar 26 | 19 | 1.680 | 16 | 0,95% | 70 | 4,4 |
+| Abr 26 | 22 | 1.758 | 8 | 0,46% | 109 | 13,6 |
+| May 26 | 27 | 1.930 | 38 | 1,97% | 564 | 14,8 |
+| Jun 26 | 30 | 2.392 | 41 | 1,71% | 557 | 13,6 |
+| **Jul 26** | **31** | **2.578** | **36** | **1,40%** | **638** | **17,7** |
+| Ago 26 (parcial, 13 días) | 48 | 3.685 | 26 | 0,71% | 236 | 9,1 |
+
+**Baseline jul-26: penetración 1,40% con intensidad 17,7** `[HALLAZGO]`.
+_Por qué no es `[HECHO]`: el denominador no está depurado (ver la nota de integridad más abajo) y la serie es de dos dígitos de usuarios, así que un puñado de personas mueve el indicador._
+
+**Referencia para el universo comparable con MAIA:** sacando al Colaborador, jul-26 da **32 usuarios sobre 1.852 asientos = 1,73%** — sigue sin resolver la asimetría de eventos de la nota de arriba.
+
+**La intensidad de Marketplace es ~3x la de MAIA** (17,7 contra 6,2 en jul-26) con una penetración ~8x menor `[HALLAZGO]`. Poca gente, muy metida. Es el perfil inverso al de MAIA.
+
+### La feature es, en la práctica, una cuenta
+
+| Corte jul-26 | Usuarios | Interacciones | Asientos | Penetración | Int./usuario |
+|---|---:|---:|---:|---:|---:|
+| **MullenLowe Delta** | 26 | 554 | 320 | 8,1% | **21,3** |
+| Resto de la base habilitada | 10 | 84 | 2.258 | **0,44%** | 8,4 |
+| **Total** | **36** | **638** | **2.578** | **1,40%** | **17,7** |
+
+**MullenLowe Delta concentra el 72% de los usuarios y el 87% de las interacciones de julio** `[HECHO]`. Sin esa cuenta, la penetración del resto de la base habilitada es **0,44%**.
+
+**36 de las 57 companies habilitadas no registraron un solo usuario en diez meses** `[HECHO]` — **2.012 asientos, 49% del universo**. En MAIA la cifra equivalente es 12% de las cuentas; acá es **63%**.
+
+**Adentro de MullenLowe, una sola persona.** El histograma de julio tiene un usuario en el bucket `>100`; despejando el resto de los buckets por punto medio, esa persona explica **~230 de las 638 interacciones del mes — cerca de un tercio del volumen total de la feature** `[HALLAZGO]`.
+_Es una estimación por punto medio, igual que la concentración de MAIA: los buckets bajos suman ~407 y el resto queda en un solo usuario. La conclusión (un individuo domina el volumen) es robusta; la cifra exacta no._
+
+> **Consecuencia de medición:** para Marketplace, el volumen de interacciones **no mide la feature, mide a una persona**. Aplica la misma regla que en MAIA pero más fuerte: la métrica de salud es la penetración y la cantidad de cuentas con al menos un usuario recurrente, nunca el total.
+
+### Distribución de frecuencia — usuarios por interacciones en el mes
+
+| Mes | 1 | 2-5 | 6-10 | 11-20 | 21-50 | 51-100 | >100 | Total |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Nov 25 | 6 | 9 | 2 | 2 | 0 | 0 | 0 | 19 |
+| Dic 25 | 2 | 2 | 1 | 0 | 1 | 0 | 0 | 6 |
+| Ene 26 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | 3 |
+| Feb 26 | 3 | 1 | 0 | 1 | 0 | 0 | 0 | 5 |
+| Mar 26 | 8 | 5 | 1 | 2 | 0 | 0 | 0 | 16 |
+| Abr 26 | 1 | 4 | 0 | 0 | 3 | 0 | 0 | 8 |
+| May 26 | 9 | 9 | 4 | 8 | 5 | 2 | **1** | 38 |
+| Jun 26 | 8 | 14 | 0 | 7 | 11 | 1 | 0 | 41 |
+| Jul 26 | 4 | 6 | 11 | 10 | 4 | 0 | **1** | 36 |
+
+_Los buckets `2-5` son agregación propia (Amplitude entrega 2/3/4/5 por separado). **Validación:** el total de cada histograma coincide exactamente con los usuarios únicos del agregado mensual, en los nueve meses con histograma. Agosto no tiene histograma._
+
+**El bucket `>100` existe en Marketplace y no existe en MAIA** `[HECHO]`. Con una base activa de 36 usuarios contra los 413 de MAIA, el uso individual llega más alto donde hay menos gente. Refuerza que son dos perfiles de uso distintos, no dos intensidades de lo mismo.
+
+### Por rol
+
+| Mes | Colaborador | PM | Director | C-Level |
+|---|---:|---:|---:|---:|
+| May 26 | 1,0% | 1,0% | 24,5% | 5,2% |
+| Jun 26 | 0,9% | 0,8% | 32,1% | 2,9% |
+| **Jul 26** | **0,7%** | **0,6%** | **29,1%** | **2,8%** |
+| Ago 26 (parcial) | 0,1% | 0,3% | 13,8% | 3,2% |
+
+_Asientos jul-26: Colaborador 726 · PM 1.584 · Director 55 · C-Level 213._
+
+**El Director es el único rol con penetración de dos dígitos** `[HALLAZGO]`, muy por encima de todo lo demás y en las antípodas de MAIA, donde los tres roles penetran casi igual.
+_Salvedad de n, fuerte: son **16 usuarios sobre 55 asientos de Director** en toda la base habilitada. Dos personas mueven el indicador cerca de 4 puntos. **Es señal de dirección, no magnitud** — y no alcanza para fijar una meta._
+
+**Ojo con el Colaborador:** en Marketplace **no está excluido** y tiene 726 asientos elegibles con 0,7% de penetración. Es el único lugar del repo donde hay dato de uso de AI de ese rol.
+
+### Por segmento
+
+Jul-26 — **Enterprise: 27 de 36 usuarios y 557 de 638 interacciones**; Mid Market 3 usuarios / 45 interacciones; SMB 6 usuarios / 36 interacciones `[HALLAZGO]`.
+_Sin normalizar por asientos por segmento — mismo problema que el "Enterprise 58%" de `[BAJA-01]`. **Tratar como composición, no como penetración por segmento.** Y está dominado por MullenLowe, que es Enterprise._
+
+### Integridad del denominador — verificar antes de usar
+
+**Seis companies con uso registrado no aparecen en el listado de habilitadas:** diPaola, Oxford, ABCOM, Help Team, Pinky y STRONG. O el export es una foto de hoy y esas cuentas perdieron el Feature Access, o hay churn sin depurar. **Su uso está contado en el numerador y sus asientos no están en el denominador**, así que la penetración de los meses donde aparecen está sobreestimada. Afecta sobre todo a nov-25 → abr-26.
+
+### Lo que estos datos NO dicen
+
+**Todo esto es consumo. De creación de agentes no hay nada.** La documentación funcional lista un funnel completo instrumentado —`AI_CHAT_MP_OPEN`, `AI_CHAT_MP_SELECT_AGENT`, `AI_CHAT_ABM_ACCESS`, `AI_CHAT_ABM_SECTION`, `AI_CHAT_ABM_SELECT_MODEL`, `AI_CHAT_ABM_CHOOSE_MODEL`, `AI_CHAT_ABM_ACCESSIBILITY_TYPE`, `AI_CHAT_ABM_CONFIRM`— y **nada de eso está pulleado**.
+
+Por eso hoy **no se puede responder la pregunta que decide la iniciativa**: la penetración de 0,44% fuera de MullenLowe, ¿es porque casi no hay agentes creados, o porque hay agentes creados que nadie usa? Son dos problemas distintos con dos soluciones distintas.
+
+> 📊 **`AI_CHAT_ABM_CONFIRM` registra un agente efectivamente creado — o sea un artefacto producido, no actividad.** Junto con el evento de aprobación de acciones de Governance, es el **segundo candidato a medir valor entregado** en lugar de uso. El bloque "El límite de toda esta sección" decía que había uno solo; son dos.
 
 ### Bajas registradas
 
@@ -337,4 +460,13 @@ _Siete de estos salen del documento fuente de adopción; cinco están marcados a
 - [ ] **Instrumentar el evento de aprobación de acciones** de MAIA (Governance, Pilar 3 de `01`) — único camino a medir valor entregado en lugar de actividad.
 - [ ] **Revenue por company** (MRR/ARR + eventos de churn) para medir si MAIA impacta la retención. _Depende del reporte de HubSpot, ya pendiente en `04-mercado`._
 - [ ] **Propuesta de valor y métrica para el rol Colaborador** — hoy excluido del análisis, pero son **5.605 asientos adicionales**, más que todo el universo elegible actual (3.775). → `03-personas`.
-- [ ] **Métrica para la vertical de AI fuera de MAIA** (workflows, marketplace, risk management): hoy **no existe ninguna**.
+- [ ] **Métrica para la vertical de AI fuera de MAIA y de Marketplace** (workflows, automatizaciones, risk management): ahí sí **no existe ninguna**. _(Marketplace pasó a tener baseline el 2026-08-18; ver su sección.)_
+
+### Pedidos de datos abiertos — Marketplace
+
+- [ ] 🔴 **Verificar si la serie de MAIA de este archivo se pulleó filtrando `agent_type in (orchestrator, clone)` o sin filtro.** Si no está filtrada, los 373 usuarios y 2.303 interacciones de jul-26 **incluyen uso de agentes custom** y las dos series no son independientes. _Indicio de que puede no estar filtrada: la sección de calidad percibida documenta explícitamente su filtro por `agent_type` y el bloque de definiciones de uso no menciona ninguno._ **Bloquea tratar los dos números como features separadas o como aditivos.**
+- [ ] 🔴 **Funnel de creación de agentes** (`MP_OPEN` → `SELECT_AGENT` / `ABM_ACCESS` → `ABM_CONFIRM`) y **cantidad de agentes creados, vivos y por company.** **Bloquea saber si el problema es que no se crean agentes o que los creados no se usan** — y sin eso no se puede diseñar ninguna iniciativa sobre esta feature.
+- [ ] **Separar los dos Feature Access** ("Marketplace" vs. "Marketplace Maiaker"): cuántas companies tienen cada uno. Hoy la serie los mezcla, así que no se puede medir la creación conversacional (MAIAKER) sobre su propia base.
+- [ ] **Depurar el denominador:** las seis companies con uso que no están en el listado de habilitadas (ver la nota de integridad).
+- [ ] **Overlap con la base de MAIA:** cuántas de las 57 companies tienen las dos features. Decide si Marketplace es superficie nueva o un segundo uso de las mismas cuentas.
+- [ ] **Distribución de modelo elegido** (`ABM_CHOOSE_MODEL`) y de **accesibilidad** (compañía / clientes específicos / solo para mí). El primero testea si la elección de modelo es palanca real o si todos quedan en el default; el segundo, si los agentes son activos organizacionales o herramientas personales.

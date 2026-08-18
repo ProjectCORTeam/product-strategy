@@ -1,6 +1,6 @@
 # 01 — Producto (COR)
 
-> **Última actualización:** 2026-08-17
+> **Última actualización:** 2026-08-18
 > **Owner:** Product Manager, área de Producto (reporta al Head de Producto)
 > **Contexto para IA:** Este archivo describe qué es COR, qué hace y para quién. Es el punto de partida para entender el producto antes de leer cualquier otro archivo.
 
@@ -173,9 +173,17 @@ Automatiza tareas manuales y repetitivas. Hoy funciona **a pedido**: acciones co
 
 > ⚠️ **Aún no disponible (marketing, no producto):** los *agentic workflows* automáticos —que se dispararían ante un evento definido y correrían en segundo plano— figuran en la landing pero **todavía no están implementados**. Tratar como roadmap, no como capacidad actual.
 
-Incluye un **Marketplace de agentes** listos para usar (ej. Brief Specialist, Concept Generator, Blog Draft Builder, Project Specialist) y creación de agentes **sin código** por dos vías: un editor manual (nombre, instrucciones de hasta 5.000 caracteres, modelo, base de conocimiento y accesibilidad) o de forma conversacional, donde MAIA hace 4 preguntas y diseña el agente en menos de 2 minutos.
+Incluye **Marketplace (agentes custom)**: agentes que cada empresa arma a medida, con rol definido, base de conocimiento propia, modelo elegido y nivel de accesibilidad (toda la compañía / clientes específicos / solo para mí).
 
-**Multi-modelo y MCP:** es **LLM-agnóstico** — se elige el modelo de mejor rendimiento por tarea (Anthropic Claude, OpenAI GPT, Gemini, DeepSeek, Mistral) y COR mantiene el control sin importar cuál se use.
+> ⚠️ **Precisión (2026-08-18), con la documentación funcional de Agentes personalizados.** El "Marketplace" **no es un catálogo de agentes listos para usar**, como decía este archivo. Los agentes sugeridos son **templates que siembran la creación**: el usuario elige uno y MAIA lo adapta. "Marketplace" quedó como nombre técnico del Feature Access; el botón que ve el usuario se llama **"Creador de agentes"**.
+
+Se crean por dos vías, ambas sin código: un **editor manual** (nombre, instrucciones de hasta 5.000 caracteres, modelo, base de conocimiento de hasta 5 MB y accesibilidad) o **conversando con MAIA** (MAIAKER), donde el **Creador de agentes** propone la configuración completa y el usuario la aprueba, edita o rechaza — el mismo mecanismo de aprobación que usa MAIA para crear una tarea.
+
+> 💡 **Marketplace es una feature distinta de MAIA, no una parte de MAIA.** Tiene **dos Feature Access propios** ("Marketplace" y "Marketplace Maiaker", independientes entre sí y del de MAIA), su propia línea de permisos ("Agentes AI") y su propia base habilitada: **57 companies** contra las 128 de MAIA. **Y los agentes creados quedan fuera de la orquestación**: no los deriva MAIA, el usuario los elige a mano del selector. Lo único que vive dentro de MAIA es el especialista que los construye. Métricas separadas en `06-kpi-tree`; la consecuencia de roadmap, en `08`.
+
+**Multi-modelo y MCP:** es **LLM-agnóstico** — se elige el modelo de mejor rendimiento por tarea y COR mantiene el control sin importar cuál se use. El catálogo visible al crear un agente custom se organiza en **tres niveles de capacidad** (Económico / Uso general / Razonamiento), con etiquetas atadas al nivel. Snapshot 18-ago-2026: **7 modelos de 4 proveedores** (Anthropic, Google, OpenAI, DeepSeek), con **Claude Sonnet 4.6 como default**. Cada modelo puede tener uno de respaldo, que se usa automáticamente si el proveedor falla de forma transitoria.
+
+> ⚠️ **La palanca se opera a mano.** El catálogo vive en una tabla de la base de datos del backend de agentes, **sin panel ni herramienta interna**: qué modelos hay, sus niveles, etiquetas y cuál es el default se curan por intervención manual directa. Puede cambiar sin despliegue y sin previo aviso. Si la elección de modelo es una palanca de producto —y la evidencia de marzo sugiere que sí—, hoy no tiene dueño ni trazabilidad de cambios.
 
 > 💡 **La elección de modelo es una palanca de producto, no una decisión de infraestructura.** El MVP de ago-25 corría sobre un modelo OpenAI mini de baja capacidad; el cambio a **Sonnet 4.5 en mar-26** (junto con mejoras de UX de base) coincide con el **segundo mayor salto de penetración** de toda la serie de adopción: 1,90x en el panel de cuentas comparables. Eso le da peso al trade-off entre calidad del modelo y costo por interacción como decisión de producto. _Detalle y salvedades en `06-kpi-tree` y `08-roadmap`._ Un conector MCP de Claude permite operar COR desde Claude (crear proyectos, asignar tareas, consultar datos operativos) sin salir de ahí. La conexión de herramientas externas vía MCP (Gmail, Drive, HubSpot) dentro de un flujo automático —ej. crear un proyecto en COR cuando se cierra una venta— depende de los *agentic workflows*, que aún no están disponibles (ver nota arriba).
 
@@ -229,6 +237,8 @@ Quedan por confirmar:
 - [x] **Anti-scope:** confirmado con el owner (ago-2026). La **única confusión frecuente real** es con **project management genérico** (Asana, ClickUp, monday, Trello). El resto (ERP/contable, CRM, diseño/DAM, time tracker, resource management) son límites de alcance verdaderos pero **no** confusiones habituales en ventas/demos/soporte. Tampoco aparecen facturación/billing, RRHH/presentismo ni BI a medida.
 
 - [ ] **Validar la visión de producto con Nicolás Ocampo (VP Product).** Cargada como propuesta el 2026-08-13: _"Que la rentabilidad sea una decisión diaria y no un hallazgo de fin de mes."_ Hasta que se valide, no citarla como visión oficial.
+
+- [ ] **Conectores de agentes custom** (permisos de acceso a datos de COR desde un agente custom): la documentación funcional los marca como **"todavía en definición"**. Tratar como roadmap, no como capacidad actual — mismo criterio que los *agentic workflows* y la proactividad. Confirmar estado con el squad de AI.
 
 - [ ] **¿Qué pasó con el "Especialista en Horas"?** Este archivo lo listaba como subagente live desde jul-26, pero la documentación funcional del Orquestador (22-jul-26) no lo menciona entre los especialistas de la etapa y establece que **cualquier consulta de horas la resuelve el Especialista en Proyectos**. Tres posibilidades: se renombró, se absorbió, o nunca llegó a producción con ese nombre. Confirmar con el squad de AI antes de darlo por muerto o por vivo.
 
