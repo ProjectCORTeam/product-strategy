@@ -28,7 +28,7 @@ Cruzando la cronología de releases de MAIA contra las series de penetración e 
 | Tipo de release | ¿Mueve alcance? | ¿Mueve intensidad? | Evidencia observada |
 |---|---|---|---|
 | **Tools y capacidades nuevas** | No | **Sí** | Abril-26: penetración 1,02x (de 40 a 41 usuarios en el panel fijo), pero intensidad de 4,6 a 6,0 — el salto más grande de la serie — y **nace el bucket de 51-100 interacciones**, que había estado en cero cinco meses |
-| **Superficie y descubribilidad** | **Sí** | Poco | Mayo-26 (*kick actions* derivadas de las tools de abril, sin capacidad nueva): **2,05x**. Junio-26 (*MAIA en tareas*, superficie nueva): 1,33x |
+| **Superficie y descubribilidad** | **Sí** | Poco | Mayo-26 (*kick actions* derivadas de las tools de abril, sin capacidad nueva): **2,05x**. Junio-26 (*MAIA en tareas*, superficie nueva): 1,33x. **Julio-26 (Orquestador, 22-jul): test en curso — ver abajo** |
 | **Calidad del modelo** | **Sí** | No | Marzo-26 (cambio a Sonnet 4.5 + mejoras de UX de base): **1,90x**, el segundo mayor salto de la serie |
 | **Nada** | **Retrocede** | — | Diciembre-25, sin iteraciones: **0,38x** — pero ver la salvedad de estacionalidad abajo |
 
@@ -38,7 +38,22 @@ Cruzando la cronología de releases de MAIA contra las series de penetración e 
 >
 > **Por qué todavía no es un hecho:** el mes crítico son ~40 usuarios en un panel de 34 cuentas; pasar de 40 a 41 puede ser una sola cuenta activando gente. Granularidad mensual, sin control ni aleatorización, y varios meses combinan más de un tipo de cambio. Es además el claim de **mayor carga** del análisis — se lo va a usar para repartir capacidad del squad, así que la barra es la más alta.
 > **Qué la refutaría:** un release de superficie que no mueva alcance, o uno de capacidad que sí lo mueva.
-> **Test disponible:** pedir las interacciones desagregadas por tool/agente (pendiente en `06`).
+> **Tests disponibles:** (1) el Orquestador, abajo; (2) las interacciones desagregadas por tool/agente — **el registro de qué especialista intervino ya existe** (queda guardado para análisis y debug según la documentación funcional), así que el pedido a Data pasa de "instrumentar" a **"refinar y extraer"**, confirmado con el owner. Sigue pendiente en `06`.
+
+#### Test en curso: el Orquestador (deploy 22-jul-2026)
+
+> _Cargado el 2026-08-17. **Es el mejor caso de la tabla**: release aislado (no salió nada más ese día, confirmado con el owner), fecha exacta, tipo declarado **antes** de mirar el resultado y predicción explícita. Los otros cuatro casos son reconstrucciones retrospectivas donde varios meses mezclan más de un tipo de cambio._
+
+**Qué es:** MAIA pasa a punto de entrada único y el usuario deja de elegir agente (→ `01-producto`). Es **superficie pura**: no agrega capacidades, reduce la fricción de descubrirlas.
+
+**Predicción de la hipótesis:** debería **mover alcance y no intensidad**.
+
+**Estado — apunta en contra.** Julio no sirve como corte (21 días sin Orquestador, 9 con; cerró en 11,6% contra 11,5% de junio, o sea plano). El primer mes limpio es **agosto**, y el parcial de 13 días marca **6,0% de penetración con 6,6 de intensidad** contra 11,6% / 6,2 de julio: camino a un mes normal en alcance, con intensidad levemente arriba. **Es el patrón inverso al predicho.** No alcanza para refutar con el mes abierto, pero es exactamente lo que la hipótesis declara que la refutaría.
+
+**Cómo leerlo cuando cierre agosto — dos confounders:**
+
+1. **Leer sobre el panel cerrado de 34 cuentas, no sobre el agregado.** Agosto suma 15 companies y 335 asientos elegibles; cada tanda de altas entra con penetración baja y arrastra el promedio. Sobre el agregado, el Orquestador compite contra el denominador y pierde por razones ajenas al release.
+2. **Estacionalidad.** Julio-agosto son vacaciones de invierno en varios mercados de LATAM. Mismo test barato que ya está abierto para diciembre-25: contrastar contra el DAU/MAU global de COR (`06`).
 
 **Salvedad sobre diciembre.** El "0,38x sin releases" tiene un confounder no tratado: **diciembre en LATAM es mes de vacaciones**, y el documento fuente no menciona estacionalidad. Test barato con datos que ya tenemos: mirar el DAU/MAU global de COR en dic-25 (`06-kpi-tree`) — si cayó toda la plataforma, el claim se cae solo. Hasta entonces, "la base decae sin releases" es `[HIPÓTESIS]`.
 
@@ -107,5 +122,5 @@ Cruzando la cronología de releases de MAIA contra las series de penetración e 
 - [x] Estado de MAIA en el roadmap. _(Cargado 2026-08-17 con el análisis de adopción: baseline de penetración, evidencia de monetización y la iniciativa de activación de la base ya habilitada. Sigue pendiente el estado de los agentic workflows y de Risk Management GA como fechas de roadmap real.)_
 - [ ] Principios de priorización del roadmap.
 - [ ] 🔴 **Verificar churn/actividad por company antes de dimensionar el tema 2** (activación de cuentas dormidas) — bloqueante, pendiente en `06-kpi-tree`.
-- [ ] **Testear la hipótesis capacidad vs. superficie** con las interacciones desagregadas por tool/agente antes de usarla para repartir capacidad.
+- [ ] **Testear la hipótesis capacidad vs. superficie** antes de usarla para repartir capacidad. Dos vías abiertas: (a) **cerrar la lectura de agosto** para el test del Orquestador, sobre el panel cerrado y controlando estacionalidad; (b) las interacciones desagregadas por tool/agente — el registro existe, hay que refinarlo y extraerlo (`06`).
 - [ ] **Chequear la estacionalidad de diciembre** contra el DAU/MAU global (`06`) para confirmar o descartar "la base decae sin releases".

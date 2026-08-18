@@ -123,7 +123,7 @@ Sin estas tres definiciones los números de abajo no se pueden leer, y su ausenc
 
 **Base habilitada:** **128 companies** al 13-ago-2026 (~43% de los +300 clientes de COR), por habilitación progresiva a beta testers desde jul-2025. La habilitación sigue abierta y hay una decisión pendiente sobre liberar a toda la base.
 
-> ⚠️ **Incomparabilidad con el baseline anterior de este archivo.** Todos los números de esta sección excluyen al rol **Colaborador**; los de la versión anterior lo incluían. Julio-26 es **373 usuarios / 2.303 interacciones** acá contra 413 / 2.463 antes. **MAIA no empeoró — cambió el denominador y el universo de roles.** El Colaborador se excluye porque su propuesta de valor no está definida y su alcance hoy es marginal (habilitado a un grupo reducido desde jun-2026, ≈10% de la base activa). Única excepción: la tabla de distribución de frecuencia, que Amplitude no entrega abierta por rol.
+> ⚠️ **Incomparabilidad con el baseline anterior de este archivo.** Todos los números de esta sección excluyen al rol **Colaborador**; los de la versión anterior lo incluían. Julio-26 es **373 usuarios / 2.303 interacciones** acá contra 413 / 2.463 antes. **MAIA no empeoró — cambió el denominador y el universo de roles.** El Colaborador se excluye porque **su propuesta de valor no está definida**, y porque el owner decidió mantenerlo fuera de esta medición _(ago-2026)_. **Ojo con el fundamento:** la documentación funcional del Orquestador (22-jul-26) le da acceso a MAIA desde el **header** y **desde dentro de una tarea**, así que el argumento de "alcance marginal" ya no se sostiene solo. **Es una decisión de scope del análisis, no una limitación del dato.** Si se decide incorporarlo, son 5.605 asientos contra los 3.775 elegibles actuales: el denominador de toda esta sección cambia de escala. Única excepción: la tabla de distribución de frecuencia, que Amplitude no entrega abierta por rol.
 
 ### Penetración — serie mensual
 
@@ -141,6 +141,8 @@ Sin estas tres definiciones los números de abajo no se pueden leer, y su ausenc
 | Ago 26 (parcial, 13 días) | 119 | 3.560 | 214 | 6,0% | 1.422 | 6,6 |
 
 _Criterio de corte: asientos habilitados al **inicio** de cada mes — una cuenta dada de alta el día 20 recién computa el mes siguiente. Es deliberadamente conservador con las altas recientes._
+
+> 📌 **Marca de release en la serie: el Orquestador se deployó el 22-jul-2026** (→ `01-producto`). Julio queda partido (21 días sin, 9 con) y **no sirve como corte**; agosto es el primer mes limpio. Quien lea el número de agosto sin esto no puede interpretarlo. El test de la hipótesis capacidad vs. superficie que se apoya en este corte vive en `08-roadmap`.
 
 **Baseline oficial jul-26: penetración 11,6%** `[HALLAZGO — provisorio]`.
 _El numerador incluye `AI_CHAT_OPEN`, es decir usuarios que abrieron el panel sin escribir nada, así que la cifra está inflada por arriba. En paralelo, el denominador incluye cuentas que pueden haber churneado, lo que la infla por abajo. **El signo neto del sesgo es desconocido** — no asumir que 11,6% es un piso conservador._
@@ -329,7 +331,7 @@ _Siete de estos salen del documento fuente de adopción; cinco están marcados a
 - [ ] 🔴 **Recalibrar el baseline con el corte por solo `AI_CHAT_SEND`** — hoy el 11,6% incluye aperturas de panel sin escribir. **Bloquea fijar el KR de penetración.**
 - [ ] 🔴 **Estado de actividad/churn por company** para depurar el denominador de asientos elegibles. **Bloquea dimensionar la iniciativa de cuentas dormidas de `08`.**
 - [ ] **Distribución de frecuencia abierta por rol.** Hoy no se sabe si los 6 power users de julio son C-levels o PMs, y de eso depende toda la lectura de saturación del C-Level. _Es el corte más valioso que falta._
-- [ ] **Interacciones desagregadas por tool/agente** — para saber qué capacidades movieron la aguja (y poder testear la hipótesis capacidad/superficie de `08`).
+- [ ] **Interacciones desagregadas por tool/agente** — para saber qué capacidades movieron la aguja (y poder testear la hipótesis capacidad/superficie de `08`). **Baja de dificultad:** el registro de qué especialista intervino en cada consulta **ya existe** (se guarda para análisis y debug, según la documentación funcional del Orquestador). El pedido pasa de "instrumentar" a **"refinar y extraer"**.
 - [ ] **Retención de usuarios de MAIA por cohorte de primer uso** (Amplitude — mencionada, no compartida).
 - [ ] **Penetración por segmento** normalizada por asientos (ver colateral de `[BAJA-01]`: el "Enterprise 58%" sigue sin verificar).
 - [ ] **Instrumentar el evento de aprobación de acciones** de MAIA (Governance, Pilar 3 de `01`) — único camino a medir valor entregado en lugar de actividad.

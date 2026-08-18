@@ -37,7 +37,7 @@
 
 _(Marcá el avance a medida que vamos armando cada archivo. "Base" = estructura y contenido cargado; quedan pendientes internos marcados dentro de cada archivo.)_
 
-- [x] `01-producto.md` — casi completo (pendiente: validar la visión con Nicolás Ocampo). **Actualizado 2026-08-17:** capacidades reales de MAIA al día, elección de modelo como palanca de producto, y el revenue real de MAIA (solo consultoría, 3 clientes).
+- [x] `01-producto.md` — casi completo (pendiente: validar la visión con Nicolás Ocampo). **Actualizado 2026-08-17:** capacidades reales de MAIA al día, elección de modelo como palanca de producto, el revenue real de MAIA (solo consultoría, 3 clientes), la **arquitectura de orquestación** (MAIA como punto de entrada único, deploy 22-jul-26) y la **salvedad de proactividad** (no disponible hoy).
 - [x] `02-equipos.md` — **completo**. Organigrama interno confirmó C-level real (CEO/COO/CTO, sin CFO visible — a confirmar), VP Product (Nicolás Ocampo), y todas las áreas fuera de Producto (Marketing, Sales & Revenue, Client Services, Client Support, Administration & People, Cloud Solutions).
 - [x] `03-personas.md` — casi completo, cortes de segmento confirmados (pendiente: rollout/qué rol ejerce de champion, personas por vertical nuevo). **Actualizado 2026-08-17:** adopción de MAIA por rol corregida (los tres roles adoptan igual; el C-level es el más intensivo) + propuesta de valor de MAIA para el Colaborador como pendiente nuevo.
 - [x] `04-mercado.md` — competidores reales confirmados, LATAM hispano confirmado sin jugadores locales (pendiente: vertical nuevo, precio, BV, cruce con churn de HubSpot — a compartir).

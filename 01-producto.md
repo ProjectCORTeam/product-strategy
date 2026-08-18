@@ -27,6 +27,8 @@ Es coherente con la tesis ya escrita en el posicionamiento: _la mayoría del sof
 
 **Sobre MAIA:** la visión la convierte en **medio, no en fin**. Los insights proactivos y las alertas con plan de mitigación son la forma más directa de comprimir el ciclo señal → decisión; el marketplace de agentes solo cumple la visión en la medida en que termine en una decisión de rentabilidad.
 
+> ⚠️ _Salvedad (ago-2026): **la proactividad no existe hoy** (ver Pilar 2). MAIA responde cuando se le pregunta, o sea que todavía requiere que alguien ya haya notado algo. **El puente entre esta visión y MAIA es aspiracional, no una capacidad actual** — hoy MAIA acorta el tramo "pregunta → respuesta", no el tramo "desvío → alguien se entera"._
+
 ### Tensiones abiertas que la visión destapa
 
 1. **¿Quién decide?** La visión es muda respecto del rol. El que está todos los días en el proyecto es el **PM** — y el PM **no tiene de fábrica acceso a Presupuestos** (`03-personas`), o sea que no ve rentabilidad. El rol mejor posicionado para la decisión diaria es hoy el que no tiene los datos para tomarla, y además es el de peor NPS (−40.7). Bajo esta visión ese permiso deja de ser configuración y pasa a ser **decisión estratégica de producto**.
@@ -148,7 +150,20 @@ Entidades núcleo de COR y cómo se relacionan (vocabulario a usar de forma cons
 
 **Posicionamiento:** MAIA es el **sistema operativo de AI de COR** — concentra toda la IA de la agencia en un solo lugar: agentes que ejecutan trabajo real, insights de proyecto en segundos, todo medido, gobernado y conectado a la rentabilidad. Se organiza en tres pilares.
 
-> _**Capacidad confirmada (live hoy)**, actualizada al 2026-08-17 con la cronología de releases del área de Producto: MAIA accede a datos de **tareas, proyectos y clientes**, al tab de **Performance** con filtro de fechas, y al contexto de **Retrabajos y Entregables**. Ejecuta **tools de acción** (crear tareas y retrabajos, asignar usuarios, editar proyectos, acciones sobre adjuntos y adjuntar archivos), tiene **búsqueda web**, **pensamiento adaptativo**, **Consultas Frecuentes** e **hipervínculos en tareas**. Es accesible desde el **listado de Proyectos** y **desde dentro de una tarea** ("MAIA en tareas", jun-26). Subagentes especializados live: **Especialista en Clientes** (mar-26) y **Especialista en Horas** (jul-26). **Risk Management + MAIA** desde may-26 (en beta, ver Pilar 2)._
+### Arquitectura: MAIA es una capa de orquestación, no un agente
+
+> _Actualizado 2026-08-17 con la documentación funcional del Orquestador (deploy **22-jul-2026**)._
+
+**El usuario ya no elige con qué agente habla.** MAIA es el **punto de entrada único**: recibe cada consulta, interpreta la intención y la deriva al **especialista** dueño de ese dominio, que la resuelve con datos reales. La respuesta vuelve bajo la identidad de MAIA — el usuario nunca elige un especialista ni ve cuál intervino.
+
+- **Especialistas de esta etapa:** Proyectos, Tareas y Clientes (habilitados por defecto con el Feature Access único de MAIA) + **Creador de agentes** (condicional por empresa).
+- **Regla de dominio:** cualquier consulta de horas la resuelve el **Especialista en Proyectos**, aunque el pedido mencione una tarea puntual.
+- **Permisos:** los valida cada especialista sobre sus propios datos, no MAIA de forma centralizada.
+- **Contexto fijo:** se define al iniciar la conversación y no cambia. Si el usuario pregunta por otra entidad, MAIA responde pero el contexto guardado sigue igual; para cambiarlo hay que abrir una conversación nueva.
+
+> 💡 **Consecuencia de producto, no de arquitectura:** el catálogo de especialistas **deja de ser una lista de features vendibles** y pasa a ser estructura interna. Cuando salga un especialista nuevo, el usuario no va a percibir "una función nueva" — va a percibir que MAIA responde cosas que antes no. Eso cambia cómo se comunica el avance de la vertical de AI hacia afuera.
+
+> _**Capacidad confirmada (live hoy)**, actualizada al 2026-08-17 con la cronología de releases del área de Producto: MAIA accede a datos de **tareas, proyectos y clientes**, al tab de **Performance** con filtro de fechas, y al contexto de **Retrabajos y Entregables**. Ejecuta **tools de acción** (crear tareas y retrabajos, asignar usuarios, editar proyectos, acciones sobre adjuntos y adjuntar archivos), tiene **búsqueda web**, **pensamiento adaptativo**, **Consultas Frecuentes** e **hipervínculos en tareas**. Es accesible desde el **listado de Proyectos** y **desde dentro de una tarea** ("MAIA en tareas", jun-26). Desde el **22-jul-2026** funciona bajo el modelo de **orquestación** (ver arriba): especialistas de Proyectos, Tareas y Clientes, no elegibles por el usuario. **Risk Management + MAIA** desde may-26 (en beta, ver Pilar 2)._
 >
 > _Adopción medida: **11,6% de penetración** sobre asientos elegibles en jul-26, 128 companies habilitadas. Serie completa, definiciones y salvedades en `06-kpi-tree` (sección de AI)._
 
@@ -167,6 +182,8 @@ Incluye un **Marketplace de agentes** listos para usar (ej. Brief Specialist, Co
 ### Pilar 2 — Rentabilidad en tiempo real
 
 Insights proactivos: cuando MAIA detecta un desvío, no solo emite la alerta sino que propone un plan de mitigación basado en el conocimiento de la industria. Se adapta por rol:
+
+> ⚠️ **Aún no disponible (documentación funcional, no producto):** la **proactividad** —que MAIA detecte desvíos y emita insights de forma espontánea— figura en la documentación funcional pero **está explícitamente fuera de alcance de la etapa actual** _(confirmado con el owner, ago-2026)_. Hoy MAIA responde cuando se le pregunta. Mismo tratamiento que los *agentic workflows* del Pilar 1: tratar como roadmap, no como capacidad actual.
 
 - **PMs:** del brief al proyecto, con tareas, deadlines y recursos asignados.
 - **Directores de cuenta:** "Analyze with MAIA" — retrabajos, salud de clientes, rentabilidad real y performance del equipo.
@@ -212,6 +229,8 @@ Quedan por confirmar:
 - [x] **Anti-scope:** confirmado con el owner (ago-2026). La **única confusión frecuente real** es con **project management genérico** (Asana, ClickUp, monday, Trello). El resto (ERP/contable, CRM, diseño/DAM, time tracker, resource management) son límites de alcance verdaderos pero **no** confusiones habituales en ventas/demos/soporte. Tampoco aparecen facturación/billing, RRHH/presentismo ni BI a medida.
 
 - [ ] **Validar la visión de producto con Nicolás Ocampo (VP Product).** Cargada como propuesta el 2026-08-13: _"Que la rentabilidad sea una decisión diaria y no un hallazgo de fin de mes."_ Hasta que se valide, no citarla como visión oficial.
+
+- [ ] **¿Qué pasó con el "Especialista en Horas"?** Este archivo lo listaba como subagente live desde jul-26, pero la documentación funcional del Orquestador (22-jul-26) no lo menciona entre los especialistas de la etapa y establece que **cualquier consulta de horas la resuelve el Especialista en Proyectos**. Tres posibilidades: se renombró, se absorbió, o nunca llegó a producción con ese nombre. Confirmar con el squad de AI antes de darlo por muerto o por vivo.
 
 ## Derivadas abiertas (no bloquean este archivo)
 

@@ -37,7 +37,7 @@ Estos archivos alimentan el contexto de un **Proyecto de Claude ("COR – Produc
 
 | Archivo | Estado |
 |---|---|
-| `01-producto.md` | Casi completo — pendiente confirmar anti-scope con el equipo |
+| `01-producto.md` | Casi completo — suma la **arquitectura de orquestación** de MAIA (punto de entrada único, deploy 22-jul-26) y la **salvedad de proactividad** (no disponible hoy), ago-2026 — pendiente confirmar anti-scope con el equipo |
 | `02-equipos.md` | Completo |
 | `03-personas.md` | Casi completo — pendiente personas por vertical nuevo y detalle de rollout/champion |
 | `04-mercado.md` | Competidores confirmados — pendiente vertical nuevo, precio y cruce con churn |
