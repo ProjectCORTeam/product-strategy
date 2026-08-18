@@ -71,6 +71,27 @@ Marketplace es **capacidad sin superficie**, y es el caso más extremo disponibl
 
 **Tema candidato derivado —** no cargar como iniciativa todavía, depende de la verificación de arriba: **poner los agentes custom dentro de la orquestación**, para que MAIA derive a un agente de la empresa cuando la consulta es de su dominio, en lugar de exigir que el usuario lo busque en el selector. Sería el test más limpio posible de la hipótesis: misma capacidad, superficie nueva.
 
+#### Caso a favor: Risk Management es superficie casi pura
+
+> `[HIPÓTESIS FUERTE]` — _misma etiqueta que el eje, sujeta al cruce de solapamiento. Cargado el 2026-08-18 con el baseline de Risk Management (`06-kpi-tree`)._
+
+Es **el caso más limpio disponible del lado de superficie**, y el complemento exacto de Marketplace: **cero capacidad nueva sobre MAIA** —el backend ya calculaba los desvíos, MAIA solo los narra y ofrece acciones— y **63% del alcance mensual de MAIA** (234 de 373 usuarios en jul-26, con 21% de las interacciones).
+
+| | Marketplace | Risk Management |
+|---|---|---|
+| Capacidad nueva | Alta (agentes a medida) | **Cero** (el backend ya calculaba) |
+| Superficie | **Mínima** — fuera de la orquestación, hay que buscarlo en el selector | **Máxima** — banner dentro del proyecto, donde el usuario ya está |
+| Alcance | 1,40% de penetración, 0,44% sin MullenLowe | **7,3% de penetración, 63% del alcance de MAIA** |
+| Intensidad | **17,7** | **2,0** |
+
+Las dos features apuntan en la misma dirección desde extremos opuestos: **la capacidad sin superficie no expande la base; la superficie sin capacidad nueva sí la expande, pero produce contacto corto.**
+
+> **Por qué importa para el reparto:** es evidencia de feature entera, no de un mes suelto, y no depende de mover 40 usuarios a 41. Si se sostiene, **sube de prioridad el tema candidato ya anotado** —meter los agentes custom dentro de la orquestación—, porque sería aplicarle a Marketplace exactamente lo que le funcionó a Risk Management.
+>
+> **Por qué todavía no es un hecho:** falta el cruce de **solapamiento MAIA / banner por usuario** (🔴 en `06`). Si casi todos los usuarios de banner ya usaban MAIA por otra vía en el mismo mes, **el banner reencauzó tráfico en lugar de crear alcance** y el 63% deja de ser evidencia de expansión. Es una sola consulta de Amplitude.
+>
+> **Salvedad de lectura:** la intensidad de 2,0 dice que la superficie **trae gente pero no la retiene** — 83% de los usuarios del log aparece en un solo mes. Superficie ≠ adopción sostenida. Eso es un target de discovery, no una objeción a la hipótesis (→ `07`).
+
 **Salvedad sobre diciembre.** El "0,38x sin releases" tiene un confounder no tratado: **diciembre en LATAM es mes de vacaciones**, y el documento fuente no menciona estacionalidad. Test barato con datos que ya tenemos: mirar el DAU/MAU global de COR en dic-25 (`06-kpi-tree`) — si cayó toda la plataforma, el claim se cae solo. Hasta entonces, "la base decae sin releases" es `[HIPÓTESIS]`.
 
 ## Temas candidatos (derivados de la estrategia y de la evidencia — validar contra el roadmap real)
@@ -80,13 +101,15 @@ Marketplace es **capacidad sin superficie**, y es el caso más extremo disponibl
 0. **Fundamentos: performance, calidad y mobile** ⬅️ _nuevo, con evidencia_
    - *Qué:* velocidad y estabilidad de la plataforma, reducción de bugs, experiencia mobile, señal/ruido de notificaciones.
    - *Por qué:* son los dolores #1 medidos (`07`: performance 95% neg, bugs 100% neg, mobile 96% neg) y **erosionan la promesa de "tiempo real"** que sostiene el posicionamiento. Impacta directo en NRR/GRR.
-   - *Métrica de éxito:* NPS de heavy users (−33.5 → meta), p95 de carga, crash rate mobile.
+   - *Evidencia nueva (2026-08-18) — la calibración de Risk Management:* **el desvío promedio supera el umbral "Alto" en las diez métricas del backend que lo tienen configurado** —la undécima directamente no tiene umbral cargado— (1,5x a 2,6x en las de nivel tarea, órdenes de magnitud en las de proyecto). Bajo y Medio existen en la tabla de umbrales y casi no existen en la base, así que **la jerarquía de severidad no informa**: el donut, el badge y el orden de la tarjeta quedan vacíos de contenido. Sumado a eso, **cuatro cálculos de nivel proyecto producen porcentajes imposibles** (hasta 24.814.759.071%). **Es deuda de producto, no de infraestructura**, y afecta directamente a la feature que más alcance aporta hoy (63% de los usuarios de MAIA). Detalle en `06-kpi-tree`.
+   - *Métrica de éxito:* NPS de heavy users (−33.5 → meta), p95 de carga, crash rate mobile. **Sumar:** % de detecciones que caen en Bajo/Medio (hoy ~0) como proxy de que la severidad discrimina.
 
 1. **Madurez de MAIA**
    - *Qué:* llevar los *agentic workflows* de roadmap a producto; Risk Management de **beta** a GA (y más allá del nivel proyecto); definir el **modelo de negocio de MAIA**.
    - *Por qué:* prioridad "Deploy de AI en clientes" + monetización pendiente.
    - *Evidencia nueva (2026-08-17):* el único revenue de MAIA hoy es el servicio de consultoría sobre tres clientes, y **no hay casos de upsell de licencias por uso**. Los tres contratos se cerraron en momentos en que MAIA **pasó de responder a accionar** — hipótesis con n=3, pero si se sostiene, lo que predice disposición a pagar no es cuánto se usa MAIA sino **si ejecuta trabajo**. Eso empuja los *agentic workflows* y las tools de acción por delante de las capacidades de consulta. Ver `05-estrategia-okrs`.
-   - *Métrica de éxito:* penetración por rol (`06`), y —cuando se instrumente— **eventos de aprobación de acciones** como proxy de trabajo ejecutado.
+   - *Evidencia nueva (2026-08-18) — Risk Management GA:* este archivo pedía fechas. **Cargado como recomendación de Producto, no como dato: no está en condiciones de GA.** No por falta de features —los 10 riesgos se calculan y se muestran— sino porque **cuatro cálculos de nivel proyecto producen porcentajes imposibles** y **la severidad no discrimina** (ver tema 0). Un GA con esos dos defectos expone a toda la base a una tarjeta cuyo ordenamiento y cuyos números no son defendibles. **Condición sugerida de GA:** umbrales recalibrados con distribución real + los cuatro cálculos de proyecto corregidos + al menos un evento de **acción aplicada** instrumentado, para poder decir qué entregó.
+   - *Métrica de éxito:* penetración por rol (`06`), **con corte por origen** (banner vs. resto — hoy el 63% del alcance de MAIA entra por banner), y —cuando se instrumente— **eventos de aprobación de acciones** y **acción aplicada desde una respuesta de riesgo** como proxies de trabajo ejecutado.
 
 2. **Activación de la base ya habilitada de MAIA** ⬅️ _nuevo (2026-08-17), la mejor relación valor/esfuerzo disponible_
    - *Qué:* playbook de activación para las cuentas grandes habilitadas que no arrancaron. **Ocho cuentas Enterprise concentran 543 asientos elegibles —17% del universo— con 18 usuarios activos y una intensidad de 1 a 2,2**: no son usuarios que usan poco, son personas que probaron y no volvieron. Otras 15 companies (149 asientos) nunca registraron un solo usuario en diez meses.
@@ -138,5 +161,6 @@ Marketplace es **capacidad sin superficie**, y es el caso más extremo disponibl
 - [x] Estado de MAIA en el roadmap. _(Cargado 2026-08-17 con el análisis de adopción: baseline de penetración, evidencia de monetización y la iniciativa de activación de la base ya habilitada. Sigue pendiente el estado de los agentic workflows y de Risk Management GA como fechas de roadmap real.)_
 - [ ] Principios de priorización del roadmap.
 - [ ] 🔴 **Verificar churn/actividad por company antes de dimensionar el tema 2** (activación de cuentas dormidas) — bloqueante, pendiente en `06-kpi-tree`.
-- [ ] **Testear la hipótesis capacidad vs. superficie** antes de usarla para repartir capacidad. Dos vías abiertas: (a) **cerrar la lectura de agosto** para el test del Orquestador, sobre el panel cerrado y controlando estacionalidad; (b) las interacciones desagregadas por tool/agente — el registro existe, hay que refinarlo y extraerlo (`06`).
+- [ ] **Testear la hipótesis capacidad vs. superficie** antes de usarla para repartir capacidad. Tres vías abiertas: (a) **cerrar la lectura de agosto** para el test del Orquestador, sobre el panel cerrado y controlando estacionalidad; (b) las interacciones desagregadas por tool/agente — el registro existe, hay que refinarlo y extraerlo (`06`); (c) 🔴 **el solapamiento MAIA / banner por usuario**, que decide si Risk Management creó alcance o reencauzó tráfico. **(c) es la más barata de las tres: una consulta de Amplitude.**
+- [ ] **Decidir el GA de Risk Management** con la recomendación del tema 1 sobre la mesa: hoy Producto recomienda **no ir a GA** hasta corregir los cuatro cálculos de nivel proyecto y recalibrar los umbrales. Es una decisión de Producto, no de IT.
 - [ ] **Chequear la estacionalidad de diciembre** contra el DAU/MAU global (`06`) para confirmar o descartar "la base decae sin releases".

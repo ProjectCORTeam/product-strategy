@@ -1,6 +1,6 @@
 # 07 — Discovery (COR)
 
-> **Última actualización:** 2026-08-17
+> **Última actualización:** 2026-08-18
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Insights curados de entrevistas, encuestas y datos, para buscar evidencia al tomar una decisión. Cada insight debe tener **evidencia y fuente**; distinguir hallazgos de *research primario* de supuestos o claims de marketing. No inventar insights: si un tema no tiene evidencia cargada, marcarlo como pregunta abierta.
 
@@ -45,7 +45,16 @@ Cada insight se carga con esta estructura:
 
 - 🎯 **¿Por qué las cuentas grandes probaron MAIA y no volvieron?** Ocho cuentas Enterprise concentran 543 asientos con 18 usuarios activos y una intensidad de 1 a 2,2 interacciones mensuales — el patrón no es "uso bajo" sino **no-retorno tras el primer contacto**. ¿Qué pasó en ese primer uso? ¿Falta de onboarding, expectativa incumplida, ausencia de champion, permisos, desconocimiento de que existe? _(Cuentas: TBWA Multisponsor, Ganem Group, Encender, Garnier Agency, Fahrenheit DDB, MASS DIGITAL, Anagram LATAM, DeNicolas.)_
 - 🎯 **¿Qué pasó en Crowe Global?** Alta en jun-26, escala comparable (123 asientos) y **23,6% de penetración con 8,7 interacciones por usuario** — el resultado opuesto al del grupo anterior. Es el caso de éxito más limpio disponible y la base para un **playbook de activación**. ¿Hubo champion? ¿Rollout dirigido? ¿Acompañamiento de CSM? ¿Un caso de uso puntual que prendió?
+  > ⚠️ **La pregunta cambia con el dato de Risk Management (2026-08-18).** Crowe es la **2ª cuenta por uso de banners de riesgo: 47 consultas, 24 usuarios**. Es decir que **una parte del 23,6% que queríamos explicar puede ser Risk Management y no MAIA conversacional**. No preguntar "¿por qué adoptaron MAIA?" sino **"¿qué los trajo — el chat o el banner del proyecto?"**. Si la respuesta es el banner, el playbook de activación que salga de acá es un playbook de superficie, no de chat.
 - ¿Qué explica que el **C-Level** tenga la intensidad más alta (8,2 int./usuario) y a la vez cinco meses de meseta en penetración? Es la pregunta que decide si su curva plana es saturación real o falta de valor específico para el rol — hoy es hipótesis en `06` y **de eso depende si se invierte en valor para C-Level**.
+
+> _Dos targets nuevos (2026-08-18), derivados del análisis de Risk Management. El primero **vale más que cualquier corte adicional de Amplitude**: el dato cuantitativo ya dice qué pasa y no puede decir por qué._
+
+- 🎯 **La feature engancha en el momento y no genera vuelta. ¿Por qué?** **Continuidad de conversación en 42,6% (agosto)** —de lo poco en todo el repo que mejora mes a mes— contra **83% de los usuarios que aparecen en un solo mes** y 59% que hizo una sola consulta en tres meses. Las dos cosas juntas describen algo **útil pero no incorporado a la rutina**: el usuario que lo toca conversa, y no vuelve. ¿Qué le faltó para volver — que le avise, que resuelva, que le muestre que el riesgo se cerró? _(Recordar: hoy no hay notificación y no hay aviso cuando el riesgo se resuelve — `01-producto`.)_
+- 🎯 **¿Importa que la misma pregunta devuelva otra respuesta?** **118 de 130 repeticiones devuelven texto distinto sobre datos idénticos**: mismo usuario, mismo proyecto, mismos números, redacción diferente — en un caso a 30 minutos de distancia. **Es una pregunta de confianza, no de contenido:** ¿el usuario lo nota? ¿lo lee como que el dato cambió? ¿deja de creerle? _(La causa técnica está identificada y va por el canal de la documentación funcional, no por acá.)_
+
+> 📐 **Dato de concentración para diseñar el muestreo** (2026-08-18): el uso de banners se reparte en **73 companies**, y el **top 5 concentra ~32% de las filas del log** — DDB Centro 64, **Crowe Global 47**, Super 35, InPulse Digital 33, CATCH 28. Una muestra que solo entreviste al top 5 describe a un tercio del uso; una que los ignore pierde a los únicos usuarios con volumen suficiente para tener opinión formada.
+> ⚠️ _Está calculado sobre las **653 filas** del log, no sobre las **523 consultas distintas** que impone la regla 6 de la convención de fuentes. Sobre consultas distintas el share sube a ~40%. Sirve para diseñar el muestreo; no citarlo como métrica de concentración._
 
 ### Verticales nuevos (IT Consulting, Law & Accounting, Brands, Media)
 - ¿Qué tan bien encaja el producto agency-first en cada vertical? ¿Qué "Product Adjustments" pide cada uno?
@@ -154,5 +163,7 @@ Cada insight se carga con esta estructura:
 - [ ] Definir cadencia de discovery y quién cura este archivo. _(Existe una práctica de **discovery semanal** en toda COR para tener contacto con usuarios, pero ese research **no se está volcando** a este repositorio hoy — falta definir quién lo cura y cómo se alimenta.)_
 - [ ] Conectar el pipeline: `interview-snapshot` y `maia-friction-analysis` → insights acá. _(Decisión: por ahora no se prioriza armar esta conexión formal.)_
 - [ ] Priorizar qué tema abierto atacar primero.
-- [ ] **Research sobre las 8 cuentas dormidas y sobre Crowe Global** (ver 🎯 en Temas abiertos → MAIA). Bloquea el playbook de activación del tema 2 de `08-roadmap`. Procesar con `interview-snapshot`.
-- [ ] **Cerrar el loop cuantitativo:** el análisis de adopción de MAIA (ago-2026) dejó siete pedidos de datos abiertos en `06-kpi-tree`. Dos son bloqueantes de decisiones de roadmap.
+- [ ] **Research sobre las 8 cuentas dormidas y sobre Crowe Global** (ver 🎯 en Temas abiertos → MAIA). Bloquea el playbook de activación del tema 2 de `08-roadmap`. Procesar con `interview-snapshot`. **Ajustar el guion de Crowe:** separar chat de banner antes de atribuir el 23,6%.
+- [ ] **Research sobre el no-retorno en Risk Management** (🎯, 2026-08-18) — es el target mejor definido que tenemos hoy: engancha en el momento (42,6% de continuidad) y no genera vuelta (83% de un solo mes). **Vale más que cualquier corte adicional de Amplitude.**
+- [ ] **Sondear el efecto de la inconsistencia de respuesta** (118 de 130 repeticiones devuelven texto distinto sobre datos idénticos). Pregunta de confianza; se puede meter en el mismo guion que el punto anterior.
+- [ ] **Cerrar el loop cuantitativo:** entre el análisis de adopción de MAIA, el de Marketplace y el de Risk Management (todos ago-2026), `06-kpi-tree` acumula **17 pedidos de datos abiertos** (10 de la vertical de AI + 7 de Risk Management, más los de Marketplace listados aparte). **Seis están marcados 🔴 como bloqueantes** de decisiones de roadmap o de KRs.

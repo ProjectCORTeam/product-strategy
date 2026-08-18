@@ -5,6 +5,8 @@
 > **Contexto para IA:** Árbol de métricas de COR, desde la North Star hasta las métricas operativas y de producto, para definir el éxito de una feature o analizar resultados. Las métricas de **negocio** vienen confirmadas del Business Plan 2026–2027 (`05`); las de **producto** están inferidas y marcadas como hipótesis hasta confirmarlas.
 >
 > ⚠️ **La sección de AI usa un etiquetado de evidencia propio** (`[HECHO]` / `[HALLAZGO]` / `[HIPÓTESIS]` / `[BAJA]`) definido dentro de esa sección. **Respetar la etiqueta al citar un número:** un `[HALLAZGO]` no se cita como si fuera un hecho, y un `[HIPÓTESIS]` no sirve para justificar reparto de capacidad. El resto del archivo todavía no está etiquetado.
+>
+> ⚠️ **La sección de AI también tiene una convención de fuentes** (2026-08-18): **Amplitude** para alcance, el **log de conversaciones** para calidad y el **backend de cálculo** para umbrales, con **siete reglas de lectura** — la más importante de las cuales es la **regla 4: no dividir una fuente por otra**. Está definida dentro de la sección, junto al etiquetado. **No cruzar Amplitude con Metabase sin leerla.**
 
 ## Cómo leer este árbol
 
@@ -91,13 +93,13 @@ North Star (arriba) → palancas de negocio → métricas operativas → métric
 - **Uso de features de valor:** rentabilidad en tiempo real, Planner/capacity, dashboards por rol, portal de cliente. _(hipótesis, sin baseline — pendiente)_
 - **Adopción por vertical** (a medida que se abren): activación y uso fuera del core de agencias. _(hipótesis, sin baseline)_
 
-## Métricas de la vertical de AI — "Deploy de AI en clientes" (medida — baseline ago-2026, fuente: Amplitude)
+## Métricas de la vertical de AI — "Deploy de AI en clientes" (medida — baseline ago-2026; fuentes: Amplitude + Metabase, ver la convención de fuentes)
 
 > **Reescrita el 2026-08-17** a partir de *MAIA — Análisis de adopción y penetración v3.0* (Producto, 2026-08-15). Reemplaza el baseline anterior, que estaba construido sobre conteos absolutos sin denominador. Dos afirmaciones de esa versión quedaron **dadas de baja** — ver el final de la sección.
 >
 > **Ampliada el 2026-08-18** con **Marketplace (agentes custom)**, que hasta ahora no estaba medido en este archivo.
 
-### La vertical de AI es un portafolio de features — hoy hay dos medidas
+### La vertical de AI es un portafolio de features — hoy hay tres medidas y dos denominadores
 
 > _Confirmado por el owner el 2026-08-18: la vertical de AI es el conjunto de features con AI en las que COR apuesta. **MAIA es un miembro, no la vertical.** El "al menos dos" dejó de ser una sospecha inferida de los datos y pasó a ser la definición declarada. Ficha por feature en `01-producto`._
 
@@ -112,6 +114,8 @@ Todo lo que sigue se organiza en **dos bloques hermanos con denominadores distin
 | `agent_type` | `orchestrator`, `clone` | `custom` |
 
 **Las dos penetraciones no son sumables ni directamente comparables.** No son la misma base ni el mismo universo de roles.
+
+> ➕ **Risk Management es la tercera feature medida, y no es un tercer bloque** _(2026-08-18)_. Tiene Feature Access propio pero **exige además el de Chat de MAIA y corre sobre la misma base de 128 companies**, así que **se mide adentro del bloque de MAIA con corte propio por origen** (`option = risk_banner`), no con denominador independiente. Su penetración (7,3% jul-26) **sí es comparable con la de MAIA** —mismo denominador— y **es un subconjunto de ella, no un sumando**. Resolución en `01-producto`, baseline más abajo.
 
 ### Cómo etiquetamos la evidencia de esta sección
 
@@ -129,6 +133,28 @@ Todo lo que sigue se organiza en **dos bloques hermanos con denominadores distin
 **Regla de separación.** La observación y su interpretación se clasifican por separado. "El C-Level lleva cinco meses en meseta" y "el C-Level está saturado" no son el mismo claim.
 
 **Regla de carga.** La barra escala con lo que el claim sostiene. Reparto de capacidad del squad y KRs exigen `[HECHO]`; priorizar una entrevista se conforma con `[HIPÓTESIS]`.
+
+### Convención de fuentes — son tres, no dos
+
+> _Cargada el 2026-08-18 con el análisis de Risk Management. **Aplica a toda la sección de AI**, no solo a esa feature. Mezclar las tres fuentes es el error más fácil de cometer con estos datos: produce números que parecen tasas de conversión y no lo son._
+
+| Fuente | Qué es | Para qué sirve | Qué **no** puede responder |
+|---|---|---|---|
+| **Amplitude** (eventos `AI_CHAT_*`, con sus `option` / `agent_type`) | Evento de front al interactuar | **Alcance y penetración**: usuarios únicos, interacciones, corte por rol y por origen | Qué respondió el producto, ni si la respuesta sirvió |
+| **Log de conversaciones (Metabase)** — para Risk Management, **Q21883** | La conversación con la respuesta efectivamente generada | **Calidad y contenido**: qué se consultó, qué se respondió, si hubo repregunta | Alcance — no trae denominador de asientos |
+| **Backend de cálculo (Metabase)** — para Risk Management, **Q21879** | El motor que detecta desvíos y dispara la señal | **Detección y calibración de umbrales** | Alcance (no hay usuario) ni calidad (no hay respuesta) |
+
+_Cada bloque de métricas declara la **ventana temporal** de sus tres cortes: no coinciden entre sí, y esa es una de las razones por las que no se dividen._
+
+**Las siete reglas de lectura** _(confirmadas con el owner, 2026-08-18)_:
+
+1. **Amplitude para alcance y penetración.** Usuarios únicos sobre denominador de asientos elegibles.
+2. **El log para calidad y contenido.** Engagement por tipo, texto de las respuestas, repregunta.
+3. **El backend de detección para umbrales.** Nunca para alcance ni para calidad.
+4. **No dividir una fuente por otra.** Nada de tasas detección→click: unidades y ventanas distintas. **La asimetría entre lo que se detecta y lo que se consulta se lee comparando rankings, no dividiendo.**
+5. **La unidad de detección es el `proyecto`, no la `vez`.** Cada proyecto redispara la misma métrica 7 a 9 veces, consistente con un cálculo on-demand en cada apertura del dashboard. `Veces` mide aperturas, no incidentes.
+6. **La unidad de consulta es la consulta distinta, no la fila del log.** En Risk Management el 33,4% de las filas es el mismo usuario repitiendo la misma pregunta sobre el mismo proyecto (58% de esas repeticiones dentro de la hora: reclick que regenera la respuesta). Sin deduplicar, el volumen queda inflado ~25%.
+7. **Los funnels de Amplitude son a nivel usuario, no a nivel evento.** Amplitude deduplica — se ve en que las filas diarias del funnel de Risk Management suman 182 y el total marca 141. Por eso el 46,8% de abrir→enviar significa "de los usuarios que abrieron, cuántos enviaron al menos un mensaje", **no** "de cada click, cuántos generan mensaje".
 
 ### Definiciones
 
@@ -289,7 +315,9 @@ _Salvedad técnica: el filtro actual captura solo `agent_type` = clone u orchest
 
 La brecha es **más grave para las otras features del portafolio de AI que para MAIA**. Un chat puede evaluarse razonablemente por frecuencia de uso; un workflow automatizado o una alerta de risk management, no — su valor está en el trabajo que ejecutan, y ese trabajo hoy no se registra como evento.
 
-> ✏️ **Corregido el 2026-08-18.** Este bloque afirmaba que "ninguna métrica actual captura la vertical de AI fuera de MAIA". **Era falso para Marketplace**, que tiene serie de diez meses con denominador propio (ver la sección de arriba). Sigue siendo cierto para **workflows/automatizaciones, risk management y el valor entregado por los agentes custom** — de Marketplace hay consumo medido, no creación ni valor.
+> ✏️ **Corregido el 2026-08-18, dos veces.** Este bloque afirmaba que "ninguna métrica actual captura la vertical de AI fuera de MAIA". **Era falso para Marketplace**, que tiene serie de diez meses con denominador propio, y desde este mismo día también para **Risk Management**, que tiene baseline de alcance y de engagement por tipo de riesgo (ver sus secciones). Sigue siendo cierto para **workflows/automatizaciones**, para la **creación** de agentes custom y —crucialmente— para el **valor entregado** de todas ellas.
+>
+> 📊 **Risk Management es hoy el mejor lugar del producto para instrumentar valor entregado.** Ofrece **acciones masivas reales** desde la respuesta (asignar colaboradores, mover deadlines, reasignar tareas) y **no existe ningún evento que registre si alguien las aplica**. Es un caso más limpio que la aprobación de Governance porque la acción está pegada a un desvío concreto y medible. Pedido cargado abajo.
 
 **El candidato más directo para empezar a medir valor entregado:** el Pilar 3 de MAIA (Governance, `01-producto`) exige **aprobación explícita del usuario para cada acción crítica**. Ese evento existe en el producto y **no se está registrando como métrica**.
 
@@ -302,11 +330,131 @@ Reemplaza la lista anterior, que se apoyaba en conteos absolutos.
 | **Penetración por rol** sobre asientos elegibles | Con baseline | Métrica principal. **Meta diferenciada por rol** — no una sola meta para los tres |
 | **Forma de la distribución** (share de los buckets 11+) | Con baseline | Reemplaza volumen total y promedio de interacciones |
 | **Penetración por cuenta / dispersión** | Con baseline | Habilita meta de activación de cuentas, no solo de usuarios |
-| **Eventos de aprobación de acciones** (Governance) | No instrumentado | Único candidato a medir **valor entregado** en lugar de actividad |
+| **Penetración con corte por origen** (banner vs. resto) | Con baseline | **Obligatoria, no opcional:** el 63% de los usuarios de MAIA de jul-26 entra por banner de riesgo. Sin este corte, el KR agregado es ilegible |
+| **Eventos de aprobación de acciones** (Governance) | No instrumentado | Candidato a medir **valor entregado** en lugar de actividad |
+| **Acción aplicada desde una respuesta de riesgo** | No instrumentado | El otro candidato a **valor entregado**, y el más limpio: la acción está pegada a un desvío concreto |
 | ~~Usuarios únicos activos/mes~~ | Degradada | Se mueve con el denominador; sirve de diagnóstico, no de meta |
 | ~~Volumen de interacciones~~ | Descartada | Mide a ~26 personas |
 | ~~% de power users vs. uso único~~ | Reformulada | Absorbida por "forma de la distribución" |
 | ~~Calidad percibida (thumbs)~~ | Descartada | Tasa de feedback 1,5%. Ver `[BAJA-02]` |
+
+### Risk Management — baseline nuevo (2026-08-18)
+
+> _Primera medición de esta feature en el repo. **Vive acá adentro, no como bloque hermano**: Risk Management tiene Feature Access propio pero exige además el de "Chat de MAIA" y está habilitado sobre la misma base, así que se mide **dentro de MAIA con corte propio por origen** (`AI_CHAT_OPEN` con `option = risk_banner`). Resolución completa en `01-producto`._
+>
+> **Tres fuentes, leídas según la convención de arriba:** Amplitude (5 cortes de `AI_CHAT_OPEN` / `option = risk_banner`, feb-26 → 18-ago-26) · **log de conversaciones** (14-may → 13-ago-26: 653 filas, **523 consultas distintas**, 348 usuarios, 73 companies) · **backend de detección** (422.897 detecciones, 11 `metric_key`, ⚠️ **ventana temporal a confirmar**).
+
+#### Definiciones y baseline
+
+**Penetración de Risk Management, jul-26: 7,3%** `[HECHO — provisorio]`
+234 usuarios únicos ÷ 3.225 asientos elegibles. Provisorio por el mismo motivo que el 11,6% de MAIA: el numerador usa `AI_CHAT_OPEN`, que incluye aperturas sin mensaje.
+
+**Serie de alcance** `[HECHO]`
+
+| | May 26 | Jun 26 | Jul 26 | Ago 26 (1-18) |
+|---|---:|---:|---:|---:|
+| Interacciones | 246 | 506 | 479 | 133 |
+| Usuarios únicos | 119 | 232 | 234 | 71 |
+| Intensidad (int./usuario) | 2,07 | 2,18 | 2,05 | 1,87 |
+
+Crecimiento may→jun, **meseta jun→jul**, caída en agosto.
+_Nota metodológica: extrapolar los 71 únicos de agosto a mes completo **sobreestima**, porque los usuarios únicos no escalan linealmente con los días. La caída real es probablemente mayor que la que sugiere la regla de tres._
+
+**La intensidad es plana en ~2,0** `[HECHO]` — muy por debajo de la de MAIA en general (5,2 a 8,2 según rol). Es una feature de contacto corto.
+
+**Retención: 59% de los 348 usuarios del log hizo una sola consulta en tres meses, y el 83% aparece en un solo mes** `[HECHO]`.
+
+**Conversión de usuario abrir→enviar: 46,8%** (141 usuarios → 66), con mediana de 40 segundos. Últimos 30 días al 18-ago `[HECHO]`.
+Es el **primer proxy disponible** de cuánto sobrevive al corte por `AI_CHAT_SEND` que bloquea el KR de penetración — aunque solo para este origen.
+> ⚠️ **No presentar este 46,8% en la misma frase que la continuidad del log.** Son fuentes distintas y ventanas distintas (regla 4).
+
+**Continuidad de conversación (log): 31,4% global** `[HECHO]`. Por mes: **4,8% (may) → 24,9% (jun) → 39,4% (jul) → 42,6% (ago)**. Es de lo poco en toda la sección de AI que mejora mes a mes de forma sostenida.
+
+#### Engagement por tipo de riesgo (log)
+
+_Baseline de comparación: 31,4% de continuidad y 0,77 mensajes promedio después del análisis._
+
+| Riesgo | n | % sigue | msgs prom. | msgs si sigue |
+|---|---:|---:|---:|---:|
+| Horas estimadas vs. cargadas (tarea) | 72 | **38,9%** | 0,90 | 2,32 |
+| Fecha de finalización (proyecto) | 12 | 33,3% | 1,17 | **3,50** |
+| Retrabajo | 34 | 32,4% | 0,53 | 1,64 |
+| Tareas sin colaboradores | 266 | 31,6% | 0,85 | 2,69 |
+| Tareas vencidas | 150 | 30,7% | 0,67 | 2,20 |
+| Costo vs. ingresos | 8 | 12,5% | 0,25 | 2,00 |
+| Horas cargadas vs. planificadas (tarea) | 11 | 9,1% | 0,45 | 5,00 |
+| Tareas sin finalizar con retrabajo | 4 | 0% | 0 | — |
+
+**Volumen y engagement no correlacionan** `[HECHO]`. Los **dos** riesgos que concentran el 91% de las consultas desde julio (tareas sin colaboradores 51% + tareas vencidas 40%; con retrabajo 8% los tres llegan al 99%) están **en o por debajo** del baseline de continuidad. El que mejor convierte tiene volumen medio.
+
+**Cuando hay conversación, dura 2 a 3 mensajes** `[HECHO]`. Es repregunta y cierre, no diálogo. Consistente con que el **60,6% de las respuestas trae `suggest_reply`**: el usuario aprieta una opción sugerida y termina.
+
+**Costo vs. ingresos convierte a menos de la mitad del baseline (12,5%)** `[HALLAZGO — n=8]`. Es el riesgo con lectura financiera y el que menos conversación genera — dirección contraria a la esperada. **No concluir con esa muestra.**
+
+#### Detección y calibración de umbrales (backend)
+
+| Métrica | Proyectos | Veces | Veces/proy | Desvío prom. | Umbral Alto | Sobre umbral |
+|---|---:|---:|---:|---:|---:|---:|
+| `tasks_without_collaborators` | 12.971 | 109.017 | 8,4 | 51,1% | 20% | **2,6x** |
+| `task_finish_date_extended` | 8.961 | 81.005 | 9,0 | 39,5% | 20% | **2,0x** |
+| `project_estimated_hours_vs_planned_task` | 5.546 | 44.875 | 8,1 | 10.738% | 40% | 268x |
+| `project_estimated_hours_vs_loaded` | 5.493 | 40.886 | 7,4 | 30.544% | 40% | 764x |
+| `task_estimated_hours_vs_loaded` | 5.120 | 46.151 | 9,0 | 30,9% | 20% | 1,5x |
+| `project_finish_date_extended` | 4.796 | 20.070 | 4,2 | 481% | 41% | 11,7x |
+| `task_estimated_hours_vs_planned` | 4.447 | 38.666 | 8,7 | 24,3% | 16% | 1,5x |
+| `rework_loaded_hours` | 3.315 | 27.366 | 8,3 | 29,2% | 20% | 1,5x |
+| `project_income_vs_costs` | 1.326 | 10.067 | 7,6 | 14.380.117% | 91% | 158.023x |
+| `unfinished_tasks_with_rework` | 588 | 4.106 | 7,0 | 20,2% | — | — |
+| `project_..._reserved_people_hours` | **52** | 688 | 13,2 | 255% | 20% | 12,8x |
+
+_Leer la columna **Proyectos**, no **Veces** (regla 5). ⚠️ La ventana temporal de este export está sin confirmar: si es histórico acumulado, no prueba estado actual._
+
+**"Alto" no es una severidad: es el estado por defecto** `[HECHO]`. En **las diez métricas que tienen umbral Alto configurado, el desvío promedio ya lo supera** — por 1,5x a 2,6x en las de nivel tarea, por órdenes de magnitud en las de nivel proyecto. _(La undécima, `unfinished_tasks_with_rework`, directamente no tiene umbral cargado: es la misma deuda por otra vía.)_ Bajo y Medio existen en la tabla de umbrales y casi no existen en la base. Eso **vacía de información al donut, al badge de severidad y al orden de la tarjeta**. Es un problema mayor que el nivel Crítico nunca configurado.
+
+**Los porcentajes de los desvíos de nivel proyecto están rotos** `[HECHO]`. Los de nivel tarea son sanos porque son % de tareas (acotados a 100). Los de proyecto salen en miles a millones por ciento. Máximos observados: **2.592.566%** (horas estimadas vs. cargadas), **24.814.759.071%** (costo vs. ingresos), **154.300%** (fecha de proyecto).
+
+**El riesgo que sostiene la propuesta de valor tiene la base más chica** `[HALLAZGO]`. Costo vs. ingresos aplica a **1.326 proyectos** (~10% de la base del #1), porque exige configuración por Ingreso total. A eso se le suman el permiso de **Presupuestos** y que solo se dibuja en pérdida real: **tres estrechamientos apilados sobre el mismo desvío** (→ `03-personas`).
+
+**Horas reservadas tiene techo marginal: 52 proyectos** `[HECHO]`. Aunque se corrija el bug de display documentado, el alcance máximo es despreciable.
+
+**Comparación de rankings** (sin dividir fuentes, regla 4) `[HECHO]`: detección y consulta **coinciden en los dos primeros puestos**. **Retrabajo puntúa muy por encima de su detección** (8º en proyectos, 4º en consultas). Las tres métricas de horas a nivel proyecto son las que más divergen: 3º, 4º y 11º en detección, últimas en consulta.
+
+#### Peso de Risk Management dentro de MAIA
+
+**Julio-26: 234 de los 373 usuarios de MAIA (63%) y 479 de las 2.303 interacciones (21%) entran por banner** `[HECHO]`. Es decir: **dos tercios del alcance mensual de MAIA tocan una superficie de riesgo**, y aportan un quinto del volumen.
+
+A nivel cuenta: **73 de las 128 companies habilitadas tocaron un banner en tres meses**, y **57 (45% de la base) solo en julio** `[HECHO]`.
+
+> `[HIPÓTESIS — confirmada por el owner, sin dato]` **"Risk Management creó alcance."**
+> **Qué la refutaría:** que al cruzar el solapamiento resulte que casi todos los usuarios de banner ya usaban MAIA por otra vía en el mismo mes. En ese caso el banner **reencauzó tráfico** en lugar de crear alcance.
+> **Test pendiente:** usuarios únicos de MAIA en julio menos usuarios únicos que dispararon algo distinto de `risk_banner`. Es una sola consulta de Amplitude. 🔴 Ver pedidos de datos.
+
+> ⚠️ **Consecuencia de medición — la más importante de este bloque.** Si dos tercios del alcance de MAIA entran por banner, **un movimiento del KR de penetración de MAIA puede ser una feature de superficie funcionando o rompiéndose, y no adopción de MAIA.** El KR necesita cortes separados por origen. Cargado como anti-meta en `05-estrategia-okrs`.
+
+#### El caso abierto: tres tipos de consulta que caen a cero
+
+`deviationTaskHoursLoaded` (54 consultas en junio, 22,4% del mes), `deviationProjectIncome` (8) y `deviationProjectDelay` (11) caen a **cero** en las 287 consultas de julio y agosto. De las 12 companies que consultaron el primero en junio, **10 siguieron activas** y generaron 44 consultas, todas en los otros tres tipos. Bajo la tasa de junio, P(cero) ≈ 2,4e-32.
+
+**Una conversión más baja produce una pendiente; esto es un escalón.** Hay dos explicaciones vivas y **ninguna se distingue con los datos disponibles**:
+
+- `[HIPÓTESIS A]` **Monopolio de la primera fila.** La tarjeta muestra una sola fila por defecto y el orden es severidad primero; `tasks_without_collaborators` dispara con 51,1% promedio contra un umbral Alto de 20%, así que gana la primera fila casi siempre — aunque en la prioridad configurada esté 6º. El resto queda debajo del pliegue.
+  *Refutable con:* la tasa de `AI_RISK_BANNER_SHOW_MORE`.
+- `[HIPÓTESIS B]` **Regresión de fines de junio.** Los tres escalones caen en la misma ventana, que es también donde desaparece el tipo `unknown` (96 casos, todos entre el 14-may y el 17-jun): algo tocó ese pipeline ahí.
+  *Refutable con:* el desglose de display por tipo del lado backend.
+
+> ⚠️ **No escalar a IT hasta tener uno de los dos cortes.** La recomendación previa de abrir un ticket de regresión era una conclusión, no un dato.
+
+#### Lo que este análisis NO permite afirmar
+
+> _Se registra explícitamente para que no vuelva a circular (mismo criterio que las bajas)._
+
+| Afirmación | Por qué queda afuera |
+|---|---|
+| "Risk Management opera hoy con tres riesgos" | Se infirió el **display** a partir de los **clicks**. El log no informa qué se mostró. **Retirada explícitamente** — ver `01-producto` |
+| Tasas detección→click (ej. "0,15% de conversión") | Divide dos fuentes con unidades y ventanas distintas (regla 4) |
+| "A los usuarios les importan las tareas sin colaboradores y las vencidas" | El 91% de concentración es casi tautológico si son lo que más se muestra. No es preferencia revelada |
+| "La base decae sin releases", reforzado con la caída de agosto | La feature perdió tipos de consulta en el medio (ver el caso abierto). No sirve como segunda instancia de esa hipótesis |
+| "Hay una regresión de fines de junio" (como hecho) | Es una de dos hipótesis competidoras, no un hallazgo |
 
 ---
 
@@ -436,7 +584,9 @@ Por eso hoy **no se puede responder la pregunta que decide la iniciativa**: la p
 
 - Reparto de capacidad entre **construir capacidad y construir superficie**, e iniciativa de activación de cuentas dormidas → `08-roadmap`.
 - Metas, **anti-metas** y laddering de los KRs de AI → `05-estrategia-okrs`.
-- Por qué las cuentas dormidas no volvieron y qué pasó en **Crowe Global** → `07-discovery`.
+- Por qué las cuentas dormidas no volvieron, qué pasó en **Crowe Global** y por qué Risk Management **engancha en el momento y no genera vuelta** → `07-discovery`.
+- Recomendación sobre el **GA de Risk Management** y su lugar en el eje capacidad vs. superficie → `08-roadmap`.
+- Penetración de banners **por rol** y el segundo caso del sesgo de denominador → `03-personas`.
 - Estado real de las capacidades de MAIA y cronología de releases → `01-producto`.
 
 ## Pendientes — input interno
@@ -462,8 +612,20 @@ _Siete de estos salen del documento fuente de adopción; cinco están marcados a
 - [ ] **Instrumentar el evento de aprobación de acciones** de MAIA (Governance, Pilar 3 de `01`) — único camino a medir valor entregado en lugar de actividad.
 - [ ] **Revenue por company** (MRR/ARR + eventos de churn) para medir si MAIA impacta la retención. _Depende del reporte de HubSpot, ya pendiente en `04-mercado`._
 - [ ] **Propuesta de valor y métrica para el rol Colaborador** — hoy excluido del análisis, pero son **5.605 asientos adicionales**, más que todo el universo elegible actual (3.775). → `03-personas`.
-- [ ] **Métrica para las features del portafolio de AI sin instrumentar** (workflows, automatizaciones, risk management): ahí **no existe ninguna**. _(Marketplace tiene baseline de consumo desde el 2026-08-18; ver su sección. Su funnel de **creación** sigue pendiente, listado aparte.)_
-  - ⚠️ Antes de instrumentar: definir si workflows y risk management son features hermanas (denominador propio) o pilares de MAIA (se miden adentro). Criterio en `01-producto`.
+- [ ] **Métrica para las features del portafolio de AI sin instrumentar:** hoy queda **solo workflows / automatizaciones**. _(Marketplace tiene baseline de consumo desde el 2026-08-18 y **Risk Management tiene baseline de alcance desde el 2026-08-18** — ver sus secciones. Sigue faltando el funnel de **creación** de Marketplace y el **valor entregado** de Risk Management, listados aparte.)_
+  - ⚠️ Antes de instrumentar workflows: definir si es feature hermana (denominador propio) o pilar de MAIA (se mide adentro). Criterio en `01-producto`. **Risk Management ya está resuelto: pilar de MAIA con activación separada, medido acá adentro con corte por origen.**
+
+### Pedidos de datos abiertos — Risk Management
+
+_Siete pedidos nuevos, que se suman a los diez de arriba._
+
+- [ ] 🔴 **Solapamiento MAIA / banner por usuario** (usuarios únicos de MAIA en julio menos los que dispararon algo distinto de `risk_banner`). **Desbloquea** la hipótesis de que Risk Management creó alcance, y el eje capacidad vs. superficie de `08-roadmap`. Es una sola consulta de Amplitude.
+- [ ] 🔴 **Ventana temporal del export de detecciones del backend.** **Bloquea todo el bloque de calibración de umbrales:** si es histórico acumulado, no prueba estado actual.
+- [ ] 🟠 **Tasa de `AI_RISK_BANNER_SHOW_MORE`.** Decide si la fila única explica la concentración en dos riesgos (`[HIPÓTESIS A]` del caso abierto).
+- [ ] 🟠 **Desglose por tipo de lo que efectivamente se dibujó** (lado backend). Convierte la asimetría detección→consulta en métrica en lugar de inferencia, y refuta o confirma `[HIPÓTESIS B]`.
+- [ ] 🟠 **Denominador real del rol Director** — hoy inferido por resta (3.225 − 1.917 − 458 = 850). Afecta la penetración por rol de `03-personas`.
+- [ ] 🟠 **Evento de acción aplicada desde una respuesta de riesgo.** Risk Management ofrece acciones masivas reales (asignar colaboradores, mover deadlines, reasignar tareas) y **no existe ningún evento que registre si alguien las aplica**. Es el mejor lugar del producto para medir **valor entregado**, junto con la aprobación de Governance.
+- [ ] 🟡 **Aperturas sin respuesta generada** (el gap entre 1.364 aperturas de Amplitude y 653 filas de log). Calidad, no bloqueante del baseline.
 
 ### Pedidos de datos abiertos — Marketplace
 

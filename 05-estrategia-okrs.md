@@ -81,7 +81,7 @@ El core de **Agencias LatAm por sí solo no alcanza para crecer +50% YoY**, de a
 | **Techo observado hoy** (mejores cuentas) | **>23%** |
 | Piso observado (8 cuentas Enterprise "dormidas") | **3,3%** |
 
-### Cuatro anti-metas — errores de KR que la evidencia ya descarta
+### Cinco anti-metas — errores de KR que la evidencia ya descarta
 
 Esto es lo más accionable del análisis para este archivo: **no** fijar KRs sobre estas bases.
 
@@ -89,15 +89,24 @@ Esto es lo más accionable del análisis para este archivo: **no** fijar KRs sob
 2. **No usar volumen de interacciones como KR.** El 6% de los usuarios genera ~43% de las interacciones: mover ese número equivale a mover a dos docenas de personas. La métrica de salud es **la forma de la distribución**.
 3. **No usar calidad percibida (thumbs up/down) como KR.** La tasa de feedback explícito es del **1,5%**; el ratio 9:1 a favor mide quién se molesta en calificar, no si MAIA es buena. Requiere instrumentar otra cosa.
 4. **No confundir alcance con intensidad.** Son dos palancas separables que responden a tipos de release distintos (→ `08-roadmap`). Un solo número no las captura, así que un KR único los promedia y esconde el movimiento real.
+5. **No leer el alcance de Risk Management como alcance de MAIA.** ⬅️ _nueva (2026-08-18), y la más consecuente de las cinco._ En jul-26, **234 de los 373 usuarios de MAIA (63%) entran por un banner de riesgo**, y aportan el 21% de las interacciones. Si el KR de penetración se fija sobre el 11,6% agregado, **dos tercios de ese número los mueve una feature de superficie**: el KR puede subir o bajar porque Risk Management funciona —o se rompe— y no porque cambie la adopción de MAIA. **El KR necesita cortes separados por origen** (`AI_CHAT_OPEN` con `option = risk_banner` vs. el resto). Baseline propio de Risk Management: **7,3% en jul-26**.
 
 ### Dos huecos que la estrategia tiene que cubrir
 
-**Ninguna métrica actual mide valor entregado, solo uso.** Nada de lo medido dice si una interacción cambió una decisión operativa, evitó un desvío o protegió un margen. El candidato más directo: el evento de **aprobación explícita de acciones** del pilar de Governance, que existe en el producto y no se está registrando.
+**Ninguna métrica actual mide valor entregado, solo uso.** Nada de lo medido dice si una interacción cambió una decisión operativa, evitó un desvío o protegió un margen.
 
-**El portafolio de la vertical de AI está medido a medias: dos features con baseline, el resto sin instrumentar.** _(Corregido el 2026-08-18, dos veces: este bloque decía primero que "no tiene ninguna métrica", y después encuadraba el problema como "fuera de MAIA". MAIA es un miembro del portafolio, no el portafolio — ver la tabla en `01-producto`.)_
+Hay **dos candidatos** para cerrar ese hueco, y los dos existen en el producto sin registrarse:
+
+1. El evento de **aprobación explícita de acciones** del pilar de Governance.
+2. ⬅️ _nuevo (2026-08-18)_ **La acción aplicada desde una respuesta de riesgo.** Risk Management ofrece **acciones masivas reales** —asignar colaboradores, mover deadlines, reasignar tareas— y **no existe ningún evento que registre si alguien las aplica**. Es el mejor lugar del producto para instrumentar valor entregado: a diferencia de Governance, **la acción está pegada a un desvío concreto y medible**, así que permite cerrar el loop "hubo un riesgo → alguien hizo algo → el riesgo se resolvió".
+
+> **Por qué esto es estratégico y no técnico:** la hipótesis de `08-roadmap` dice que lo que predice disposición a pagar es que MAIA **ejecute trabajo**, no que se consulte. Risk Management es donde MAIA más cerca está de ejecutar trabajo, y es justo lo que no se mide.
+
+**El portafolio de la vertical de AI está medido a medias: tres features con baseline, una sin instrumentar.** _(Corregido el 2026-08-18, tres veces: este bloque decía primero que "no tiene ninguna métrica", después encuadraba el problema como "fuera de MAIA", y hasta hoy contaba dos features medidas en lugar de tres. MAIA es un miembro del portafolio, no el portafolio — ver la tabla en `01-producto`.)_
 
 - **Marketplace (agentes custom) sí tiene baseline:** 57 companies habilitadas, **1,40% de penetración en jul-26 con intensidad 17,7** — poca gente muy metida, el perfil inverso al de MAIA. Pero **es consumo, no creación**: el funnel de creación de agentes está instrumentado y sin pullear, así que no se sabe si la penetración baja viene de que no se crean agentes o de que los creados no se usan.
-- **Workflows, automatizaciones y risk management no tienen ninguna métrica.** Entregan valor en **trabajo ejecutado**, no en consultas — un chat se evalúa razonablemente por frecuencia de uso, un workflow automatizado no.
+- **Risk Management también tiene baseline** desde el 2026-08-18: **7,3% de penetración en jul-26**, intensidad plana en ~2,0, continuidad de conversación de 31,4% y subiendo mes a mes. **Sale de la lista de features sin outcome definido por la parte de alcance** — y **queda adentro por la de valor entregado**, que sigue sin instrumentar (ver arriba).
+- **Solo workflows / automatizaciones no tienen ninguna métrica.** Entregan valor en **trabajo ejecutado**, no en consultas — un chat se evalúa razonablemente por frecuencia de uso, un workflow automatizado no.
 
 > ⚠️ **Marketplace no se puede sumar ni comparar de frente contra MAIA:** otra base habilitada (57 companies contra 128), otro universo de roles (incluye Colaborador) y una definición de interacción más estricta. Detalle en `06-kpi-tree`.
 
@@ -120,7 +129,8 @@ MAIA es **gratuita para toda la base de beta testers** (128 companies al 13-ago-
 | ¿Cuál es la propuesta de valor para el rol **Colaborador**? | **El acceso ya existe** (header y tareas, desde el Orquestador); lo que falta es la propuesta de valor y la métrica. Excluido de la medición por decisión de scope, no por falta de acceso. Son 5.605 asientos — más que todo el universo elegible actual (3.775) |
 | ¿Cuál es el **modelo de negocio** de MAIA fuera de la consultoría? | El único revenue actual produce 1 a 3 usuarios profundos por cuenta. Hay cuentas gratuitas con penetración muy superior |
 | ¿Qué rol juega la **elección de modelo**? | El cambio a Sonnet 4.5 en marzo coincide con el segundo mayor salto de penetración de la serie (→ `01-producto`) |
-| ¿Cómo se miden las **otras features del portafolio**? | Marketplace ya tiene baseline de consumo (1,40% jul-26); le falta la **creación**. Workflows y risk management no tienen ninguna métrica: entregan valor en trabajo ejecutado, no en consultas |
+| ¿Cómo se miden las **otras features del portafolio**? | Marketplace ya tiene baseline de consumo (1,40% jul-26); le falta la **creación**. **Risk Management tiene baseline de alcance (7,3% jul-26); le falta el valor entregado.** Solo workflows sigue sin ninguna métrica |
+| ¿**Risk Management va a GA**, y con qué condición? | **Recomendación de Producto: no está en condiciones**, no por falta de features sino porque **cuatro cálculos de nivel proyecto producen porcentajes imposibles** y **la severidad no discrimina** (el desvío promedio supera el umbral Alto en las diez métricas que lo tienen configurado; la undécima no tiene umbral cargado). Detalle en `06-kpi-tree`, encuadre de roadmap en `08` |
 | ¿Qué se hace con **Marketplace**? ¿Es una apuesta de producto o una feature de nicho? | 57 companies habilitadas, 1,40% de penetración en jul-26. **MullenLowe Delta es el 87% de las interacciones** y una sola persona ahí explica ~un tercio del volumen total. **36 de 57 companies nunca registraron un usuario** (49% de los asientos). El Director es el único rol con penetración de dos dígitos (29,1%, sobre 55 asientos — señal, no magnitud). Falta todo el dato de creación de agentes |
 
 ## OKRs del trimestre
@@ -145,10 +155,11 @@ No es un framework formalizado tipo RICE con scoring numérico, sino un criterio
 ## Pendientes — input interno
 
 - [ ] OKRs de producto del trimestre (objetivos + key results con valor actual y meta) — pendiente, probablemente vengan por eje/squad.
-  - ⚠️ **Para el eje de AI ya hay baseline y cuatro anti-metas** (ver sección "Cómo laddera Producto a Deploy de AI en clientes"). **Bloqueo:** no fijar el KR de penetración hasta recalibrar el 11,6% con el corte por solo `AI_CHAT_SEND` (pendiente en `06-kpi-tree`).
+  - ⚠️ **Para el eje de AI ya hay baseline y cinco anti-metas** (ver sección "Cómo laddera Producto a Deploy de AI en clientes"). **Dos bloqueos, no uno:** (1) no fijar el KR de penetración hasta recalibrar el 11,6% con el corte por solo `AI_CHAT_SEND`; (2) **no fijarlo tampoco sin corte por origen**, porque el 63% de los usuarios de MAIA entra por banner de riesgo. Los dos pendientes viven en `06-kpi-tree`.
 - [x] Cómo laddera Producto a "Deploy de AI en clientes": ¿qué métrica de producto la mide? _(Resuelto 2026-08-17: **penetración sobre asientos elegibles**, con metas diferenciadas por rol. Ver sección dedicada. Sigue abierto el laddering de las otras dos prioridades.)_
-- [ ] **Definir outcome y meta para las features del portafolio de AI todavía sin métrica** (workflows/automatizaciones, risk management, y la **creación** de agentes en Marketplace) — entregan valor en trabajo ejecutado, no en consultas, así que la vara de MAIA no les sirve. _(Marketplace tiene baseline de **consumo** desde el 2026-08-18; sale de esta lista por consumo y sigue adentro por creación.)_
-  - ⚠️ **Depende de una definición previa:** si workflows y risk management son features hermanas o pilares de MAIA (ver criterio de Feature Access en `01-producto` → "El portafolio de la vertical de AI"). De eso depende si llevan métrica propia o se miden dentro de MAIA.
+- [ ] **Definir outcome y meta para lo que del portafolio de AI sigue sin métrica** — entregan valor en trabajo ejecutado, no en consultas, así que la vara de MAIA no les sirve. Queda adentro de esta lista: **workflows/automatizaciones** (sin ninguna métrica), la **creación** de agentes en Marketplace, y el **valor entregado** de Risk Management. _(Marketplace salió por consumo el 2026-08-18; **Risk Management salió por alcance el 2026-08-18** — 7,3% de penetración jul-26.)_
+  - ⚠️ **Depende de una definición previa, ya resuelta para dos de tres:** Marketplace es feature hermana, **Risk Management es pilar de MAIA con activación separada** (FA propio pero mismo denominador — resuelto el 2026-08-18 en `01-producto`). **Falta solo workflows.**
+- [ ] **Instrumentar el evento de acción aplicada desde una respuesta de riesgo** — junto con la aprobación de Governance, es el camino a medir valor entregado en lugar de uso. Pedido cargado en `06-kpi-tree`.
 - [ ] **Definir el modelo de negocio de MAIA** más allá del servicio de consultoría, resolviendo la tensión de cotizar por licencia un valor que se concentra en 1 a 3 personas.
 - [x] Marco de priorización de Producto. _(Alineación a las 3 prioridades del plan + valor vs. esfuerzo; no es un framework formal tipo RICE.)_
 - [x] Propagar la expansión de verticales/EMEA a `03-personas` y `04-mercado`. _(Hecho.)_

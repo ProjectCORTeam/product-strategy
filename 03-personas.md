@@ -1,6 +1,6 @@
 # 03 — Personas (COR)
 
-> **Última actualización:** 2026-08-17
+> **Última actualización:** 2026-08-18
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Perfiles de usuario y segmentos de COR, para diseñar features y evaluar impacto. COR es B2B: el **cliente es la agencia**, y dentro conviven varios **roles-usuario**, cada uno con su capa de permisos. Distinguir **comprador** (quién decide/paga) de **usuarios** (quién opera el producto).
 
@@ -53,6 +53,7 @@ COR tiene 6 roles de usuario (base, fijos — no se crean roles nuevos), cada un
 - **Jobs-to-be-done:** del brief al proyecto, cumplir deadlines y presupuesto, asignar recursos sin sobrecargar (Planner/capacity), detectar desvíos a tiempo.
 - **Dolor:** re-planificación manual, poca visibilidad de capacidad, desvíos que aparecen tarde. **Evidencia (`07`, I-02b/c/d):** es el rol **más insatisfecho de todos** y ya arranca mal en onboarding; sus quejas top son usabilidad, performance y **app mobile**.
   > ⚠️ _Posible factor estructural: de fábrica, el PM no tiene acceso a Presupuestos, que es el permiso que habilita ver la **rentabilidad/performance de proyectos** (`06-kpi-tree`). Si esto no se ajusta por cuenta, el PM opera el proyecto sin ver el indicador de rentabilidad que en teoría debería guiar sus decisiones — una hipótesis a cruzar con discovery._
+  > _**Reforzado el 2026-08-18 con Risk Management:** el permiso de Presupuestos también condiciona el desvío de **costo vs. ingresos**, el único de los 10 riesgos con lectura financiera. El PM es el rol que más abre banners (147 usuarios en jul-26) y es el que no puede ver ese riesgo. Ver "Adopción de Risk Management por rol", más abajo._
 - **Satisfacción (Retently, ago-26):** **NPS −40.7** (n=248) — el peor de los 6 roles. Onboarding −46.8 → adopción −38.7.
 - **Relación con COR:** núcleo operativo del producto + automatización con MAIA.
 
@@ -114,7 +115,40 @@ Lo que sí distingue a los roles es la **intensidad**:
 
 > ⚠️ _El rol **Colaborador** está excluido de esa medición: MAIA se le habilitó a un grupo muy reducido desde jun-2026 y **su propuesta de valor todavía no está definida**. No es un detalle menor — son **5.605 asientos**, más que todo el universo hoy elegible para MAIA (3.775)._
 
-**Patrón central:** cuanto **más intensivo** es el uso del producto, **peor** la satisfacción. Los roles operativos (PM + Colaborador) son el 79% del volumen de feedback y los más críticos; los roles de lectura/agregado están claramente mejor. El dolor vive en la operación diaria, no en el reporting.
+### Patrón central: intensidad de uso vs. satisfacción
+
+Cuanto **más intensivo** es el uso del producto, **peor** la satisfacción. Los roles operativos (PM + Colaborador) son el 79% del volumen de feedback y los más críticos; los roles de lectura/agregado están claramente mejor. El dolor vive en la operación diaria, no en el reporting.
+
+_(Es una lectura del bloque de NPS de arriba, no del bloque de Risk Management que sigue.)_
+
+### Adopción de Risk Management por rol (2026-08-18)
+
+Risk Management (los banners de riesgo dentro del proyecto) tiene el **mismo universo de roles que MAIA**: PM, Director y C-Level. **Colaborador, Freelancer y Cliente no ven banners.**
+
+**Penetración de banners por rol, jul-26** `[HECHO — con salvedad]`
+
+| Rol | Usuarios únicos | Asientos elegibles | Penetración |
+|---|---:|---:|---:|
+| Project Manager | 147 | 1.917 | **7,7%** |
+| Director | 59 | ~850 *(inferido)* | **~6,9%** |
+| C-level | 29 | 458 | **6,3%** |
+
+_Salvedad: el denominador de Director está **inferido por resta** (3.225 − 1.917 − 458 = 850). Pedido de dato abierto en `06-kpi-tree`._
+
+**Confirma el patrón de `[BAJA-01]` en una feature distinta.** En bruto el PM parece dominar —**63% de los usuarios únicos de banners son PM**—, pero **normalizado por asientos los tres roles empatan** (7,7% / 6,9% / 6,3%). _(Ojo al citar: hay otro 63% dando vueltas en este análisis, el de "usuarios de MAIA que entran por banner". Son cosas distintas.)_ Es el **segundo caso registrado del mismo sesgo de denominador**, ahora en una feature que no es el chat. Registrarlo como tal: cada vez que aparezca un corte por rol en bruto, normalizar antes de leerlo.
+
+**Refuerza el hallazgo abierto de Presupuestos** `[HALLAZGO]`**.** El desvío de **costo vs. ingresos** —el único riesgo con lectura financiera— exige el permiso de **Presupuestos**, que el PM **no tiene de fábrica**. O sea: **el rol que más entra a proyectos no puede ver el único desvío que habla de rentabilidad.** La evidencia de uso lo acompaña: **8 consultas en tres meses**, con una conversión a conversación de 12,5% contra un baseline de 31,4%. A eso se le suman otros dos estrechamientos sobre la misma métrica: aplica solo a 1.326 proyectos (los que tienen Ingreso total configurado) y solo se dibuja en pérdida real. Son **tres filtros apilados sobre el desvío que sostiene la propuesta de valor del producto**.
+_⚠️ Por qué es `[HALLAZGO]` y no `[HECHO]`: **n = 8 consultas**. La dirección (el permiso estrecha el alcance del riesgo financiero) es sólida y replica el patrón ya conocido de Presupuestos; **la magnitud no se puede afirmar con esa muestra**, y el 12,5% de conversión va con la misma salvedad en `06-kpi-tree`. No usarlo para dimensionar una iniciativa._
+
+> ⚠️ **Anomalía de agosto — pendiente de verificación, NO cargar como hallazgo.**
+>
+> | Rol | Interacciones jul → ago | Únicos jul → ago |
+> |---|---|---|
+> | Project Manager | 328 → 67 (**−80%**) | 147 → 46 |
+> | Director | 109 → 26 (−76%) | 59 → 16 |
+> | C-level | 42 → **40 (−5%)** | 29 → 9 |
+>
+> El C-Level **sostiene volumen con un tercio de los usuarios**: 4,4 interacciones por usuario en agosto contra 1,45 histórico. Con **n=9** eso pueden ser una o dos personas. Es el **único segmento que no cae** y **contradice la lectura previa de que el C-Level no se engancha con banners**. **Verificar antes de escribir cualquier conclusión de rol** — y ojo con la estacionalidad de julio-agosto, ya marcada como confounder abierto en `08-roadmap`.
 
 ## El "champion" de adopción
 
@@ -133,3 +167,6 @@ El **champion** es una persona **dentro de la organización cliente** (no de COR
 - [ ] **Personas por vertical nuevo** (IT Consulting, Law & Accounting, Brands, Media): comprador, usuarios y jobs-to-be-done propios de cada industria.
 - [ ] **Propuesta de valor de MAIA para el rol Colaborador** — hoy sin definir, y es el rol con más asientos (5.605). Condiciona si MAIA se libera a toda la base (`05`).
 - [ ] **¿La meseta del C-level es saturación o falta de valor para el rol?** Ver `07-discovery` (tema abierto de MAIA) y `06-kpi-tree` (hipótesis etiquetada).
+  - ⚠️ **Dato nuevo en tensión (2026-08-18):** en Risk Management el C-Level es el **único rol que no cae en agosto** (−5% de interacciones contra −80% del PM), sosteniendo 4,4 int./usuario contra 1,45 histórico. Con n=9 no alcanza para nada, pero **apunta en dirección contraria a "el C-Level no se engancha"**. Verificar antes de cerrar la pregunta.
+- [ ] **Denominador real de asientos de Director** — hoy inferido por resta (~850). Afecta la penetración por rol de MAIA y de Risk Management. Pedido abierto en `06-kpi-tree`.
+- [ ] **Decidir si el acceso del PM a Presupuestos es configuración o decisión de producto.** Ya estaba abierto desde la visión (`01-producto`); Risk Management lo vuelve más concreto — el rol que más abre banners no puede ver el único riesgo financiero.
