@@ -97,7 +97,9 @@ North Star (arriba) → palancas de negocio → métricas operativas → métric
 >
 > **Ampliada el 2026-08-18** con **Marketplace (agentes custom)**, que hasta ahora no estaba medido en este archivo.
 
-### La vertical de AI son al menos dos features, no una
+### La vertical de AI es un portafolio de features — hoy hay dos medidas
+
+> _Confirmado por el owner el 2026-08-18: la vertical de AI es el conjunto de features con AI en las que COR apuesta. **MAIA es un miembro, no la vertical.** El "al menos dos" dejó de ser una sospecha inferida de los datos y pasó a ser la definición declarada. Ficha por feature en `01-producto`._
 
 Todo lo que sigue se organiza en **dos bloques hermanos con denominadores distintos**. Confundirlos es el mismo error de denominador que produjo `[BAJA-01]`.
 
@@ -285,7 +287,7 @@ _Salvedad técnica: el filtro actual captura solo `agent_type` = clone u orchest
 
 **Todo lo que se mide acá es uso: cuánta gente, cuántas veces, con qué frecuencia. Ninguna métrica de esta sección dice si MAIA sirve.** No hay forma de saber, con los datos disponibles, si una interacción cambió una decisión operativa, evitó un desvío o protegió un margen. La tasa de feedback del 1,5% tampoco alcanza como proxy.
 
-La brecha es **más grave para el resto de la vertical de AI que para MAIA**. Un chat puede evaluarse razonablemente por frecuencia de uso; un workflow automatizado o una alerta de risk management, no — su valor está en el trabajo que ejecutan, y ese trabajo hoy no se registra como evento.
+La brecha es **más grave para las otras features del portafolio de AI que para MAIA**. Un chat puede evaluarse razonablemente por frecuencia de uso; un workflow automatizado o una alerta de risk management, no — su valor está en el trabajo que ejecutan, y ese trabajo hoy no se registra como evento.
 
 > ✏️ **Corregido el 2026-08-18.** Este bloque afirmaba que "ninguna métrica actual captura la vertical de AI fuera de MAIA". **Era falso para Marketplace**, que tiene serie de diez meses con denominador propio (ver la sección de arriba). Sigue siendo cierto para **workflows/automatizaciones, risk management y el valor entregado por los agentes custom** — de Marketplace hay consumo medido, no creación ni valor.
 
@@ -460,7 +462,8 @@ _Siete de estos salen del documento fuente de adopción; cinco están marcados a
 - [ ] **Instrumentar el evento de aprobación de acciones** de MAIA (Governance, Pilar 3 de `01`) — único camino a medir valor entregado en lugar de actividad.
 - [ ] **Revenue por company** (MRR/ARR + eventos de churn) para medir si MAIA impacta la retención. _Depende del reporte de HubSpot, ya pendiente en `04-mercado`._
 - [ ] **Propuesta de valor y métrica para el rol Colaborador** — hoy excluido del análisis, pero son **5.605 asientos adicionales**, más que todo el universo elegible actual (3.775). → `03-personas`.
-- [ ] **Métrica para la vertical de AI fuera de MAIA y de Marketplace** (workflows, automatizaciones, risk management): ahí sí **no existe ninguna**. _(Marketplace pasó a tener baseline el 2026-08-18; ver su sección.)_
+- [ ] **Métrica para las features del portafolio de AI sin instrumentar** (workflows, automatizaciones, risk management): ahí **no existe ninguna**. _(Marketplace tiene baseline de consumo desde el 2026-08-18; ver su sección. Su funnel de **creación** sigue pendiente, listado aparte.)_
+  - ⚠️ Antes de instrumentar: definir si workflows y risk management son features hermanas (denominador propio) o pilares de MAIA (se miden adentro). Criterio en `01-producto`.
 
 ### Pedidos de datos abiertos — Marketplace
 

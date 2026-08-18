@@ -37,12 +37,12 @@ Estos archivos alimentan el contexto de un **Proyecto de Claude ("COR – Produc
 
 | Archivo | Estado |
 |---|---|
-| `01-producto.md` | Casi completo — suma la **arquitectura de orquestación** de MAIA (punto de entrada único, deploy 22-jul-26) y la **salvedad de proactividad** (no disponible hoy), ago-2026. **Actualizado 2026-08-18:** Marketplace descrito como **feature separada de MAIA** y catálogo de modelos al día — pendiente confirmar anti-scope con el equipo |
+| `01-producto.md` | Casi completo — suma la **arquitectura de orquestación** de MAIA (punto de entrada único, deploy 22-jul-26) y la **salvedad de proactividad** (no disponible hoy), ago-2026. **Actualizado 2026-08-18:** suma la **tabla del portafolio de la vertical de AI** (MAIA es un miembro, no el portafolio), Marketplace descrito como **feature hermana** y catálogo de modelos al día — pendiente confirmar anti-scope con el equipo |
 | `02-equipos.md` | Completo |
 | `03-personas.md` | Casi completo — pendiente personas por vertical nuevo y detalle de rollout/champion |
 | `04-mercado.md` | Competidores confirmados — pendiente vertical nuevo, precio y cruce con churn |
 | `05-estrategia-okrs.md` | Marco de priorización confirmado + laddering de "Deploy de AI" con baseline y anti-metas (ago-2026) — pendientes OKRs de producto por eje |
-| `06-kpi-tree.md` | North Star de negocio y engagement con baseline real; **sección de AI reescrita (ago-2026)**: penetración sobre asientos elegibles + etiquetado de evidencia. **Actualizado 2026-08-18:** cubre **dos features con denominadores separados** (MAIA y Marketplace/agentes custom) y se retiró la afirmación de que no existía métrica fuera de MAIA — pendiente North Star de producto y calidad de servicio |
+| `06-kpi-tree.md` | North Star de negocio y engagement con baseline real; **sección de AI reescrita (ago-2026)**: penetración sobre asientos elegibles + etiquetado de evidencia. **Actualizado 2026-08-18:** cubre **dos features con denominadores separados** (MAIA y Marketplace/agentes custom) y se retiró la afirmación de que el portafolio de AI no tenía métrica más allá de MAIA — pendiente North Star de producto y calidad de servicio |
 | `07-discovery.md` | Repositorio estructurado con research primario (Retently) — pendiente corte por segmento/vertical |
 | `08-roadmap.md` | Estructura y temas candidatos (suma activación de la base de MAIA, ago-2026) — el roadmap real todavía no está cargado |
 

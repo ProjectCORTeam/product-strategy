@@ -146,6 +146,24 @@ Entidades núcleo de COR y cómo se relacionan (vocabulario a usar de forma cons
 - Roles: **Área → Posición**, y el **Usuario** tiene una Posición.
 - Organización: **Equipo → Usuarios** (independiente de Área/Posición).
 
+## El portafolio de la vertical de AI
+
+> _Cargado el 2026-08-18 con la definición del owner. La **vertical de AI** es el conjunto de features con AI en las que COR apuesta. **MAIA es un miembro del portafolio, no el portafolio.** Cada feature nueva se carga como una fila de esta tabla; las métricas de cada una viven en `06-kpi-tree`, con denominador propio._
+
+**Criterio de pertenencia.** Precedente Marketplace: **Feature Access propio + base habilitada propia + universo de roles propio = feature hermana**, con ficha y denominador propios. Si viaja con el Feature Access de MAIA y sobre su misma base, es **pilar/capacidad de MAIA** y se mide adentro.
+
+| Feature | Qué es | Feature Access | Base habilitada | Roles elegibles | Estado de producto | Estado de medición |
+|---|---|---|---|---|---|---|
+| **MAIA** | Capa de orquestación y punto de entrada único; deriva a especialistas no elegibles por el usuario | El único de MAIA | **128 companies** (13-ago-26) | PM + Director + C-Level. *(El Colaborador tiene acceso desde el Orquestador, 22-jul-26; excluido de la medición por scope, no por permisos)* | **Live**, beta comercial | Baseline: **penetración 11,6%** jul-26 `[provisorio]` |
+| **Marketplace (agentes custom)** | Agentes que la empresa arma a medida y elige a mano del selector; quedan **fuera de la orquestación** | **Dos:** "Marketplace" y "Marketplace Maiaker" (independientes entre sí y del de MAIA) | **57 companies** (18-ago-26) | Los cuatro: C-Level, Director, PM y Colaborador tienen Ver de fábrica. **Crear:** solo C-Level y Director | **Live** | Baseline de **consumo**: 1,40% jul-26, intensidad 17,7. **De creación no hay dato** |
+| **Workflows / automatizaciones** | _(a cargar)_ Agentic workflows disparados por evento, corriendo en segundo plano | ❓ **A confirmar** | ❓ | ❓ | **No implementado** — figura en la landing, hoy es roadmap. Lo que existe es acción conversacional a pedido | **Sin métrica** |
+| **Risk Management** | _(a cargar)_ Detección de riesgo, hoy a nivel proyecto | ❓ **A confirmar** | ❓ | ❓ | **Beta** desde may-26, a nivel proyecto | **Sin métrica** |
+| _(fila libre para la próxima feature)_ | | | | | | |
+
+> ⚠️ **Dos filas en el limbo — pendiente de resolver.** Este archivo describe hoy los *agentic workflows* dentro del **Pilar 1 de MAIA (Automatización)** y Risk Management como **"Risk Management + MAIA"** (Pilar 2). El owner los nombra como features del portafolio. **Aplicar el criterio de Feature Access para decidirlo**: si tienen FA propio, salen de los pilares y quedan como filas plenas con denominador propio en `06`; si viajan con el FA de MAIA, vuelven a ser pilares y se miden adentro. **La decisión no es cosmética:** define si compiten como iniciativas independientes por capacidad en `08-roadmap` y si llevan KR propio en `05`.
+
+> ⚠️ **Las penetraciones de features distintas no son sumables ni comparables de frente.** Bases habilitadas distintas, universos de roles distintos y definiciones de interacción distintas. `AI_CHAT_SEND` es el único evento que significa lo mismo en MAIA y en Marketplace — es el que hay que usar para comparar. Detalle en `06-kpi-tree`.
+
 ## MAIA — la capa de AI de COR
 
 **Posicionamiento:** MAIA es el **sistema operativo de AI de COR** — concentra toda la IA de la agencia en un solo lugar: agentes que ejecutan trabajo real, insights de proyecto en segundos, todo medido, gobernado y conectado a la rentabilidad. Se organiza en tres pilares.
