@@ -183,7 +183,20 @@ Sin estas tres definiciones los números de abajo no se pueden leer, y su ausenc
   >
   > **Pero no miden lo mismo, y por eso el KR necesita cortarlos.** `AI_CHAT_SEND` mide **demanda articulada por el usuario** — alguien tuvo una pregunta y la escribió. Los otros tres miden **demanda inducida por rieles que construimos nosotros**. Las dos cosas son valiosas y ninguna es falsa, pero responden preguntas de producto distintas: la primera dice si MAIA resuelve una necesidad propia del usuario, la segunda si nuestras superficies de entrada funcionan. **Un número que las suma no deja ver cuál de las dos se movió.** Vale igual para la intensidad: un 6,2 hecho de seis preguntas escritas no significa lo mismo que uno hecho de seis clicks en respuestas sugeridas.
 
-**Base habilitada:** **128 companies** al 13-ago-2026 (~43% de los +300 clientes de COR), por habilitación progresiva a beta testers desde jul-2025. La habilitación sigue abierta y hay una decisión pendiente sobre liberar a toda la base.
+**Base habilitada:** **128 companies** al 13-ago-2026 (~43% de los +300 clientes de COR), por habilitación progresiva a beta testers desde jul-2025.
+
+> 🚨 **CORTE DE SERIE — release a toda la base, semana del 24-ago-2026** _(cargado el 2026-08-19)_. La "decisión pendiente sobre liberar a toda la base" **se tomó, y fuera de Producto.** MAIA pasa de **128 a ~300 companies** (~172 nuevas) e **incorpora al rol Colaborador**.
+>
+> **Qué le hace a este archivo:** el universo de asientos elegibles saltaría de **~3.775 a ~15.000**, y **la penetración caería de 11,6% a ~2,6% el mismo día sin que nada empeore.** Toda comparación que cruce esa fecha sin cambiar de denominador es falsa.
+>
+> **Convención que rige de acá en adelante** (fijada con los OKRs, ver `05-estrategia-okrs`):
+> 1. **La serie oficial se mide sobre el panel Enterprise + Midmarket**, roles PM + Director + C-Level. Mantiene comparables los nueve meses de historia y es el universo sobre el que se monetiza.
+> 2. **El rol Colaborador va a ficha propia**, con denominador y métrica separados: **~15 usuarios recurrentes sobre 5.605 asientos = 0,27%**. Dos órdenes de magnitud por debajo, **lo cual es esperable**: el rol no tiene propuesta de valor definida. → `03-personas`.
+> 3. **Las ~172 companies nuevas fuera de E+MM se reportan, pero no llevan meta**: población nueva sin baseline.
+>
+> ⏰ **Dos cosas que tienen que pasar ANTES del release** — las dos son consultas, no desarrollo:
+> - **Congelar el panel de referencia E+MM**: lista de companies y asientos elegibles del día previo. **Sin esto se pierde la capacidad de distinguir mejora de dilución** durante los próximos meses. Después hay que reconstruirlo a mano.
+> - **Instrumentar la activación con marca de cohorte.** Sin eso **el KR3 de O2 no existe** y **el experimento de activación más grande que COR va a correr se pierde** — 172 companies el mismo día. El precedente está medido: en julio se habilitaron 79 companies de Risk Management y los usuarios pasaron de 232 a 234.
 
 > ⚠️ **Incomparabilidad con el baseline anterior de este archivo.** Todos los números de esta sección excluyen al rol **Colaborador**; los de la versión anterior lo incluían. Julio-26 es **373 usuarios / 2.303 interacciones** acá contra 413 / 2.463 antes. **MAIA no empeoró — cambió el denominador y el universo de roles.** El Colaborador se excluye porque **su propuesta de valor no está definida**, y porque el owner decidió mantenerlo fuera de esta medición _(ago-2026)_. **Ojo con el fundamento:** la documentación funcional del Orquestador (22-jul-26) le da acceso a MAIA desde el **header** y **desde dentro de una tarea**, así que el argumento de "alcance marginal" ya no se sostiene solo. **Es una decisión de scope del análisis, no una limitación del dato.** Si se decide incorporarlo, son 5.605 asientos contra los 3.775 elegibles actuales: el denominador de toda esta sección cambia de escala. Única excepción: la tabla de distribución de frecuencia, que Amplitude no entrega abierta por rol.
 
@@ -205,6 +218,8 @@ Sin estas tres definiciones los números de abajo no se pueden leer, y su ausenc
 _Criterio de corte: asientos habilitados al **inicio** de cada mes — una cuenta dada de alta el día 20 recién computa el mes siguiente. Es deliberadamente conservador con las altas recientes._
 
 > 📌 **Marca de release en la serie: el Orquestador se deployó el 22-jul-2026** (→ `01-producto`). Julio queda partido (21 días sin, 9 con) y **no sirve como corte**; agosto es el primer mes limpio. Quien lea el número de agosto sin esto no puede interpretarlo. El test de la hipótesis capacidad vs. superficie que se apoya en este corte vive en `08-roadmap`.
+>
+> 🚨 **Segunda marca, y esta parte la serie en dos: el release a toda la base de la semana del 24-ago-2026.** Agosto queda partido igual que julio, y **septiembre es el primer mes bajo el denominador nuevo**. **Los valores de esta tabla no son comparables con los posteriores al 24-ago sin cambiar de denominador** — ver el corte de serie en "Base habilitada". La serie oficial pasa al **panel Enterprise + Midmarket**.
 
 **Baseline oficial jul-26: penetración 11,6%** `[HECHO]`.
 _Corregido el 2026-08-18. La salvedad anterior decía que el numerador incluía aperturas de panel sin escribir y concluía que el signo neto del sesgo era desconocido. **Las dos cosas eran incorrectas:** los cuatro eventos son conversación con respuesta generada, y las aperturas por `header` nunca estuvieron en la serie. **El numerador está limpio.**_
@@ -262,6 +277,23 @@ _Única tabla de la sección que incluye al rol Colaborador (Amplitude no entreg
 **La forma de la base es estable** `[HECHO]`: el bucket de 1 interacción oscila entre 30% y 46% sin tendencia, y el de 2-5 entre 38% y 46% durante los diez meses. Lo que se mueve es la cola alta.
 
 **El bucket 51-100 no existía antes de abril-2026** — cero usuarios durante cinco meses consecutivos `[HECHO]`.
+
+> 🔍 **Apertura fina del bucket `2-5` de jul-26** _(cargada el 2026-08-19 con los OKRs; el total y todo lo demás no cambia)_. El bucket agregado de 168 usuarios se abre así:
+>
+> | Interacciones en el mes | Usuarios | % | % que supera este nivel |
+> |---|---:|---:|---:|
+> | **1** | **148** | **35,8%** | 64,2% |
+> | 2 | 84 | 20,3% | 43,8% |
+> | 3 | 33 | 8,0% | 35,8% |
+> | 4 | 29 | 7,0% | 28,8% |
+> | 5 | 22 | 5,3% | 23,5% |
+> | 6–10 | 40 | 9,7% | 13,8% |
+> | 11–20 | 31 | 7,5% | 6,3% |
+> | 21–50 | 20 | 4,8% | 1,5% |
+> | 51–100 | 6 | 1,5% | — |
+> | **Total** | **413** | | |
+>
+> **Por qué importa:** el **35,8% del bucket de 1 interacción es el baseline del KR2 de O2** (`05-estrategia-okrs`), y la columna "% que supera este nivel" es lo que hace legible el **umbral de ≥4 interacciones del KR4 de O2** — a 4 interacciones supera el 28,8% de la base, así que el umbral es deliberadamente bajo y pide **que la gente vuelva**, no excelencia. _(Recordatorio: estos 413 **incluyen al Colaborador**; el KR1 de O2 mide sobre 373, que lo excluye.)_
 
 **Concentración del volumen (jul-26):** los ~26 usuarios de los buckets 21-50 y 51-100 son el **6% de la base activa y generan ~43% de las interacciones**; los 148 usuarios de una sola interacción son el 36% de la base y aportan ~5% `[HALLAZGO]`.
 _Es una estimación, no una medición: Amplitude entrega buckets, así que se multiplica la cantidad de usuarios de cada bucket por el punto medio de su rango (1 / 3,5 / 8 / 15,5 / 35,5 / 75,5). El total estimado de julio (2.699) sobreestima al real (2.463) en 10%. La concentración es robusta al error de estimación; las cifras exactas no — citar como "aprox."._
@@ -356,6 +388,41 @@ Reemplaza la lista anterior, que se apoyaba en conteos absolutos.
 | ~~Volumen de interacciones~~ | Descartada | Mide a ~26 personas |
 | ~~% de power users vs. uso único~~ | Reformulada | Absorbida por "forma de la distribución" |
 | ~~Calidad percibida (thumbs)~~ | Descartada | Tasa de feedback 1,5%. Ver `[BAJA-02]` |
+
+> ✅ **Dejaron de ser candidatas el 2026-08-19.** Los OKRs de la vertical de AI están fijados en `05-estrategia-okrs` y **eligieron de esta lista**: penetración (KR1 de O2), forma de la distribución (KR2 de O2, vía el bucket de 1 interacción), penetración por cuenta (KR3 y KR4 de O2) y acción aplicada (KR3 de O1). El corte por origen **quedó fuera del KR pero sigue siendo obligatorio para leerlo**. Ver el mapa de instrumentación abajo.
+
+### Cómo se miden los KRs de la vertical de AI (2026-08-19)
+
+> _Los objetivos y sus metas viven en `05-estrategia-okrs`. **Acá vive el instrumento:** de dónde sale cada número, con qué filtro, y qué falta para que exista. Un KR sin fila en esta tabla no se puede reportar._
+
+**O1 — Confiabilidad y calidad**
+
+| KR | Instrumento | Fuente | Estado |
+|---|---|---|---|
+| **O1-KR1 — Precisión verificada** | **Muestra manual mensual** de respuestas cotejadas contra el backend. **No hay forma automática** y por eso necesita dueño con nombre | Log de conversaciones (Metabase) + backend | ⛔ **Sin instrumentar y sin dueño.** Es el KR más caro del set |
+| **O1-KR2 — Cobertura de respuesta** | % de consultas que terminan en "no tengo esa información". Sale de la **corrida sistemática del análisis de fricciones**, que ya tiene método y solo necesita **cadencia** | Log de conversaciones (Metabase) | 🟠 Método definido, sin cadencia. **Cada consulta sin respuesta es una funcionalidad que falta** → alimenta `08-roadmap` |
+| **O1-KR3 — Éxito de ejecución** | % de acciones aprobadas que se completan sin error. **Depende del evento de acción aplicada**, cuya spec ya está acordada (IDs de entidades o `batch_id`) | Amplitude / backend, evento a construir | 🔴 **La pieza más apalancada del árbol** — el mismo evento alimenta este KR, dos KRs de O3 y una condición de salida de beta de Risk Management |
+| **O1-KR4 — Conversión de apertura** | Aperturas que derivan en consulta. **Instrumento: `AI_CHAT_OPEN` con `option = header`** contra los eventos de conversión — exactamente el pedido que ya estaba abierto en este archivo | Amplitude | 🔴 **Promovido de 🟡 el 2026-08-19: ahora sostiene un KR.** Ver la salvedad de las dos lecturas, abajo |
+| **O1-KR5 — Tickets por 100 usuarios activos** | Tickets sobre MAIA ÷ usuarios activos × 100. **El dato existe, solo hay que cortarlo** | Sistema de soporte + Amplitude | 🟠 **Alerta temprana del release.** Normalizar es lo que separa "algo se rompió" de "hay más gente" |
+
+> ⚠️ **O1-KR4 — dos lecturas compitiendo, y la primera consulta decide** _(2026-08-19)_. El set de OKRs propone como pista que **los ~40 usuarios de diferencia entre 413 y 373 en jul-26** sean gente que abrió MAIA sin llegar a consultar. **Este archivo ya explica esa diferencia de otra manera:** los 413 del histograma **incluyen al rol Colaborador** y los 373 de la serie **lo excluyen** (ver la nota de incomparabilidad del bloque de definiciones). Las dos lecturas se cargan y **ninguna se da por buena**: la consulta de `option = header` las separa de una vez, porque mide directamente aperturas sin conversión en lugar de inferirlas de un residuo. **Si el volumen de `header` es chico, la pista de los ~40 era el Colaborador.** ⛔ Sigue en pie: **no incorporar `header` a la serie de penetración bajo ningún concepto.**
+
+**O2 — Adopción validada (panel Enterprise + Midmarket)**
+
+| KR | Instrumento | Fuente | Estado |
+|---|---|---|---|
+| **O2-KR1 — Alcance** | Usuarios únicos ÷ asientos elegibles del **panel Enterprise + Midmarket**, roles PM + Director + C-Level | Amplitude + export de asientos por segmento | ⚠️ **Baseline cargado (11,6%) pero de otro universo** — ver la salvedad abajo. Los asientos del panel salen del **Corte E**, sin correr |
+| **O2-KR2 — Retorno** | % de usuarios con **exactamente 1 interacción** en el mes, sobre el histograma de frecuencia | Amplitude, tabla de distribución | ✅ **Con baseline: 35,8% (148 de 413) en jul-26.** ⚠️ El denominador **incluye Colaborador** — ver abajo |
+| **O2-KR3 — Activación de cohorte** | % de companies con primer usuario **dentro de los 30 días** de habilitadas. **Por cohorte mensual, nunca agregado** | Amplitude + export de altas con fecha | 🔴 **No existe sin marca de cohorte.** ⏰ Instrumentar **antes del release** o el experimento de las 172 companies se pierde |
+| **O2-KR4 — Recuperación de dormidas** | Penetración e intensidad de las 8 cuentas Enterprise dormidas, medidas por separado | Amplitude, corte por company | 🟠 Medible hoy. **Bloqueado por la verificación de churn**, que ahora frena un KR y no solo el dimensionamiento de una iniciativa |
+
+> ⚠️ **Salvedad de denominador de O2-KR1 — la más importante de esta sección.** El baseline de **11,6%** no se calculó sobre el panel Enterprise + Midmarket: es **373 usuarios ÷ 3.225 asientos**, o sea las 128 companies completas, **todos los segmentos**. **Los asientos del panel E+MM todavía no existen como dato** — salen del **Corte E**, que por eso pasa de 🟡 a 🔴. Se decidió cargar el 11,6% igual para que el KR exista la semana del release, con esta consecuencia escrita: **si el panel E+MM penetra por encima del promedio —lo esperable, porque Enterprise concentra el uso— el baseline real es más alto y la meta de 25% es menos exigente de lo que parece.**
+>
+> _Corrección aritmética de paso: el documento fuente escribe el baseline como "373 usuarios sobre 3.775 asientos", que da **9,9%**. Los 3.775 son los asientos al **13-ago-26**, no los del inicio de julio. **El 11,6% de la serie es correcto; el paréntesis no.** Ningún número de este archivo cambia._
+>
+> ⚠️ **Y O2-KR1 y O2-KR2 corren sobre universos distintos.** KR1 mide sobre 373 (excluye Colaborador) y KR2 sobre 413 (lo incluye, porque Amplitude no entrega el histograma abierto por rol). **Hoy el desvío es chico; después del release, con el Colaborador entrando en masa, deja de serlo.** Lo resuelve el pedido de **distribución de frecuencia abierta por rol**, que ya estaba abierto y ahora tiene una razón más.
+
+**O3 — Modelo de negocio:** ⏸️ en revisión, sin KRs. Dos de sus KRs futuros dependen del **mismo evento de acción aplicada** que sostiene O1-KR3.
 
 ### Risk Management — baseline nuevo (2026-08-18)
 
@@ -717,9 +784,14 @@ _Siete de estos salen del documento fuente de adopción; cinco están marcados a
 
 - [ ] 🟠 **Corte de autoría de la consulta** — separar `AI_CHAT_SEND` (demanda articulada por el usuario) de los otros tres eventos (demanda inducida por FAQ, banner y respuestas sugeridas), en usuarios y en interacciones, para la serie mensual completa. _Reclasificado el 2026-08-18: **ya no es una recalibración del baseline** —el numerador está limpio, ver el bloque de definiciones— **ni bloquea el KR.** Es la segmentación que hace legible el KR una vez fijado._
 - [ ] 🟡 **Transcribir los cuatro literales de `option` que cuentan como conversión** (más `header` como excluido) al bloque de definiciones. **No es un pedido de datos ni una verificación:** el filtro ya está correctamente aplicado en los exports —confirmado por el owner el 2026-08-19— y **no hay ningún número que recalcular**. Es escribir los strings que hoy están en prosa, para que la serie del baseline de MAIA cumpla la **regla 8** entera y sea reproducible sin preguntar. _Cuesta un minuto y desbloquea que cualquiera audite la serie._
-- [ ] 🟡 **Volumen de `AI_CHAT_OPEN` con `option = header`** — hoy explícitamente fuera de la serie por no ser conversión. No cambia ninguna métrica de este archivo, pero es la única lectura disponible de **intención sin conversión**: gente que abre MAIA y no llega a preguntar nada. Si el volumen es alto, es señal de fricción en el momento de formular la consulta. ⛔ **No incorporar a la serie de penetración bajo ningún concepto.**
+- [ ] 🔴 **Volumen de `AI_CHAT_OPEN` con `option = header`** — hoy explícitamente fuera de la serie por no ser conversión. Es la única lectura disponible de **intención sin conversión**: gente que abre MAIA y no llega a preguntar nada. Si el volumen es alto, es señal de fricción en el momento de formular la consulta. **Promovido de 🟡 a 🔴 el 2026-08-19: es el instrumento del KR4 de O1** (conversión de apertura), y de paso arbitra entre las dos lecturas del residuo de ~40 usuarios de julio. ⛔ **No incorporar a la serie de penetración bajo ningún concepto.**
+- [ ] ⏰🔴 **Congelar el panel de referencia Enterprise + Midmarket ANTES del release del 24-ago** — lista de companies y asientos elegibles del día previo. **Es el denominador oficial de O2.** Sin esto no se puede distinguir *mejora* de *dilución* en los próximos meses, y reconstruirlo después es a mano. **Cuesta una consulta hoy.**
+- [ ] ⏰🔴 **Instrumentar la activación con marca de cohorte ANTES del release** — fecha de habilitación por company, para poder contar "primer usuario dentro de los 30 días". **Sin esto el KR3 de O2 no existe** y se pierde el experimento de las 172 companies. **Medir por cohorte mensual, nunca agregado:** si se promedia, el resultado del release queda enterrado.
+- [ ] 🟠 **Serie de tickets de soporte sobre MAIA, normalizada por cada 100 usuarios activos** — instrumento del KR5 de O1. **El dato existe en el sistema de soporte, solo hay que cortarlo.** Es la alerta temprana del release: el volumen absoluto va a subir por escala; lo que informa es el ratio.
+- [ ] 🟠 **Cadencia fija para el análisis de fricciones** — instrumento del KR2 de O1 (cobertura de respuesta: % de consultas que terminan en "no tengo esa información"). **El método ya está definido; falta correrlo periódicamente.** Cada consulta sin respuesta es una funcionalidad faltante → `08-roadmap`.
+- [ ] ⛔ **Dueño con nombre para la auditoría de precisión (KR1 de O1)** — muestra mensual de respuestas cotejada contra el backend, **a mano: no hay forma automática**. Es el KR más caro del set y el que, sin dueño asignado, en noviembre no va a tener dato.
 - [ ] 🔴 **Estado de actividad/churn por company** para depurar el denominador de asientos elegibles. **Bloquea dimensionar la iniciativa de cuentas dormidas de `08`.**
-- [ ] **Distribución de frecuencia abierta por rol.** Hoy no se sabe si los 6 power users de julio son C-levels o PMs, y de eso depende toda la lectura de saturación del C-Level. _Es el corte más valioso que falta._
+- [ ] 🟠 **Distribución de frecuencia abierta por rol.** Hoy no se sabe si los 6 power users de julio son C-levels o PMs, y de eso depende toda la lectura de saturación del C-Level. _Es el corte más valioso que falta._ **Razón nueva del 2026-08-19:** es lo único que alinea el universo del **KR2 de O2** (413 usuarios, incluye Colaborador) con el del **KR1** (373, lo excluye). **Con el release, el desvío entre los dos deja de ser chico.**
 - [ ] **Interacciones desagregadas por tool/agente** — para saber qué capacidades movieron la aguja (y poder testear la hipótesis capacidad/superficie de `08`). **Baja de dificultad:** el registro de qué especialista intervino en cada consulta **ya existe** (se guarda para análisis y debug, según la documentación funcional del Orquestador). El pedido pasa de "instrumentar" a **"refinar y extraer"**.
 - [ ] **Retención de usuarios de MAIA por cohorte de primer uso** (Amplitude — mencionada, no compartida).
 - [ ] **Penetración por segmento** normalizada por asientos (ver colateral de `[BAJA-01]`: el "Enterprise 58%" sigue sin verificar).
@@ -740,7 +812,7 @@ _Cargados el 2026-08-18 y ampliados el 2026-08-19 con el export de altas._
 - [x] ✅ **Denominador real del rol Director** — **resuelto el 2026-08-19** con el export de altas: **923 asientos de Director en la base de Risk Management** (865 al 1-ago-26). La inferencia por resta (~850) era correcta. _Ojo: es la base de Risk Management (119 companies), no la de MAIA (128)._
 - [ ] 🔴 **Usuarios únicos de Risk Management restringidos a la cohorte del denominador.** Para cada mes, contar usuarios **solo de las companies habilitadas antes del inicio de ese mes** (jun → las 15 de mayo · jul → las 32 de may+jun · ago → las 111). **Desbloquea la penetración de Risk Management, hoy en pausa.** Es un filtro por lista de company IDs sobre una consulta que ya existe, y **el insumo no falta**: la lista sale del **export de altas del Feature Access del 19-ago-2026, que ya está en poder del owner** —119 companies con fecha de alta, segmento y asientos por rol; es el mismo del que salió el denominador de Director (923)—. Queda abierto como consulta a correr, **no como espera de un tercero**.
 - [ ] 🟠 **Retención de Risk Management en meses desde la habilitación**, sobre la cohorte de mayo (15 companies, única con ventana completa). Reemplaza al 83% "en un solo mes", que no controla por fecha de alta.
-- [ ] 🟡 **Asientos elegibles de MAIA por segmento** — mismo export que el de Risk Management, para las 128 companies. Cierra el colateral de `[BAJA-01]` ("Enterprise 58%").
+- [ ] 🔴 **Asientos elegibles de MAIA por segmento** — mismo export que el de Risk Management, para las 128 companies. Cierra el colateral de `[BAJA-01]` ("Enterprise 58%"). **Promovido de 🟡 a 🔴 el 2026-08-19: sin este corte no existen los asientos del panel Enterprise + Midmarket, que es el denominador oficial del KR1 de O2.** El baseline de 11,6% se cargó sobre el universo completo mientras tanto.
 - [ ] 🟠 **Evento de acción aplicada desde una respuesta de riesgo.** Risk Management ofrece acciones masivas reales (asignar colaboradores, mover deadlines, reasignar tareas) y **no existe ningún evento que registre si alguien las aplica**. Es el mejor lugar del producto para medir **valor entregado**, junto con la aprobación de Governance.
   - 📐 **Spec mínima** _(2026-08-19)_: que el evento registre **los IDs de las entidades afectadas** —o un `batch_id` que las agrupe—, **no solo el conteo**. Es una propiedad más sobre algo que de todos modos hay que construir, y es lo que convierte al evento en la base de todo lo que viene después.
   - ⛔ **Un evento de "acción revertida" se propuso como deseable y se retira el 2026-08-19 — y no por prioridad.** Las acciones de Risk Management son **ediciones ordinarias de proyectos y tareas**. Si el producto **no tiene un "deshacer"** como acción, no hay nada que dispare ese evento: **no es un evento diferido, es un evento inexistente.** Con los IDs de la spec de arriba, la pregunta *"¿alguien deshizo esto?"* se responde **después y contra el backend**, mirando si esas mismas entidades volvieron a modificarse. _Se registra en vez de borrarse: si el squad confirma que sí existe un deshacer, el evento vuelve a la mesa._
@@ -761,14 +833,18 @@ _Los pedidos de arriba están listados por feature. Esto es cómo se agrupan en 
 
 > 🔄 **Reclasificado el 2026-08-19 — esto no es un pedido a un tercero.** Esta sección se llamaba *"Pedido a Data — versión consolidada"* y se reportaba como bloqueada por insumo externo. **Los exports de Amplitude los arma el owner de este repo**, así que los cortes de acá abajo son **consultas propias pendientes de correr**. Se retira la capa de protocolo —interlocutor, canal, fecha objetivo, formato de entrega—, que no aplica; **el contenido técnico se mantiene íntegro**: universo, convenciones, definición de cada corte y la regla de decisión del corte A. El único que probablemente requiera coordinación es el **Corte D**, por el cruce con la lista de company IDs. _Por qué importa el cambio de etiqueta: mientras esto figuraba como bloqueado por un tercero, distorsionaba la lectura de qué frena realmente al repo._
 
-**Universo común:** usuarios de las 128 companies con MAIA habilitada, roles **PM + Director + C-Level**. Período **may–ago 2026** (julio como referencia). Métrica **`Uniques`**, no `Totals`. Filtro de `AI_CHAT_OPEN`: **solo valores de conversión**, `header` excluido (regla 8).
+**Universo común:** usuarios de las 128 companies con MAIA habilitada, roles **PM + Director + C-Level**. Período **may–ago 2026** (julio como referencia). Métrica **`Uniques`**, no `Totals`. Filtro de `AI_CHAT_OPEN`: **solo valores de conversión**, `header` excluido (regla 8) — salvo el Corte G, que mide justamente `header`.
+
+> ⏰ **Se volvió urgente el 2026-08-19: el release a toda la base es la semana del 24-ago.** Los cortes **E, F y G** conviene correrlos **antes**, y el **F obligatoriamente antes** — es una foto del día previo que después no se puede reconstruir sin trabajo manual. Con el release, el universo de este bloque deja de ser "las 128 companies" y pasa a ser **el panel Enterprise + Midmarket congelado**.
 
 | | Corte | Qué correr | Desbloquea |
 |---|---|---|---|
 | 🔴 | **A — solapamiento MAIA / banner** | Por mes: (1) usuarios únicos con al menos un evento de conversión · (2) con al menos uno con `option = risk_banner` · (3) con al menos uno distinto de `risk_banner` · **(4) la intersección de 2 y 3** | El KR de MAIA y el eje capacidad vs. superficie |
 | 🔴 | **D — RM por cohorte de habilitación** | Usuarios únicos de `risk_banner` por mes, **restringidos a las companies habilitadas antes del inicio de cada mes** (jun → las 15 de mayo · jul → las 32 · ago → las 111). **La lista de IDs ya existe y está en poder del owner:** es el export de altas del Feature Access del 19-ago-26 (119 companies, 3.444 asientos, primera alta 14-may-26), el mismo del que salió el denominador de Director (923). **No falta ningún insumo**; lo único que puede requerir coordinación es el cruce por lista de IDs | La penetración de Risk Management, hoy en pausa |
 | 🟠 | **B — autoría de la consulta** | Usuarios e interacciones separando `AI_CHAT_SEND` de los otros tres eventos, serie mensual completa. _Puede ir en la misma consulta que A si es barato_ | La legibilidad del KR una vez fijado |
-| 🟡 | **E — asientos de MAIA por segmento** | Mismo tipo de export que el de Risk Management, para las 128 companies | El colateral de `[BAJA-01]` ("Enterprise 58%") |
+| 🔴 | **E — asientos de MAIA por segmento** | Mismo tipo de export que el de Risk Management, para las 128 companies. **Con corte Enterprise + Midmarket** | **El denominador oficial del KR1 de O2** _(subido de 🟡 el 2026-08-19)_, y el colateral de `[BAJA-01]` ("Enterprise 58%") |
+| 🔴 | **F — congelar el panel E+MM** ⏰ | Foto del día previo al release: companies y asientos elegibles del panel. **Hay que correrlo antes del 24-ago** | Distinguir mejora de dilución en toda la serie post-release |
+| 🔴 | **G — aperturas sin conversión** | Volumen de `AI_CHAT_OPEN` con `option = header`, serie mensual, contra los eventos de conversión | El KR4 de O1, y arbitra las dos lecturas del residuo de ~40 usuarios de julio |
 
 > ✅ **El Corte C se retiró de esta tanda el 2026-08-19 — quedó resuelto.** Pedía confirmar si la serie histórica de MAIA se había pulleado con filtro `agent_type in (orchestrator, clone)` o sin filtro. **Estaba filtrada.** Ver los pedidos de datos de Marketplace, donde queda registrado el cierre y la inferencia que se retira con él.
 

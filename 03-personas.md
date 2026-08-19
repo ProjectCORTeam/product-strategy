@@ -115,6 +115,27 @@ Lo que sí distingue a los roles es la **intensidad**:
 
 > ⚠️ _El rol **Colaborador** está excluido de esa medición: MAIA se le habilitó a un grupo muy reducido desde jun-2026 y **su propuesta de valor todavía no está definida**. No es un detalle menor — son **5.605 asientos**, más que todo el universo hoy elegible para MAIA (3.775)._
 
+#### El Colaborador y MAIA — ficha propia _(decidido el 2026-08-19 con los OKRs de la vertical de AI)_
+
+**Con el release del 24-ago-2026 MAIA se libera a toda la base de COR y el Colaborador entra completo.** Eso obliga a decidir cómo se lo mide, y la decisión es **no mezclarlo con los otros tres roles**:
+
+| | Colaborador | Panel PM + Director + C-Level |
+|---|---|---|
+| Asientos | **5.605** | ~3.775 (128 companies, pre-release) |
+| Usuarios recurrentes | **~15** | 373 (jul-26) |
+| **Penetración** | **0,27%** | **11,6%** |
+| Estado | **Sin propuesta de valor definida** | Con caso de uso y KRs |
+
+**El 0,27% no se lee como un problema de adopción.** Está dos órdenes de magnitud por debajo de los roles con caso de uso definido, y **eso es exactamente lo esperable para un rol al que nadie le dijo todavía para qué sirve MAIA**. Compararlo contra el 11,6% sería el mismo error de denominador de `[BAJA-01]`, con una vuelta más: acá ni siquiera es el mismo producto, porque no hay propuesta de valor que evaluar.
+
+**Consecuencias de medición:**
+
+1. **Denominador y métrica separados.** El Colaborador **no entra** en el panel Enterprise + Midmarket que sostiene los KRs de O2 (`05-estrategia-okrs`). Si entrara, la penetración caería de 11,6% a ~2,6% el mismo día **sin que nada empeore**.
+2. **Su primer paso no es un KR de adopción, es discovery.** Con ~15 personas usándola hoy, **son 15 entrevistas posibles** — el research más barato disponible en todo el repo, y con ventana: después del release el grupo deja de ser identificable. → `07-discovery`.
+3. ⚠️ **Ojo con el contexto de satisfacción al leer los resultados:** el Colaborador es el rol que **se desgasta con el uso** (NPS −15,2 en onboarding → −34,5 en adopción). Lo que sea que MAIA le ofrezca, entra sobre esa base.
+
+> _Salvedad de dato: los 413 usuarios de la tabla de distribución de frecuencia de `06-kpi-tree` **sí incluyen al Colaborador** —es la única tabla que Amplitude no entrega abierta por rol—, mientras que los 373 de la serie de penetración lo excluyen. Es la razón por la que el pedido de **histograma abierto por rol** subió de prioridad._
+
 ### Patrón central: intensidad de uso vs. satisfacción
 
 Cuanto **más intensivo** es el uso del producto, **peor** la satisfacción. Los roles operativos (PM + Colaborador) son el 79% del volumen de feedback y los más críticos; los roles de lectura/agregado están claramente mejor. El dolor vive en la operación diaria, no en el reporting.
@@ -167,7 +188,7 @@ El **champion** es una persona **dentro de la organización cliente** (no de COR
 - [x] Quién es el "champion" de adopción. _(Persona interna del cliente, no un rol formal de COR; con contacto frecuente con el CSM.)_
 - [ ] Cómo arranca el rollout típico en una cuenta nueva, y qué rol suele ejercer de champion.
 - [ ] **Personas por vertical nuevo** (IT Consulting, Law & Accounting, Brands, Media): comprador, usuarios y jobs-to-be-done propios de cada industria.
-- [ ] **Propuesta de valor de MAIA para el rol Colaborador** — hoy sin definir, y es el rol con más asientos (5.605). Condiciona si MAIA se libera a toda la base (`05`).
+- [ ] **Propuesta de valor de MAIA para el rol Colaborador** — hoy sin definir, y es el rol con más asientos (5.605). ⚠️ _Actualizado el 2026-08-19: **ya no condiciona la liberación a toda la base — el release se decidió igual, fuera de Producto, para la semana del 24-ago.** El pendiente no se cierra: se vuelve más urgente, porque ahora el rol tiene acceso completo sin que exista la propuesta. **Ficha de medición propia cargada arriba** (0,27%); el primer paso acordado es **discovery sobre los ~15 usuarios actuales**, con ventana antes del release (`07-discovery`)._
 - [ ] **¿La meseta del C-level es saturación o falta de valor para el rol?** Ver `07-discovery` (tema abierto de MAIA) y `06-kpi-tree` (hipótesis etiquetada).
   - ⚠️ **Dato nuevo en tensión (2026-08-18):** en Risk Management el C-Level es el **único rol que no cae en agosto** (−5% de interacciones contra −80% del PM), sosteniendo 4,4 int./usuario contra 1,45 histórico. Con n=9 no alcanza para nada, pero **apunta en dirección contraria a "el C-Level no se engancha"**. Verificar antes de cerrar la pregunta.
 - [x] **Denominador real de asientos de Director.** _(Resuelto 2026-08-19: **923 asientos** en la base de Risk Management, 865 al 1-ago-26. La inferencia por resta era correcta.)_
