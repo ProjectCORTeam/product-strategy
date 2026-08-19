@@ -1,6 +1,6 @@
 # 03 — Personas (COR)
 
-> **Última actualización:** 2026-08-18
+> **Última actualización:** 2026-08-19
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Perfiles de usuario y segmentos de COR, para diseñar features y evaluar impacto. COR es B2B: el **cliente es la agencia**, y dentro conviven varios **roles-usuario**, cada uno con su capa de permisos. Distinguir **comprador** (quién decide/paga) de **usuarios** (quién opera el producto).
 
@@ -125,17 +125,19 @@ _(Es una lectura del bloque de NPS de arriba, no del bloque de Risk Management q
 
 Risk Management (los banners de riesgo dentro del proyecto) tiene el **mismo universo de roles que MAIA**: PM, Director y C-Level. **Colaborador, Freelancer y Cliente no ven banners.**
 
-**Penetración de banners por rol, jul-26** `[HECHO — con salvedad]`
+**Usuarios de banners por rol, jul-26** `[HECHO]` — **penetración ⏸️ en pausa** `[SIN VALOR PUBLICABLE]`
 
-| Rol | Usuarios únicos | Asientos elegibles | Penetración |
-|---|---:|---:|---:|
-| Project Manager | 147 | 1.917 | **7,7%** |
-| Director | 59 | ~850 *(inferido)* | **~6,9%** |
-| C-level | 29 | 458 | **6,3%** |
+| Rol | Usuarios únicos | Composición | Penetración |
+|---|---:|---:|---|
+| Project Manager | 147 | 63% | ⏸️ en pausa |
+| Director | 59 | 25% | ⏸️ en pausa |
+| C-level | 29 | 12% | ⏸️ en pausa |
 
-_Salvedad: el denominador de Director está **inferido por resta** (3.225 − 1.917 − 458 = 850). Pedido de dato abierto en `06-kpi-tree`._
+> ⏸️ **Puesta en pausa el 2026-08-19.** Las cifras que estuvieron cargadas (PM 7,7% / Director ~6,9% / C-Level 6,3%) usaban los **asientos elegibles de MAIA** (1.917 / ~850 / 458). Risk Management **tiene base propia**: 119 companies, y en julio solo **32 estaban habilitadas al inicio del mes**. Es el mismo problema de denominador que puso en pausa la penetración global de la feature — ver `06-kpi-tree`. **Los conteos de usuarios y la composición no se tocan; los porcentajes sí.**
 
-**Confirma el patrón de `[BAJA-01]` en una feature distinta.** En bruto el PM parece dominar —**63% de los usuarios únicos de banners son PM**—, pero **normalizado por asientos los tres roles empatan** (7,7% / 6,9% / 6,3%). _(Ojo al citar: hay otro 63% dando vueltas en este análisis, el de "usuarios de MAIA que entran por banner". Son cosas distintas.)_ Es el **segundo caso registrado del mismo sesgo de denominador**, ahora en una feature que no es el chat. Registrarlo como tal: cada vez que aparezca un corte por rol en bruto, normalizar antes de leerlo.
+✅ **Pendiente cerrado de paso:** el denominador de asientos de **Director** ya no está inferido. El export de altas del 19-ago-26 trae dato duro: **923 asientos de Director** en la base de Risk Management (865 al 1-ago-26). _La inferencia por resta (~850) era correcta. Ojo: es la base de Risk Management (119 companies), no la de MAIA (128)._
+
+**Confirma igual el patrón de `[BAJA-01]` en una feature distinta.** En bruto el PM parece dominar —**63% de los usuarios únicos de banners son PM**—, y esa composición replica exactamente la de MAIA, donde el mismo 56-63% resultó ser efecto de tamaño de base. **La conclusión —no leer composición como preferencia de rol— se sostiene aunque los porcentajes estén en pausa**, porque el sesgo está en el numerador bruto, no en el denominador. _(Ojo al citar: hay otro 63% dando vueltas en este análisis, el de "usuarios de MAIA que entran por banner". Son cosas distintas.)_ Es el **segundo caso registrado del mismo sesgo de denominador**, ahora en una feature que no es el chat. Registrarlo como tal: cada vez que aparezca un corte por rol en bruto, normalizar antes de leerlo.
 
 **Refuerza el hallazgo abierto de Presupuestos** `[HALLAZGO]`**.** El desvío de **costo vs. ingresos** —el único riesgo con lectura financiera— exige el permiso de **Presupuestos**, que el PM **no tiene de fábrica**. O sea: **el rol que más entra a proyectos no puede ver el único desvío que habla de rentabilidad.** La evidencia de uso lo acompaña: **8 consultas en tres meses**, con una conversión a conversación de 12,5% contra un baseline de 31,4%. A eso se le suman otros dos estrechamientos sobre la misma métrica: aplica solo a 1.326 proyectos (los que tienen Ingreso total configurado) y solo se dibuja en pérdida real. Son **tres filtros apilados sobre el desvío que sostiene la propuesta de valor del producto**.
 _⚠️ Por qué es `[HALLAZGO]` y no `[HECHO]`: **n = 8 consultas**. La dirección (el permiso estrecha el alcance del riesgo financiero) es sólida y replica el patrón ya conocido de Presupuestos; **la magnitud no se puede afirmar con esa muestra**, y el 12,5% de conversión va con la misma salvedad en `06-kpi-tree`. No usarlo para dimensionar una iniciativa._
@@ -168,5 +170,6 @@ El **champion** es una persona **dentro de la organización cliente** (no de COR
 - [ ] **Propuesta de valor de MAIA para el rol Colaborador** — hoy sin definir, y es el rol con más asientos (5.605). Condiciona si MAIA se libera a toda la base (`05`).
 - [ ] **¿La meseta del C-level es saturación o falta de valor para el rol?** Ver `07-discovery` (tema abierto de MAIA) y `06-kpi-tree` (hipótesis etiquetada).
   - ⚠️ **Dato nuevo en tensión (2026-08-18):** en Risk Management el C-Level es el **único rol que no cae en agosto** (−5% de interacciones contra −80% del PM), sosteniendo 4,4 int./usuario contra 1,45 histórico. Con n=9 no alcanza para nada, pero **apunta en dirección contraria a "el C-Level no se engancha"**. Verificar antes de cerrar la pregunta.
-- [ ] **Denominador real de asientos de Director** — hoy inferido por resta (~850). Afecta la penetración por rol de MAIA y de Risk Management. Pedido abierto en `06-kpi-tree`.
+- [x] **Denominador real de asientos de Director.** _(Resuelto 2026-08-19: **923 asientos** en la base de Risk Management, 865 al 1-ago-26. La inferencia por resta era correcta.)_
+- [ ] **Recalcular la penetración de banners por rol** con la base propia de Risk Management y la cohorte correcta. Hoy en pausa; depende del 🔴 de `06-kpi-tree`.
 - [ ] **Decidir si el acceso del PM a Presupuestos es configuración o decisión de producto.** Ya estaba abierto desde la visión (`01-producto`); Risk Management lo vuelve más concreto — el rol que más abre banners no puede ver el único riesgo financiero.

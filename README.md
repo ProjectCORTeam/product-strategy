@@ -3,7 +3,7 @@
 Repositorio de contexto de producto de **COR** ("Product Brain"): la base documental que usamos —personas y AI— para entender el producto, el mercado, la estrategia y la evidencia detrás de las decisiones.
 
 > **Owner:** Product Manager, área de Producto
-> **Última actualización:** 2026-08-18
+> **Última actualización:** 2026-08-19
 
 ## Qué es esto
 
@@ -18,7 +18,7 @@ Estos archivos alimentan el contexto de un **Proyecto de Claude ("COR – Produc
 3. Respondé basándote solo en lo que está en los archivos. Si algo no está, decilo explícitamente — no inventar contexto de COR.
 4. Si hay información contradictoria entre archivos, señalarlo en vez de elegir en silencio.
 5. **La sección de AI de `06-kpi-tree` usa etiquetas de evidencia** (`[HECHO]` / `[HALLAZGO]` / `[HIPÓTESIS]` / `[BAJA]`). Respetá la etiqueta al citar un número, y no vuelvas a circular una afirmación dada de baja.
-6. **Esa sección tiene además una convención de fuentes** (2026-08-18): **Amplitude** para alcance y penetración, el **log de conversaciones** para calidad y contenido, y el **backend de cálculo** para detección y umbrales. Son **tres fuentes, no dos**, con siete reglas — la más importante es la **regla 4: no dividir una fuente por otra** (nada de tasas "detección → click"). No cruces Amplitude con Metabase sin leerla.
+6. **Esa sección tiene además una convención de fuentes** (2026-08-18): **Amplitude** para alcance y penetración, el **log de conversaciones** para calidad y contenido, y el **backend de cálculo** para detección y umbrales. Son **tres fuentes, no dos**, con **ocho reglas**. Las dos que más se rompen: **regla 4 — no dividir una fuente por otra** (nada de tasas "detección → click") y **regla 8 — toda serie declara evento, filtro y valores incluidos**. No cruces Amplitude con Metabase sin leerla.
 
 ## Mapa de archivos
 
@@ -38,14 +38,14 @@ Estos archivos alimentan el contexto de un **Proyecto de Claude ("COR – Produc
 
 | Archivo | Estado |
 |---|---|
-| `01-producto.md` | Casi completo — suma la **arquitectura de orquestación** de MAIA (punto de entrada único, deploy 22-jul-26) y la **salvedad de proactividad** (no disponible hoy), ago-2026. **Actualizado 2026-08-18:** suma la **tabla del portafolio de la vertical de AI** (MAIA es un miembro, no el portafolio), Marketplace descrito como **feature hermana** y catálogo de modelos al día. **Entró Risk Management (2026-08-18):** resuelto como **pilar de MAIA con activación separada**, retirada la afirmación de que "opera con tres riesgos", reforzada la salvedad de proactividad — pendiente confirmar anti-scope y la excepción de la tarjeta al Orquestador |
+| `01-producto.md` | Casi completo — suma la **arquitectura de orquestación** de MAIA (punto de entrada único, deploy 22-jul-26) y la **salvedad de proactividad** (no disponible hoy), ago-2026. **Actualizado 2026-08-18:** suma la **tabla del portafolio de la vertical de AI** (MAIA es un miembro, no el portafolio), Marketplace descrito como **feature hermana** y catálogo de modelos al día. **Entró Risk Management (2026-08-18):** resuelto como **pilar de MAIA con activación separada**, retirada la afirmación de que "opera con tres riesgos", reforzada la salvedad de proactividad. **Actualizado 2026-08-19:** base propia de **119 companies** (no "la misma de MAIA") y penetración **⏸️ en pausa** — pendiente confirmar anti-scope y si el custom prompt del banner entra por el Orquestador |
 | `02-equipos.md` | Completo |
-| `03-personas.md` | Casi completo. **Actualizado 2026-08-18:** penetración de banners de riesgo por rol (**segundo caso del sesgo de denominador de `[BAJA-01]`**), refuerzo del hallazgo de Presupuestos y la anomalía de agosto del C-Level como pendiente de verificación — pendiente personas por vertical nuevo y detalle de rollout/champion |
+| `03-personas.md` | Casi completo. **Actualizado 2026-08-18:** banners de riesgo por rol (**segundo caso del sesgo de denominador de `[BAJA-01]`**), refuerzo del hallazgo de Presupuestos y la anomalía de agosto del C-Level como pendiente de verificación. **Actualizado 2026-08-19:** los porcentajes por rol quedan **⏸️ en pausa** y se **cierra el denominador de Director** (923, dato duro) — pendiente personas por vertical nuevo y detalle de rollout/champion |
 | `04-mercado.md` | Competidores confirmados — pendiente vertical nuevo, precio y cruce con churn |
-| `05-estrategia-okrs.md` | Marco de priorización confirmado + laddering de "Deploy de AI" con baseline y **cinco anti-metas** (la quinta, del 2026-08-18: no leer el alcance de Risk Management como alcance de MAIA) — pendientes OKRs de producto por eje |
-| `06-kpi-tree.md` | North Star de negocio y engagement con baseline real; **sección de AI reescrita (ago-2026)**: penetración sobre asientos elegibles + etiquetado de evidencia. **Actualizado 2026-08-18:** cubre **tres features medidas** (MAIA, Marketplace y **Risk Management**, esta última adentro de MAIA con corte por origen), suma la **convención de tres fuentes con siete reglas de lectura** y la **calibración de umbrales** — pendiente North Star de producto y calidad de servicio |
-| `07-discovery.md` | Repositorio estructurado con research primario (Retently). **Actualizado 2026-08-18:** el target de Crowe cambia de pregunta y entran dos targets nuevos de Risk Management (no-retorno e inconsistencia de respuesta) — pendiente corte por segmento/vertical |
-| `08-roadmap.md` | Estructura y temas candidatos (suma activación de la base de MAIA, ago-2026). **Actualizado 2026-08-18:** Risk Management como **caso a favor del eje capacidad vs. superficie**, evidencia de calibración al tema 0 y **recomendación de no ir a GA** todavía — el roadmap real todavía no está cargado |
+| `05-estrategia-okrs.md` | Marco de priorización confirmado + laddering de "Deploy de AI" con baseline y **cinco anti-metas** (la quinta, del 2026-08-18: no leer el alcance de Risk Management como alcance de MAIA). **Actualizado 2026-08-19:** el KR de penetración pasa de **dos bloqueos a uno** — pendientes OKRs de producto por eje |
+| `06-kpi-tree.md` | North Star de negocio y engagement con baseline real; **sección de AI reescrita (ago-2026)**: penetración sobre asientos elegibles + etiquetado de evidencia. **Actualizado 2026-08-18:** cubre **tres features medidas** (MAIA, Marketplace y **Risk Management**, esta última adentro de MAIA con corte por origen), suma la **convención de tres fuentes con ocho reglas de lectura** y la **calibración de umbrales**. **Actualizado 2026-08-19:** el baseline de MAIA sube a `[HECHO]` y **piso conservador**, y la **penetración de Risk Management queda ⏸️ en pausa** (denominador propio: 119 companies, no 128) — pendiente North Star de producto y calidad de servicio |
+| `07-discovery.md` | Repositorio estructurado con research primario (Retently). **Actualizado 2026-08-18:** el target de Crowe cambia de pregunta y entran dos targets nuevos de Risk Management. **Actualizado 2026-08-19:** el de no-retorno queda recortado a la cohorte de mayo y entra el más urgente — **las 79 companies de julio que no movieron el conteo de usuarios** — pendiente corte por segmento/vertical |
+| `08-roadmap.md` | Estructura y temas candidatos (suma activación de la base de MAIA, ago-2026). **Actualizado 2026-08-18:** Risk Management como **caso a favor del eje capacidad vs. superficie**, evidencia de calibración al tema 0 y **recomendación de no ir a GA** todavía. **Actualizado 2026-08-19:** confounder de mayo marcado (Risk Management se habilitó el 14-may-26) — el roadmap real todavía no está cargado |
 
 ## Cómo se mantiene
 

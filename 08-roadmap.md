@@ -1,6 +1,6 @@
 # 08 — Roadmap (COR)
 
-> **Última actualización:** 2026-08-18
+> **Última actualización:** 2026-08-19
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Qué construye COR, por qué y cuándo, para evaluar prioridades y explicar la dirección. El **roadmap real** aún no está cargado; los temas de abajo están **derivados de la estrategia** (`05`) y marcados como candidatos a validar, no como el roadmap oficial. No inventar fechas ni compromisos.
 
@@ -28,11 +28,22 @@ Cruzando la cronología de releases de MAIA contra las series de penetración e 
 | Tipo de release | ¿Mueve alcance? | ¿Mueve intensidad? | Evidencia observada |
 |---|---|---|---|
 | **Tools y capacidades nuevas** | No | **Sí** | Abril-26: penetración 1,02x (de 40 a 41 usuarios en el panel fijo), pero intensidad de 4,6 a 6,0 — el salto más grande de la serie — y **nace el bucket de 51-100 interacciones**, que había estado en cero cinco meses |
-| **Superficie y descubribilidad** | **Sí** | Poco | Mayo-26 (*kick actions* derivadas de las tools de abril, sin capacidad nueva): **2,05x**. Junio-26 (*MAIA en tareas*, superficie nueva): 1,33x. **Julio-26 (Orquestador, 22-jul): test en curso — ver abajo** |
+| **Superficie y descubribilidad** | **Sí** | Poco | Mayo-26 (*kick actions* derivadas de las tools de abril, sin capacidad nueva): **2,05x** ⚠️ _confounder: **Risk Management se habilitó el 14-may** — ver abajo_. Junio-26 (*MAIA en tareas*, superficie nueva): 1,33x. **Julio-26 (Orquestador, 22-jul): test en curso — ver abajo** |
 | **Calidad del modelo** | **Sí** | No | Marzo-26 (cambio a Sonnet 4.5 + mejoras de UX de base): **1,90x**, el segundo mayor salto de la serie |
 | **Nada** | **Retrocede** | — | Diciembre-25, sin iteraciones: **0,38x** — pero ver la salvedad de estacionalidad abajo |
 
 **El experimento natural de abril y mayo** es el caso más limpio: en abril se soltó un conjunto considerable de tools de acción y la penetración no se movió; en mayo, con **esas mismas tools ya en producción**, se duplicó. Lo único que cambió fue el agregado de *kick actions* — la superficie que hace que la capacidad se descubra sin que el usuario sepa pedirla.
+
+> ⚠️ **Confounder detectado el 2026-08-19: Risk Management se habilitó el 14-may-2026.** "Lo único que cambió" era falso. El salto de mayo puede no ser de las *kick actions*.
+>
+> ```
+> MAIA:  abr 104  →  may 219 (+115)  →  jun 323 (+104)  →  jul 373 (+50)
+> RM:    abr   0  →  may 119         →  jun 232 (+113)  →  jul 234  (+2)
+> ```
+>
+> **Los incrementos de MAIA y los aportes de Risk Management coinciden casi exactamente tres meses seguidos**, incluido el freno de julio. **La hipótesis del eje no se cae** —*kick actions* y banner de riesgo son las dos superficie, así que las dos empujan en la misma dirección— **pero el ejemplo que la ilustra está mal atribuido**, y es la evidencia principal del lado de superficie.
+>
+> **Acción:** marcar el **14-may-2026** en la serie como marca de release, igual que se hizo con el Orquestador del 22-jul-26. **Sin esa marca, mayo no sirve como test de nada.**
 
 > **Por qué importa para el reparto:** construir capacidad **no expande la base de usuarios por sí solo**. La expande la superficie donde esa capacidad se vuelve visible. Y aplica igual a workflows, marketplace y risk management, no solo a MAIA.
 >
@@ -75,13 +86,13 @@ Marketplace es **capacidad sin superficie**, y es el caso más extremo disponibl
 
 > `[HIPÓTESIS FUERTE]` — _misma etiqueta que el eje, sujeta al cruce de solapamiento. Cargado el 2026-08-18 con el baseline de Risk Management (`06-kpi-tree`)._
 
-Es **el caso más limpio disponible del lado de superficie**, y el complemento exacto de Marketplace: **cero capacidad nueva sobre MAIA** —el backend ya calculaba los desvíos, MAIA solo los narra y ofrece acciones— y **63% del alcance mensual de MAIA** (234 de 373 usuarios en jul-26, con 21% de las interacciones).
+Es **el caso más limpio disponible del lado de superficie**, y el complemento exacto de Marketplace: **cero capacidad nueva sobre MAIA** —el backend ya calculaba los desvíos, MAIA solo los narra y ofrece acciones— y **54-72% del alcance mensual de MAIA** en la serie may-jul-26 (63% en julio, que es el mes **más bajo** de los tres).
 
 | | Marketplace | Risk Management |
 |---|---|---|
 | Capacidad nueva | Alta (agentes a medida) | **Cero** (el backend ya calculaba) |
 | Superficie | **Mínima** — fuera de la orquestación, hay que buscarlo en el selector | **Máxima** — banner dentro del proyecto, donde el usuario ya está |
-| Alcance | 1,40% de penetración, 0,44% sin MullenLowe | **7,3% de penetración, 63% del alcance de MAIA** |
+| Alcance | 1,40% de penetración, 0,44% sin MullenLowe | **⏸️ penetración en pausa (ver `06`) · 63% del alcance de MAIA** en jul-26 (54-72% en la serie may-jul) |
 | Intensidad | **17,7** | **2,0** |
 
 Las dos features apuntan en la misma dirección desde extremos opuestos: **la capacidad sin superficie no expande la base; la superficie sin capacidad nueva sí la expande, pero produce contacto corto.**
@@ -90,7 +101,9 @@ Las dos features apuntan en la misma dirección desde extremos opuestos: **la ca
 >
 > **Por qué todavía no es un hecho:** falta el cruce de **solapamiento MAIA / banner por usuario** (🔴 en `06`). Si casi todos los usuarios de banner ya usaban MAIA por otra vía en el mismo mes, **el banner reencauzó tráfico en lugar de crear alcance** y el 63% deja de ser evidencia de expansión. Es una sola consulta de Amplitude.
 >
-> **Salvedad de lectura:** la intensidad de 2,0 dice que la superficie **trae gente pero no la retiene** — 83% de los usuarios del log aparece en un solo mes. Superficie ≠ adopción sostenida. Eso es un target de discovery, no una objeción a la hipótesis (→ `07`).
+> **Salvedad de lectura — corregida el 2026-08-19:** la intensidad de 2,0 y el reparto **54-72% de los usuarios contra 19-32% de las interacciones** dicen que la superficie es **puerta de entrada, no puerta de paso**: trae mucha gente y casi nadie sigue hacia el resto de MAIA. _(La versión anterior sostenía esto con el "83% aparece en un solo mes". **Ese número quedó retirado como evidencia de no-retorno** — no controla por fecha de alta, ver `06-kpi-tree`. La conclusión se mantiene por otra vía.)_
+>
+> ⚠️ **Y hay un dato en contra del entusiasmo:** entre junio y julio la base de Risk Management se multiplicó por 3,5 y **los usuarios quedaron planos (232 → 234)**. Las 79 companies habilitadas en julio **no aportaron usuarios netos**. La superficie funcionó para las primeras 15 companies; **no se replicó al escalar**. Eso es un problema de activación y va como target de discovery en `07` — pero también matiza cuánto se le puede pedir a "poner superficie" como palanca genérica.
 
 **Salvedad sobre diciembre.** El "0,38x sin releases" tiene un confounder no tratado: **diciembre en LATAM es mes de vacaciones**, y el documento fuente no menciona estacionalidad. Test barato con datos que ya tenemos: mirar el DAU/MAU global de COR en dic-25 (`06-kpi-tree`) — si cayó toda la plataforma, el claim se cae solo. Hasta entonces, "la base decae sin releases" es `[HIPÓTESIS]`.
 
@@ -116,7 +129,8 @@ Las dos features apuntan en la misma dirección desde extremos opuestos: **la ca
    - *Por qué:* llevar esos asientos al promedio de la base agregaría **~45 usuarios activos** y **no requiere construir nada nuevo**. Es también la explicación de por qué la cohorte marzo-abril rinde peor que la de 2025 (8,8% contra 14,6%): en esa tanda entraron los elefantes dormidos.
    - *Insumo disponible:* **Crowe Global** se habilitó en jun-26 con escala comparable (123 asientos) y llegó a **23,6% de penetración con 8,7 interacciones por usuario**. Misma escala, alta más reciente, resultado opuesto. Entender qué pasó ahí es el insumo más valioso para el playbook → `07-discovery`.
    - ⚠️ *Verificación previa obligatoria:* depurar el denominador con el **estado de actividad/churn por company** (pendiente en `06`). Si parte de esas ocho cuentas está dormida en COR en general, el asiento no existe y el problema no es de MAIA. **No dimensionar la iniciativa antes de ese chequeo** — es el más barato de la lista y cambia el tamaño del premio.
-   - *Métrica de éxito:* penetración de las cuentas del grupo (3,3% → meta), y cantidad de cuentas habilitadas con al menos un usuario recurrente.
+   - *Evidencia nueva (2026-08-19) — el problema de activación se repite en Risk Management, y es más grande:* entre el inicio de junio y el cierre de julio la base habilitada de Risk Management pasó de **15 a 111 companies** —**55 el mismo día, el 8-jul**— y los usuarios únicos quedaron en **232 → 234**. _(Medido con la convención del archivo —asientos al inicio del mes— el salto es de 32 a 111, ×3,5; el punto no cambia.)_ **Las 79 companies habilitadas en julio no aportaron usuarios netos.** Ya no es una iniciativa sobre ocho cuentas dormidas de MAIA: **es un patrón — habilitar no activa**. Y a diferencia del caso de MAIA, este **no necesita ninguna verificación previa de churn**: es aritmética sobre datos que ya están en `06-kpi-tree`. → target de research en `07-discovery`.
+   - *Métrica de éxito:* penetración de las cuentas del grupo (3,3% → meta), y cantidad de cuentas habilitadas con al menos un usuario recurrente. **Sumar:** % de companies que registran su primer usuario dentro de los 30 días de habilitadas.
 
 3. **Valor en la base instalada (Deploy de AI)**
    - *Qué:* features que suban adopción y valor entregado en clientes existentes.
@@ -164,3 +178,5 @@ Las dos features apuntan en la misma dirección desde extremos opuestos: **la ca
 - [ ] **Testear la hipótesis capacidad vs. superficie** antes de usarla para repartir capacidad. Tres vías abiertas: (a) **cerrar la lectura de agosto** para el test del Orquestador, sobre el panel cerrado y controlando estacionalidad; (b) las interacciones desagregadas por tool/agente — el registro existe, hay que refinarlo y extraerlo (`06`); (c) 🔴 **el solapamiento MAIA / banner por usuario**, que decide si Risk Management creó alcance o reencauzó tráfico. **(c) es la más barata de las tres: una consulta de Amplitude.**
 - [ ] **Decidir el GA de Risk Management** con la recomendación del tema 1 sobre la mesa: hoy Producto recomienda **no ir a GA** hasta corregir los cuatro cálculos de nivel proyecto y recalibrar los umbrales. Es una decisión de Producto, no de IT.
 - [ ] **Chequear la estacionalidad de diciembre** contra el DAU/MAU global (`06`) para confirmar o descartar "la base decae sin releases".
+- [ ] **Marcar el 14-may-2026 (habilitación de Risk Management) como release en la serie**, igual que el Orquestador del 22-jul. Sin esa marca, mayo no sirve como test del eje capacidad vs. superficie — el salto de 2,05x que hoy se atribuye a las *kick actions* tiene un confounder del mismo signo.
+- [ ] 🔥 **Llevar a la conversación de roadmap las dos cosas que conviven mal:** MAIA depende de Risk Management para **54-72% de su alcance mensual**, y Risk Management es la feature sobre la que Producto recomienda **no ir a GA**. Es una decisión conjunta, no dos decisiones.
