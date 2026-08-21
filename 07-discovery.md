@@ -1,6 +1,6 @@
 # 07 — Discovery (COR)
 
-> **Última actualización:** 2026-08-19
+> **Última actualización:** 2026-08-21
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Insights curados de entrevistas, encuestas y datos, para buscar evidencia al tomar una decisión. Cada insight debe tener **evidencia y fuente**; distinguir hallazgos de *research primario* de supuestos o claims de marketing. No inventar insights: si un tema no tiene evidencia cargada, marcarlo como pregunta abierta.
 
@@ -142,6 +142,7 @@ Cada insight se carga con esta estructura:
 - **Fuente:** Retently. **Confianza: alta.**
 - **Implicación:** calidad y señal/ruido de notificaciones son fricción evitable; las notificaciones mal segmentadas generan fatiga.
 - **Vinculado a:** `08`.
+- ⛔ **Salvedad de uso, cargada el 2026-08-21 — leer antes de citar las 25 menciones de archivos.** Ese 96% negativo es de **adjuntos en tareas de COR**, **no del flujo de archivos de MAIA**. Es la señal más cercana que existe al **KR3 de O1** (éxito del flujo de archivos, meta 80%) y **por eso mismo se declara explícitamente que no se cita como evidencia de ese KR**: son dos flujos distintos, con fallas distintas y usuarios distintos. **El KR nace `[HIPÓTESIS]`: no hay ni un dato del flujo de MAIA en el repo.** → `05-estrategia-okrs`, `06-kpi-tree`.
 
 ### I-08 — El soporte / CSM es una **fortaleza** clara
 - **Evidencia:** CSAT de soporte **4.67/5** (n=81; 75 positivas, 3 negativas). El topic **CSM** es de los pocos mayormente positivos (56 menciones, solo 21% negativas).
@@ -176,4 +177,6 @@ Cada insight se carga con esta estructura:
 - [ ] **Research sobre el no-retorno en Risk Management** (🎯, actualizado 2026-08-19) — **recortado a la cohorte de mayo-26: 15 companies.** _La formulación original ("83% aparece en un solo mes") no controlaba por fecha de alta: el 66% de la base se habilitó en julio y no podía aparecer antes. **No mandar a nadie a entrevistar sobre el enunciado viejo.** Ver `06-kpi-tree`._
   - **Target nuevo y más urgente:** las **79 companies habilitadas en julio que no movieron el conteo de usuarios**. Es activación, no retención, y afecta al 66% de la base. **No depende de ningún corte de datos pendiente.**
 - [ ] **Sondear el efecto de la inconsistencia de respuesta** (118 de 130 repeticiones devuelven texto distinto sobre datos idénticos). Pregunta de confianza; se puede meter en el mismo guion que el punto anterior.
+- [ ] 🎯 **Target nuevo (2026-08-21): quién usa el flujo de archivos de MAIA y para qué.** Es el único KR de O1 cuya **existencia** —no su meta— se apoya en observación cualitativa: **no hay un solo dato del flujo en el repo** (O1-KR3, meta 80%). Dos preguntas concretas para el guion: **qué archivos suben y qué documentos piden**, y **qué hacen cuando el resultado no sirve** —re-adjuntan, repiten el pedido o corrigen en el turno siguiente—, que es exactamente la *señal de corrección* con la que se define el éxito del KR. ⚠️ **No usar las 25 menciones de I-07 como insumo del guion:** son de adjuntos en tareas de COR, no de MAIA.
+- [ ] 🎯 **Sondear la percepción de velocidad de MAIA junto con el TTFT** (O1-KR4, meta ≥95% con primer token <3s). El KR mide **el momento en que el usuario se pregunta "¿esto está vivo?"**, que es donde abandona; el research dice **si el umbral de 3s está donde duele**. Barato de sumar a cualquier guion ya abierto, y es el único KR de O1 con un número medible hoy.
 - [ ] **Cerrar el loop cuantitativo:** entre el análisis de adopción de MAIA, el de Marketplace y el de Risk Management (todos ago-2026), `06-kpi-tree` acumula **~25 pedidos de datos abiertos**, la mayoría de la vertical de AI y de Risk Management, más los de Marketplace listados aparte. Los que más desbloquean están agrupados en **"Consultas pendientes de correr"**, al final de `06` — **y no son un pedido a un tercero: los exports los arma el owner.** ⏰ **Tres de esos cortes tienen fecha: hay que correrlos antes del release del 24-ago.**
