@@ -1,9 +1,10 @@
 # 05 — Estrategia y OKRs (COR)
 
-> **Última actualización:** 2026-08-21
+> **Última actualización:** 2026-08-27
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Visión, pilares estratégicos, KPIs y OKRs, para priorizar y alinear iniciativas. Base principal: **Business Plan 2026–2027** (presentado internamente). Es un plan de negocio/GTM: fuerte en revenue y go-to-market, liviano en estrategia de producto.
 > ✅ **Los OKRs de la vertical de AI están cargados desde el 2026-08-19** — ver "OKRs del trimestre". Son los **primeros OKRs de producto de COR**. Los de las otras verticales y ejes/squads **siguen sin definir: no inventarlos.**
+> 🔄 **El KR1 de O1 se redefinió el 2026-08-27:** pasa de **cobertura de respuesta (75%)** a **conversaciones limpias** — % de conversaciones sin fricción de tipo `bug`, `nlu` o `incompleta`, **meta a fijar contra la primera corrida** y **críticas = 0** como meta propia. **Deja de medir alcance de capacidades y pasa a medir calidad de ejecución.** KR2, KR3 y KR4 no se tocaron; **O2 y O3 tampoco.**
 > 🔄 **O1 se reescribió el 2026-08-21:** cambió de título (*"Confiabilidad y calidad"* → *"Ejecución confiable"*), pasó de **cinco KRs a cuatro** —tres retirados, dos nuevos— y **las cuatro metas están puestas pero son provisorias: ninguna se fijó contra una medición.** O2 no se tocó.
 
 ## Visión / ambición de empresa
@@ -172,25 +173,42 @@ O1 EJECUCIÓN        ──habilita──>  O2 ADOPCIÓN  ──habilita──> 
 
 | # | KR | Baseline | Meta | Estado del instrumento |
 |---|---|---|---|---|
-| **KR1** | **Cobertura de respuesta** — % de consultas **dentro de dominio** resueltas con datos, sin derivar a "no tengo esa información" | sin cargar | **75%** ⚠️ | 🟠 método definido, **sin cadencia** |
+| **KR1** | **Conversaciones limpias** — % de conversaciones sin fricción de tipo `bug`, `nlu` o `incompleta` _(redefinido el 27-ago)_ | sin cargar, **medible ya** | **por medir en la primera corrida** · críticas = 0 | 🟢 **el instrumento existe**, falta correrlo |
 | **KR2** | **Éxito de ejecución** — % de acciones aprobadas que se completan **sin errores del sistema** | sin cargar | **80% en Q4 → 95% en Q1** ⚠️ | 🔴 evento a construir |
 | **KR3** | **Éxito del flujo de archivos** — % de **sesiones con archivo** que terminan con el artefacto entregado | sin cargar | **80%** ⚠️ | ⛔ sin instrumentar y **sin spec** |
 | **KR4** | **Performance** — % de consultas con **primer token en menos de 3s** | referencia 1,5–2,5s (no es baseline) | **≥95%** ⚠️ | 🟢 el único con referencia numérica |
 
-> ⚠️ **Las cuatro metas son provisorias, y esto no es una salvedad de forma.** Se fijaron **por criterio, no contra una medición**: **ninguno de los cuatro KRs tiene baseline cargado.** Cada meta se recalibra contra su primer baseline. **Ningún número de esta tabla es un dato medido de MAIA.**
+> ⚠️ **Tres de los cuatro KRs mantienen meta provisoria fijada por criterio** (KR2, KR3, KR4). Se fijaron **por criterio, no contra una medición**, no tienen baseline cargado, y **cada una se recalibra contra su primer baseline**.
 >
-> ⚠️ **Expectativa declarada de antemano — cambió respecto del 19-ago.** Antes decía "el Q4 de O1 produce baselines, no mejoras". La versión precisa es: **tres de los cuatro KRs necesitan instrumentación que hoy no existe, así que el Q4 de O1 es, en los hechos, construir tres instrumentos con metas ya puestas.** Si no se dice ahora, **en enero los cuatro números van a leerse como resultados incumplidos en lugar de metas recalibradas.**
+> 🔄 **El KR1 cambió de estado el 2026-08-27: deja de tener meta y pasa a tener instrumento.** Es un intercambio a favor —antes tenía un **75% que nadie podía calcular**— pero **reabre parcialmente el pendiente que se había cerrado el 21-ago**: ahora **tres KRs tienen meta sin baseline y uno tiene baseline alcanzable sin meta**. **Se registra así a propósito, en vez de inventarle un número al KR1.**
+>
+> ⚠️ **Expectativa declarada de antemano — cambió el 19-ago, y otra vez el 27-ago.** La versión del 21-ago decía "tres de los cuatro KRs necesitan instrumentación que hoy no existe". **Sigue siendo cierto para KR2, KR3 y KR4: el Q4 de O1 es, en los hechos, construir tres instrumentos con metas ya puestas.** Lo que cambió es el cuarto: **el KR1 ya no necesita construcción, necesita una corrida, un dueño y una cadencia.** Si no se dice ahora, **en enero los tres primeros números van a leerse como resultados incumplidos en lugar de metas recalibradas** — y el del KR1, como un KR que no existió.
 
-#### KR1 — MAIA sabe lo que debería saber
+> 📌 **Regla operativa de citación, por la colisión de IDs:** **este KR se cita por nombre, no por número.** Es la tercera definición de "O1-KR1" en menos de una semana — ver la tabla de mapeo al final de la sección.
 
-**Cobertura de respuesta: 75% de las consultas resueltas con datos.**
+#### KR1 — MAIA hace bien lo que sabe hacer
 
-- **Scope: solo consultas dentro de los dominios de MAIA.** ⚠️ **Decisión pendiente y no cosmética:** si el scope se define por **entidades** (Tarea, Proyecto, Cliente, Horas) o por **especialistas** (Proyectos, Tareas, Clientes). **Horas no es un especialista** — la regla de dominio dice que las consultas de horas las resuelve el Especialista en Proyectos. **Elegir una y escribirla**, porque el denominador del KR depende de eso.
-- **Instrumento:** corrida sistemática del análisis de fricciones. **Método ya definido; falta cadencia.**
-- **Distingue dos problemas que suelen confundirse:** que MAIA responda **mal** y que MAIA **no pueda** responder. Este KR mide el segundo. _(El primero ya no lo mide nadie — ver el hueco declarado al final de la sección.)_
-- **Cada consulta sin respuesta es una funcionalidad que falta**, así que el mismo trabajo produce el KR **y** el input de roadmap: el volumen de consultas **fuera de dominio** no es fallo del KR, es el pedido de features → `08-roadmap`.
+> 🔄 **Redefinido el 2026-08-27. Reemplaza al KR1 del 21-ago** —*cobertura de respuesta, meta 75%*—, que **se registra como superado, no se borra**: medía *qué no puede hacer MAIA*, y eso depende de decisiones de Producto sobre capacidades y acceso a datos. **Como KR de un equipo técnico/QA no era operable: el equipo no controla la palanca.** El KR nuevo mide *qué hace mal MAIA cuando sí puede*, que sí es su palanca. **No es el mismo KR con otro nombre: cambió de alcance a calidad de ejecución.**
 
-> 📌 Para calcular el 75% hay que **clasificar cada consulta como dentro o fuera de dominio**. Las de afuera **no se descartan.** Cortes del KPI en `06-kpi-tree`.
+**Conversaciones limpias: X% de las conversaciones muestreadas sin ninguna fricción de tipo `bug`, `nlu` o `incompleta`.**
+
+> ⛔ **La `X` está sin llenar a propósito. No completar con una estimación:** la meta se fija contra la primera corrida del método fijo.
+
+- **Criterio de inclusión — la frase que define el KR y que hay que poder recitar en el review:** ***MAIA tenía cómo y falló.*** Los tipos `datos`, `capacidad` y `feature` **no cuentan contra este KR**: son **huecos de alcance, no fallas de ejecución**. Salen de la misma corrida y alimentan el input de roadmap.
+- **Unidad: la conversación reconstruida**, no la fila. El export es data multi-turno partida en filas y **sin ID de conversación**; medir por fila da tasas sin sentido. **Misma unidad que el KR3.**
+- **Denominador:** las conversaciones de la **muestra aleatoria, leídas enteras**. **La muestra se elige antes de leer:** elegir por señales mide la heurística, no a MAIA.
+- **Regla de cálculo: "conversaciones con al menos una fricción técnica"**, independiente del ranking de severidad.
+  > ⚠️ **Esto cambia el método actual**, que clasifica cada conversación por su fricción más grave. Con la regla vieja, una conversación con `nlu` + `capacidad` se tipea `capacidad` y **la falla técnica desaparece del KR**: el equipo mejora sin que el número se mueva. **Hay que corregirlo antes de la primera corrida** — después no se puede sin romper la serie.
+- **Enunciado ascendente a propósito.** "Tasa de fricción" es descendente, y **una métrica descendente sin baseline es exactamente lo que retiró al viejo KR5** (tickets por 100 usuarios activos).
+- **Meta acompañante: fricciones `críticas` = 0.** Sin severidad, "no puedo exportar a Excel" pesa igual que **dejar datos mal escritos en COR**. **Se reporta siempre al lado del porcentaje.**
+- **Dueño: el equipo técnico/QA.** Un solo equipo con palanca sobre **código *y* prompt** — es la diferencia estructural con precisión verificada, que nunca tuvo dueño. **No se desagrega por equipo.** ⚠️ **Falta el nombre propio y la cadencia.**
+- **Instrumento:** el método fijo de la skill `maia-friction-metrics` (muestreo aleatorio con semilla, muestra leída entera, IC de Wilson). 🟢 **Es el único KR de O1 cuyo instrumento ya existe: lo que falta no es construir, es correrlo.**
+
+**Qué no cuenta como fricción** — va escrito, o la meta se contamina en la primera discusión: **rechazos correctos** de temas fuera de COR · **datos que el cliente no configuró** en COR · **respuestas correctas sobre data vacía** ("0 retrabajos") · **confirmaciones y aclaraciones que el flujo requiere** · **límites de COR bien informados**.
+
+**Los tres drivers** —`bug` → código, tools e integración · `nlu` → prompt, orquestación y glosario · `incompleta` → diseño de respuesta— **bajan al KPI tree como el árbol de este KR**. ⚠️ **Las tres tasas se solapan y no suman al complemento del KR:** una conversación puede tener más de un tipo. Detalle y parámetros del instrumento en `06-kpi-tree`.
+
+> ⚠️ **Frontera con el KR2, escrita antes del primer review.** La severidad `crítica` incluye **"datos mal escritos en COR"**, que también es un fallo de ejecución del KR2. **No está mal que un incidente aparezca en los dos** —KR2 es **automático y por evento**, KR1 es **muestral y por lectura**— pero si no queda escrito, en el review van a decir que se cuenta dos veces.
 
 #### KR2 — MAIA hace lo que dice que va a hacer
 
@@ -236,7 +254,7 @@ _Se registran en vez de borrarse. **Los IDs de los KRs retirados no se reutiliza
 | **Conversión de apertura** _(era O1-KR4)_ | 2026-08-21 | ⚠️ **No falla el test de "resultado vs. entregable"** que se usó para bajar otros candidatos a iniciativa. **Se retira para no sostener cinco KRs en un objetivo que nace sin instrumentar.** _Motivo propio, escrito para que no parezca arbitrario_ |
 | **Tickets por 100 usuarios activos** _(era O1-KR5)_ | 2026-08-21 | Métrica **descendente** cuya meta **no puede fijarse sin baseline** sin quedar indefinida **en la dirección peligrosa** |
 
-> ⚠️ **Nota de numeración — colisión declarada.** El documento fuente numera los cuatro KRs vivos como **KR1 a KR4** y a la vez enuncia la regla "los IDs no se reutilizan". **Las dos cosas no pueden ser ciertas al mismo tiempo:** el viejo KR1 era precisión verificada y el nuevo KR1 es cobertura de respuesta. **Se carga la numeración del documento fuente (KR1–KR4)** para que el repo coincida con él, y **el mapeo queda escrito acá abajo**. Cualquier acta, dashboard o review anterior al 2026-08-21 que diga "O1-KR3" está hablando de otro KR.
+> ⚠️ **Nota de numeración — colisión declarada.** El documento fuente numera los cuatro KRs vivos como **KR1 a KR4** y a la vez enuncia la regla "los IDs no se reutilizan". **Las dos cosas no pueden ser ciertas al mismo tiempo:** el viejo KR1 era precisión verificada y el nuevo KR1 es cobertura de respuesta. **Se carga la numeración del documento fuente (KR1–KR4)** para que el repo coincida con él, y **el mapeo queda escrito acá abajo**. Cualquier acta, dashboard o review anterior al 2026-08-21 que diga "O1-KR3" está hablando de otro KR. 🔄 **Agravado el 2026-08-27:** el KR1 se redefinió otra vez —**tercera definición del mismo número en una semana**— así que **la regla pasa a ser citar este KR por nombre y no por número.**
 
 | Referencia vieja (hasta 19-ago) | Referencia nueva (desde 21-ago) |
 |---|---|
@@ -247,6 +265,7 @@ _Se registran en vez de borrarse. **Los IDs de los KRs retirados no se reutiliza
 | O1-KR5 · Tickets por 100 usuarios | **retirado** — sin equivalente |
 | — | **O1-KR3** · Éxito del flujo de archivos *(nuevo)* |
 | — | **O1-KR4** · Performance *(nuevo)* |
+| O1-KR1 · Cobertura de respuesta (21-ago → 27-ago) | **redefinido** → **O1-KR1 · Conversaciones limpias** (desde 27-ago). El scope cambia de **alcance** a **calidad de ejecución**: **no es el mismo KR con otro nombre** |
 
 #### 🚫 Lo que queda sin cobertura de medición
 
@@ -255,6 +274,10 @@ _Se registran en vez de borrarse. **Los IDs de los KRs retirados no se reutiliza
 **No es hipotético:** cuatro cálculos de nivel proyecto de Risk Management producen **porcentajes imposibles** (hasta 24.814.759.071%) y **la severidad no discrimina** — el desvío promedio ya supera "Alto" en las diez métricas configuradas, así que **"Alto" es el estado por defecto**. Se decidió no cubrirlo con un KR: sigue como **iniciativa** (→ `08-roadmap`).
 
 > **Se registra con el mismo lenguaje que la deuda de cálculos: su prioridad se apoya en convicción y no en medición** — justo cuando el release la expone a ~300 clientes. **Ahora son dos cosas en esa lista, y son la misma cosa.**
+
+> 🔄 **Actualizado el 2026-08-27 con la redefinición del KR1.** El tipo `bug` incluye explícitamente ***dato incorrecto o inventado*** y ***contradicción***, y la severidad `alta` es **dato incorrecto entregado como bueno para decidir**. **El KR1 nuevo recupera parte de lo que se perdió al retirar precisión verificada: la alucinación visible en la conversación** — el usuario repregunta, MAIA se contradice, los números no cierran entre sí.
+>
+> **Lo que sigue sin cobertura es la alucinación silenciosa:** un número mal entregado con confianza que nadie cuestiona. Para verla hay que **cotejar contra el backend**, que es justo lo que hacía el KR retirado. **El hueco se achica, no se cierra** — y conviene decirlo así, porque **si el review lo lee como cerrado, se cierra en el papel y no en los datos.**
 
 #### Regla de método que aplica a todo el set
 
@@ -345,13 +368,14 @@ _Cargadas el 2026-08-19 al integrar los OKRs al repo. No invalidan el set: son l
 3. **La meta del KR1 se apoya en un baseline de otro universo** — ver la salvedad de denominador arriba. Correr el Corte E la convierte en una meta medida.
 4. **Todo KR persigue un resultado, no un entregable.** Se bajaron a iniciativas varios candidatos que eran milestones: instrumentar un evento, corregir cálculos, poner workflows en producción, definir un modelo de negocio. **El trabajo sigue siendo necesario, pero no se mide como resultado** (→ `08-roadmap`).
 
-### Tres costuras que agregó la reescritura de O1
+### Cuatro costuras que agregó la reescritura de O1
 
-_Cargadas el 2026-08-21. Las cuatro de arriba siguen vigentes y son todas de O2._
+_Las tres primeras se cargaron el 2026-08-21; la cuarta, el 2026-08-27. Las cuatro de arriba siguen vigentes y son todas de O2._
 
 5. **La numeración de los KRs de O1 colisiona con su propia regla.** El documento fuente dice "los IDs no se reutilizan" **y** numera los cuatro KRs vivos como KR1–KR4. Se cargó la numeración del fuente con el **mapeo viejo→nuevo escrito** (ver O1). **Toda referencia a "O1-KRn" anterior al 21-ago apunta a otro KR:** actas, dashboards y el propio historial de este repo.
 6. **Se retiró el único KR que fallaba por falta de dueño, no por falta de valor.** La precisión verificada era el KR más caro del set y **el retiro cierra un pendiente sin resolverlo**: el hueco de medición de verdad **queda abierto y ahora sin candidato**. Está registrado en O1 como tal, con el mismo lenguaje que la deuda de cálculos.
 7. **Dos KRs nuevos nacen con meta y sin evidencia.** El de archivos es `[HIPÓTESIS]` —**no hay ni un dato del flujo en el repo**— y el de performance apoya su referencia en un promedio que puede ser de **otra arquitectura** (Orquestador, 22-jul-26). **Las metas son de criterio; el primer baseline las recalibra.**
+8. **Tercera versión de "O1-KR1" en menos de una semana** _(2026-08-27)_. El KR1 original era **precisión verificada** (retirado el 21-ago), el del 21-ago era **cobertura de respuesta** y el del 27-ago es **conversaciones limpias**. El repo ya tenía una colisión de IDs declarada; **esta la agrava.** Regla operativa: **este KR se cita por nombre, no por número.** Ver la fila nueva en la tabla de mapeo.
 
 ## Marco de priorización
 
@@ -364,15 +388,19 @@ No es un framework formalizado tipo RICE con scoring numérico, sino un criterio
 
 ## Pendientes — input interno
 
-- [x] ✅ **OKRs de la vertical de AI — cargados el 2026-08-19, O1 reescrito el 2026-08-21.** O1 (**ejecución confiable, 4 KRs**) y O2 (adopción validada, 4 KRs); **O3 queda ⏸️ en revisión** por depender de pricing, que no decide Producto. Ver "OKRs del trimestre". _Los cinco bloques de evidencia que sostienen O2 —baseline, anti-metas, distribución, dormidas y Crowe— estaban cargados desde el 17 al 19 de agosto. **Los cuatro KRs de O1, en cambio, no tienen baseline cargado.**_
+- [x] ✅ **OKRs de la vertical de AI — cargados el 2026-08-19, O1 reescrito el 2026-08-21.** O1 (**ejecución confiable, 4 KRs**) y O2 (adopción validada, 4 KRs); **O3 queda ⏸️ en revisión** por depender de pricing, que no decide Producto. Ver "OKRs del trimestre". _Los cinco bloques de evidencia que sostienen O2 —baseline, anti-metas, distribución, dormidas y Crowe— estaban cargados desde el 17 al 19 de agosto. **Los cuatro KRs de O1, en cambio, no tienen baseline cargado.**_ 🔄 **KR1 redefinido el 2026-08-27: "conversaciones limpias", sin meta y con instrumento existente.** Sigue sin baseline cargado, pero **es el único de O1 que se puede medir sin construir nada.**
 - [ ] **OKRs de los otros ejes/squads** (Coherencia de dinero y negocio, Coherencia de datos, Fundamentals COR, GGN-GUT) — siguen sin definir. **No inventarlos.**
 - [ ] ⏰ **ANTES del release del 24-ago: congelar el panel Enterprise + Midmarket** (companies y asientos elegibles del día previo) e **instrumentar la activación con marca de cohorte**. Sin lo primero se pierde poder distinguir mejora de dilución; sin lo segundo **KR3 de O2 no existe**. Las dos son consultas, no desarrollo. → `06-kpi-tree`.
 - [ ] 🔴 **Correr el Corte A (solapamiento MAIA / banner)** — ya no bloquea escribir el KR de penetración, pero **decide si se reporta en una línea o en dos**. Sigue siendo la consulta más desbloqueante del repo. → `06-kpi-tree`.
 - [ ] **Resolver la tensión entre KR1 de O2 y la anti-meta 1:** el KR es un número único (25%) y la anti-meta pide metas diferenciadas por rol. **Desagregar al reportar, o revisar la anti-meta explícitamente.** No dejarlo implícito.
 - [x] ~~**Asignar dueño con nombre al KR1 de O1 (precisión verificada).**~~ ⚠️ **Cerrado el 2026-08-21 por retiro del KR, no por resolución.** Se retiró justamente porque nunca tuvo dueño y no había forma automática de medirlo. **El hueco que dejó —nadie mide si MAIA dice la verdad— está registrado en la sección de O1 y sigue abierto.**
-- [x] ~~**Fijar las metas de los cuatro KRs de O1 que decían "por definir".**~~ ✅ **Cerrado el 2026-08-21: los cuatro KRs tienen meta** (75% · 80%→95% · 80% · ≥95%). ⚠️ **Con la salvedad que reemplaza al pendiente: las cuatro son provisorias, fijadas por criterio y no contra una medición.** Ninguno tiene baseline cargado.
-- [ ] 🔁 **Recalibrar las cuatro metas de O1 contra su primer baseline**, y dejar registrado el número viejo al lado del nuevo. **Es el pendiente que sustituye al de "fijar las metas".** Sin esto, en enero los cuatro números se leen como resultados incumplidos.
-- [ ] ⚠️ **Definir el scope del KR1 de O1 (cobertura de respuesta): por entidades o por especialistas.** Entidades = Tarea, Proyecto, Cliente, Horas. Especialistas = Proyectos, Tareas, Clientes. **Horas no es un especialista** — la regla de dominio manda esas consultas al Especialista en Proyectos. **El denominador del KR depende de esta elección: hay que elegir una y escribirla.**
+- [x] ~~**Fijar las metas de los cuatro KRs de O1 que decían "por definir".**~~ ✅ **Cerrado el 2026-08-21: los cuatro KRs tienen meta** (75% · 80%→95% · 80% · ≥95%). 🔄 **Parcialmente reabierto el 2026-08-27:** el 75% se cayó con la redefinición del KR1, que **queda sin meta hasta la primera corrida**. **Hoy son tres metas puestas y una por medir.** ⚠️ **Con la salvedad que reemplaza al pendiente: las cuatro son provisorias, fijadas por criterio y no contra una medición.** Ninguno tiene baseline cargado.
+- [ ] 🔁 **Recalibrar las tres metas de O1 contra su primer baseline** —**KR2, KR3 y KR4**— y dejar registrado el número viejo al lado del nuevo. **Es el pendiente que sustituye al de "fijar las metas".** Sin esto, en enero los tres números se leen como resultados incumplidos. _(Reformulado el 2026-08-27: eran cuatro. **El KR1 no tiene meta que recalibrar** — tiene una meta por fijar, abajo.)_
+- [x] ~~⚠️ **Definir el scope del KR1 de O1 (cobertura de respuesta): por entidades o por especialistas.**~~ 🔄 **Se disuelve el 2026-08-27: cambió el denominador del KR.** La clasificación **dentro/fuera de dominio sigue siendo necesaria para el input de roadmap**, pero **ya no bloquea un KR**. **Cerrado por redefinición, no por resolución** — mismo criterio con el que se cerró el pendiente de dueño de precisión verificada.
+- [ ] 🔴 **Asignar dueño con nombre y cadencia al KR1 de O1 (conversaciones limpias).** **Es el pendiente que reemplaza al del scope.** ⚠️ **El KR1 tiene la misma estructura de costo que precisión verificada —lectura humana de una muestra— y esa fue la causa del retiro.** Las diferencias a favor son reales (**método fijo, tooling, dueño estructural con palanca sobre código y prompt**), pero **sin nombre y sin cadencia muere igual.**
+- [ ] 🟢 **Correr la primera medición del KR1 y fijar la meta contra ese número.** **Es el único KR de O1 que no requiere construir instrumentación** — el instrumento ya existe (`maia-friction-metrics`).
+- [ ] ⚠️ **Ajustar la regla multi-tipo del método antes de la primera corrida:** de "la fricción más grave" a **"al menos una fricción técnica"**. Con la regla vieja, una conversación con `nlu` + `capacidad` se tipea `capacidad` y **la falla técnica desaparece del KR**. **Después de la primera corrida no se puede cambiar sin romper la serie.**
+- [ ] **Escribir la frontera entre el KR1 y el KR2 de O1.** La severidad `crítica` incluye **"datos mal escritos en COR"**, que también es KR2. **No está mal que un incidente aparezca en los dos** —KR2 es automático y por evento, KR1 es muestral y por lectura— **pero si no queda escrito, en el review van a decir que se cuenta dos veces.**
 - [ ] ⛔ **Especificar e instrumentar los eventos del flujo de archivos (KR3 de O1)** — **entrada y salida como dos líneas desde el primer mes**, con el criterio de éxito de tres condiciones (entregado + sin error + sin señal de corrección). **Es el KR más atrasado del set: sin instrumentar y sin spec.** → `06-kpi-tree`.
 - [ ] ⚠️ **Chequear si el 1,5–2,5s de TTFT es anterior al deploy del Orquestador (22-jul-26)** antes de usarlo como baseline del KR4 de O1. **Si lo es, es de otra arquitectura.** Y si hay mediciones a ambos lados, **la resta es el costo en latencia del Orquestador** — insumo del eje capacidad vs. superficie de `08-roadmap`. Pedir además la **distribución p50/p90/p95/p99**: el 3s se fijó sobre un promedio, y un promedio no ve la cola.
 - [x] Cómo laddera Producto a "Deploy de AI en clientes": ¿qué métrica de producto la mide? _(Resuelto 2026-08-17: **penetración sobre asientos elegibles**, con metas diferenciadas por rol. Ver sección dedicada. Sigue abierto el laddering de las otras dos prioridades.)_
