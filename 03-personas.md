@@ -1,6 +1,6 @@
 # 03 — Personas (COR)
 
-> **Última actualización:** 2026-08-19
+> **Última actualización:** 2026-08-31
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Perfiles de usuario y segmentos de COR, para diseñar features y evaluar impacto. COR es B2B: el **cliente es la agencia**, y dentro conviven varios **roles-usuario**, cada uno con su capa de permisos. Distinguir **comprador** (quién decide/paga) de **usuarios** (quién opera el producto).
 
@@ -113,9 +113,17 @@ Lo que sí distingue a los roles es la **intensidad**:
 
 **Implicancia para personas:** el rol que más profundamente usa MAIA es el **C-level**, no el PM — lo opuesto a lo que sugiere el volumen bruto. Y su curva de penetración lleva cinco meses plana, lo que abre una pregunta abierta de discovery (`07`): ¿es saturación real del rol, o falta de valor específico para él?
 
-> ⚠️ _El rol **Colaborador** está excluido de esa medición: MAIA se le habilitó a un grupo muy reducido desde jun-2026 y **su propuesta de valor todavía no está definida**. No es un detalle menor — son **5.605 asientos**, más que todo el universo hoy elegible para MAIA (3.775)._
+> ⚠️ _El rol **Colaborador** está excluido de esa medición y se mide sobre denominador propio: son **5.605 asientos**, más que todo el universo hoy elegible para MAIA (3.775). 🔄 **Actualizado el 2026-08-31: ya no es un rol sin propuesta de valor** — ver la ficha, abajo._
 
-#### El Colaborador y MAIA — ficha propia _(decidido el 2026-08-19 con los OKRs de la vertical de AI)_
+#### El Colaborador y MAIA — ficha propia _(decidida el 2026-08-19 · **fundamento reemplazado el 2026-08-31**)_
+
+> 🔄 **Cambio de fondo el 2026-08-31: el fundamento por el que este rol estaba fuera de los KRs venció.** Este archivo decía que **el rol no tenía propuesta de valor definida** y que **su primer paso era discovery, no un KR**. **Con la propuesta de carga de horas asistida por MAIA, el rol tiene propuesta de valor** — y pasa de **ficha sin meta** a **universo propio con KR propio**: **O2 · KR6 — sustitución del flujo de carga de horas (0% → 25%)**, sobre el denominador de **5.605 asientos** (`05-estrategia-okrs`).
+>
+> **El 0,27% se mantiene como dato, recalificado.** Deja de ser *"evidencia de que el rol no tiene caso de uso"* y pasa a ser **baseline pre-propuesta** — se reporta como **KPI del tablero, sin meta**, porque mide **cuánta gente toca MAIA**, no **cuánto flujo pasa por MAIA**. ⚠️ **Y no sirve como punto de partida del KR6:** describe un rol que todavía no tenía caso de uso, así que **el baseline real sale de la primera medición de septiembre.**
+>
+> 🚨 **La aritmética del KR6 le pone número a lo que este rol necesita.** Como *share de horas = penetración × share individual*, **no hay combinación que llegue al 25% sin que la penetración pase de 0,27% a por lo menos 25%: un salto de ~90x.** **El cuello de botella de este rol no es de producto, es de amplitud** — exposición, comunicación, activación.
+>
+> 📌 **El discovery no se cae: cambia de rol en el plan.** Ya no es *"el primer paso en vez de un KR"*, es **el insumo cualitativo de un KR que ya existe** — y sigue teniendo ventana.
 
 **Con el release del 24-ago-2026 MAIA se libera a toda la base de COR y el Colaborador entra completo.** Eso obliga a decidir cómo se lo mide, y la decisión es **no mezclarlo con los otros tres roles**:
 
@@ -124,14 +132,14 @@ Lo que sí distingue a los roles es la **intensidad**:
 | Asientos | **5.605** | ~3.775 (128 companies, pre-release) |
 | Usuarios recurrentes | **~15** | 373 (jul-26) |
 | **Penetración** | **0,27%** | **11,6%** |
-| Estado | **Sin propuesta de valor definida** | Con caso de uso y KRs |
+| Estado | 🔄 **Con propuesta de valor desde el 31-ago** (carga de horas asistida) **y KR propio: O2 · KR6** | Con caso de uso y KRs |
 
-**El 0,27% no se lee como un problema de adopción.** Está dos órdenes de magnitud por debajo de los roles con caso de uso definido, y **eso es exactamente lo esperable para un rol al que nadie le dijo todavía para qué sirve MAIA**. Compararlo contra el 11,6% sería el mismo error de denominador de `[BAJA-01]`, con una vuelta más: acá ni siquiera es el mismo producto, porque no hay propuesta de valor que evaluar.
+**El 0,27% no se leía como un problema de adopción** _(lectura del 19-ago, que se conserva porque explica de dónde viene el número)_. Estaba dos órdenes de magnitud por debajo de los roles con caso de uso definido, y **eso era exactamente lo esperable para un rol al que nadie le había dicho todavía para qué sirve MAIA**. 🔄 **Desde el 31-ago la propuesta existe, así que el mismo número pasa a ser línea de largada en vez de explicación.** Compararlo contra el 11,6% sería el mismo error de denominador de `[BAJA-01]`, con una vuelta más: acá ni siquiera es el mismo producto, porque no hay propuesta de valor que evaluar.
 
 **Consecuencias de medición:**
 
 1. **Denominador y métrica separados.** El Colaborador **no entra** en el panel Enterprise + Midmarket que sostiene los KRs de O2 (`05-estrategia-okrs`). Si entrara, la penetración caería de 11,6% a ~2,6% el mismo día **sin que nada empeore**.
-2. **Su primer paso no es un KR de adopción, es discovery.** Con ~15 personas usándola hoy, **son 15 entrevistas posibles** — el research más barato disponible en todo el repo, y con ventana: después del release el grupo deja de ser identificable. → `07-discovery`.
+2. 🔄 **Su primer paso ya no es "discovery en vez de un KR": tiene KR (O2 · KR6) y el discovery lo alimenta.** Con ~15 personas usándola hoy, **son 15 entrevistas posibles** — el research más barato disponible en todo el repo, y con ventana: **después del release el grupo deja de ser identificable.** → `07-discovery`.
 3. ⚠️ **Ojo con el contexto de satisfacción al leer los resultados:** el Colaborador es el rol que **se desgasta con el uso** (NPS −15,2 en onboarding → −34,5 en adopción). Lo que sea que MAIA le ofrezca, entra sobre esa base.
 
 > _Salvedad de dato: los 413 usuarios de la tabla de distribución de frecuencia de `06-kpi-tree` **sí incluyen al Colaborador** —es la única tabla que Amplitude no entrega abierta por rol—, mientras que los 373 de la serie de penetración lo excluyen. Es la razón por la que el pedido de **histograma abierto por rol** subió de prioridad._
@@ -188,7 +196,7 @@ El **champion** es una persona **dentro de la organización cliente** (no de COR
 - [x] Quién es el "champion" de adopción. _(Persona interna del cliente, no un rol formal de COR; con contacto frecuente con el CSM.)_
 - [ ] Cómo arranca el rollout típico en una cuenta nueva, y qué rol suele ejercer de champion.
 - [ ] **Personas por vertical nuevo** (IT Consulting, Law & Accounting, Brands, Media): comprador, usuarios y jobs-to-be-done propios de cada industria.
-- [ ] **Propuesta de valor de MAIA para el rol Colaborador** — hoy sin definir, y es el rol con más asientos (5.605). ⚠️ _Actualizado el 2026-08-19: **ya no condiciona la liberación a toda la base — el release se decidió igual, fuera de Producto, para la semana del 24-ago.** El pendiente no se cierra: se vuelve más urgente, porque ahora el rol tiene acceso completo sin que exista la propuesta. **Ficha de medición propia cargada arriba** (0,27%); el primer paso acordado es **discovery sobre los ~15 usuarios actuales**, con ventana antes del release (`07-discovery`)._
+- [x] ~~**Propuesta de valor de MAIA para el rol Colaborador**~~ ✅ **Resuelto el 2026-08-31: carga de horas asistida por MAIA**, con KR propio (O2 · KR6) sobre los 5.605 asientos. ⚠️ **Lo que queda abierto no es la propuesta sino la amplitud:** la aritmética del KR pide llevar la penetración de 0,27% a ≥25%, **~90x**, y eso es exposición y comunicación, no producto. _Historia del pendiente:_ ⚠️ _Actualizado el 2026-08-19: **ya no condiciona la liberación a toda la base — el release se decidió igual, fuera de Producto, para la semana del 24-ago.** El pendiente no se cierra: se vuelve más urgente, porque ahora el rol tiene acceso completo sin que exista la propuesta. **Ficha de medición propia cargada arriba** (0,27%); el primer paso acordado es **discovery sobre los ~15 usuarios actuales**, con ventana antes del release (`07-discovery`)._
 - [ ] **¿La meseta del C-level es saturación o falta de valor para el rol?** Ver `07-discovery` (tema abierto de MAIA) y `06-kpi-tree` (hipótesis etiquetada).
   - ⚠️ **Dato nuevo en tensión (2026-08-18):** en Risk Management el C-Level es el **único rol que no cae en agosto** (−5% de interacciones contra −80% del PM), sosteniendo 4,4 int./usuario contra 1,45 histórico. Con n=9 no alcanza para nada, pero **apunta en dirección contraria a "el C-Level no se engancha"**. Verificar antes de cerrar la pregunta.
 - [x] **Denominador real de asientos de Director.** _(Resuelto 2026-08-19: **923 asientos** en la base de Risk Management, 865 al 1-ago-26. La inferencia por resta era correcta.)_
