@@ -1,6 +1,6 @@
 # 03 — Personas (COR)
 
-> **Última actualización:** 2026-08-31
+> **Última actualización:** 2026-09-02
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Perfiles de usuario y segmentos de COR, para diseñar features y evaluar impacto. COR es B2B: el **cliente es la agencia**, y dentro conviven varios **roles-usuario**, cada uno con su capa de permisos. Distinguir **comprador** (quién decide/paga) de **usuarios** (quién opera el producto).
 
@@ -122,6 +122,9 @@ Lo que sí distingue a los roles es la **intensidad**:
 > **El 0,27% se mantiene como dato, recalificado.** Deja de ser *"evidencia de que el rol no tiene caso de uso"* y pasa a ser **baseline pre-propuesta** — se reporta como **KPI del tablero, sin meta**, porque mide **cuánta gente toca MAIA**, no **cuánto flujo pasa por MAIA**. ⚠️ **Y no sirve como punto de partida del KR6:** describe un rol que todavía no tenía caso de uso, así que **el baseline real sale de la primera medición de septiembre.**
 >
 > 🚨 **La aritmética del KR6 le pone número a lo que este rol necesita.** Como *share de horas = penetración × share individual*, **no hay combinación que llegue al 25% sin que la penetración pase de 0,27% a por lo menos 25%: un salto de ~90x.** **El cuello de botella de este rol no es de producto, es de amplitud** — exposición, comunicación, activación.
+> ⚠️ **`[HIPÓTESIS]` desde el 2026-09-02: el ~90x no está verificado.** Se apoya en que el segundo factor tiene techo en 100%, **y eso solo vale si los dos factores corren sobre la misma población** — hoy no corren. **Qué lo refutaría:** que una parte grande de los 5.605 elegibles **no cargue horas en una ventana de 28 días**; ahí el techo desaparece y **el multiplicador podría ser bastante menor**. Lo resuelve una consulta al backend, pedida para antes del 27-sep. Detalle en `06-kpi-tree`.
+>
+> 🔄 **Precisiones del 2026-09-02 (ver `05-estrategia-okrs` y `06-kpi-tree`).** El KR6 mide **horas cargadas**, no capacidad teórica; corre sobre **ventana de 28 días con lectura semanal**, no mes calendario; y su universo son los **colaboradores con MAIA habilitada** — **la habilitación es por company y su fecha se guarda**. **El 0,27% sigue siendo KPI del tablero sin meta**, y sigue sin servir como punto de partida del KR6: **el baseline real sale del cierre del 06-sep**.
 >
 > 📌 **El discovery no se cae: cambia de rol en el plan.** Ya no es *"el primer paso en vez de un KR"*, es **el insumo cualitativo de un KR que ya existe** — y sigue teniendo ventana.
 
@@ -129,7 +132,7 @@ Lo que sí distingue a los roles es la **intensidad**:
 
 | | Colaborador | Panel PM + Director + C-Level |
 |---|---|---|
-| Asientos | **5.605** | ~3.775 (128 companies, pre-release) |
+| Asientos | **5.605** _(elegibles: colaboradores con MAIA habilitada)_ | ~3.775 (128 companies, pre-release) |
 | Usuarios recurrentes | **~15** | 373 (jul-26) |
 | **Penetración** | **0,27%** | **11,6%** |
 | Estado | 🔄 **Con propuesta de valor desde el 31-ago** (carga de horas asistida) **y KR propio: O2 · KR6** | Con caso de uso y KRs |

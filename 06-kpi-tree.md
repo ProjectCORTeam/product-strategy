@@ -1,6 +1,6 @@
 # 06 — KPI Tree (COR)
 
-> **Última actualización:** 2026-08-31
+> **Última actualización:** 2026-09-02
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Árbol de métricas de COR, desde la North Star hasta las métricas operativas y de producto, para definir el éxito de una feature o analizar resultados. Las métricas de **negocio** vienen confirmadas del Business Plan 2026–2027 (`05`); las de **producto** están inferidas y marcadas como hipótesis hasta confirmarlas.
 >
@@ -201,6 +201,18 @@ Sin estas tres definiciones los números de abajo no se pueden leer, y su ausenc
 > - **Instrumentar la activación con marca de cohorte.** ⏰ **Fecha vencida, y el KR3 de O2 al que servía se retiró el 31-ago** — hoy bloquea el **nodo leading del árbol de Alcance** y el **KPI de activación**, no un KR. Sin eso **el experimento de activación más grande que COR va a correr se pierde** — 172 companies el mismo día. El precedente está medido: en julio se habilitaron 79 companies de Risk Management y los usuarios pasaron de 232 a 234.
 
 > ⚠️ **Incomparabilidad con el baseline anterior de este archivo.** Todos los números de esta sección excluyen al rol **Colaborador**; los de la versión anterior lo incluían. Julio-26 es **373 usuarios / 2.303 interacciones** acá contra 413 / 2.463 antes. **MAIA no empeoró — cambió el denominador y el universo de roles.** El Colaborador se excluye porque **su propuesta de valor no está definida**, y porque el owner decidió mantenerlo fuera de esta medición _(ago-2026)_. **Ojo con el fundamento:** la documentación funcional del Orquestador (22-jul-26) le da acceso a MAIA desde el **header** y **desde dentro de una tarea**, así que el argumento de "alcance marginal" ya no se sostiene solo. **Es una decisión de scope del análisis, no una limitación del dato.** Si se decide incorporarlo, son 5.605 asientos contra los 3.775 elegibles actuales: el denominador de toda esta sección cambia de escala. Única excepción: la tabla de distribución de frecuencia, que Amplitude no entrega abierta por rol.
+
+
+#### Definiciones del universo Colaborador _(cargadas el 2026-09-02, para el KR6 de O2)_
+
+El panel E+MM y el Colaborador **no comparten definiciones**. Estas cuatro son las del KR6 y **no se mezclan con las de arriba**.
+
+- **Asiento elegible (Colaborador).** Asientos de rol **Colaborador** de las **companies con MAIA habilitada**. Al 2026-08-31: **5.605**. ✅ **Confirmado el 2026-09-02: MAIA se habilita por company y la fecha de habilitación se guarda.** Es **la misma convención que el panel E+MM, con otro rol**.
+- **Horas cargadas.** Horas **efectivamente cargadas** por asientos elegibles dentro de la ventana. ⛔ **No es capacidad teórica** (asientos × jornada × días hábiles), que es un denominador mucho más grande y **volvería el 25% otro nivel de ambición**. **Un colaborador que no carga nada en la ventana no aporta ni al numerador ni al denominador.**
+- **Ventana de 28 días.** Los 28 días corridos anteriores a la lectura, inclusive — **cuatro semanas exactas**. **La ventana filtra por el acto de cargar:** entran las horas cargadas en esos 28 días **sin importar a qué fecha de trabajo correspondan**, incluidas las cargadas por adelantado a fechas futuras. **La fecha trabajada no interviene en este KR** (sí en *puntualidad de carga*). ⚠️ **Numerador y denominador filtran por lo mismo, sin excepción:** si uno sale por fecha de carga y el otro por fecha trabajada, el cociente compara dos poblaciones distintas y **el share deja de significar algo**.
+- **Cadencia.** **Semanal, siempre el mismo día.** Convención: **leer los lunes, ventana cerrando el domingo anterior**, así son cuatro semanas calendario cerradas sin días partidos.
+
+> 📌 **Por qué 28 y no 30.** 30 días son 4 semanas más 2, así que la ventana arrastra entre **20 y 22 días hábiles** según dónde cierre — variación que entra directo a un denominador hecho de horas cargadas. **Con 28 la composición de días de la semana es idéntica en toda lectura, por construcción y no por disciplina de quien reporta.** ⚠️ **Los feriados siguen sin neutralizarse:** afectan arriba y abajo, así que pesan poco en el share, **pero cuentan para el valor absoluto del denominador**, que se reporta como control. **En el tramo del KR pesa sobre todo diciembre.**
 
 ### Penetración — serie mensual
 
@@ -672,9 +684,12 @@ NPS de la vertical de AI                              ◀── LAGGING (acumula
 > **Share de horas = penetración × share individual promedio**
 > *(colaboradores que usan MAIA ÷ total) × (horas vía MAIA por usuario ÷ horas totales por usuario)*
 
+> ⚠️ **Los dos factores tienen que correr sobre la misma población** _(2026-09-02)_. **El `N` es el mismo arriba y abajo o el álgebra no cancela:** si la penetración se calcula sobre **asientos elegibles** y el share individual sobre **colaboradores que cargan horas**, **el segundo factor deja de tener techo en 100%** y la descomposición **no se puede leer**. **Va escrito en la definición de cada corte, no asumido.**
+
 ```
 % de horas cargadas vía MAIA                            ◀── LAGGING · 0% → 25%
-   (sobre horas de colaboradores en companies con MAIA habilitada)
+   (horas cargadas vía MAIA ÷ horas cargadas totales,
+    asientos elegibles, ventana móvil de 28 días)
 │
 ├── DISTRIBUCIÓN DE SHARE POR COLABORADOR               ◀── CONTROL ★ obligatoria al lado
 │                                                            sin esto, 10 usuarios intensivos
@@ -693,12 +708,46 @@ NPS de la vertical de AI                              ◀── LAGGING (acumula
 ```
 
 > 🚨 **La aritmética manda dónde poner el esfuerzo.** **No hay combinación que llegue a 25% sin que la penetración pase de 0,27% a por lo menos 25% — ~90x.** *Profundidad* es donde vive el producto, **pero el cuello de botella está en amplitud**: exposición, comunicación, activación. **Si eso no se mueve, ninguna mejora de producto alcanza.**
+>
+> ⚠️ **`[HIPÓTESIS]` desde el 2026-09-02.** El ~90x **se apoya en que el segundo factor tiene techo en 100%**, y eso **solo es cierto si los dos factores corren sobre la misma población** — que hoy **no es el caso**: penetración sobre **5.605 elegibles**, share individual sobre **horas cargadas**. **El divisor queda deflactado por los colaboradores que cargan cero, el techo desaparece y el multiplicador podría ser bastante menor.** **Qué lo refutaría:** que una parte grande de los elegibles **no cargue horas en una ventana de 28 días**. 📌 **Lo resuelve el KPI 12 (tamaño del denominador), que es corrible hoy** — antes del cierre del 27-sep.
 > **Por qué la 2ª carga es el leading declarado:** una primera carga que no se repite **aporta como mucho una semana de horas**. Para el share, **lo que cuenta es la durabilidad, no el estreno.**
 > **Por qué *pasos vs. flujo normal* es el nodo del mecanismo:** este KR funciona **solo si MAIA es una puerta mejor**. **Si cargar horas por MAIA no es más rápido que el flujo de siempre, el share no sube por más exposición que haya.**
 > **El abandono a mitad de carga es la señal más barata del árbol:** un colaborador que empieza por MAIA y se sale al flujo normal **te dice en días lo que el share te diría en meses.**
-> ⚠️ **En septiembre el share va a estar cerca de 1% y no va a decir nada.** Lo que se mira ese mes es **el embudo de amplitud**. **Es el único KR del set donde el árbol no complementa al número: lo reemplaza durante el primer mes.**
+> ⚠️ **En las primeras ventanas el share va a estar cerca de 1% y no va a decir nada.** Lo que se mira entonces es **el embudo de amplitud**. **Es el único KR del set donde el árbol no complementa al número: lo reemplaza al principio.**
 > 💡 **El nodo que justifica la apuesta más allá del time tracking está en el tablero: el spillover.** Si el colaborador entra por horas y después usa MAIA para otra cosa, **la carga de horas es la puerta y no el destino.**
 
+
+
+##### Catálogo de KPIs del KR6 _(cargado el 2026-09-02)_
+
+_Operacionaliza los nodos del árbol: **qué se mide, de dónde sale y qué papel juega.** **Ninguno se reporta sin su `n` y su fecha.**_
+
+| # | KPI | Definición | Fuente | Papel | Estado |
+|---|---|---|---|---|---|
+| 1 | **Share de horas vía MAIA** | Horas vía MAIA ÷ horas cargadas totales, elegibles, ventana 28d | Backend + evento | **KR** | 🔴 |
+| 2 | **Penetración de MAIA en Colaborador** | Colaboradores que interactúan con MAIA **para lo que sea** ÷ elegibles | Amplitude | **KPI del tablero** — adopción del producto, **no** el KR | 🟢 0,27% |
+| 3 | **Amplitud de carga asistida** | Colaboradores que cargan horas **vía MAIA** ÷ elegibles | Backend + evento | **Factor 1 de la identidad** | 🔴 |
+| 4 | **Profundidad de carga asistida** | Horas vía MAIA por usuario ÷ horas cargadas por elegible | Backend + evento | **Factor 2 de la identidad** | 🔴 |
+| 5 | **Exposición a la propuesta** | Expuestos a la propuesta de carga asistida ÷ elegibles | Amplitude | **Leading — el cuello de botella** | 🔴 |
+| 6 | **Tasa de activación** | Expuestos que hacen su **1ª carga vía MAIA** ÷ expuestos | Amplitude / evento | Leading | 🔴 |
+| 7 | **Tasa de finalización** | Conversaciones de carga que **terminan en horas cargadas** ÷ iniciadas | ⚠️ ver la spec pendiente | **Leading — la señal más barata** | 🔴 |
+| 8 | **Tasa de 2ª carga** | De los que hicieron su 1ª carga, cuántos hacen una **2ª dentro de 2 semanas** | Backend + evento | **◆ Leading declarado** | 🔴 |
+| 9 | **Costo del flujo** | Pasos y tiempo hasta completar, **vía MAIA vs. flujo normal** | Backend + evento | **Leading — el mecanismo** | 🔴 |
+| 10 | **Tasa de fallas** | Cargas vía MAIA que fallan o hay que corregir ÷ cargas vía MAIA | Backend + evento | Leading 🔗 **es O1 dentro de O2** | 🔴 |
+| 11 | **Distribución de share por colaborador** | Histograma del share individual, **no su promedio** | Backend + evento | **★ Control obligatorio** | 🔴 |
+| 12 | **Tamaño del denominador** | Horas cargadas · elegibles · colaboradores que cargaron | Backend | **Control** — arbitra dilución vs. caída real | 🟢 **corrible hoy** |
+
+**Los tres que NO van como KPI:**
+
+| No va | Por qué | Va como |
+|---|---|---|
+| **Colaboradores que usan MAIA** (conteo absoluto) | El repo ya lo decidió para toda la vertical: **penetración reemplaza el conteo de usuarios únicos absolutos**. Un conteo que sube porque el release sumó asientos **no dice nada** | El `n` obligatorio del KPI 2 |
+| **Colaboradores que cargaron más de una vez** (acumulado) | Sin ventana **solo crece y nunca baja**: en diciembre incluye a quien lo hizo en septiembre y abandonó. **Un indicador que no puede empeorar no sirve de leading** | El KPI 8, con cohorte y ventana de 2 semanas |
+| **Colaboradores que usan MAIA _y_ cargan horas** | Admite leerse como "usa MAIA para cualquier cosa **y además** carga horas por el flujo de siempre" — **intersección sin sentido para este KR** | El KPI 3: carga horas **vía MAIA** |
+
+> ⚠️ **Los KPIs 2 y 3 se parecen y no son lo mismo.** El 2 mide si el rol adoptó **el producto**; el 3, si adoptó **el flujo**. **Si los dos se llaman "penetración" en el mismo reporte, se confunden en el review.**
+>
+> 📌 **La brecha entre 2 y 3 es informativa, no ruido.** Un colaborador puede estar en el 2 y no en el 3 — **usa MAIA para consultar cosas y sigue cargando horas por el flujo de siempre**. **Si la brecha es grande, la puerta está abierta y el flujo no convence: es un problema de producto, no de amplitud.** Si los dos son bajos por igual, **es amplitud**. **Es la lectura que decide dónde se pone el esfuerzo.**
 
 ### Instrumentación nueva requerida por la revisión del 2026-08-31
 
@@ -706,11 +755,15 @@ NPS de la vertical de AI                              ◀── LAGGING (acumula
 |---|---|---|
 | 🔴 **Evento de acción aplicada (V1)** | Sin esto, *éxito de ejecución* **no tiene ni lagging ni leading** — su leading declarado sale del mismo evento | **Bloqueante** |
 | 🟡 **Baseline real de TTFT post-release** — **percentil**, cortado por origen | **Es el único KR sin punto de partida**, y decide si el guardrail es Roofshot o Moonshot. Sale de una consulta | **Antes de septiembre** |
-| 🟡 **Share de horas cargadas vía MAIA** + **embudo de amplitud** (expuestos → activados → abandono) | El KR6 **se lee por trayectoria mensual**: la medición **tiene que existir desde septiembre** o el KR arranca ciego | **Antes de septiembre** |
+| ⏰🔴 **Evento de carga vía MAIA** + vínculo con el registro de horas del backend | **Es el numerador del KR6 y no existe.** Sin él **no hay ni KR ni leading declarado** | **VENCIDA** _(era antes de septiembre)_ |
+| ⏰🔴 **Share de horas vía MAIA en ventana de 28 días** + **embudo de amplitud** (expuestos → activados → abandono) | El KR6 **se lee por trayectoria**: la medición **tiene que existir ya** o el KR arranca ciego. 🔄 **Con ventana móvil, cada día sin dato arruina las 28 lecturas que lo contienen** | **VENCIDA** |
+| 🔴 **Tamaño del denominador del KR6**: horas cargadas totales · asientos elegibles · **cuántos cargan horas en una ventana de 28 días** | **Población sobre la que corre la identidad del árbol.** Sin esto **no se puede descomponer el share en amplitud × profundidad** — y **es el dato que resuelve si el ~90x se sostiene**. **Sale de una consulta, sin instrumentación nueva** | **Antes del 27-sep** |
 | 🔴 **Tasa de 2ª interacción ≤30 días** | **Leading declarado del KR de uso intensivo** | Durante el trimestre |
 | 🟡 **Widget de NPS in-app** (3 preguntas) | Instrumento del **KR5**. La **tasa de respuesta** se reporta como **variable de control** | Durante el trimestre |
 | ⏰ **Marca de cohorte** | **Fecha vencida** (era antes del release del 24-ago). **Ya no bloquea un KR** pero **sí el nodo leading del árbol de Alcance y el KPI de activación** | **Vencido** |
 | ⏰ **Congelar el panel E+MM** | **Fecha vencida.** Sin esto **no se distingue mejora de dilución** — y es parte de por qué hoy no se puede decidir si los 806 de agosto son el panel | **Vencido** |
+
+> 🔒 **Spec pendiente del evento de carga vía MAIA (regla 8).** Antes de correr cualquier serie del KR6 hay que declarar: **nombre del evento y propiedades** · **qué valores cuentan como carga originada en MAIA** · **si la unidad es la hora cargada, la entrada de parte de horas o la conversación** · **cómo se vincula con el registro de horas del backend**. 📌 **Y una decisión que cambia un KPI:** si el evento **cubre las dos puntas** (intento iniciado y carga completada), la ***tasa de finalización de la carga asistida*** vive dentro de una sola fuente y **es válida**; **si no, cruzaría el log con el backend y viola la regla 4**, y **se reemplaza por el abandono medido en Amplitude (Corte K)**.
 
 **O3 — Modelo de negocio:** ⏸️ en revisión, sin KRs. Dos de sus KRs futuros dependen del **mismo evento de acción aplicada** que sostiene **O1-KR2** (era O1-KR3 hasta el 2026-08-21).
 

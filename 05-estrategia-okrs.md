@@ -1,6 +1,6 @@
 # 05 — Estrategia y OKRs (COR)
 
-> **Última actualización:** 2026-08-31
+> **Última actualización:** 2026-09-02
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Visión, pilares estratégicos, KPIs y OKRs, para priorizar y alinear iniciativas. Base principal: **Business Plan 2026–2027** (presentado internamente). Es un plan de negocio/GTM: fuerte en revenue y go-to-market, liviano en estrategia de producto.
 > ✅ **Los OKRs de la vertical de AI están cargados desde el 2026-08-19** — ver "OKRs del trimestre". Son los **primeros OKRs de producto de COR**. Los de las otras verticales y ejes/squads **siguen sin definir: no inventarlos.**
@@ -375,9 +375,13 @@ _Se registran en vez de borrarse. **Los IDs de los KRs retirados no se reutiliza
 | KRs | Universo |
 |---|---|
 | **Alcance · Uso intensivo · Percepción de valor** | **Panel Enterprise + Midmarket** (PM, Director, C-Level), congelado al día previo al release |
-| **Sustitución del flujo de horas** | **Asientos de Colaborador (5.605)** |
+| **Sustitución del flujo de horas** | **Asientos elegibles: colaboradores con MAIA habilitada (5.605)** |
 
 > ⛔ **Nunca se suman ni se promedian entre sí.** Queda escrito, no implícito.
+>
+> 🔄 **Precisado el 2026-09-02: la habilitación está dentro del universo, no es un filtro aparte.** **MAIA se habilita por company**, así que el universo del KR6 es **la misma convención de `asiento elegible` que usa el panel E+MM**, con Colaborador en lugar de PM + Director + C-Level. **Un colaborador sin MAIA habilitada no entra al numerador ni al denominador**: no se puede sustituir un flujo con una herramienta que no se tiene.
+>
+> ✅ **El universo NO se congela** — cada lectura toma los elegibles del momento. **Motivo: no hay tiempo de instrumentación para sostener una base congelada.** ⚠️ **Costo declarado: cada tanda de release entra al denominador con cero horas vía MAIA y empuja el share hacia abajo sin que nada haya empeorado** — el mismo mecanismo del corte de serie del 24-ago (11,6% → ~2,6%). 📌 **La decisión es reversible: la fecha de habilitación se guarda**, así que la serie sobre cohorte congelada se reconstruye retroactivamente con un filtro, no con instrumentación nueva.
 >
 > 🔄 **El fundamento por el que el Colaborador estaba afuera venció el 2026-08-31.** El repo decía: *"no se lee como problema de adopción: el rol no tiene propuesta de valor definida; su primer paso es discovery, no un KR"*. **Con la propuesta de carga de horas asistida, el rol ya tiene propuesta de valor** — y pasa de **ficha sin meta** a **universo propio con KR propio** (→ `03-personas`).
 
@@ -388,7 +392,7 @@ _Se registran en vez de borrarse. **Los IDs de los KRs retirados no se reutiliza
 | **KR1** | **Alcance** — penetración del panel E+MM | **11,6%** ⚠️ | **25%** 🚀 | Que MAIA **alcanza** |
 | **KR2** | **Uso intensivo** — % de usuarios del panel con **≥15 interacciones en el mes** | **8,19%** ✅ medido (66 de 806) | **25%** 🚀 | Que MAIA **se vuelve hábito** |
 | **KR5** | **Percepción de valor** — NPS de la vertical de AI | sin baseline · referencia externa **−27,8** | **≥ el NPS global de COR** | Que la vertical **no arrastra la percepción** |
-| **KR6** | **Sustitución del flujo de carga de horas** — % de horas cargadas vía MAIA sobre el total de horas de colaboradores en companies con MAIA habilitada | **0%** | **25%** 🚀 | Que MAIA **reemplaza el flujo de la tarea obligatoria** |
+| **KR6** | **Sustitución del flujo de carga de horas** — % de horas **cargadas** vía MAIA sobre el total de horas **cargadas** por colaboradores con MAIA habilitada, en **ventana de 28 días** | **0%** | **25%** 🚀 | Que MAIA **reemplaza el flujo de la tarea obligatoria** |
 
 > ⛔ **Retirados el 2026-08-31, sin renumerar — los números 3 y 4 quedan vacantes** para no repetir la colisión de IDs que ya arrastra O1.
 >
@@ -475,6 +479,8 @@ Usuarios únicos sobre asientos elegibles. Es la métrica de la prioridad "Deplo
 
 > **Share de horas = penetración × share individual promedio**
 
+> ⚠️ **Los dos factores tienen que correr sobre la misma población** _(2026-09-02)_. **El `N` es el mismo arriba y abajo o el álgebra no cancela:** si la penetración se calcula sobre **asientos elegibles** y el share individual sobre **colaboradores que cargan horas**, **el segundo factor deja de tener techo en 100%** y la descomposición no se puede leer. **Va escrito en la definición de cada corte, no asumido** (→ `06-kpi-tree`).
+
 | Si la penetración llega a… | …el share individual tiene que ser |
 |---:|---:|
 | 25% | **100%** de sus horas |
@@ -483,12 +489,24 @@ Usuarios únicos sobre asientos elegibles. Es la métrica de la prioridad "Deplo
 | 100% | 25% |
 
 > 🚨 **Consecuencia a registrar: no hay combinación que llegue a 25% sin que la penetración pase de 0,27% a por lo menos 25% — un salto de ~90x.** **El cuello de botella no es de producto, es de amplitud:** exposición, comunicación, activación. **Si eso no se mueve, ninguna mejora de producto alcanza.**
-
-**Regla de lectura: por trayectoria, no por resultado.** **0% no es un baseline, es una línea de largada:** no hay riesgo de que la medición vuelva por encima de la meta —lo que le pasó al éxito de ejecución— **pero tampoco hay información sobre qué es alcanzable. Sin ancla, el 25% es una convicción, no un cálculo.** Lo que informa es **la pendiente mensual**. Checkpoints de referencia (interpolación lineal, **vara de alerta temprana y no metas intermedias**): **sep ~6% · oct ~12% · nov ~19% · dic 25%.**
-
-> ⚠️ **En septiembre el share va a estar cerca de 1% y no va a decir nada.** Lo que se mira ese mes es el **embudo de amplitud** — expuestos → activados → abandono. **Es el único KR del set donde el árbol no complementa al número: lo reemplaza durante el primer mes.**
 >
-> ⚠️ **La meta de 25% está puesta por criterio, no contra una medición.** El 0,27% es **pre-release y pre-propuesta**: describe un rol que todavía no tenía caso de uso, así que **no sirve como punto de partida**. La primera medición de septiembre da el baseline real y **la meta se recalibra ahí, en las dos direcciones** — mismo procedimiento que corrigió el éxito de ejecución de O1.
+> ⚠️ **`[HIPÓTESIS]` desde el 2026-09-02 — el ~90x no está verificado.** La tabla de arriba **se apoya en que el segundo factor tiene techo en 100%**, y eso **solo es cierto si los dos factores corren sobre la misma población**. Hoy no corren: la penetración se declara sobre **5.605 asientos elegibles** y el share individual sobre **horas cargadas**, así que **el divisor queda deflactado por los colaboradores que cargan cero, el techo desaparece y el multiplicador podría ser bastante menor.**
+> **Qué lo refutaría:** que **una parte grande de los elegibles no cargue horas en una ventana de 28 días**. Ahí el 25% de share se alcanza con mucha menos penetración que 25%, **y el cuello de botella deja de ser tan claramente de amplitud.**
+> 📌 **Lo resuelve una consulta, no un desarrollo:** cuántos elegibles cargan horas en una ventana de 28 días — pedido cargado, **antes del cierre del 27-sep**. **Hasta entonces, el ~90x no se usa para repartir capacidad sin decir que es hipótesis.**
+
+**Regla de lectura: por trayectoria, no por resultado.** **0% no es un baseline, es una línea de largada:** no hay riesgo de que la medición vuelva por encima de la meta —lo que le pasó al éxito de ejecución— **pero tampoco hay información sobre qué es alcanzable. Sin ancla, el 25% es una convicción, no un cálculo.** Lo que informa es **la pendiente**. 🔄 _Los checkpoints mensuales que estaban acá (sep ~6% · oct ~12% · nov ~19% · dic 25%) **quedaron reemplazados el 2026-09-02 por los cierres de ventana**, abajo — el KR ya no corta por mes calendario._
+
+> ⚠️ **En septiembre el share va a estar cerca de 1% y no va a decir nada.** Lo que se mira ese mes es el **embudo de amplitud** — expuestos → activados → abandono. **Es el único KR del set donde el árbol no complementa al número: lo reemplaza en la primera ventana.**
+>
+> ⚠️ **La meta de 25% está puesta por criterio, no contra una medición.** El 0,27% es **pre-release y pre-propuesta**: describe un rol que todavía no tenía caso de uso, así que **no sirve como punto de partida**. **El cierre del 06-sep da el baseline real** y **la meta se recalibra en el cierre del 27-sep, en las dos direcciones** — mismo procedimiento que corrigió el éxito de ejecución de O1.
+>
+> 🔄 **Checkpoints de trayectoria** _(2026-09-02, interpolación lineal — vara de alerta temprana, **no metas intermedias**)_:
+>
+> | cierre 06-sep | cierre 04-oct | cierre 01-nov | cierre 29-nov | cierre 27-dic |
+> |---:|---:|---:|---:|---:|
+> | ~0% | ~6% | ~13% | ~19% | **25%** |
+>
+> ⚠️ **Solo esos cinco cierres son comparables entre sí.** Están separados por 4 semanas, así que no comparten datos. **Las lecturas semanales intermedias comparten tres cuartos de su dato con la anterior:** sirven para ver la pendiente, **no para declarar cambios**, y **una racha de subas semanales no es evidencia de tendencia** — aparece por construcción en cualquier serie de ventana móvil.
 >
 > ⚠️ **La concentración es el riesgo propio de esta métrica.** **Si diez colaboradores cargan el 100% de sus horas por MAIA y el resto nada, el ratio se ve bien y la adopción es nula.** Por eso el **corte de distribución de share por colaborador es obligatorio** — anti-meta 3 aplicada a otra métrica.
 
@@ -537,7 +555,13 @@ _Cargado el 2026-08-31._ **Sin esto, "25%" es ambiguo: ¿diciembre, el promedio 
 | O2 · Alcance | **Penetración de diciembre-26.** Métrica mensual, no acumulada |
 | O2 · Uso intensivo | **Diciembre-26** · métrica mensual, no acumulada |
 | O2 · Percepción de valor | **Acumulado sep–dic, se corta una vez en diciembre.** No se lee mensualmente: el `n` no lo permite |
-| O2 · Sustitución del flujo de horas | **Mes de diciembre** · share mensual. ⚠️ **Se reporta todos los meses**: sin baseline, la pendiente informa más que el resultado |
+| O2 · Sustitución del flujo de horas | 🔄 **No usa mes calendario** _(2026-09-02)_. **Ventana de 28 días que cierra el domingo 27-dic-26** (30-nov → 27-dic) · share de la ventana, **no acumulado**. Lectura **semanal**; los cierres comparables son **06-sep / 04-oct / 01-nov / 29-nov / 27-dic** |
+
+> ⚠️ **El KR6 es el único del set que no corta por mes calendario.** La ventana de 28 días son **cuatro semanas exactas**, lo que **mantiene constante la composición de días de la semana en toda lectura** — importante porque el denominador son **horas cargadas**, que se cargan en días hábiles. **Cuatro semanas no encajan con el fin de mes: el resultado cierra el 27-dic y los últimos cuatro días de diciembre quedan afuera.** Son días de fiestas con carga mínima, **pero conviene decirlo antes de que alguien lo cuente.**
+>
+> ✅ **Verificado al cargar:** los cinco cierres —**06-sep, 04-oct, 01-nov, 29-nov y 27-dic de 2026**— **son todos domingos y están separados por exactamente 28 días**, así que la convención cierra. **La ventana final va del 30-nov al 27-dic.**
+>
+> ⚠️ **Y una salvedad sobre el primer cierre, que el criterio no menciona:** la ventana del **06-sep arranca el 10-ago**, así que **21 de sus 28 días son de agosto** — antes de que la propuesta estuviera en la calle y con el evento todavía inexistente. **Como baseline sirve igual —va a dar ~0% y eso es el punto— pero no es "el arranque de septiembre": es una ventana que mira casi toda hacia atrás.**
 
 ### Un leading indicator declarado por KR
 
@@ -629,7 +653,9 @@ No es un framework formalizado tipo RICE con scoring numérico, sino un criterio
 - [ ] 🟡 **Medir el baseline de performance post-release — percentil, no promedio, cortado por origen.** ⚠️ **La referencia de 1,5–2,5s no sirve, y no solo por vieja: no es un percentil.** El KR pide *% de consultas bajo 3s* y la referencia es latencia típica; además es **pre-Orquestador y pre-release**. **Sale de una consulta de Amplitude y no espera a septiembre.** **Decide si el guardrail es Roofshot o Moonshot.** Y si hay mediciones a ambos lados del 22-jul-26, **la resta es el costo en latencia del Orquestador** — insumo del eje capacidad vs. superficie de `08-roadmap`.
 - [ ] 🔴 **Verificar que el segmento de Amplitude del histograma de agosto sea el panel E+MM.** **806 usuarios activos en agosto contra 373 en julio son 2,2x en un mes** y darían **21,4% de penetración: el KR de Alcance casi cumplido antes de arrancar.** **Si el segmento cambia, se mueven los baselines de Alcance y de Uso intensivo a la vez.** Detalle en `06-kpi-tree`.
 - [ ] 🔴 **V1 del evento de acción aplicada.** Sin esto, *éxito de ejecución* **no tiene ni lagging ni leading** — su leading declarado sale del mismo evento. **Es lo único bloqueante del set.**
-- [ ] 🟡 **Instrumentar el share de horas cargadas vía MAIA y el embudo de amplitud (expuestos → activados → abandono).** El KR6 arranca en 0% y **se lee por trayectoria mensual: la medición tiene que existir desde septiembre.**
+- [ ] ⏰🔴 **Instrumentar el evento de carga vía MAIA, el share en ventana de 28 días y el embudo de amplitud (expuestos → activados → abandono). FECHA VENCIDA** _(era "antes de septiembre"; al 2026-09-02 no existe)_. El KR6 arranca en 0% y **se lee por trayectoria: la medición tiene que existir ya.** 🔄 **La ventana móvil agrava el costo del retraso:** cada día sin evento **no arruina un punto de la serie, arruina las 28 lecturas que lo contienen**. **El cierre del 06-sep es el baseline y no se reconstruye después.**
+- [ ] 🔴 **Correr el tamaño del denominador del KR6: horas cargadas totales, asientos elegibles y cuántos de ellos cargan horas en una ventana de 28 días.** **No necesita instrumentación nueva** — sale del backend de horas. **Es la población sobre la que corre la identidad del árbol** (amplitud × profundidad): sin ese número, la descomposición no se puede calcular y **no se sabe cuál de los dos factores se movió**. ⚠️ **Y es el dato que resuelve si el ~90x se sostiene.** **Antes del cierre del 27-sep**, para llegar a la recalibración con el dato y no con la discusión.
+- [ ] 🟡 **Resolver en la spec del evento si la tasa de finalización de la carga asistida vive en una sola fuente.** Si el evento cubre las dos puntas (intento iniciado / carga completada), la tasa es válida; **si no, cruza el log de Metabase con el backend de horas y viola la regla 4**, y se reemplaza por el abandono medido en Amplitude. **Es decisión de spec, no de reporte.**
 - [ ] 🟡 **Construir el widget de NPS in-app de tres preguntas** — instrumento del KR5. **La tasa de respuesta se reporta como variable de control, no como leading.**
 - [ ] 🟡 **Declarar el tipo Roofshot/Moonshot que queda pendiente** (*percepción de valor*) en la revisión del 30-sep, y **confirmar la mutación del guardrail de performance** contra su baseline.
 - [x] Cómo laddera Producto a "Deploy de AI en clientes": ¿qué métrica de producto la mide? _(Resuelto 2026-08-17: **penetración sobre asientos elegibles**, con metas diferenciadas por rol. Ver sección dedicada. Sigue abierto el laddering de las otras dos prioridades.)_
