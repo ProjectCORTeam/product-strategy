@@ -1,6 +1,6 @@
 # 03 — Personas (COR)
 
-> **Última actualización:** 2026-09-02
+> **Última actualización:** 2026-09-05
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Perfiles de usuario y segmentos de COR, para diseñar features y evaluar impacto. COR es B2B: el **cliente es la agencia**, y dentro conviven varios **roles-usuario**, cada uno con su capa de permisos. Distinguir **comprador** (quién decide/paga) de **usuarios** (quién opera el producto).
 
@@ -146,6 +146,35 @@ Lo que sí distingue a los roles es la **intensidad**:
 3. ⚠️ **Ojo con el contexto de satisfacción al leer los resultados:** el Colaborador es el rol que **se desgasta con el uso** (NPS −15,2 en onboarding → −34,5 en adopción). Lo que sea que MAIA le ofrezca, entra sobre esa base.
 
 > _Salvedad de dato: los 413 usuarios de la tabla de distribución de frecuencia de `06-kpi-tree` **sí incluyen al Colaborador** —es la única tabla que Amplitude no entrega abierta por rol—, mientras que los 373 de la serie de penetración lo excluyen. Es la razón por la que el pedido de **histograma abierto por rol** subió de prioridad._
+
+### Qué hace cada rol con MAIA — jobs medidos `[HECHO — 2026-09-05]`
+
+> **Fuente:** export de conversaciones del **2 al 4-sep-26** (316 conversaciones reconstruidas, 243 usuarios, 89 companies), procesado con la skill `maia-usage-insights`. ⛔ **Salvedad: el export estaba truncado en 1.000 filas — son 1,9 días hábiles, no un mes. Sirve para composición, no para frecuencia ni tendencia.** Detalle y cortes en `06-kpi-tree`.
+
+% de conversaciones **dentro de cada rol**:
+
+| Job | C-Level | Director | PM | Colaborador |
+|---|---:|---:|---:|---:|
+| Cargar horas propias | 12,5 | 15,5 | 25,9 | **62,9** |
+| Riesgo (banner) | 15,6 | 14,1 | 19,0 | **0,0** |
+| Crear / editar tareas y proyectos | 3,1 | 9,9 | 14,7 | 6,2 |
+| Supervisar horas del equipo | **31,2** | 11,3 | 5,2 | 5,2 |
+| Análisis de desvío / rentabilidad | **15,6** | 7,0 | 3,4 | 0,0 |
+| Carga masiva por archivo | 0,0 | 0,0 | **7,8** | 0,0 |
+
+**Job principal por rol:** **Colaborador → cargar horas (62,9%)** · **PM + Director → gestionar el trabajo del equipo (39,6%)** · **C-Level → enterarse del estado del negocio (65,6%)**.
+
+**Tres cosas que esto le cambia a este archivo:**
+
+1. ✅ **El dolor del Colaborador con la carga de horas deja de estar inferido y pasa a estar medido por comportamiento.** Ya estaba confirmado por feedback (`07`, I-02d: 48 de 70 menciones negativas de carga de horas son suyas); ahora se ve que **casi dos tercios de lo que le pide a MAIA es exactamente eso**. **Es la evidencia más fuerte que tiene la propuesta de carga asistida** (→ el KR6 de O2).
+2. 🔄 **El C-Level queda caracterizado como rol que lee, no que opera:** **solo el 15,6% de sus conversaciones escribe**, y **47% es supervisión de horas del equipo más análisis de desvío y rentabilidad**. **Es el fundamento del KR nuevo de O2** —*estado del negocio consultado por MAIA*— y **la razón por la que a este rol no se lo puede medir por escritura: quedaría en cero por construcción**.
+3. ⚠️ **El Director es el único rol cuya escritura es mayoritariamente estructural** (27 escrituras estructurales contra 10 de horas). **Se parece al PM en el job pero no en el perfil de escritura** — por eso el KR de gestión **se reporta con PM y Director por separado** _(anti-meta 1)_.
+
+**Fricción por rol** `[HECHO]`, del mismo export: **C-Level 59,4%** · Colaborador 42,3% · Director 35,2% · **PM 31,9%**.
+
+> ⚠️ **El C-Level fricciona más que ningún otro rol** — y es el rol al que se le acaba de poner un KR que depende de **repetición semanal**. **Leer sus primeros cierres con esto puesto.**
+>
+> 🔴 **Y hay un comportamiento de estos tres roles que no está en ningún denominador:** **25 PMs, 11 Directores y 4 C-Levels cargaron sus propias horas por MAIA en 1,9 días.** **No entra en *Sustitución del flujo de horas*** —denominador = asientos de Colaborador— **ni en *Gestión ejecutada*, que lo excluye por diseño.** ⚠️ **Es la tercera vez que este comportamiento se queda sin denominador**, y hay una decisión abierta en `05-estrategia-okrs`.
 
 ### Patrón central: intensidad de uso vs. satisfacción
 

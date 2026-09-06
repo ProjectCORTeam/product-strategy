@@ -1,9 +1,10 @@
 # 05 — Estrategia y OKRs (COR)
 
-> **Última actualización:** 2026-09-02
+> **Última actualización:** 2026-09-05
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Visión, pilares estratégicos, KPIs y OKRs, para priorizar y alinear iniciativas. Base principal: **Business Plan 2026–2027** (presentado internamente). Es un plan de negocio/GTM: fuerte en revenue y go-to-market, liviano en estrategia de producto.
 > ✅ **Los OKRs de la vertical de AI están cargados desde el 2026-08-19** — ver "OKRs del trimestre". Son los **primeros OKRs de producto de COR**. Los de las otras verticales y ejes/squads **siguen sin definir: no inventarlos.**
+> 🔄 **Actualización de O2 el 2026-09-05 — un retiro y dos altas.** Se **retira *Uso intensivo*** —**el número 2 queda vacante**— y entran ***Gestión ejecutada por MAIA*** y ***Estado del negocio consultado por MAIA***, los dos **sin número y citados por nombre**. **O2 queda con cinco KRs.** 🔄 **Y con un cambio de método transversal: los dos KRs nuevos no salen de Amplitude ni de lectura de conversaciones, sino del log de tools de Metabase filtrado por rol — sin instrumentación nueva.** **Ningún KR de O1 se toca; O3 sigue ⏸️.**
 > 🔄 **Revisión completa del set el 2026-08-31 — la más grande desde que se cargó.** **O1 pasa a llamarse "Ejecución sin fallas"** y baja a **tres KRs** (se retira el flujo de archivos). **O2 se toca por primera vez desde el 19-ago:** cuatro KRs sobre **dos universos**, con dos retiros (activación de cohorte, dormidas) y dos altas (**percepción de valor**, **sustitución del flujo de horas**). **Entran tres baselines medidos** —fricciones **50%**, éxito de ejecución **85%**, uso intensivo **8,19%**— y el horizonte queda declarado: **Q4 = sep–dic, revisión mensual, cierre en diciembre.** **O3 sigue ⏸️ sin cambios.**
 > 🔄 **El KR1 de O1 se redefinió el 2026-08-27:** pasa de **cobertura de respuesta (75%)** a **conversaciones limpias** — % de conversaciones sin fricción de tipo `bug`, `nlu` o `incompleta`, **meta a fijar contra la primera corrida** y **críticas = 0** como meta propia. **Deja de medir alcance de capacidades y pasa a medir calidad de ejecución.** KR2, KR3 y KR4 no se tocaron; **O2 y O3 tampoco.**
 > 🔄 **O1 se reescribió el 2026-08-21:** cambió de título (*"Confiabilidad y calidad"* → *"Ejecución confiable"*), pasó de **cinco KRs a cuatro** —tres retirados, dos nuevos— y **las cuatro metas están puestas pero son provisorias: ninguna se fijó contra una medición.** O2 no se tocó.
@@ -186,11 +187,12 @@ O1 EJECUCIÓN        ──habilita──>  O2 ADOPCIÓN  ──habilita──> 
 _Cargado el 2026-08-31. **El repo tenía la flecha a nivel objetivo —O1 habilita O2— pero no decía qué KR predice qué KR.** Esa es la parte operable._
 
 ```
-O1 · Fricciones por error ──────┬──▶ O2 · Uso intensivo
+O1 · Fricciones por error ──────┬──▶ O2 · Gestión ejecutada
+                                ├──▶ O2 · Estado del negocio consultado
                                 ├──▶ O2 · Percepción de valor
                                 └──▶ O2 · Sustitución del flujo de horas
 
-O1 · Éxito de ejecución ────────┬──▶ O2 · Uso intensivo
+O1 · Éxito de ejecución ────────┬──▶ O2 · Gestión ejecutada  ★ la más directa del mapa
                                 └──▶ O2 · Percepción de valor
 
 O1 · Performance ──────────────────▶ O2 · Alcance
@@ -204,10 +206,10 @@ O1 · recalibrar detecciones ───────▶ presiona O2 · Alcance
 
 | Conexión | El mecanismo |
 |---|---|
-| **Fricciones → Uso intensivo** | Al usuario cuya primera conversación se rompe **no lo trae de vuelta ningún onboarding**. Es la conexión más fuerte del mapa |
+| **Fricciones → Gestión ejecutada / Estado del negocio** | Al usuario cuya primera conversación se rompe **no lo trae de vuelta ningún onboarding** — y **los dos KRs nuevos exigen repetición semanal, así que la fricción los castiga más que al KR de uso que reemplazaron** _(actualizado el 05-sep)_ |
 | **Fricciones → Percepción** | El leading real del NPS está aguas arriba: **quien tiene conversaciones que fallan puntúa peor** |
 | **Fricciones → Sustitución del flujo de horas** | Cargar horas es una tarea obligatoria **con un flujo alternativo que ya funciona**. **Si la carga por MAIA falla una vez, el colaborador vuelve al flujo de siempre y no reintenta.** La tolerancia al error acá es más baja que en cualquier otro KR |
-| **Ejecución → Uso intensivo** | Quien logró que MAIA hiciera trabajo real vuelve |
+| **Ejecución → Gestión ejecutada** | ★ **Es ahora la conexión más directa del mapa** _(05-sep)_: el KR de O1 mide que **las acciones aprobadas se completen sin error**, y el de O2 **cuenta esas mismas escrituras**. **Si O1 falla, el numerador de O2 no existe** |
 | **Ejecución → Percepción** | La hipótesis del roadmap dice que **lo que predice disposición a pagar es que MAIA ejecute trabajo, no que se consulte** |
 | **Performance → Alcance** | Si el primer token tarda, el usuario **abre y no pregunta**. Impacta directo sobre *conversión apertura → primera consulta* |
 
@@ -218,6 +220,18 @@ O1 · recalibrar detecciones ───────▶ presiona O2 · Alcance
 > ⚠️ **Marcado `[HIPÓTESIS]` a propósito: nadie midió que la fricción cause el no-retorno.**
 > **Qué lo refutaría:** que **las fricciones bajen sostenidamente y el uso intensivo no se mueva nada**. Si eso pasa, el problema del no-retorno no es de calidad **y O1 deja de justificarse por esta vía** — y eso es **un hallazgo, no un fracaso**.
 > 📌 **El target de discovery *"¿por qué las cuentas grandes probaron MAIA y no volvieron?"* pasa a ser el test de este mapa, no un pendiente suelto** (→ `07-discovery`).
+
+#### Y arriba de todo: la cadena comercial — `[HIPÓTESIS]`
+
+_Cargada el 2026-09-05. **Explica por qué el set de Producto no habla de plata.**_
+
+> **MRR ← upsell ← stickiness ← valor ← uso ← conocimiento**
+
+La estrategia comercial es **MAIA gratis → uso → stickiness → upsell en la cuenta**, con un objetivo de que **la vertical de AI represente el 10% del MRR a fin de Q4**. **Los KRs de Producto viven tres eslabones arriba del MRR** — por eso el set no tiene ningún KR de revenue, y eso es deliberado, no un olvido.
+
+**Condición de refutación:** **si el uso recurrente sube sostenidamente durante dos trimestres y el upsell no se mueve, la cadena está mal en algún eslabón.**
+
+> ⚠️ **Tensión de calendario a resolver antes del review** _(2026-09-05)_**.** El objetivo es **10% del MRR a fin de Q4** y la estrategia es **MAIA gratis durante el trimestre**. **Las dos cosas no encajan en la misma ventana.** O el 10% viene de otra cosa de la vertical, o **el upsell arranca antes de lo que la estrategia sugiere**. ⚠️ **Con O3 en ⏸️ y sin KRs, la pregunta no tiene hoy dónde responderse** — y ese es justamente el problema.
 
 ---
 
@@ -333,8 +347,13 @@ _Se registran en vez de borrarse. **Los IDs de los KRs retirados no se reutiliza
 | O1-KR3 · Éxito del flujo de archivos | **retirado el 31-ago** — el número **3 queda vacante** |
 | O2-KR3 · Activación de cohorte | **retirado el 31-ago** — el número **3 queda vacante**. Sobrevive como nodo del árbol de *Alcance* y KPI del tablero |
 | O2-KR4 · Recuperación de dormidas | **retirado el 31-ago** — el número **4 queda vacante**. Reemplazado por **O2-KR6** |
+| O2-KR2 · Uso intensivo _(31-ago → 05-sep)_ | ⛔ **retirado el 05-sep** — sin equivalente. **El 2 queda vacante** |
+| — | ✅ **Gestión ejecutada por MAIA** _(nuevo el 05-sep, **sin número**)_ |
+| — | ✅ **Estado del negocio consultado por MAIA** _(nuevo el 05-sep, **sin número**)_ |
 | — | **O2-KR5** · Percepción de valor *(nuevo el 31-ago)* |
 | — | **O2-KR6** · Sustitución del flujo de carga de horas *(nuevo el 31-ago)* |
+
+> 📌 **Los KRs de O2 se citan por nombre.** **Los números 2, 3 y 4 están vacantes** y no se reutilizan. **Toda acta o dashboard anterior al 05-sep que diga "O2-KR2" habla de otro KR** — y según la fecha, de uno de dos KRs distintos.
 
 #### 🚫 Lo que queda sin cobertura de medición — historia del hueco
 
@@ -374,7 +393,7 @@ _Se registran en vez de borrarse. **Los IDs de los KRs retirados no se reutiliza
 
 | KRs | Universo |
 |---|---|
-| **Alcance · Uso intensivo · Percepción de valor** | **Panel Enterprise + Midmarket** (PM, Director, C-Level), congelado al día previo al release |
+| **Alcance · Gestión ejecutada · Estado del negocio consultado · Percepción de valor** | **Panel Enterprise + Midmarket** (PM, Director, C-Level), congelado al día previo al release. ⚠️ _Los dos KRs nuevos del 05-sep **se restringen a un subconjunto de roles dentro del panel**: gestión a **PM + Director**, estado del negocio a **C-Level**_ |
 | **Sustitución del flujo de horas** | **Asientos elegibles: colaboradores con MAIA habilitada (5.605)** |
 
 > ⛔ **Nunca se suman ni se promedian entre sí.** Queda escrito, no implícito.
@@ -390,17 +409,20 @@ _Se registran en vez de borrarse. **Los IDs de los KRs retirados no se reutiliza
 | # | KR | Baseline | Meta | Qué valida |
 |---|---|---|---|---|
 | **KR1** | **Alcance** — penetración del panel E+MM | **11,6%** ⚠️ | **25%** 🚀 | Que MAIA **alcanza** |
-| **KR2** | **Uso intensivo** — % de usuarios del panel con **≥15 interacciones en el mes** | **8,19%** ✅ medido (66 de 806) | **25%** 🚀 | Que MAIA **se vuelve hábito** |
+| — | **Gestión ejecutada por MAIA** — % de **semanas-PM/Director** con **≥10 escrituras de gestión** vía MAIA _(sin número)_ | ⏳ **sin baseline** | ⏳ **contra la primera corrida** 🚀 | Que MAIA **hace el trabajo del PM y del Director** |
+| — | **Estado del negocio consultado por MAIA** — % de **semanas-C-Level** con **≥4 lecturas de negocio** vía MAIA _(sin número)_ | ⏳ **sin baseline** | ⏳ **contra la primera corrida** | Que el C-Level **se entera del negocio por MAIA** |
 | **KR5** | **Percepción de valor** — NPS de la vertical de AI | sin baseline · referencia externa **−27,8** | **≥ el NPS global de COR** | Que la vertical **no arrastra la percepción** |
 | **KR6** | **Sustitución del flujo de carga de horas** — % de horas **cargadas** vía MAIA sobre el total de horas **cargadas** por colaboradores con MAIA habilitada, en **ventana de 28 días** | **0%** | **25%** 🚀 | Que MAIA **reemplaza el flujo de la tarea obligatoria** |
 
-> ⛔ **Retirados el 2026-08-31, sin renumerar — los números 3 y 4 quedan vacantes** para no repetir la colisión de IDs que ya arrastra O1.
+> ⛔ **Retirados sin renumerar — los números 2, 3 y 4 quedan vacantes** para no repetir la colisión de IDs que ya arrastra O1.
+>
+> **KR2 · Uso intensivo — retirado el 2026-09-05.** 🔴 **El motivo de más peso es que el KR podía subir cuando el producto empeoraba:** con O1 en 50% de fricción, **parte del camino de 5 a 15 interacciones es reformulación**, así que este KR y el leading de O1 **podían subir juntos**. Detalle completo abajo.
 >
 > **KR3 · Activación de cohorte.** Su medición **baja de categoría, no desaparece:** sobrevive como **nodo leading del árbol de *Alcance*** —con sus tres indicadores: comunicación de alta, champion identificado, mediana de días hasta el primer usuario— y como **KPI del tablero, por cohorte y sin meta**. 📌 **La marca de cohorte ya no bloquea ningún KR, pero sigue siendo condición de existencia de ese nodo y de ese KPI. La fecha comprometida —antes del release del 24-ago— está vencida.**
 >
 > **KR4 · Recuperación de dormidas**, reemplazado por el KR6. ⚠️ **Registrar qué se pierde:** eran **8 cuentas nombrables con 543 asientos, cero desarrollo, ejecutable por el CSM** — **y el único KR del set que miraba cuentas en vez de usuarios.** **Motivo del cambio:** la ventana del Colaborador **es ahora**, con el release recién puesto y la propuesta nueva en la calle. **Las dormidas siguen disponibles para Q1** (→ compromiso de Q1 2027).
 
-> 📌 **Lectura conjunta:** si el **alcance** se cumple pero el **uso intensivo** no, **hay alcance sin valor** — exactamente lo que O3 necesita saber antes de poner precio. **El KR6 es el test más limpio de la misma pregunta:** la carga de horas es la única tarea recurrente y obligatoria del producto, así que **si MAIA es mejor puerta, el colaborador vuelve solo, sin campaña.**
+> 📌 **Lectura conjunta:** si el **alcance** se cumple pero **ni la gestión ejecutada ni el estado del negocio consultado** se mueven, **hay alcance sin trabajo hecho** — exactamente lo que O3 necesita saber antes de poner precio. _(Hasta el 05-sep esta lectura se apoyaba en el uso intensivo; el reemplazo es más exigente, porque **pide que MAIA haga algo, no que se la use mucho**.)_ **El KR6 es el test más limpio de la misma pregunta:** la carga de horas es la única tarea recurrente y obligatoria del producto, así que **si MAIA es mejor puerta, el colaborador vuelve solo, sin campaña.**
 
 **Anti-metas vigentes: las cinco, sin cambios.**
 
@@ -424,28 +446,111 @@ Usuarios únicos sobre asientos elegibles. Es la métrica de la prioridad "Deplo
 
 > ⚠️ **Salvedad de denominador — leer antes de evaluar el KR** _(cargada el 2026-08-19, sigue vigente)_. **El baseline de 11,6% no se calculó sobre el panel Enterprise + Midmarket**, sino sobre las 128 companies completas, todos los segmentos (373 usuarios ÷ 3.225 asientos al inicio de jul-26). **Los asientos del panel E+MM todavía no existen como dato** — salen del Corte E de `06-kpi-tree`, que sigue sin correr. Si el panel penetra por encima del promedio —lo esperable—, **el baseline real es más alto y la meta de 25% es menos exigente de lo que parece.**
 
-#### KR2 — Uso intensivo: 8,19% → 25%
+#### ⛔ KR2 — Uso intensivo: RETIRADO el 2026-09-05
 
-🔄 **Es una REDEFINICIÓN, no un cambio de nombre** _(2026-08-31)_.
+Era *"% de usuarios del panel E+MM con **≥15 interacciones en el mes**"*, baseline **8,19% (66 de 806)** en ago-26, meta **25%**, fuente Amplitude chart `1fai84dz`.
 
-**Antes:** *Retorno* — % de usuarios con **una sola** interacción en el mes *(baja mejor)*, **35,8% → ≤25%**.
-**Ahora:** % de usuarios del panel con **≥15 interacciones en el mes**, **8,19% → 25%**.
+> 📌 **Es un retiro, no una redefinición. El número 2 queda vacante y no se reutiliza**, en línea con los números 3 y 4 de O2, vacantes desde el 31-ago. **Los dos KRs nuevos no reciben número y se citan por nombre.**
 
-**Motivo del cambio — el KR anterior tenía tres defectos:** era **descendente**, **mezclaba usuarios nuevos con recurrentes caídos**, y **KR1 cumplido lo empujaba en contra** (todo usuario nuevo entra por el bucket de 1).
+**Los cuatro motivos, en orden de peso:**
 
-**La distribución real, medida** (panel E+MM, agosto-26 · n=806 · `06-kpi-tree`): ≥2 = 66,3% · ≥4 = 36,1% · ≥6 = 24,6% · **≥15 = 8,19% (66 usuarios)** · ≥21 = 4,6%.
+1. 🔴 **El KR puede subir cuando el producto empeora.** Con O1 en **50% de fricción**, parte del camino de 5 a 15 interacciones **es reformulación**. *Uso intensivo* y la *tasa de reformulación* —**leading declarado de O1**— **pueden subir juntos.** **Es un defecto de diseño, no de instrumento**: ningún cambio de umbral lo arregla.
+2. **Mide uso, no valor.** Refuerza el hueco ya declarado en este archivo: *"ninguna métrica actual mide valor entregado, solo uso"*.
+3. **La aritmética casi no cerraba.** Faltaban **136 usuarios** para el 25% y **toda la población adyacente** (11–14: 37 · 6–10: 95) **sumaba 132**.
+4. **Dependencia estructural con Alcance sin resolver:** su denominador era el numerador del KR1.
 
-> ⚠️ **La apuesta que representa este corte, declarada.** El ≥15 es una **métrica de cola**: mide si MAIA se vuelve hábito, **no si deja de fallar en el primer contacto**. Tiene fundamento —**las únicas cuentas de las que COR factura algo por AI tienen intensidad 10 a 20**— pero hay que asumirlo: **con el corte en 15, el KR se puede cumplir sin tocar el 33,7% que hace una sola interacción.** Ese fondo **deja de estar cubierto por un KR y pasa a vigilarse desde el tablero.**
+**Qué pasa con el instrumento — nada se borra:**
 
-**La aritmética del 25%, para tenerla a mano en el review:** 25% de 806 son **~202 usuarios**; hoy hay **66**; **faltan 136**. La población adyacente —**11–14: 37 usuarios · 6–10: 95**— **suma 132 y no alcanza aunque cruce completa.**
+| Qué se pierde como KR | Dónde va |
+|---|---|
+| El **histograma de frecuencia por bucket** | **KPI del tablero, sin meta.** Sigue siendo **el mejor retrato de la cola** |
+| El leading ***2ª interacción ≤30 días*** | **Sigue vivo:** alimenta *Sustitución del flujo de horas*. **Era el único leading del set que servía a dos KRs** |
+| El **corte de distribución por bucket** | **Se mantiene como KPI**; deja de ser corte obligatorio de un KR |
+| ⚠️ El **33,7% del bucket de 1 interacción** | **Sigue sin meta en ningún KR.** **El hueco no se cierra con este cambio — solo cambia de dueño** |
 
-> 🚀 **Por eso es Moonshot inequívoco: triplicar la cola en cuatro meses.** Y por eso conviene que la cuenta esté escrita: **en diciembre, un 15% se va a leer como fracaso cuando en realidad sería casi duplicar la cola.**
->
-> ⚠️ **Dependencia con el KR1, declarada.** El denominador de este KR son **usuarios activos**, que es el **numerador del KR1**. **Si el KR1 cumple y entran cientos de usuarios nuevos, caen todos en los tramos bajos y diluyen el KR2 sin que nada haya empeorado.** Es la misma trampa que tenía el KR anterior: **cambió la dirección de la métrica, no la dependencia.** **Al reportar, poner el numerador absoluto al lado** (hoy 66) para distinguir **dilución** de **estancamiento**.
+> 🔴 **El retiro NO cierra el pendiente del segmento de Amplitude.** Aunque *uso intensivo* se vaya, **el baseline de Alcance depende del mismo segmento** (806 vs. 373). **No cerrar ese pendiente junto con el KR.**
 
-**Corte obligatorio:** la **distribución completa por bucket se reporta siempre al lado del KR**. Un número único sobre una cola larga esconde de dónde vino el movimiento — es la **anti-meta 3** aplicada.
+#### Gestión ejecutada por MAIA ➕ nuevo _(sin número, se cita por nombre)_
 
-> 🔴 **Pendiente antes de cerrar este baseline: verificar que el segmento de Amplitude sea el panel.** ⚠️ **806 usuarios E+MM activos en agosto contra 373 en julio son 2,2x en un mes**, y sobre ~3.775 asientos darían **21,4% de penetración** — o sea el KR1 casi cumplido antes de arrancar. **Si el segmento cambia, se mueven los baselines del KR1 y del KR2 a la vez.** Detalle y las dos hipótesis, en `06-kpi-tree`.
+> **% de semanas-PM/Director con al menos 10 escrituras de gestión vía MAIA.**
+
+| Campo | Definición |
+|---|---|
+| **Universo** | Panel E+MM, roles **PM y Director** |
+| **Denominador** | **Semanas-usuario**: 4 semanas × PM/Directores **activos** en la ventana. *Activo = ≥1 llamada a cualquier tool* |
+| **Numerador** | Semanas-usuario con **≥10 escrituras de gestión** |
+| **Unidad** | **Llamada a tool**, no entidad afectada |
+| **Ventana** | **28 días móviles** · cierres **06-sep / 04-oct / 01-nov / 29-nov / 27-dic** |
+| **Fuente** | **Metabase, log de tools filtrado por rol. Sin instrumentación nueva** |
+| **Baseline** | ⏳ **Sin baseline** — depende de la query desagregada por nombre de tool |
+| **Meta** | ⏳ **Sin meta hasta la primera corrida** _(precedente: conversaciones sin fricciones, 27-ago)_ |
+| **Tipo** | 🚀 **Moonshot** — techo teórico **~15,9%** con el volumen actual |
+
+**Definición de escritura de gestión:** *toda llamada a tool de escritura, **excepto** las que operan sobre las **horas propias** del usuario.*
+
+**Lista negra** —no lista blanca— sobre las **~46 tools de escritura** del catálogo de 114: ⛔ `create_hour` · `edit_hour` · `delete_hour` (job del Colaborador) · ⛔ `set_task_favorite` (preferencia personal, no gestión) · ⛔ `send_task_message` (colaboración, no gestión — **borde, revisable**). Quedan **~43 tools de gestión**: tareas, proyectos, planner, reworks, clientes, entregables, usuarios, agentes.
+
+> 📐 **Por qué lista negra:** una capacidad de escritura nueva **entra sola al numerador** en vez de quedar afuera por olvido.
+> ⚠️ **Contrapartida declarada, y no es menor: shippear una tool de escritura nueva sube el KR sin que cambie el comportamiento del usuario.** Por eso **toda tool nueva se registra con fecha** y **la lectura entre dos cierres se marca no comparable**. **Mismo tratamiento que el deploy del Orquestador con el baseline de latencia.**
+
+**El enfoque.** El job que define al PM y al Director es **gestionar el trabajo del equipo**, y **se expresa en escrituras** `[HECHO]`: es el job con más volumen del rol (**39,6%** de sus conversaciones), y **el Director es el único rol cuya escritura es mayoritariamente estructural** (27 estructurales contra 10 de horas).
+
+**Por qué semanal y no mensual.** 40 escrituras en cuatro semanas **se pueden hacer todas en el armado de un proyecto**; 10 por semana durante cuatro semanas **es MAIA metida en la operación**. **El acumulado es el mismo, pero repartido** — el umbral semanal es lo que valida **hábito**.
+
+> 📌 **Y la unidad semana-usuario rescata al KR de quedarse en cero.** Con umbral binario, **un PM que pasa de 5 a 30 escrituras mensuales no mueve el KR ni un punto**. Con **552 semanas-usuario en vez de 138 usuarios**, una unidad vale **0,18 puntos en vez de 0,72** y **el progreso parcial se ve desde el primer cierre**.
+
+**Cortes obligatorios:**
+
+1. **PM y Director por separado** — perfiles de escritura distintos _(anti-meta 1)_
+2. **Distribución de semanas cumplidas por usuario** — **ráfaga vs. hábito** _(anti-meta 3)_
+3. **Composición por tool** — qué se escribe efectivamente
+4. **% de llamadas que son batch** (`create_tasks_batch`, `edit_tasks_batch`) — ⚠️ **una llamada puede tocar 30 tareas: con unidad de llamada, el PM que trabaja en batch queda penalizado**
+5. **Numerador absoluto y usuarios distintos que aportan**
+6. **Share contra el volumen de escrituras por UI en COR**, cuando exista
+
+**◆ Leading declarado: share de llamadas de resolución de entidad.** `[HECHO]` — hoy **17,5% del total** (1.510 de 8.645): `get_project_id_based_on_name` 564 · `get_user_id` 472 · `get_task_id_based_on_title` 275 · `search_tasks_by_name_across_projects` 199.
+
+> **Una de cada seis llamadas se gasta en averiguar de qué objeto habla el usuario.** Toca los tres jobs de mayor volumen —carga de horas (41,5% de fricción), supervisión del equipo (48,3%) y búsqueda (41,2%)—, que **juntos son casi la mitad de las conversaciones**. **Medible hoy, sin instrumentación.**
+> 📐 **Va como share, nunca como conteo:** si el uso crece, **las llamadas de resolución crecen en absoluto aunque MAIA mejore**. Numerador absoluto al lado.
+
+#### Estado del negocio consultado por MAIA ➕ nuevo _(sin número, se cita por nombre)_
+
+> **% de semanas-C-Level con al menos 4 lecturas de negocio vía MAIA.**
+
+| Campo | Definición |
+|---|---|
+| **Universo** | Panel E+MM, rol **C-Level** |
+| **Denominador** | **Semanas-usuario**: 4 semanas × C-Levels **activos** en la ventana |
+| **Numerador** | Semanas-usuario con **≥4 lecturas de negocio** |
+| **Unidad** | Llamada a tool |
+| **Ventana** | **28 días móviles** · los mismos cinco cierres |
+| **Fuente** | **Metabase, log de tools filtrado por rol. Sin instrumentación nueva** |
+| **Baseline / Meta / Tipo** | ⏳ **Todo contra la primera corrida** |
+
+**Definición de lectura de negocio: lista blanca** de tools que devuelven **información agregada o de desempeño** sobre uno o más proyectos, clientes o personas — `get_project_performance_tab_time_by_grouped` · `get_project_hours_by_user_and_task` · `get_project_hours_by_user_monthly` · `get_project_tab_evolution` · `get_project_tab_evolution_costs` · `summarize_hours` · `get_reworks_with_filters` · `get_clients_with_filters` · `get_projects_with_filters` · `get_project_fee_consumption` · `list_fees` · `list_invoices` · `list_contracts` · `get_contract` · `get_faq_profitability_income` · `get_rework_by_project_id` · `get_capacity_planning`.
+
+> 🔍 **Tres pendientes de inspección** (sin docstring en el catálogo): `generate_resume` · `get_faq_project_progress` · `get_project_decisions`. **Entran o salen según qué devuelvan, no según el nombre.**
+> 📐 **Criterio de admisión, para que la lista se mantenga sola:** queda afuera **toda tool que devuelva una entidad individual o su contenido operativo**, y **las cuatro de resolución de entidad** — que son **plomería del agente, no intención del usuario**.
+> 📐 **Por qué lista blanca acá y lista negra en el otro:** el KR dice *estado del negocio*. **Con lista negra, `list_tasks` —la tool más llamada del log, 1.525 veces— entraría al numerador, y mirar una tarea suelta no es enterarse de la operación.**
+
+**El enfoque.** `[HECHO]` — **el job del C-Level es leer, no operar**: **47%** de sus conversaciones es supervisión de horas del equipo más análisis de desvío y rentabilidad, y **solo 15,6% escribe**. **Medirlo por escritura lo dejaría en cero por construcción** — y **el mejor caso de valor entregado del export tiene cero escrituras**.
+
+**Como una lectura se dispara igual sirva o no la respuesta, el filtro de valor no es el tipo de tool sino la repetición: nadie vuelve cuatro semanas seguidas a algo que no le responde.**
+
+> 📌 **Contar semanas y no usuarios resuelve dos cosas a la vez:** mete **la distribución dentro de la métrica** —una ráfaga de 15 lecturas un martes puntúa 25%, un hábito de 4 por semana puntúa 100%— y **baja el peso de una unidad de 4,2 a 1,0 punto**, que **con n≈24 es la diferencia entre señal y ruido**.
+
+**Cortes obligatorios:**
+
+1. **Numerador absoluto y usuarios distintos que aportan** — *"38 de 96 semanas, de 14 C-Levels"*
+2. **Distribución de semanas cumplidas por usuario**
+3. **Composición por tool** y **% que alcanza una tool company-wide**
+4. **Fan-out de llamadas por conversación** — ⚠️ **sin esto el umbral de 4 no se puede interpretar**: si una pregunta dispara tres tools, **4 llamadas son menos de dos preguntas por semana**
+5. **Intervalo de confianza — no opcional en este KR**
+
+**◆ Leading declarado: % de consultas de nivel cuenta que llegan a una tool company-wide** (`summarize_hours`, `get_reworks_with_filters`, `get_clients_with_filters`). **Hoy ~0%.**
+
+> ⚠️ **Riesgo de tamaño, declarado de antemano.** **Con n≈24 usuarios el KR es volátil aun con denominador de semanas.** **Si el universo mensual no supera holgadamente los 30 C-Levels activos, revisar si baja a KPI.** **Decisión a tomar contra la primera corrida, no antes.**
+
 
 #### KR5 — Percepción de valor ➕ nuevo
 
@@ -535,11 +640,13 @@ _Cargada el 2026-08-31._ **Regla: un Moonshot al 70% es un éxito; un Roofshot a
 | O1 · Éxito de ejecución | 🚀 **Moonshot** | **85% → 95%** implica **cortar los errores a un tercio**. La vara es **externa** —umbral estándar para operaciones que modifican datos del cliente—, no arbitraria |
 | O1 · Performance sostenida | 🏢 **Roofshot** | Un guardrail al 70% **es un problema por definición**. ⚠️ **Muta a 🚀 Moonshot si el baseline de septiembre vuelve por debajo del 95%**: ahí deja de ser *sostener* y pasa a ser **mejorar mientras se escala** |
 | O2 · Alcance | 🚀 **Moonshot** | **25% de promedio del panel supera el techo histórico de cualquier cuenta individual** (Crowe, 23,6%) |
-| O2 · Uso intensivo | 🚀 **Moonshot** | **Triplicar la cola:** de 66 a ~202 usuarios, +136. **La población adyacente entera —132 usuarios entre 6 y 14— no alcanza aunque cruce completa.** Al 70% (≈18%) sigue siendo un buen resultado |
+| ~~O2 · Uso intensivo~~ | ⛔ **retirado el 05-sep** | _Se conserva el fundamento por el que fue Moonshot: triplicar la cola, de 66 a ~202 usuarios. **El retiro no fue por ambición mal calibrada sino por diseño de la métrica**_ |
+| O2 · Gestión ejecutada | 🚀 **Moonshot** | **Techo aritmético ~15,9%** con las 886 escrituras de gestión visibles hoy. **Decirlo antes de la primera lectura**, para que **un 8% en diciembre se lea como la cola volviéndose norma** y no como fracaso |
+| O2 · Estado del negocio consultado | **A declarar contra la primera corrida** | Sin baseline y con **n≈24**: declarar el tipo antes de la primera lectura **es adivinar**, igual que en percepción de valor |
 | O2 · Percepción de valor | **A declarar en la revisión del 30-sep** | Sin baseline propio y con la vara sujeta al confounder de método. **Declarar el tipo antes de la primera lectura es adivinar** |
 | O2 · Sustitución del flujo de horas | 🚀 **Moonshot** | **El más extremo del set: de 0% a 25% en cuatro meses.** A favor, que cargar horas es obligatorio. En contra, que habilitar no produce uso |
 
-> 📌 **Nota para el review:** el **25% aparece como meta en Alcance, Uso intensivo y Sustitución del flujo de horas**, sobre **tres denominadores distintos**. Cada uno tiene fundamento propio, pero **juntos en una slide pueden leerse como un número elegido por redondo.** Tener a mano por qué cada uno llegó a ese valor.
+> 📌 **Nota para el review** _(atenuada el 05-sep con el retiro de uso intensivo)_**:** el **25% aparece como meta en Alcance y en Sustitución del flujo de horas**, sobre **dos denominadores distintos**. Cada uno tiene fundamento propio, pero **juntos en una slide pueden leerse como un número elegido por redondo.** Tener a mano por qué cada uno llegó a ese valor.
 >
 > **Lo que esto cambia en el cierre:** **cinco de los siete son Moonshot. Al 70% son buenos resultados** — y antes de esta declaración no había nada escrito que permitiera leerlos así.
 
@@ -553,7 +660,8 @@ _Cargado el 2026-08-31._ **Sin esto, "25%" es ambiguo: ¿diciembre, el promedio 
 | O1 · Éxito de ejecución | **Acumulado del período**, desde que el evento exista (el volumen mensual es bajo al inicio) |
 | O1 · Performance | **Todos los meses. Manda el peor** — es un guardrail: **no se promedia ni se corta una vez** |
 | O2 · Alcance | **Penetración de diciembre-26.** Métrica mensual, no acumulada |
-| O2 · Uso intensivo | **Diciembre-26** · métrica mensual, no acumulada |
+| O2 · Gestión ejecutada | **Ventana de 28 días que cierra el 27-dic-26** · share de la ventana, no acumulado. **Mismos cinco cierres que el KR de horas: 06-sep / 04-oct / 01-nov / 29-nov / 27-dic** |
+| O2 · Estado del negocio consultado | **Ídem** — misma ventana y mismos cinco cierres |
 | O2 · Percepción de valor | **Acumulado sep–dic, se corta una vez en diciembre.** No se lee mensualmente: el `n` no lo permite |
 | O2 · Sustitución del flujo de horas | 🔄 **No usa mes calendario** _(2026-09-02)_. **Ventana de 28 días que cierra el domingo 27-dic-26** (30-nov → 27-dic) · share de la ventana, **no acumulado**. Lectura **semanal**; los cierres comparables son **06-sep / 04-oct / 01-nov / 29-nov / 27-dic** |
 
@@ -573,7 +681,8 @@ _Cargado el 2026-08-31._ **Regla: uno por KR, no el árbol entero. Siete número
 | O1 · Éxito de ejecución | **Ratio de aprobación del usuario** | 🔴 Depende del evento de acción aplicada |
 | O1 · Performance | **Latencia de ruteo del Orquestador** | 🟢 Una consulta de Amplitude |
 | O2 · Alcance | **Conversión apertura → primera consulta** (Corte A) | 🟢 Una consulta de Amplitude |
-| O2 · Uso intensivo | **Tasa de 2ª interacción ≤30 días** | 🔴 Instrumentación a construir |
+| O2 · Gestión ejecutada | **Share de llamadas de resolución de entidad** — hoy **17,5%** (1.510 de 8.645) | 🟢 **Medible hoy**, del mismo log |
+| O2 · Estado del negocio consultado | **% de consultas de nivel cuenta que llegan a una tool company-wide** — hoy **~0%** | 🟢 Del mismo log |
 | O2 · Sustitución del flujo de horas | **Tasa de 2ª carga vía MAIA dentro de 2 semanas** | 🟡 Sale del mismo instrumento que el KR |
 | O2 · Percepción de valor | **Promedio mensual de la pregunta de valor (1–10)** ⚠️ lectura temprana, **no leading estricto** | 🟡 Sale del propio widget |
 
@@ -583,7 +692,7 @@ _Cargado el 2026-08-31._ **Regla: uno por KR, no el árbol entero. Siete número
 >
 > ⚠️ **La tasa de respuesta de la encuesta NO es un leading: es una variable de control.** **Predice si el KR será legible, no si será bueno.** Y el leading real de percepción está **aguas arriba**: las fricciones por error de O1.
 >
-> 📌 **Convención nueva del árbol: distinguir *leading* de *variable de control*.** Un control **no se mueve con el trabajo del equipo pero condiciona la lectura** — asientos elegibles, tasa de respuesta de la encuesta, serie de carga del guardrail. **Y un leading que alimenta dos KRs es señal de palanca real:** la *2ª interacción ≤30 días* aparece en Uso intensivo y en Sustitución del flujo de horas.
+> 📌 **Convención nueva del árbol: distinguir *leading* de *variable de control*.** Un control **no se mueve con el trabajo del equipo pero condiciona la lectura** — asientos elegibles, tasa de respuesta de la encuesta, serie de carga del guardrail. **Y un leading que alimenta dos KRs es señal de palanca real:** la *2ª interacción ≤30 días* aparecía en **Uso intensivo** y en **Sustitución del flujo de horas**. ⚠️ _Con el retiro de uso intensivo el 05-sep **queda sirviendo a un solo KR**. **Es el único leading del set que perdió la mitad de su alcance**, y conviene saberlo antes de decidir cuánta instrumentación merece._
 
 ### Tablero de KPIs permanentes
 
@@ -591,7 +700,9 @@ _Cargado el 2026-08-31._ Series que **no dejan de importar cuando termina el tri
 
 | KPI | Por qué acá y no como KR |
 |---|---|
-| **Usuarios de una sola interacción** — % del panel en el bucket de 1 | **33,7% hoy.** Era el KR2 hasta esta revisión. **Sale del KR pero no del radar:** es el fondo de la distribución y ningún KR de O2 lo cubre |
+| **Usuarios de una sola interacción** — % del panel en el bucket de 1 | **33,7% hoy.** Era el KR2 hasta el 31-ago. **Sale del KR pero no del radar:** es el fondo de la distribución y **ningún KR de O2 lo cubre**. ⚠️ _El retiro de uso intensivo el 05-sep **no cerró este hueco: solo le cambió de dueño**_ |
+| **Uso intensivo** — % del panel con ≥15 interacciones en el mes | ⬅️ **Bajó de KR el 2026-09-05.** **8,19%** (66 de 806) en ago-26, sin meta. 🔴 **El motivo del retiro —que puede subir cuando el producto empeora— vale también para leerlo como KPI** |
+| **Histograma de frecuencia por bucket** | ⬅️ **Era el corte obligatorio del KR retirado.** Sigue siendo **el mejor retrato de la cola** que tiene el repo |
 | **Flujo de archivos** — % de sesiones con archivo que entregan el artefacto | **Bajó de KR de O1.** Si comparte denominador con *Éxito de ejecución*, además es **corte del árbol** |
 | **Activación de cohorte** — % con primer usuario ≤30 días, por cohorte | **Bajó de KR de O2.** Sigue siendo **el lagging más rápido disponible**: resuelve en 30 días |
 | **Penetración del Colaborador** — % de colaboradores que usan MAIA | **0,27%**, pre-release y pre-propuesta. **Bajó de KR.** Mide cuánta gente toca MAIA, no cuánto flujo pasa por MAIA — **complemento del KR6, no sustituto** |
@@ -603,6 +714,16 @@ _Cargado el 2026-08-31._ Series que **no dejan de importar cuando termina el tri
 | **Forma de la distribución de frecuencia** | El total y el promedio **ya se declararon malas métricas de salud** (anti-metas 2 y 3) |
 | **% del alcance que entra por banner** (54–72%) | Serie de dependencia de riel. **Donde la tensión O1/O2 se ve primero** |
 
+### Tres riesgos a declarar al presentar el set
+
+_Cargados el 2026-09-05 con las altas de O2. **Se nombran al presentar, no cuando aparezcan.**_
+
+⚠️ **1 · Ninguno de los dos KRs nuevos mide si MAIA dice la verdad.** Los dos **cuentan como cumplida una semana donde MAIA entregó un número mal calculado.** Con los **cuatro cálculos de nivel proyecto con porcentajes imposibles** expuestos a ~300 clientes, **el set puede subir mientras el producto empeora.** **La verificación contra backend no entra en Q4.** _(Es el mismo hueco declarado en la cabecera de O1, ahora también del lado de O2.)_
+
+⚠️ **2 · Los dos son de adopción de un comportamiento, no de sustitución.** **La diferencia con Alcance es el filtro de umbral: Alcance cuenta que entró, estos cuentan que trabajó.** **Es un avance real, pero no es todavía *share of actions*.** **Declarar que la v2 es share** — o en Q1 alguien va a decir que el KR se quedó chico **y va a tener razón**.
+
+⚠️ **3 · Techo aritmético del KR de gestión.** Con las **886 escrituras de gestión visibles hoy**, el máximo teórico es **~15,9%**. **Por eso es Moonshot.** **Decirlo antes de la primera lectura**, para que **un 8% en diciembre se lea como la cola volviéndose norma** y no como un fracaso.
+
 ### Cuatro cosas que registrar sobre este set
 
 _Cargadas el 2026-08-19 al integrar los OKRs al repo. No invalidan el set: son las costuras que hay que mirar en el primer review._
@@ -612,9 +733,9 @@ _Cargadas el 2026-08-19 al integrar los OKRs al repo. No invalidan el set: son l
 3. **La meta del KR1 se apoya en un baseline de otro universo** — ver la salvedad de denominador arriba. Correr el Corte E la convierte en una meta medida.
 4. **Todo KR persigue un resultado, no un entregable.** Se bajaron a iniciativas varios candidatos que eran milestones: instrumentar un evento, corregir cálculos, poner workflows en producción, definir un modelo de negocio. **El trabajo sigue siendo necesario, pero no se mide como resultado** (→ `08-roadmap`).
 
-### Seis costuras que agregaron las reescrituras de O1 y O2
+### Ocho costuras que agregaron las reescrituras de O1 y O2
 
-_Las tres primeras se cargaron el 2026-08-21; la cuarta, el 2026-08-27; la quinta y la sexta, el 2026-08-31. Las cuatro de arriba siguen vigentes y son todas de O2._
+_Las tres primeras se cargaron el 2026-08-21; la cuarta, el 2026-08-27; la quinta y la sexta, el 2026-08-31; la séptima y la octava, el 2026-09-05. Las cuatro de arriba siguen vigentes y son todas de O2._
 
 5. **La numeración de los KRs de O1 colisiona con su propia regla.** El documento fuente dice "los IDs no se reutilizan" **y** numera los cuatro KRs vivos como KR1–KR4. Se cargó la numeración del fuente con el **mapeo viejo→nuevo escrito** (ver O1). **Toda referencia a "O1-KRn" anterior al 21-ago apunta a otro KR:** actas, dashboards y el propio historial de este repo.
 6. **Se retiró el único KR que fallaba por falta de dueño, no por falta de valor.** La precisión verificada era el KR más caro del set y **el retiro cierra un pendiente sin resolverlo**: el hueco de medición de verdad **queda abierto y ahora sin candidato**. Está registrado en O1 como tal, con el mismo lenguaje que la deuda de cálculos.
@@ -622,6 +743,8 @@ _Las tres primeras se cargaron el 2026-08-21; la cuarta, el 2026-08-27; la quint
 8. **Tercera versión de "O1-KR1" en menos de una semana** _(2026-08-27)_. El KR1 original era **precisión verificada** (retirado el 21-ago), el del 21-ago era **cobertura de respuesta** y el del 27-ago es **conversaciones limpias**. El repo ya tenía una colisión de IDs declarada; **esta la agrava.** Regla operativa: **este KR se cita por nombre, no por número.** Ver la tabla de mapeo. 🔤 _El renombre del 31-ago a **conversaciones sin fricciones por error** **no** es una cuarta versión: mismo criterio, mismo alcance, mismo baseline._
 9. **Cuarta vez que este repo pisa un problema de denominador** _(2026-08-31)_. **806 usuarios E+MM activos en agosto contra 373 en julio: 2,2x en un mes**, y sobre ~3.775 asientos darían **21,4% de penetración** — el KR de Alcance casi cumplido antes de arrancar. Dos hipótesis, ninguna distinguible con lo disponible: **el segmento filtra por tamaño de company pero no por rol** (metiendo Colaboradores post-release), o **incluye companies nuevas** que el panel congelado debería excluir. **Si el segmento cambia, se mueven los baselines de Alcance y de Uso intensivo a la vez.** Los tres anteriores: el 11,6% sobre el universo completo · el 7,3% de Risk Management con el denominador de MAIA · los 413 vs. 373 del histograma. **Es un patrón del repo, no un accidente** — y la foto del panel congelado, que lo habría cerrado, está vencida.
 10. **El 25% aparece tres veces sobre tres denominadores distintos** _(2026-08-31)_ — Alcance, Uso intensivo y Sustitución del flujo de horas. **Cada uno tiene fundamento propio**, pero juntos en una slide **pueden leerse como un número elegido por redondo**. Los fundamentos están escritos en la declaración Roofshot/Moonshot: **tenerlos a mano en el review.**
+11. **Tercer cambio en el slot del KR2 de O2 desde el 19-ago** _(2026-09-05)_: *retorno* → *uso intensivo* (31-ago) → **retirado** (05-sep). **Es el mismo patrón que ya arrastra el KR1 de O1**, y por el mismo motivo de fondo: **el repo está aprendiendo qué medir mientras mide.** **La convención de citar por nombre ahora cubre los dos objetivos.**
+12. **Los dos KRs nuevos cambian de fuente, y eso abre la quinta colisión de denominador** _(2026-09-05)_. **Su numerador sale de Metabase** (log de tools) **y el denominador de usuarios activos históricamente sale de Amplitude: cruzarlos viola la regla 4.** **Salida acordada: construir el denominador del mismo log** —usuarios con ≥1 llamada en la ventana— **y reconciliarlo con Amplitude una sola vez, dejando la brecha escrita.** **Resolverlo de entrada, no en el review.**
 
 ## Marco de priorización
 
@@ -651,12 +774,25 @@ No es un framework formalizado tipo RICE con scoring numérico, sino un criterio
 - [x] ~~⛔ **Especificar e instrumentar los eventos del flujo de archivos (KR3 de O1).**~~ 🔄 **El KR se retiró el 2026-08-31 y el número 3 queda vacante.** La medición **baja de categoría, no desaparece**: corte del árbol de *Éxito de ejecución* y KPI del tablero.
 - [ ] 🟡 **Decidir con el squad de AI si generar un artefacto pasa por aprobación de Governance.** **Decide si el flujo de archivos es corte del árbol de ejecución o solo KPI del tablero:** el KR mide *acciones aprobadas*, y **si no comparte denominador, no puede colgar del árbol.**
 - [ ] 🟡 **Medir el baseline de performance post-release — percentil, no promedio, cortado por origen.** ⚠️ **La referencia de 1,5–2,5s no sirve, y no solo por vieja: no es un percentil.** El KR pide *% de consultas bajo 3s* y la referencia es latencia típica; además es **pre-Orquestador y pre-release**. **Sale de una consulta de Amplitude y no espera a septiembre.** **Decide si el guardrail es Roofshot o Moonshot.** Y si hay mediciones a ambos lados del 22-jul-26, **la resta es el costo en latencia del Orquestador** — insumo del eje capacidad vs. superficie de `08-roadmap`.
-- [ ] 🔴 **Verificar que el segmento de Amplitude del histograma de agosto sea el panel E+MM.** **806 usuarios activos en agosto contra 373 en julio son 2,2x en un mes** y darían **21,4% de penetración: el KR de Alcance casi cumplido antes de arrancar.** **Si el segmento cambia, se mueven los baselines de Alcance y de Uso intensivo a la vez.** Detalle en `06-kpi-tree`.
+- [ ] 🔴 **Verificar que el segmento de Amplitude del histograma de agosto sea el panel E+MM.** **806 usuarios activos en agosto contra 373 en julio son 2,2x en un mes** y darían **21,4% de penetración: el KR de Alcance casi cumplido antes de arrancar.** 🔴 **El retiro de *Uso intensivo* el 05-sep NO cierra este pendiente: el baseline de Alcance depende del mismo segmento.** Detalle en `06-kpi-tree`.
 - [ ] 🔴 **V1 del evento de acción aplicada.** Sin esto, *éxito de ejecución* **no tiene ni lagging ni leading** — su leading declarado sale del mismo evento. **Es lo único bloqueante del set.**
 - [ ] ⏰🔴 **Instrumentar el evento de carga vía MAIA, el share en ventana de 28 días y el embudo de amplitud (expuestos → activados → abandono). FECHA VENCIDA** _(era "antes de septiembre"; al 2026-09-02 no existe)_. El KR6 arranca en 0% y **se lee por trayectoria: la medición tiene que existir ya.** 🔄 **La ventana móvil agrava el costo del retraso:** cada día sin evento **no arruina un punto de la serie, arruina las 28 lecturas que lo contienen**. **El cierre del 06-sep es el baseline y no se reconstruye después.**
 - [ ] 🔴 **Correr el tamaño del denominador del KR6: horas cargadas totales, asientos elegibles y cuántos de ellos cargan horas en una ventana de 28 días.** **No necesita instrumentación nueva** — sale del backend de horas. **Es la población sobre la que corre la identidad del árbol** (amplitud × profundidad): sin ese número, la descomposición no se puede calcular y **no se sabe cuál de los dos factores se movió**. ⚠️ **Y es el dato que resuelve si el ~90x se sostiene.** **Antes del cierre del 27-sep**, para llegar a la recalibración con el dato y no con la discusión.
 - [ ] 🟡 **Resolver en la spec del evento si la tasa de finalización de la carga asistida vive en una sola fuente.** Si el evento cubre las dos puntas (intento iniciado / carga completada), la tasa es válida; **si no, cruza el log de Metabase con el backend de horas y viola la regla 4**, y se reemplaza por el abandono medido en Amplitude. **Es decisión de spec, no de reporte.**
 - [ ] 🟡 **Construir el widget de NPS in-app de tres preguntas** — instrumento del KR5. **La tasa de respuesta se reporta como variable de control, no como leading.**
+- [ ] 🔴 **Decidir qué se hace con las horas propias de PM, Director y C-Level.** `[HECHO]` — **25 PMs, 11 Directores y 4 C-Levels cargaron sus propias horas por MAIA en 1,9 días**, y ese comportamiento **no está en ningún denominador**: no entra en *Sustitución del flujo de horas* (denominador = asientos de Colaborador) y **queda excluido de *Gestión ejecutada* por diseño**. ⚠️ **Es la tercera vez que este comportamiento se queda sin denominador.** Opciones: **(a)** extender el denominador del KR de horas a **todos los asientos con MAIA habilitada** · **(b)** dejarlo como KPI con el hueco declarado · **(c)** incluirlo en *Gestión ejecutada*. **Recomendación del análisis: (a).** ⚠️ **Contra: mueve un baseline con checkpoints ya publicados.** **Antes del review.**
+- [ ] 🔴 **Preguntarle al squad de AI por qué MAIA dijo que la agregación a nivel cuenta no existía.** Las tres tools company-wide **se dieron de alta en agosto** y el **2-sep** —seis días después de la última— **un C-Level pidió exactamente eso y MAIA respondió que ningún especialista ofrece esa agregación.** Tres explicaciones posibles: **la tool no está cableada al especialista · el ruteo no la conoce · el catálogo va adelante del deploy.** **Cualquiera de las tres es mucho más barata que construir la capacidad**, y **el leading declarado del KR del C-Level hoy vale ~0% por esto.** **Esta semana.**
+- [ ] 🔴 **Pedir el nombre de tool sin agrupar en la query del log.** El bucket `otras tools` es **22,8% de las llamadas y 32% de las escrituras** — y son **103 de las 114 tools del catálogo**. ⛔ **Sin esto ninguno de los dos KRs nuevos se puede medir.** **Esta semana.**
+- [ ] 🔴 **Declarar la ventana del log de tools.** Hoy el archivo **no dice de qué período es**: **sin eso los umbrales de 10 y de 4 no son defendibles.** **Esta semana.**
+- [ ] 🔴 **Resolver la colisión de fuentes de los dos KRs nuevos (regla 4).** **El numerador sale de Metabase y el denominador de usuarios activos históricamente sale de Amplitude.** **Salida acordada: construir el denominador del mismo log** (usuarios con ≥1 llamada en la ventana) **y reconciliarlo con Amplitude una sola vez, dejando la brecha escrita.** **Sería la quinta colisión de denominador del repo: resolverla de entrada, no en el review.**
+- [ ] 🟡 **Pedir la columna `resultado` (ok/error) del log.** Hasta que exista, **los dos KRs nuevos cuentan intentos, no acciones aplicadas.** Q4.
+- [ ] 🟡 **Pedir la columna `conversation_id`.** **Sin ella no hay fan-out, y sin fan-out el umbral de 4 del KR del C-Level no se puede interpretar** — si una pregunta dispara tres tools, 4 llamadas son **menos de dos preguntas por semana**. Q4.
+- [ ] 🟡 **Decidir qué se hace con las semanas de usuarios que se dan de alta a mitad de período.** Hoy **aportan las 4 semanas al denominador**: es conservador, **pero castiga la incorporación de usuarios nuevos — que es justo lo que el KR de Alcance busca lograr.** Con la primera corrida.
+- [ ] 🟡 **Inspeccionar las tres tools sin docstring** de la lista blanca del C-Level: `generate_resume` · `get_faq_project_progress` · `get_project_decisions`. **Entran o salen según qué devuelvan, no según el nombre.** Antes del primer cierre.
+- [ ] 🟡 **Confirmar cómo se loguean los alias** (`assign`/`task_assign`, `desassign`/`task_desassign`/`task_unassign`). ⚠️ **Con umbral de volumen, un doble conteo infla el KR.** Antes del primer cierre.
+- [ ] 🟡 **Pedir el volumen de escrituras de gestión por UI en COR.** **No entra al KR, pero sin él el umbral de 10 es arbitrario y el KR no es una tasa de sustitución** — es una tasa de uso con umbral. Q4.
+- [ ] 🔁 **Recalibrar los dos umbrales nuevos (10 y 4) contra su primer baseline, EN LAS DOS DIRECCIONES**, en la revisión del 30-sep. **Regla vigente desde el 31-ago**, y **los dos umbrales se fijaron por criterio sobre un log de 1,9 días hábiles.**
+- [ ] ⚠️ **Resolver la tensión de calendario entre el 10% del MRR a fin de Q4 y la estrategia de MAIA gratis durante el trimestre.** **Las dos cosas no encajan en la misma ventana**, y **con O3 en ⏸️ la pregunta no tiene hoy dónde responderse.** Antes del review.
 - [ ] 🟡 **Declarar el tipo Roofshot/Moonshot que queda pendiente** (*percepción de valor*) en la revisión del 30-sep, y **confirmar la mutación del guardrail de performance** contra su baseline.
 - [x] Cómo laddera Producto a "Deploy de AI en clientes": ¿qué métrica de producto la mide? _(Resuelto 2026-08-17: **penetración sobre asientos elegibles**, con metas diferenciadas por rol. Ver sección dedicada. Sigue abierto el laddering de las otras dos prioridades.)_
 - [ ] **Definir outcome y meta para lo que del portafolio de AI sigue sin métrica** — entregan valor en trabajo ejecutado, no en consultas, así que la vara de MAIA no les sirve. Queda adentro de esta lista: **workflows/automatizaciones** (sin ninguna métrica), la **creación** de agentes en Marketplace, y el **valor entregado** de Risk Management. _(Marketplace salió por consumo el 2026-08-18; **Risk Management salió por alcance el 2026-08-18**, aunque su penetración quedó en pausa el 2026-08-19 por denominador.)_
