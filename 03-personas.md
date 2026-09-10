@@ -1,6 +1,6 @@
 # 03 — Personas (COR)
 
-> **Última actualización:** 2026-09-06
+> **Última actualización:** 2026-09-10
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Perfiles de usuario y segmentos de COR, para diseñar features y evaluar impacto. COR es B2B: el **cliente es la agencia**, y dentro conviven varios **roles-usuario**, cada uno con su capa de permisos. Distinguir **comprador** (quién decide/paga) de **usuarios** (quién opera el producto).
 
@@ -141,7 +141,9 @@ Lo que sí distingue a los roles es la **intensidad**:
 
 **Consecuencias de medición:**
 
-1. **Denominador y métrica separados.** El Colaborador **no entra** en el panel Enterprise + Midmarket que sostiene los KRs de O2 (`05-estrategia-okrs`). Si entrara, la penetración caería de 11,6% a ~2,6% el mismo día **sin que nada empeore**.
+1. 🔄 **Denominador y métrica separados — revertido en parte el 2026-09-10.** Hasta el 10-sep el Colaborador **no entraba en ningún KR del panel**: la razón escrita era que, si entraba, **la penetración caería de 11,6% a ~2,6% el mismo día sin que nada empeore**. **Con la redefinición del KR4 (Alcance), el Colaborador entra al mismo denominador que los otros tres roles** — ~9.380 asientos = 3.775 + 5.605 — **y esa caída se acepta a sabiendas**: el 11,6% quedó dado de baja como baseline.
+   - ⚠️ **Consecuencia directa para este rol: el corte por rol deja de ser un desglose y pasa a ser la lectura.** **El Colaborador es el 60% del denominador de Alcance y el rol con menos penetración**, así que **el agregado se va a mover casi solo con él y los movimientos de C-Level o Director van a quedar invisibles.**
+   - ✅ **Y el Colaborador pasa a estar en dos KRs a la vez** — en **Alcance** como usuario que interactuó, y en **KR1** dentro del share de horas. **No es doble conteo: son dos preguntas distintas sobre la misma persona.**
 2. 🔄 **Su primer paso ya no es "discovery en vez de un KR": tiene KR (**O2 · KR1**, era KR6 hasta el 06-sep) y el discovery lo alimenta.** Con ~15 personas usándola hoy, **son 15 entrevistas posibles** — el research más barato disponible en todo el repo, y con ventana: **después del release el grupo deja de ser identificable.** → `07-discovery`.
 3. ⚠️ **Ojo con el contexto de satisfacción al leer los resultados:** el Colaborador es el rol que **se desgasta con el uso** (NPS −15,2 en onboarding → −34,5 en adopción). Lo que sea que MAIA le ofrezca, entra sobre esa base.
 

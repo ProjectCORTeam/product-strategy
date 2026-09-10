@@ -1,9 +1,10 @@
 # 05 — Estrategia y OKRs (COR)
 
-> **Última actualización:** 2026-09-06
+> **Última actualización:** 2026-09-10
 > **Owner:** Product Manager, área de Producto
 > **Contexto para IA:** Visión, pilares estratégicos, KPIs y OKRs, para priorizar y alinear iniciativas. Base principal: **Business Plan 2026–2027** (presentado internamente). Es un plan de negocio/GTM: fuerte en revenue y go-to-market, liviano en estrategia de producto.
 > ✅ **Los OKRs de la vertical de AI están cargados desde el 2026-08-19** — ver "OKRs del trimestre". Son los **primeros OKRs de producto de COR**. Los de las otras verticales y ejes/squads **siguen sin definir: no inventarlos.**
+> 🔄 **KR4 (Alcance) redefinido el 2026-09-10 — es una redefinición, no una precisión.** **Cambia de fuente** —de Amplitude + export manual a **Metabase, numerador y denominador**— **y de universo** —de PM + Director + C-Level a **los cuatro roles, con el Colaborador adentro del mismo denominador (~9.380 asientos)**—. **El panel E+MM sigue siendo el recorte de companies: cambió el rol, no el segmento.** ⛔ **Eso da de baja el baseline de 11,6% y desalinea la meta: con los cuatro KRs de O2 ya sin punto de partida, y la meta de 25% pasando a pedir ~2.345 usuarios contra los 806 de agosto.** ✅ **A cambio, O2 pasa a medirse con una sola fuente** y se cierran dos pendientes viejos. **KR1, KR2 y KR3 no se tocan.**
 > 🔄 **Ajuste de O2 el 2026-09-06 — un retiro y una renumeración.** Se **retira *Percepción de valor*** (era el KR5): **el widget de NPS no llega a rendir lo que cuesta dentro del trimestre**. Y **los cuatro KRs vivos se renumeran de 1 a 4**, **rompiendo a propósito la regla de IDs vacantes** —O2 venía con cuatro números vacantes y un set citado como *KR1 · KR6 · dos sin número*, ilegible para presentar— **con el mapeo escrito y la regla revisada, no ignorada**. ⚠️ **Tres cosas a declarar al presentar: O2 se queda sin ninguna métrica de valor percibido mientras el título dice "valor demostrado", nada en O2 verifica que MAIA diga la verdad, y tres de los cuatro KRs no tienen baseline.**
 > 🔄 **Actualización de O2 el 2026-09-05 — un retiro y dos altas.** Se **retira *Uso intensivo*** —**el número 2 queda vacante**— y entran ***Gestión ejecutada por MAIA*** y ***Estado del negocio consultado por MAIA***, los dos **sin número y citados por nombre**. **O2 queda con cinco KRs.** 🔄 **Y con un cambio de método transversal: los dos KRs nuevos no salen de Amplitude ni de lectura de conversaciones, sino del log de tools de Metabase filtrado por rol — sin instrumentación nueva.** **Ningún KR de O1 se toca; O3 sigue ⏸️.**
 > 🔄 **Revisión completa del set el 2026-08-31 — la más grande desde que se cargó.** **O1 pasa a llamarse "Ejecución sin fallas"** y baja a **tres KRs** (se retira el flujo de archivos). **O2 se toca por primera vez desde el 19-ago:** cuatro KRs sobre **dos universos**, con dos retiros (activación de cohorte, dormidas) y dos altas (**percepción de valor**, **sustitución del flujo de horas**). **Entran tres baselines medidos** —fricciones **50%**, éxito de ejecución **85%**, uso intensivo **8,19%**— y el horizonte queda declarado: **Q4 = sep–dic, revisión mensual, cierre en diciembre.** **O3 sigue ⏸️ sin cambios.**
@@ -79,6 +80,8 @@ El core de **Agencias LatAm por sí solo no alcanza para crecer +50% YoY**, de a
 > ✅ **Ese paso siguiente ya ocurrió: el 2026-08-19 se cargaron O1 y O2 de la vertical de AI** (sección "OKRs del trimestre"). Lo que sigue en este bloque —métrica, anti-metas, huecos y decisiones abiertas— **es la evidencia sobre la que se apoyan**, y se mantiene como tal.
 
 ### La métrica que mide la prioridad
+
+⚠️ **Bloque histórico: la definición vigente cambió el 2026-09-10** — el KR de Alcance ahora corre sobre **los cuatro roles** y sale **entero de Metabase**, y **el 11,6% quedó dado de baja como baseline** (`[BAJA-03]` en `06-kpi-tree`). **Se conserva porque es de dónde viene la métrica y el techo observado sigue sirviendo de referencia.**
 
 **Penetración = usuarios únicos ÷ asientos elegibles** (PM + Director + C-Level de las cuentas con MAIA habilitada). Reemplaza el conteo de usuarios activos absolutos, que se movía con el denominador.
 
@@ -393,10 +396,13 @@ _Se registran en vez de borrarse. **Los IDs de los KRs retirados no se reutiliza
 
 | KRs | Universo |
 |---|---|
-| **Gestión ejecutada · Estado del negocio consultado · Alcance** | **Panel Enterprise + Midmarket** (PM, Director, C-Level), congelado al día previo al release. ⚠️ _**Gestión ejecutada** y **Estado del negocio consultado** **se restringen a un subconjunto de roles dentro del panel**: gestión a **PM + Director**, estado del negocio a **C-Level**. **Alcance corre sobre el panel entero.**_ |
+| **Gestión ejecutada · Estado del negocio consultado** | **Panel Enterprise + Midmarket** (PM, Director, C-Level), congelado al día previo al release. ⚠️ _Los dos **se restringen a un subconjunto de roles dentro del panel**: gestión a **PM + Director**, estado del negocio a **C-Level**._ |
+| **Alcance** 🔄 _(redefinido el 10-sep)_ | **Panel E+MM con LOS CUATRO ROLES**, Colaborador incluido: **~9.380 asientos** = 3.775 (PM+Dir+C-Level) + 5.605 (Colaborador) |
 | **Sustitución del flujo de carga de horas** | **Asientos elegibles: colaboradores con MAIA habilitada (5.605)** |
 
 > ⛔ **Nunca se suman ni se promedian entre sí.** Queda escrito, no implícito.
+>
+> 🔄 **Y desde el 2026-09-10 los universos se solapan: el Colaborador está en el de Alcance y en el de Sustitución de horas.** ✅ **No es doble conteo** —un colaborador cuenta en Alcance **como usuario que interactuó** y en KR1 **dentro del share de horas**: son **dos preguntas distintas sobre la misma persona**— **pero conviene tenerlo escrito antes del review.**
 >
 > 🔄 **Precisado el 2026-09-02: la habilitación está dentro del universo, no es un filtro aparte.** **MAIA se habilita por company**, así que el universo del KR6 es **la misma convención de `asiento elegible` que usa el panel E+MM**, con Colaborador en lugar de PM + Director + C-Level. **Un colaborador sin MAIA habilitada no entra al numerador ni al denominador**: no se puede sustituir un flujo con una herramienta que no se tiene.
 >
@@ -427,7 +433,7 @@ _Se registran en vez de borrarse. **Los IDs de los KRs retirados no se reutiliza
 | **KR1** | **Sustitución del flujo de carga de horas** | % de horas **cargadas** vía MAIA sobre el total de horas **cargadas** por colaboradores con MAIA habilitada, en **ventana de 28 días** | Colaborador (5.605) | **0%** | **25%** 🚀 | Que MAIA **reemplaza el flujo de la tarea obligatoria** |
 | **KR2** | **Gestión ejecutada por MAIA** | % de **semanas-PM/Director** con **≥10 escrituras de gestión** vía MAIA | Panel E+MM, roles **PM y Director** | ⏳ sin baseline | ⏳ **a fijar contra la primera corrida** | Que MAIA **ejecuta el trabajo de gestión** |
 | **KR3** | **Estado del negocio consultado por MAIA** | % de **semanas-C-Level** con **≥4 lecturas de negocio** vía MAIA | Panel E+MM, rol **C-Level** | ⏳ sin baseline | ⏳ **a fijar contra la primera corrida** | Que MAIA **es por donde se mira el negocio** |
-| **KR4** | **Alcance** | Penetración del panel: usuarios únicos ÷ asientos elegibles (PM + Director + C-Level) | Panel E+MM | **11,6%** ⚠️ | **25%** 🚀 | Que MAIA **alcanza** |
+| **KR4** | **Alcance** 🔄 _(redefinido el 10-sep)_ | Usuarios únicos con **≥1 interacción** ÷ asientos elegibles. **Fuente: Metabase, numerador y denominador** | **Panel E+MM, los cuatro roles** (~9.380 asientos) | ⛔ **ninguno** — el 11,6% queda de baja | **25%** ⚠️ **a recalibrar** | Que MAIA **alcanza** |
 
 > ⛔ **Retirado el 2026-09-06: *Percepción de valor* (era O2-KR5).** El widget de NPS **no llega a rendir lo que cuesta dentro del trimestre**. Cuatro motivos y qué se rescata, en el registro de retiros más abajo.
 >
@@ -440,19 +446,23 @@ _Se registran en vez de borrarse. **Los IDs de los KRs retirados no se reutiliza
 **Anti-metas vigentes: las cinco, sin cambios.**
 
 
-#### Por qué el denominador es el panel Enterprise + Midmarket
+#### Por qué el denominador es el panel Enterprise + Midmarket — 🔄 **dos de sus tres razones cayeron el 2026-09-10**
 
-Con el release la base pasó de **128 a ~300 companies** e incorporó el rol **Colaborador**. El universo de asientos elegibles saltaría de ~3.775 a **~15.000**, y **la penetración caería de 11,6% a ~2,6% el mismo día, sin que nada empeore.**
+_Se conserva el argumento original del 19-ago, con el estado de cada razón al lado. **Es una reversión con fecha, no una reescritura de la historia.**_
 
-Medir sobre el panel Enterprise + Midmarket (roles PM, Director y C-Level) resuelve tres cosas a la vez:
+Con el release la base pasó de **128 a ~300 companies** e incorporó el rol **Colaborador**. El universo de asientos elegibles saltaría de ~3.775 a **~15.000**, y **la penetración caería de 11,6% a ~2,6% el mismo día, sin que nada empeore.** Medir sobre el panel Enterprise + Midmarket (roles PM, Director y C-Level) resolvía **tres cosas a la vez**:
 
-1. Es el universo que el objetivo nombra en su propio título.
-2. **Mantiene la serie comparable:** el 11,6% sigue siendo baseline y los nueve meses de historia siguen sirviendo.
-3. Es el universo sobre el que **se va a monetizar**.
+| # | Razón del 19-ago | Estado al 2026-09-10 |
+|---|---|---|
+| 1 | Es el universo que el objetivo **nombra en su propio título** | ✅ **Sigue en pie.** **El panel no cambia: lo que se amplía es el rol dentro del panel, no el conjunto de companies** |
+| 2 | **Mantiene la serie comparable:** el 11,6% sigue siendo baseline y los nueve meses de historia siguen sirviendo | ⛔ **`[BAJA]`.** **Cae dos veces y de forma independiente: por el cambio de fuente y por el cambio de universo.** **El 11,6% se da de baja como baseline** — se conserva como dato histórico del universo viejo |
+| 3 | Es el universo sobre el que **se va a monetizar** | 🟠 **Queda abierta.** ⚠️ **Si el Colaborador no entra a la conversación de monetización, el KR está midiendo un universo más ancho que el que O3 va a poner en precio.** Decisión del owner |
 
-Las **~172 companies nuevas fuera de Enterprise y Midmarket se reportan, pero no llevan meta**: son población nueva sin baseline.
+> 📌 **La consecuencia estaba anticipada en este mismo archivo, como argumento en contra.** **La caída ahora es menor** —el panel se mantiene, así que el denominador va a **~9.380 y no a ~15.000**— **pero es la misma caída, y ahora se acepta a sabiendas.**
 
-> ⏰ **Las dos cosas que debían ocurrir ANTES del release están vencidas** _(estaban comprometidas para el 24-ago)_: **congelar el panel E+MM** e **instrumentar la activación con marca de cohorte**. La segunda ya no bloquea un KR —activación de cohorte se retiró— pero **sí bloquea el nodo del árbol de Alcance y el KPI del tablero**. La primera sigue siendo lo que separa **mejora** de **dilución** en toda la serie posterior.
+Las **~172 companies nuevas fuera de Enterprise y Midmarket se reportan, pero no llevan meta**: son población nueva sin baseline. _(Sin cambios.)_
+
+> ⏰ **Las dos cosas que debían ocurrir ANTES del release siguen vencidas** _(estaban comprometidas para el 24-ago)_. 🔄 **Actualizado el 10-sep:** la **marca de cohorte** sigue como estaba, y **congelar el panel E+MM sigue vencido** — ⚠️ **si el backend guarda histórico de asientos, rol y habilitación, la serie se reconstruye por query; si no, no se puede armar hacia atrás y hay que empezar a fotografiar el panel ya.**
 
 #### KR1 — Sustitución del flujo de carga de horas _(era KR6 hasta el 06-sep)_
 
@@ -581,23 +591,70 @@ Las **~172 companies nuevas fuera de Enterprise y Midmarket se reportan, pero no
 
 > ⚠️ **Riesgo de tamaño, declarado de antemano.** **Con n≈24 usuarios el KR es volátil aun con denominador de semanas.** **Si el universo mensual no supera holgadamente los 30 C-Levels activos, revisar si baja a KPI.** **Decisión a tomar contra la primera corrida, no antes.**
 
-#### KR4 — Alcance: sin cambios _(era KR1 hasta el 06-sep)_
+#### KR4 — Alcance 🔄 **REDEFINIDO el 2026-09-10** _(era KR1 hasta el 06-sep)_
 
-Usuarios únicos sobre asientos elegibles del panel (PM + Director + C-Level). Es la métrica de la prioridad **"Deploy de AI en clientes"** del plan de negocio. **Baseline 11,6%** (jul-26). Sobre el panel cerrado de cuentas de 2025 —denominador constante— el mismo mes da **14,6%**. **Meta 25%:** supera el techo observado, que es **Crowe Global con 23,6%**.
-
-> 📌 **Nada de este KR cambió el 06-sep salvo su número.** **No es un KR nuevo, ni un renombre, ni una redefinición.** _(La sesión del 06-sep lo describe como "repuesto" tras un retiro el 05-sep; **ese retiro nunca llegó al repo** — la carga del 05-sep dice *"Alcance — sin cambios"*. **Acá el KR fue continuo.**)_
-
-**Sus cuatro salvedades vuelven intactas — ninguna se cerró:**
-
-> ⚠️ **1 · El baseline es de otro universo.** El **11,6%** es **373 usuarios ÷ 3.225 asientos**: las 128 companies completas, **todos los segmentos**, **no el panel**. Los asientos del panel salen del **Corte E, sin correr**. **Si el panel penetra por encima del promedio —lo esperable, porque Enterprise concentra el uso— el baseline real es más alto y la meta de 25% es menos exigente de lo que parece.**
+> ⚠️ **Es una redefinición, no una precisión: el KR cambia de fuente y de universo, y eso invalida su baseline y desalinea su meta.**
 >
-> 🔴 **2 · La verificación del segmento de Amplitude vuelve a ser bloqueante.** **806 usuarios del panel en agosto contra 373 en julio** son **2,2x en un mes** y darían **21,4% de penetración: el KR casi cumplido antes de arrancar.** ⚠️ **Con el retiro de *Uso intensivo*, ahora es el único KR que ese número mueve — pero lo mueve entero.**
+> **Dos cambios, en dos líneas:**
+> 1. **Fuente.** De **Amplitude + export manual de asientos** → a **Metabase, numerador y denominador.** El numerador sale del **log de conversaciones que ya existe**; el denominador, de la tabla de asientos.
+> 2. **Universo.** De **PM + Director + C-Level** → a **los cuatro roles, con el Colaborador adentro del mismo denominador.** Un solo número sobre el panel completo.
 >
-> ⏰ **3 · La foto del panel congelado sigue vencida** (era antes del release del 24-ago). **Era la consulta que cerraba las dos anteriores.**
->
-> 📐 **4 · Sus dos cortes son condición, no adorno.** **Por rol** (PM / Director / C-Level) — acá vive la **anti-meta 1**: el KR es un número único y la anti-meta pide metas diferenciadas. **Por origen** (banner vs. chat) — **anti-meta 5**: entre **54% y 72%** del alcance entra por banner.
+> 📌 **El panel Enterprise + Midmarket sigue siendo el recorte de companies. Lo que cambió es el rol, no el segmento.**
 
-**◆ Su leading vuelve activo: conversión apertura → primera consulta** (Corte A). 🟢 **Una consulta de Amplitude** — y **la más desbloqueante del repo**, porque además decide si el KR se reporta en una línea o en dos.
+| Campo | Valor |
+|---|---|
+| **Métrica** | Usuarios únicos con **≥1 interacción** con MAIA ÷ asientos elegibles |
+| **Universo** | Panel E+MM · **los cuatro roles**: PM + Director + C-Level + **Colaborador** |
+| **Denominador** | **~9.380 asientos elegibles** = **3.775** (PM+Dir+C-Level) + **5.605** (Colaborador) |
+| **Numerador** | Usuarios con al menos una interacción en el rango, **deduplicados dentro del rango** |
+| **Fuente** | **Metabase**, numerador y denominador |
+| **Ventana** | Rango de días seleccionable · ⚠️ **convención oficial a definir** |
+| **Baseline** | ⛔ **Ninguno. El 11,6% queda dado de baja** |
+| **Meta** | **25%** 🚀 ⚠️ **fijada sobre otro universo — a recalibrar** |
+| **Cortes obligatorios** | **Por rol** (los cuatro) — 🔺 **pasa de condición a lectura principal**. **Por origen** (banner vs. resto) — anti-meta 5 |
+| **Leading declarado** | Conversión apertura → primera consulta — ⚠️ **queda fuera del instrumento nuevo** |
+| **Instrumentación nueva** | **Ninguna para el KR base.** El corte por origen puede necesitar un campo |
+
+##### Lo que esta redefinición invalida
+
+> 📌 **El repo tiene, del 19-ago, una decisión argumentada de excluir al Colaborador, con tres razones escritas. Dos de las tres caen.** Se registra como **reversión con fecha, sin reescribir la historia** — el argumento original se conserva en el bloque del denominador, abajo.
+
+**⛔ `[BAJA]` del baseline 11,6% — 2026-09-10.** Cae **dos veces y de forma independiente**: por el cambio de fuente y por el cambio de universo. **No se borra: sigue siendo el dato histórico del universo viejo** (373 usuarios ÷ 3.225 asientos, jul-26).
+
+> 📌 **Y el repo ya había anticipado exactamente esta consecuencia — como argumento *en contra*:** *"el universo saltaría de ~3.775 a ~15.000 y la penetración caería de 11,6% a ~2,6% el mismo día, sin que nada empeore."* **La caída ahora es menor** —el panel se mantiene, así que el denominador va a **~9.380 y no a ~15.000**— **pero es la misma caída, y ahora se acepta a sabiendas.**
+>
+> ⚠️ **Con esto, los cuatro KRs de O2 quedan sin punto de partida.** Antes eran tres de cuatro: **es la observación del 06-sep agravada.** **La primera corrida del dashboard es la nueva línea de base.**
+
+**⚠️ La meta de 25% queda desalineada.** Se fijó sobre 3.775 asientos; **sobre ~9.380, 25% son ~2.345 usuarios únicos**. 📌 **Referencia de orden de magnitud: la medición de agosto sobre el panel dio 806 usuarios.** **La meta pasa a pedir cerca de tres veces la base de usuarios que el producto tuvo nunca, en cuatro meses.**
+
+> ⛔ **El número no se cambia por cuenta propia: es decisión del owner.** Tres opciones: **(a)** bajar la meta al equivalente sobre el universo nuevo · **(b)** sostener el 25% **declarándolo Moonshot extremo y aceptando que se reporta incumplido** · **(c)** poner la meta **sobre el corte por rol y no sobre el agregado** — coherente con la **anti-meta 1**, que pide metas diferenciadas y **que este cambio vuelve más urgente**.
+> **Hasta que se decida, la meta se registra como `25% ⚠️ a recalibrar`.**
+
+**⚠️ El leading se queda afuera del instrumento.** *Conversión apertura → primera consulta* **vive en Amplitude**, y el dashboard nuevo no lo produce: **el numerador de KR4 excluye justamente las aperturas sin consulta, que son la mitad de ese indicador.** **Se mantiene en la ficha, marcado como fuera del dashboard**, y va a instrumentación pendiente. ⚠️ **Sin él, KR4 vuelve a quedar todo lagging.**
+
+##### Lo que la redefinición resuelve
+
+- ✅ **La verificación del segmento (806 vs. 373) deja de ser bloqueante.** **Con el rol como columna de SQL, el segmento es auditable por construcción.** ⚠️ **Se cierra por obsolescencia, no por resolución: la discrepancia nunca se explicó.**
+- ✅ **El Corte E** (asientos del panel por segmento), **vencido desde el 19-ago, deja de ser un export manual:** el denominador **se recalcula en cada lectura**.
+- ✅ **La regla 4 se respeta sin excepción.** KR4 **ya no cruza fuentes: está entero en Metabase.** 🔄 **Corrige la nota del 06-sep** que decía *"KR1, KR2 y KR3 salen del log de tools; KR4 sale de Amplitude — son dos fuentes"*: **con este cambio, O2 sí pasa a medirse con una sola fuente.**
+
+> ⏰ **Lo que NO se cierra: la foto del panel congelado del 24-ago sigue vencida.** **Si el backend guarda histórico de asientos, rol y habilitación, se reconstruye por query; si no, la serie no se puede armar hacia atrás y hay que empezar a fotografiar el panel ya.**
+
+##### Definiciones operativas
+
+- **Qué cuenta como interacción.** **El usuario le manda algo a MAIA y MAIA responde.** ⛔ **Abrir el chat sin enviar nada no cuenta.** Los usuarios únicos se **deduplican dentro del rango, nunca entre rangos** — ⚠️ **las columnas de dos períodos no son sumables.**
+- **El corte por origen.** Anti-meta 5, **sigue siendo condición**. ⚠️ **Pendiente abierto: confirmar si el log de conversaciones guarda el punto de entrada** (banner / chat / FAQ / respuesta sugerida). **Si no lo guarda, es el único campo nuevo que este KR necesita.**
+- **La ventana.** KR1, KR2 y KR3 corren sobre **28 días móviles**; la serie de Alcance era **mensual calendario**. Con el filtro por rango se sostienen las dos, **pero hay que elegir la oficial del review.** 📌 **Recomendación: alinear a 28 días móviles con los cinco cierres —06-sep / 04-oct / 01-nov / 29-nov / 27-dic— ahora que la serie mensual perdió su continuidad de todos modos.** **Decisión del owner.**
+- 🔺 **El agregado ya no es legible solo.** **El Colaborador es el 60% del denominador y el rol con menos penetración.** **El número del KR se va a mover casi solo con él, y los movimientos de C-Level o Director van a quedar invisibles en el total.** ⛔ **El corte por rol deja de ser un desglose y pasa a ser la lectura: sin él, el agregado no significa nada.**
+- **Solapamiento con KR1, escrito antes del review.** Un colaborador puede contar en **dos KRs a la vez**: acá **como usuario con interacción**, y en KR1 **dentro del share de horas**. ✅ **No es doble conteo — son dos preguntas distintas sobre la misma persona** — pero conviene tenerlo escrito.
+- 📐 **Regla de suma:** `penetración = SUMA(usuarios) ÷ SUMA(asientos)`, ⛔ **nunca el promedio de las penetraciones por company.** **Con los cuatro roles la cola de tamaños se estira y el error se agranda.**
+
+##### Tres decisiones abiertas para el owner
+
+1. 🔴 **La meta de 25%** — recalibrar, sostener como Moonshot extremo, o mover al corte por rol.
+2. 🟠 **La ventana oficial** — 28 días móviles o mes calendario.
+3. 🟠 **El Colaborador y la monetización.** La razón 3 del criterio original decía que el panel es *"el universo sobre el que se va a monetizar"*. ⚠️ **Si el Colaborador no entra a esa conversación, el KR está midiendo un universo más ancho que el que O3 va a poner en precio.**
+
 
 #### Registro de retiros de O2 — cuatro
 
@@ -695,7 +752,7 @@ _Cargada el 2026-08-31._ **Regla: un Moonshot al 70% es un éxito; un Roofshot a
 | O1 · Conversaciones sin fricciones por error | 🚀 **Moonshot** | **50% → 70%** baja la fricción de 50% a 30%: **reducción del 40% en cuatro meses.** Baseline validado en criterio y unidad, así que la declaración queda firme |
 | O1 · Éxito de ejecución | 🚀 **Moonshot** | **85% → 95%** implica **cortar los errores a un tercio**. La vara es **externa** —umbral estándar para operaciones que modifican datos del cliente—, no arbitraria |
 | O1 · Performance sostenida | 🏢 **Roofshot** | Un guardrail al 70% **es un problema por definición**. ⚠️ **Muta a 🚀 Moonshot si el baseline de septiembre vuelve por debajo del 95%**: ahí deja de ser *sostener* y pasa a ser **mejorar mientras se escala** |
-| O2-KR4 · Alcance | 🚀 **Moonshot** | **25% de promedio del panel supera el techo histórico de cualquier cuenta individual** (Crowe, 23,6%) |
+| O2-KR4 · Alcance | 🚀 **Moonshot** ⚠️ **a recalibrar** _(10-sep)_ | El fundamento del 19-ago —**25% supera el techo histórico de cualquier cuenta individual** (Crowe, 23,6%)— **se fijó sobre 3.775 asientos**. **Sobre ~9.380 son ~2.345 usuarios únicos: cerca de tres veces la base que el producto tuvo nunca** (806 en agosto). **El tipo se confirma cuando el owner decida la meta** |
 | ~~O2 · Uso intensivo~~ | ⛔ **retirado el 05-sep** | _Se conserva el fundamento por el que fue Moonshot: triplicar la cola, de 66 a ~202 usuarios. **El retiro no fue por ambición mal calibrada sino por diseño de la métrica**_ |
 | O2-KR2 · Gestión ejecutada | 🚀 **Moonshot** | **Techo aritmético ~15,9%** con las 886 escrituras de gestión visibles hoy. **Decirlo antes de la primera lectura**, para que **un 8% en diciembre se lea como la cola volviéndose norma** y no como fracaso |
 | O2-KR3 · Estado del negocio consultado | **A declarar contra la primera corrida** | Sin baseline y con **n≈24**: declarar el tipo antes de la primera lectura **es adivinar**, igual que en percepción de valor |
@@ -715,7 +772,7 @@ _Cargado el 2026-08-31._ **Sin esto, "25%" es ambiguo: ¿diciembre, el promedio 
 | O1 · Conversaciones sin fricciones por error | **Corrida de diciembre.** Sep–nov son revisión mensual; **septiembre es el baseline** |
 | O1 · Éxito de ejecución | **Acumulado del período**, desde que el evento exista (el volumen mensual es bajo al inicio) |
 | O1 · Performance | **Todos los meses. Manda el peor** — es un guardrail: **no se promedia ni se corta una vez** |
-| O2-KR4 · Alcance | **Penetración de diciembre-26.** Métrica mensual, no acumulada |
+| O2-KR4 · Alcance | ⚠️ **A definir** _(10-sep)_. Era **penetración de diciembre-26, mensual calendario**; con el instrumento nuevo el rango es seleccionable. 📌 **Recomendación: alinear a los 28 días móviles y los cinco cierres del resto del set, ahora que la serie mensual perdió su continuidad de todos modos.** **Decisión del owner** |
 | O2-KR2 · Gestión ejecutada | **Ventana de 28 días que cierra el 27-dic-26** · share de la ventana, no acumulado. **Mismos cinco cierres que el KR de horas: 06-sep / 04-oct / 01-nov / 29-nov / 27-dic** |
 | O2-KR3 · Estado del negocio consultado | **Ídem** — misma ventana y mismos cinco cierres |
 | ~~O2 · Percepción de valor~~ | ⛔ **KR retirado el 2026-09-06** |
@@ -736,7 +793,7 @@ _Cargado el 2026-08-31._ **Regla: uno por KR, no el árbol entero. Siete número
 | O1 · Conversaciones sin fricciones por error | **Tasa de reformulación del usuario** | 🟢 Sale del mismo log de la corrida |
 | O1 · Éxito de ejecución | **Ratio de aprobación del usuario** | 🔴 Depende del evento de acción aplicada |
 | O1 · Performance | **Latencia de ruteo del Orquestador** | 🟢 Una consulta de Amplitude |
-| **O2-KR4 · Alcance** | **Conversión apertura → primera consulta** (Corte A) | 🟢 Una consulta de Amplitude |
+| **O2-KR4 · Alcance** | **Conversión apertura → primera consulta** (Corte A) — ⚠️ **fuera del dashboard desde el 10-sep** | 🟠 **Vive en Amplitude y el instrumento nuevo no lo produce:** el numerador de KR4 **excluye justamente las aperturas sin consulta**. **Sin él, KR4 vuelve a quedar todo lagging** |
 | **O2-KR2 · Gestión ejecutada** | ⛔ **SIN DECLARAR** _(2026-09-06)_ — _el share de llamadas de resolución de entidad (17,5%) queda como candidato, pero **no está declarado**_ | — |
 | **O2-KR3 · Estado del negocio consultado** | ⛔ **SIN DECLARAR** _(2026-09-06)_ — _el % que llega a una tool company-wide (~0%) queda como candidato, pero **no está declarado**_ | — |
 | **O2-KR1 · Sustitución del flujo de horas** | **Tasa de 2ª carga vía MAIA dentro de 2 semanas** | 🟡 Sale del mismo instrumento que el KR |
@@ -783,7 +840,7 @@ _Cargados el 2026-09-05 con las altas de O2 y ampliados el 2026-09-06. **Se nomb
 
 ⚠️ **4 · O2 se quedó sin ninguna métrica de valor percibido** _(2026-09-06)_**, y el título del objetivo sigue diciendo "valor demostrado".** **Los cuatro KRs miden comportamiento y ninguno le pregunta nada al usuario.** **Y con el NPS se fue la única comparable de la vertical contra el NPS global de COR — el número con el que MAIA se defiende ante afuera.** **El hueco queda registrado como abierto**, con el mismo lenguaje que la deuda de precisión verificada.
 
-⚠️ **5 · Tres de los cuatro KRs no tienen baseline** _(2026-09-06)_. **KR1 arranca en 0% por definición, KR2 y KR3 sin medición, y el número de KR4 es de otro universo.** **Declararlo de antemano, o en diciembre se lee como falta de avance.**
+⚠️ **5 · Los CUATRO KRs no tienen baseline** _(2026-09-06, agravado el 2026-09-10)_. KR1 arranca en 0% por definición, KR2 y KR3 sin medición, **y el 11,6% de KR4 se dio de baja con la redefinición del 10-sep.** **O2 queda como O1 en agosto: metas por criterio sobre mediciones que no existen.** **Declararlo de antemano, o en diciembre se lee como falta de avance.**
 
 ⚠️ **3 · Techo aritmético del KR de gestión.** Con las **886 escrituras de gestión visibles hoy**, el máximo teórico es **~15,9%**. **Por eso es Moonshot.** **Decirlo antes de la primera lectura**, para que **un 8% en diciembre se lea como la cola volviéndose norma** y no como un fracaso.
 
@@ -791,14 +848,14 @@ _Cargados el 2026-09-05 con las altas de O2 y ampliados el 2026-09-06. **Se nomb
 
 _Cargadas el 2026-08-19 al integrar los OKRs al repo. No invalidan el set: son las costuras que hay que mirar en el primer review._
 
-1. **KR1 de O2 es un número único y la anti-meta 1 pide metas diferenciadas por rol.** El set re-enuncia esa anti-meta en sus propios criterios, y aun así fija 25% para el panel entero. **O el KR se desagrega por rol al reportar, o la anti-meta se revisa explícitamente.** El dato que la motiva sigue vivo: el C-Level lleva cinco meses entre 9,5% y 13,3% mientras el PM pasó de 1,8% a 11,9%.
+1. **El KR de Alcance es un número único y la anti-meta 1 pide metas diferenciadas por rol.** 🔺 _Actualizado el 2026-09-10: **con el Colaborador adentro del denominador esto pasa de costura a problema operativo** — el corte por rol dejó de ser un desglose y es la lectura, y **"poner la meta sobre el corte por rol" es una de las tres opciones abiertas para recalibrar el 25%.**_ _(Texto original del 19-ago:)_ El set re-enuncia esa anti-meta en sus propios criterios, y aun así fija 25% para el panel entero. **O el KR se desagrega por rol al reportar, o la anti-meta se revisa explícitamente.** El dato que la motiva sigue vivo: el C-Level lleva cinco meses entre 9,5% y 13,3% mientras el PM pasó de 1,8% a 11,9%.
 2. **El KR de penetración se fijó con el corte por origen todavía abierto.** Era el único bloqueo declarado en este archivo. **No es un error:** la regla de decisión de `06-kpi-tree` está escrita de antemano y dice que el KR se puede escribir en los dos desenlaces. Lo que el Corte A decide ahora **no es si el KR existe, sino si se reporta en una línea o en dos** (MAIA por chat / MAIA por banner). Sigue siendo la consulta más desbloqueante del repo.
-3. **La meta del KR1 se apoya en un baseline de otro universo** — ver la salvedad de denominador arriba. Correr el Corte E la convierte en una meta medida.
+3. ~~**La meta del KR1 se apoya en un baseline de otro universo** — ver la salvedad de denominador arriba. Correr el Corte E la convierte en una meta medida.~~ 🔄 **Superada el 2026-09-10, y para peor:** **el baseline no era de otro universo, ahora directamente no hay baseline** —el 11,6% se dio de baja— **y el Corte E dejó de ser un export manual porque el denominador se recalcula en cada lectura.** **Lo que queda es recalibrar la meta.**
 4. **Todo KR persigue un resultado, no un entregable.** Se bajaron a iniciativas varios candidatos que eran milestones: instrumentar un evento, corregir cálculos, poner workflows en producción, definir un modelo de negocio. **El trabajo sigue siendo necesario, pero no se mide como resultado** (→ `08-roadmap`).
 
-### Doce costuras que agregaron las reescrituras de O1 y O2
+### Catorce costuras que agregaron las reescrituras de O1 y O2
 
-_Las tres primeras se cargaron el 2026-08-21; la cuarta, el 2026-08-27; la quinta y la sexta, el 2026-08-31; la séptima y la octava, el 2026-09-05; las últimas cuatro, el 2026-09-06. Las cuatro de arriba siguen vigentes y son todas de O2._
+_Las tres primeras se cargaron el 2026-08-21; la cuarta, el 2026-08-27; la quinta y la sexta, el 2026-08-31; la séptima y la octava, el 2026-09-05; la novena a la duodécima, el 2026-09-06; las dos últimas, el 2026-09-10. Las cuatro de arriba siguen vigentes y son todas de O2._
 
 5. **La numeración de los KRs de O1 colisiona con su propia regla.** El documento fuente dice "los IDs no se reutilizan" **y** numera los cuatro KRs vivos como KR1–KR4. Se cargó la numeración del fuente con el **mapeo viejo→nuevo escrito** (ver O1). **Toda referencia a "O1-KRn" anterior al 21-ago apunta a otro KR:** actas, dashboards y el propio historial de este repo.
 6. **Se retiró el único KR que fallaba por falta de dueño, no por falta de valor.** La precisión verificada era el KR más caro del set y **el retiro cierra un pendiente sin resolverlo**: el hueco de medición de verdad **queda abierto y ahora sin candidato**. Está registrado en O1 como tal, con el mismo lenguaje que la deuda de cálculos.
@@ -812,6 +869,8 @@ _Las tres primeras se cargaron el 2026-08-21; la cuarta, el 2026-08-27; la quint
 14. **Nada en O2 verifica que MAIA diga la verdad** _(2026-09-06)_. Los cuatro KRs **cuentan como cumplida una semana donde MAIA entregó un número mal calculado**. **La única cobertura viva es el KR1 de O1** —conversaciones sin fricciones por error—, que ve **la alucinación visible y no la silenciosa**. ⚠️ **Con los cuatro cálculos de nivel proyecto expuestos a ~300 clientes, el set puede cerrar en verde con el producto peor.** _(Es el riesgo del 05-sep **agravado: antes el NPS era un contrapeso parcial.**)_
 15. **Tres de los cuatro KRs de O2 no tienen baseline** _(2026-09-06)_. KR1 arranca en 0% por definición, KR2 y KR3 sin medición, **y solo KR4 tiene un número — que es de otro universo**. **O2 queda como O1 en agosto: metas por criterio sobre mediciones que no existen.** **Declararlo de antemano, o en diciembre se lee como falta de avance.**
 16. **Se rompe la regla de IDs vacantes por decisión explícita** _(2026-09-06)_. O2 se renumera de 1 a 4 **con el mapeo escrito**. **La regla queda revisada, no ignorada** — y la regla operativa *"los KRs se citan por nombre"* **pasa a aplicar también a O2**.
+17. **Los cuatro KRs de O2 quedan sin baseline** _(2026-09-10)_. **La redefinición de KR4 da de baja el 11,6%**, y con eso **ninguno de los cuatro tiene punto de partida**: KR1 arranca en 0% por definición, KR2 y KR3 sin medición, **y KR4 acaba de perder el único número escrito que le quedaba al objetivo**. **Es la observación del 06-sep agravada, y hay que declararla de antemano** — la primera corrida del dashboard es la nueva línea de base.
+18. **Cuarta definición del mismo slot en O2, y la tercera vez que un KR de este objetivo pierde su baseline al cambiar de universo** _(2026-09-10)_. **El patrón ya no es de un KR: es del objetivo.** _Retorno → uso intensivo → retirado_ en el slot 2; y **Alcance cambia de universo con el mismo mecanismo que ya había hundido el 11,6% en agosto** — **anticipado entonces como argumento en contra, aceptado ahora a sabiendas.**
 
 ## Marco de priorización
 
@@ -841,15 +900,20 @@ No es un framework formalizado tipo RICE con scoring numérico, sino un criterio
 - [x] ~~⛔ **Especificar e instrumentar los eventos del flujo de archivos (KR3 de O1).**~~ 🔄 **El KR se retiró el 2026-08-31 y el número 3 queda vacante.** La medición **baja de categoría, no desaparece**: corte del árbol de *Éxito de ejecución* y KPI del tablero.
 - [ ] 🟡 **Decidir con el squad de AI si generar un artefacto pasa por aprobación de Governance.** **Decide si el flujo de archivos es corte del árbol de ejecución o solo KPI del tablero:** el KR mide *acciones aprobadas*, y **si no comparte denominador, no puede colgar del árbol.**
 - [ ] 🟡 **Medir el baseline de performance post-release — percentil, no promedio, cortado por origen.** ⚠️ **La referencia de 1,5–2,5s no sirve, y no solo por vieja: no es un percentil.** El KR pide *% de consultas bajo 3s* y la referencia es latencia típica; además es **pre-Orquestador y pre-release**. **Sale de una consulta de Amplitude y no espera a septiembre.** **Decide si el guardrail es Roofshot o Moonshot.** Y si hay mediciones a ambos lados del 22-jul-26, **la resta es el costo en latencia del Orquestador** — insumo del eje capacidad vs. superficie de `08-roadmap`.
-- [ ] 🔴 **Verificar que el segmento de Amplitude del histograma de agosto sea el panel E+MM.** **806 usuarios activos en agosto contra 373 en julio son 2,2x en un mes** y darían **21,4% de penetración: el KR de Alcance casi cumplido antes de arrancar.** 🔴 **El retiro de *Uso intensivo* el 05-sep NO cierra este pendiente: el baseline de Alcance depende del mismo segmento.** Detalle en `06-kpi-tree`.
+- [x] ~~🔴 **Verificar que el segmento de Amplitude del histograma de agosto sea el panel E+MM.**~~ 🔄 **Cerrado por obsolescencia el 2026-09-10, no por resolución.** Con el KR4 saliendo de Metabase y **el rol como columna de SQL, el segmento es auditable por construcción**. ⚠️ **La discrepancia de 806 vs. 373 nunca se explicó** — y **el histograma de agosto, que sigue como KPI del tablero, arrastra la misma duda.** _Texto original:_ **806 usuarios activos en agosto contra 373 en julio son 2,2x en un mes** y darían **21,4% de penetración: el KR de Alcance casi cumplido antes de arrancar.** 🔴 **El retiro de *Uso intensivo* el 05-sep NO cierra este pendiente: el baseline de Alcance depende del mismo segmento.** Detalle en `06-kpi-tree`.
 - [ ] 🔴 **V1 del evento de acción aplicada.** Sin esto, *éxito de ejecución* **no tiene ni lagging ni leading** — su leading declarado sale del mismo evento. **Es lo único bloqueante del set.**
 - [ ] ⏰🔴 **Instrumentar el evento de carga vía MAIA, el share en ventana de 28 días y el embudo de amplitud (expuestos → activados → abandono). FECHA VENCIDA** _(era "antes de septiembre"; al 2026-09-02 no existe)_. El KR6 arranca en 0% y **se lee por trayectoria: la medición tiene que existir ya.** 🔄 **La ventana móvil agrava el costo del retraso:** cada día sin evento **no arruina un punto de la serie, arruina las 28 lecturas que lo contienen**. **El cierre del 06-sep es el baseline y no se reconstruye después.**
 - [ ] 🔴 **Correr el tamaño del denominador del KR6: horas cargadas totales, asientos elegibles y cuántos de ellos cargan horas en una ventana de 28 días.** **No necesita instrumentación nueva** — sale del backend de horas. **Es la población sobre la que corre la identidad del árbol** (amplitud × profundidad): sin ese número, la descomposición no se puede calcular y **no se sabe cuál de los dos factores se movió**. ⚠️ **Y es el dato que resuelve si el ~90x se sostiene.** **Antes del cierre del 27-sep**, para llegar a la recalibración con el dato y no con la discusión.
 - [ ] 🟡 **Resolver en la spec del evento si la tasa de finalización de la carga asistida vive en una sola fuente.** Si el evento cubre las dos puntas (intento iniciado / carga completada), la tasa es válida; **si no, cruza el log de Metabase con el backend de horas y viola la regla 4**, y se reemplaza por el abandono medido en Amplitude. **Es decisión de spec, no de reporte.**
 - [ ] 🟡 **Construir el widget de NPS in-app de tres preguntas** — instrumento del KR5. **La tasa de respuesta se reporta como variable de control, no como leading.**
+- [ ] 🔴 **Decidir la meta de KR4** _(2026-09-10)_. **El 25% se fijó sobre 3.775 asientos; sobre ~9.380 son ~2.345 usuarios únicos — cerca de tres veces la base que el producto tuvo nunca** (806 en agosto). Tres opciones: **(a)** bajarla al equivalente sobre el universo nuevo · **(b)** sostenerla **declarándola Moonshot extremo y aceptando que se reporta incumplido** · **(c)** **ponerla sobre el corte por rol y no sobre el agregado**, que es lo coherente con la anti-meta 1. ⛔ **No se cambia por cuenta propia.**
+- [ ] 🟠 **Elegir la ventana oficial de KR4** _(2026-09-10)_: **28 días móviles** o **mes calendario**. 📌 **Recomendación: alinear a los cinco cierres del resto del set, ahora que la serie mensual perdió su continuidad de todos modos.**
+- [ ] 🟠 **Resolver si el Colaborador entra a la conversación de monetización** _(2026-09-10)_. Era la **razón 3** del criterio del panel y **quedó abierta con la redefinición**. ⚠️ **Si no entra, KR4 está midiendo un universo más ancho que el que O3 va a poner en precio.**
+- [ ] 🟡 **Confirmar si el log de conversaciones guarda el punto de entrada** (banner / chat / FAQ / respuesta sugerida) _(2026-09-10)_. **Es el corte por origen del KR4 — anti-meta 5, condición y no adorno** — y **el único campo nuevo que la redefinición podría necesitar.**
+- [ ] ⏰🟠 **Empezar a fotografiar el panel E+MM ya, si el backend no guarda histórico de asientos, rol y habilitación** _(2026-09-10)_. **Es lo único que la redefinición NO cerró:** con histórico, la serie se reconstruye por query; **sin histórico, no se puede armar hacia atrás.**
 - [ ] 🔴 **Declarar un leading para el KR2 y para el KR3 de O2** _(2026-09-06)_. **La regla del set es uno por KR y hoy faltan dos.** Candidatos ya identificados y medibles del mismo log: **el share de llamadas de resolución de entidad** (17,5%) para gestión y **el % que llega a una tool company-wide** (~0%) para el C-Level — **pero ninguno está declarado**. ⛔ **Sin ellos, las revisiones de octubre y noviembre no tienen de qué hablar sobre los dos KRs que más lejos están de tener número.**
-- [ ] 🔴 **Correr el Corte E** (asientos del panel por segmento). 🔺 **Sube de prioridad el 06-sep: convierte el baseline de KR4 en una meta medida**, y con el retiro del NPS **KR4 es el único KR de O2 con un número escrito**.
-- [ ] 🔺 **Correr el Corte A** (solapamiento MAIA / banner). 🔺 **Vuelve a ser el leading de un KR vivo** y **decide si KR4 se reporta en una línea o en dos**. 🟢 Una consulta.
+- [x] ~~🔴 **Correr el Corte E** (asientos del panel por segmento).~~ ✅ **Cerrado el 2026-09-10: deja de ser un export manual.** Con el denominador saliendo de la tabla de asientos de Metabase, **se recalcula en cada lectura**. _(Estaba vencido desde el 19-ago.)_
+- [ ] 🟠 **Correr el Corte A** (solapamiento MAIA / banner). ⚠️ **Cambia de rol el 2026-09-10: sigue siendo el leading declarado de KR4, pero queda FUERA del dashboard nuevo** —vive en Amplitude y el instrumento de Metabase no lo produce—. **Sin él, KR4 es todo lagging.** Y **el corte por origen del KR sí sigue siendo condición**: ⚠️ **hay que confirmar si el log de conversaciones guarda el punto de entrada; si no lo guarda, es el único campo nuevo que este KR necesita.**
 - [ ] 🟡 **Instrumentar el embudo de amplitud del Colaborador como KPI del tablero** _(2026-09-06)_. ⚠️ **KR1 es una tasa de intensidad y hoy nada mide cuántos colaboradores tocaron MAIA.** ⏰ **Antes del cierre del 06-sep si se quiere lectura de septiembre.**
 - [ ] 🟡 **Decidir el título de O2** _(2026-09-06)_. ***"Adopción validada y valor demostrado"* ya no tiene KR de valor.** O se ajusta el título, **o el review pregunta dónde está el valor**.
 - [ ] **Bajar el widget de NPS a iniciativa en `08-roadmap`**, con **la pregunta 3 marcada como insumo del research de Q1**. _(Hecho en esta carga; queda el pendiente de decidir si entra en algún trimestre.)_
